@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\ReportProblemController;
 use App\Http\Controllers\Admin\MatchHighlightCategoryController;
 use App\Http\Controllers\Admin\MatchHighlightController;
+use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -134,6 +136,20 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
                 return view('admin/notifications/create');
             });
         });
+
+        // Staff Roles
+        Route::resource('roles', RoleController::class);
+        Route::controller(RoleController::class)->group(function () {
+            Route::get('/roles/edit/{id}', 'edit')->name('roles.edit');
+            Route::get('/roles/destroy/{id}', 'destroy')->name('roles.destroy');
+
+            // Add Permissiom
+            Route::post('/roles/add_permission', 'add_permission')->name('roles.permission');
+        });
+    
+        // Staff
+        Route::resource('staffs', StaffController::class);
+        Route::get('/staffs/destroy/{id}', [StaffController::class, 'destroy'])->name('staffs.destroy');
         
     });
 });

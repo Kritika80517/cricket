@@ -18,6 +18,18 @@ return new class extends Migration
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
+
+        Schema::create('articles', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('category_id')->constrained('article_categories');
+            $table->foreignId('sub_category_id')->constrained('article_categories')->nullable();
+            $table->string('title');
+            $table->string('image');
+            $table->longText('description');
+            $table->string('article')->nullable();
+            $table->boolean('status')->default(0);
+            $table->timestamps();
+        });
     }
 
     /**

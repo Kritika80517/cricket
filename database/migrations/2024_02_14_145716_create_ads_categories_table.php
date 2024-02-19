@@ -18,6 +18,18 @@ return new class extends Migration
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
+
+        Schema::create('ads', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('category_id')->constrained('ads_categories');
+            $table->foreignId('sub_category_id')->constrained('ads_categories')->nullable();
+            $table->string('name');
+            $table->string('ads_type');
+            $table->string('image_url')->nullable();
+            $table->string('video_url')->nullable();
+            $table->boolean('status')->default(0);
+            $table->timestamps();
+        });
     }
 
     /**
