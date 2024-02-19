@@ -4,6 +4,10 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\MatchHighlight;
+use App\Models\MatchHighlightCategory;
+use App\Models\language;
+use App\Helpers\FileHelper;
 
 class MatchHighlightController extends Controller
 {
@@ -35,7 +39,7 @@ class MatchHighlightController extends Controller
         $video->description = $request->description;
         $video->video_url = $request->video_url;
         $video->status = $request->status;
-        $video->image = FileHelper::image_upload('assets/img/matchhighlight/video/', 'png', $request->file('image'));
+        $video->image = FileHelper::image_upload('assets/admin/img/matchhighlight/video/', 'png', $request->file('image'));
         $video->save();
         return redirect('admin/matchvideo');
     }
@@ -64,14 +68,14 @@ class MatchHighlightController extends Controller
         $video->description = $request->description;
         $video->video_url = $request->video_url;
         $video->status = $request->status;
-        $video->image = $request->has('image') ? FileHelper::image_update('assets/img/matchhighlight/video/', $video->image, 'png', $request->file('image')) : $video->image;
+        $video->image = $request->has('image') ? FileHelper::image_update('assets/admin/img/matchhighlight/video/', $video->image, 'png', $request->file('image')) : $video->image;
         $video->save();
         return redirect('admin/matchvideo');
     }
 
     public function destory($id){
         $video =MatchHighlight::find($id);
-        FileHelper::image_unlink('assets/img/matchhighlight/video/', $video->image);
+        FileHelper::image_unlink('assets/admin/img/matchhighlight/video/', $video->image);
         $video->delete();
         return redirect('admin/matchvideo')->with('success', 'Video deleted successfully');
     }

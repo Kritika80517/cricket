@@ -55,7 +55,7 @@ class AdsController extends Controller
         //dd($request->all());
         $ads = Ads::where('id', $request->id)->first();
         $ads->category_id = $request->category_id;
-        $ads->sub_category_id = $request->sub_category_id;
+        $ads->sub_category_id = $request->sub_category;
         $ads->name = $request->name;
         $ads->ads_type = $request->ads_type;
         $ads->ads_placement = $request->ads_placement;
@@ -63,7 +63,7 @@ class AdsController extends Controller
         $ads->status = $request->status;
         $ads->description = $request->description;
         $ads->image_url = $request->has('image_url') ? FileHelper::image_update('assets/admin/img/ads/', $ads->image_url, 'png', $request->file('image_url')) : $ads->image_url;
-        //dd($ads);
+        // dd($ads);
         $ads->save();
         return redirect('admin/ads');
     }

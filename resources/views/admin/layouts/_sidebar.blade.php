@@ -32,7 +32,7 @@
           <ul class="dropdown-menu">
             <li class="{{ request()->is('admin/ads/categories*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.ads.categories.list')}}"><i class="fas fa-th-large"></i><span>Category</span></a></li>
             <li class="{{ request()->is('admin/ads/categories/subcategory*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.ads.categories.subcategory.list')}}"><i class="fas fa-th-large"></i><span>Sub Category</span></a></li>
-            <li class="{{ request()->is('admin/ads/list/*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.ads.list')}}"><i class="fas fa-university"></i> <span>Article List</span> </a></li>
+            <li class="{{ request()->is('admin/ads/list/*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.ads.list')}}"><i class="fas fa-university"></i> <span>Ads List</span> </a></li>
           </ul>
         </li> 
 
@@ -41,7 +41,7 @@
           <ul class="dropdown-menu">
             <li class="{{ request()->is('admin/matchvideo/categories*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.matchvideo.categories.list')}}"><i class="fas fa-th-large"></i><span>Category</span></a></li>
             <li class="{{ request()->is('admin/matchvideo/categories/subcategory*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.matchvideo.categories.subcategory.list')}}"><i class="fas fa-th-large"></i><span>Sub Category</span></a></li>
-            <li class="{{ request()->is('admin/matchvideo/list/*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.matchvideo.list')}}"><i class="fas fa-university"></i> <span>Article List</span> </a></li>
+            <li class="{{ request()->is('admin/matchvideo/list/*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.matchvideo.list')}}"><i class="fas fa-university"></i> <span>Match List</span> </a></li>
           </ul>
         </li> 
 

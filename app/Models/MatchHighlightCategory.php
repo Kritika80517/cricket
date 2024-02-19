@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class MatchHighlightCategory extends Model
 {
     use HasFactory;
+    public function scopeActive($queary){
+        return $queary->where('status', 1);
+    }
+
+    public function scopeParent($queary){
+        return $queary->whereNull('parent_id');
+    }
+
+    public function scopeChild($queary){
+        return $queary->whereNotNull('parent_id');
+    }
+
+    public function parents()
+    {
+        return $this->hasOne(MatchHighlightCategory::class, 'id', 'parent_id');
+    }
 }

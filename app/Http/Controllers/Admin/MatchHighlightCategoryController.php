@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\MatchHighlight;
+use App\Models\MatchHighlightCategory;
 use Illuminate\Http\Request;
 
 class MatchHighlightCategoryController extends Controller
