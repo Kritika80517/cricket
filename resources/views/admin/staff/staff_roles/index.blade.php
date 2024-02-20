@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-3 text-right">
-                                    <button type="submit" class="btn btn-primary">{{('Save')}}</button>
+                                    <button type="submit" style="font-size: 15px;" class="btn btn-primary btn-lg">{{('Save')}}</button>
                                 </div>
                             </form>
                         </div>
@@ -56,7 +56,7 @@
                         <table class="table table-striped" id="table-1">
                         <thead>
                             <tr>
-                                <th width="10%">#</th>
+                                <th >S.No.</th>
                                 <th>{{('Name')}}</th>
                                 <th class="text-right" width="10%">{{('Actions')}}</th>
                             </tr>
@@ -69,10 +69,10 @@
                                     <td class="text-right">
 
                                         <div class="flex align-items-center list-user-action d-flex">
-                                            <a class="btn btn-sm btn-outline-primary mr-1" data-toggle="tooltip" data-placement="top" title=""
+                                            <a class="btn btn-success btn-action mr-1" data-toggle="tooltip" data-placement="top" title=""
                                                 data-original-title="Edit" href="{{route('admin.roles.edit', ['id'=>$role->id] )}}"><i class="fas fa-edit mr-0"></i>
                                             </a>
-                                            <a class="btn btn-sm btn-outline-danger mr-1" data-toggle="tooltip" data-placement="top" title="" onclick="return confirm('Are you sure you want to delete this company')"
+                                            <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" data-placement="top" title="" onclick="return confirm('Are you sure you want to delete this company')"
                                                 data-original-title="Delete" href="{{route('admin.roles.destroy', $role->id)}}"><i class="fas fa-trash mr-0"></i>
                                             </a>
                                         </div>

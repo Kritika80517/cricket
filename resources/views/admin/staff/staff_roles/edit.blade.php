@@ -66,7 +66,12 @@
                                         </ul>
                                     @endif
                                 @endforeach
-                                <button type="submit" name="btnSubmit" class="btn btn-primary border-0">{{ 'Save' }}</button>
+                                <div class="row d-flex justify-content-end">
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit" name="btnSubmit" style="font-size: 15px;" class="btn btn-primary btn-lg">{{ 'Save' }}</button>
+                                    </div>
+                                </div>
+                                {{-- <button type="submit" name="btnSubmit" class="btn btn-primary border-0">{{ 'Save' }}</button> --}}
                             </form>
                         </div>
                     </div>
