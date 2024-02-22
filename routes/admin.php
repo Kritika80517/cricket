@@ -151,5 +151,10 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('staffs', StaffController::class);
         Route::get('/staffs/destroy/{id}', [StaffController::class, 'destroy'])->name('staffs.destroy');
         
+        // Reports
+        Route::group(['prefix' => 'reports', 'as' => 'reports.'], function () {
+            Route::get('/', [ReportController::class, 'index'])->name('index');
+            Route::get('/{id}', [ReportController::class, 'show'])->name('show');
+        });
     });
 });

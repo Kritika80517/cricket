@@ -56,6 +56,8 @@
           </ul>
         </li> 
 
+        <li class="{{ request()->is('admin/reports*') ? 'active' : '' }}"><a class="nav-link" href="{{url('admin/reports')}}"><i class="fas fa-cog"></i> <span>Reports</span></a></li>
+
       </ul>
     </aside>
 </div>

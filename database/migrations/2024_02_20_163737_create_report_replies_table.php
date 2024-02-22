@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report_problems', function (Blueprint $table) {
+        Schema::create('report_replies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('contact')->constrained('users');
-            $table->longText('description');
-            $table->string('attachment');
+            $table->foreignId('report_id')->constrained('reports');
+            $table->foreignId('reply_by')->constrained('users');
+            $table->longText('message')->nullable();
+            $table->string('files')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report_problems');
+        Schema::dropIfExists('report_replies');
     }
 };
