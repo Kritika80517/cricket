@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('dob')->nullable();
-            $table->string('address')->nullable();
+            $table->date('dob')->after('email')->nullable();
+            $table->string('contact')->after('dob')->nullable();
+            $table->boolean('is_admin')->default(0)->after('contact')->nullable();
+            $table->string('address')->after('role')->nullable();
+            $table->boolean('status')->default(0)->after('address')->nullable();
         });
     }
 
@@ -24,7 +27,10 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('dob');
+            $table->dropColumn('contact');
+            $table->dropColumn('is_admin');
             $table->dropColumn('address');
+            $table->dropColumn('status');
         });
     }
 };

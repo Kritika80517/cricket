@@ -9,7 +9,7 @@ use App\Models\Report;
 class ReportController extends Controller
 {
     public function index(Request $request){
-        $reports = Report::latest()->get();
+        $reports = Report::with('user')->latest()->get();
         return view('admin.reports.index', compact('reports'));
     }
 

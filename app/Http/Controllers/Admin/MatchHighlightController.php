@@ -69,6 +69,7 @@ class MatchHighlightController extends Controller
         $video->video_url = $request->video_url;
         $video->status = $request->status;
         $video->image = $request->has('image') ? FileHelper::image_update('assets/admin/img/matchhighlight/video/', $video->image, 'png', $request->file('image')) : $video->image;
+        dd($video);
         $video->save();
         return redirect('admin/matchvideo');
     }

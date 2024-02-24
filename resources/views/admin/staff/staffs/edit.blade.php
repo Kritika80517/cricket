@@ -26,8 +26,7 @@
                                         <div class="col-md-6 mb-3">
                                             <label class="" for="name">{{ 'Name' }}</label>
                                             <input type="text" placeholder="{{ 'Name' }}" id="name"
-                                                name="name" value="{{ $staff->user->name }}" class="form-control"
-                                                required>
+                                                name="name" value="{{ $staff->user->name }}" class="form-control" required>
                                         </div>
 
                                         <div class="col-md-6 mb-3">
@@ -79,7 +78,6 @@
                                         </div>
                                     </div>
                                     {{-- <button type="submit" name="btnSubmit" class="btn btn-primary border-0">{{ 'Save' }}</button> --}}
-
                                 </div>
                             </form>
                         </div>

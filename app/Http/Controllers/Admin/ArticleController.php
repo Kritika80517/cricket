@@ -54,7 +54,7 @@ class ArticleController extends Controller
         ]);
         $article = Article::where('id', $request->id)->first();
         $article->category_id = $request->category_id;
-        $article->sub_category_id = $request->sub_category_id;
+        $article->sub_category_id = $request->sub_category;
         $article->title = $request->name;
         $article->description = $request->description;
         $article->status = $request->status;

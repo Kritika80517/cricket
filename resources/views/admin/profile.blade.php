@@ -60,10 +60,10 @@
                               </span>
                             </div>
                             <div class="form-group col-12 mb-2">
-                                <label>Phone</label>
-                                <input type="text" class="form-control" name="phone" value="{{ $admin->phone }}">
+                                <label>Contact</label>
+                                <input type="text" class="form-control" name="contact" value="{{ $admin->contact }}">
                                 <span class="text-danger">
-                                  @error('phone')
+                                  @error('contact')
                                     {{ $message }}
                                   @enderror
                                 </span>

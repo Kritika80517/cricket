@@ -132,9 +132,12 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         });
     
         Route::group(['prefix' => 'notifications', 'as' => 'notifications.'], function () {
-            Route::get('/', function () {
-                return view('admin/notifications/create');
-            });
+            Route::get('/', [NotificationController::class, 'index'])->name('list');
+            Route::get('/create', [NotificationController::class, 'create'])->name('create');
+            Route::post('/store', [NotificationController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [NotificationController::class, 'edit'])->name('edit');
+            Route::post('/update', [NotificationController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [NotificationController::class, 'destory'])->name('delete');
         });
 
         // Staff Roles

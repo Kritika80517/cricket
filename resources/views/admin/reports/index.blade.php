@@ -40,7 +40,7 @@
                                         <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->message}}</td>
                                         {{-- <td>
-                                            <img src="{{asset("assets/admin/img/reports/".$item->image)}}" width="50" height="50" alt="img">
+                                            <img src="{{asset("assets/admin/img/reports/".$item->files)}}" width="50" height="50" alt="img">
                                         </td> --}}
                                         <td>
                                             @include('partials.report_status', ['status' => $item->status])

@@ -29,6 +29,7 @@ class UserController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->contact = $request->contact;
         $user->update();
         return redirect()->route('admin.profile')->with('success', 'Profile updated successfully');
     }

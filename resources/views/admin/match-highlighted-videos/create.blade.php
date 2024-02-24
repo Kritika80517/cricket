@@ -20,12 +20,11 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
-
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="category">Category</label>
                                                 <select class="form-control d-inline" name="category_id">
-                                                    <option selected="" >select</option>
+                                                    <option selected disabled >Select category</option>
                                                     @foreach ($category as $item)
                                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @endforeach
@@ -38,7 +37,7 @@
                                             <div class="form-group">
                                                 <label for="subcategory">Subcategory</label>
                                                 <select class="form-control d-inline" name="sub_category">
-                                                    <option selected="">Select sub category</option>
+                                                    <option selected disabled>Select sub category</option>
                                                     @foreach ($sub_category as $item)
                                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @endforeach 
@@ -50,8 +49,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name">Title</label>
-                                                <input type="text" class="form-control" name="name" id="name">
-                                                <span class="text-danger">@error('name') {{$message}} @enderror</span>
+                                                <input type="text" class="form-control" name="title" id="title">
+                                                <span class="text-danger">@error('title') {{$message}} @enderror</span>
                                             </div>
                                         </div>
 
