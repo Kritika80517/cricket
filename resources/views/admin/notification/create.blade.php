@@ -48,8 +48,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="user">Users</label>
-                                                <select class="form-control d-inline" name="user_ids" id="users" multiple="true">
-                                                    <option selected disabled >Select User</option>
+                                                <select class="form-control" name="user_ids" id="users" multiple="true">
+                                                    {{-- <option selected disabled >Select User</option> --}}
                                                     @foreach ($users as $item)
                                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                                     @endforeach
@@ -61,7 +61,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="send_at">Send At</label>
-                                                <input type="text" class="form-control" name="send_at" id="send_at">
+                                                <input type="datetime-local" class="form-control" name="send_at" id="send_at">
                                                 <span class="text-danger">@error('send_at') {{$message}} @enderror</span>
                                             </div>
                                         </div>
