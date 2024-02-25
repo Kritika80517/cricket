@@ -78,10 +78,10 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('/delete/{id}', [ArticleController::class, 'destory'])->name('delete');
         });
 
-        Route::group(['prefix' => 'reports', 'as' => 'reports.'], function () {
-            Route::get('/', [ReportProblemController::class, 'index'])->name('/');
-            Route::get('/delete/{id}', [ReportProblemController::class, 'destory'])->name('delete');
-        });
+        // Route::group(['prefix' => 'reports', 'as' => 'reports.'], function () {
+        //     Route::get('/', [ReportProblemController::class, 'index'])->name('/');
+        //     Route::get('/delete/{id}', [ReportProblemController::class, 'destory'])->name('delete');
+        // });
 
         Route::group(['prefix' => 'ads', 'as' => 'ads.'], function () {
             Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
@@ -158,6 +158,8 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => 'reports', 'as' => 'reports.'], function () {
             Route::get('/', [ReportController::class, 'index'])->name('index');
             Route::get('/{id}', [ReportController::class, 'show'])->name('show');
+            Route::post('reply', [ReportController::class, 'reply'])->name('reply');
+            Route::get('/delete/{id}', [ReportController::class, 'delete'])->name('delete');
         });
     });
 });

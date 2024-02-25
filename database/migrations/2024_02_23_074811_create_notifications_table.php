@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('message')->nullable();
             $table->string('file')->nullable();
             $table->string('send_at')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

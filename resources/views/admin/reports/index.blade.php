@@ -28,7 +28,7 @@
                                 <tr>
                                     <th>S.No</th>
                                     <th>User</th>
-                                    <th>Message</th>
+                                    <th>Title</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -38,7 +38,7 @@
                                     <tr style="align-items: center">
                                         <td>{{++$key}}</td>
                                         <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->message}}</td>
+                                        <td>{{ $item->title}}</td>
                                         {{-- <td>
                                             <img src="{{asset("assets/admin/img/reports/".$item->files)}}" width="50" height="50" alt="img">
                                         </td> --}}
@@ -46,7 +46,7 @@
                                             @include('partials.report_status', ['status' => $item->status])
                                         </td>
                                         <td>
-                                            <a href="{{url('admin/reports/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a>
+                                            <a href="{{url('admin/reports/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="view"><i class="fas fa-eye"></i></a>
                                             <a href="{{url('admin/reports/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this report?')" ><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
