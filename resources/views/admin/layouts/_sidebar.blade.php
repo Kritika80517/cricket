@@ -70,20 +70,21 @@
             </li>
 
             <li class="{{ request()->is('admin/notifications') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ url('admin/notifications') }}"><i class="fas fa-comment-dots"></i>
-                    <span>Notifications</span></a></li>
+                href="{{ url('admin/notifications') }}"><i class="fas fa-comment-dots"></i> <span>Notifications</span></a>
+            </li>
 
-            <li class="{{ request()->is('admin/settings') ? 'active' : '' }}"><a class="nav-link"
-                    href="{{ url('admin/settings') }}"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            {{-- <li class="{{ request()->is('admin/settings') ? 'active' : '' }}"><a class="nav-link" href="{{ url('admin/settings') }}"><i class="fas fa-cog"></i> <span>Settings</span></a></li> --}}
 
             <li class="dropdown {{ request()->is('admin/staffs*') || request()->is('admin/roles*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="	fas fa-users"></i>
                     <span>Staffs</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ request()->is('admin/staffs*') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ url('admin/staffs') }}"><i class="fas fa-th-large"></i><span>Staff</span></a></li>
+                        href="{{ url('admin/staffs') }}"><i class="fas fa-th-large"></i><span>Staff</span></a>
+                    </li>
                     <li class="{{ request()->is('admin/roles*') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ url('admin/roles') }}"><i class="fas fa-th-large"></i><span>Roles</span></a></li>
+                        href="{{ url('admin/roles') }}"><i class="fas fa-th-large"></i><span>Roles</span></a>
+                    </li>
                 </ul>
             </li>
 

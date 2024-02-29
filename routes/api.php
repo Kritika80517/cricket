@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\ReportController;
+use App\Http\Controllers\API\V1\MatchVideoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +30,10 @@ Route::prefix('v1')->group(function () {
 
     // Authenticated users
     Route::middleware('auth:sanctum')->group(function () {
+        Route::prefix('user')->group(function () {
+            Route::get('info', [AuthController::class, 'user_details']);
+            Route::get('logout', [AuthController::class, 'logout']);
+        });
         // Reports
         Route::prefix('reports')->group(function () {
             Route::get('/', [ReportController::class, 'index']);
@@ -38,5 +43,6 @@ Route::prefix('v1')->group(function () {
             Route::post('/delete/{id}', [ReportController::class, 'delete']);
         });
 
+        Route::get('video', [MatchVideoController::class, 'index']);
     });
 });
