@@ -27,13 +27,36 @@ class NotificationController extends Controller
             'message' => 'required',
         ]);
         $message = new Notification();
-        $message->user_ids = $request->user_ids;
+        $message->user_ids = json_encode($request->user_ids);
         $message->title = $request->title;
         $message->message = $request->message;
         $message->send_at = $request->send_at;
         $message->file = FileHelper::image_upload('assets/admin/img/notification/', 'png', $request->file('image'));
         $message->save();
-        return redirect('admin/notifications');
+        return redirect('admin/notifications')->with('success', 'Notification created successfully');
     }
+
+    public function edit($id){
+        $users = User::where('role', 'user' )->get();
+        $message =Notification::where('id', $id)->first();
+        return view('admin.notification.edit', compact('message','users'));
+    }
+
+    public function update(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'message' => 'required',
+        ]);
+        //dd(request()->all());
+        $message = Notification::where('id', $request->id)->first();
+        $message->user_ids = json_encode($request->user_ids);
+        $message->title = $request->title;
+        $message->message = $request->message;
+        $message->send_at = $request->send_at;
+        $message->file = FileHelper::image_upload('assets/admin/img/notification/', 'png', $request->file('image'));
+        $message->save();
+        return redirect('admin/notifications')->with('success', 'Notification updated successfully');
+    }
+    
 }
 

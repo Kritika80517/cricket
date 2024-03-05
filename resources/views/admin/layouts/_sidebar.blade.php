@@ -69,6 +69,22 @@
                 </ul>
             </li>
 
+            <li class="dropdown {{ request()->is('admin/matchschedule/*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dumbbell"></i>
+                    <span>Match Schedule</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ request()->is('admin/matchschedule/teams*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.matchschedule.teams.list') }}"><i
+                                class="fas fa-th-large"></i><span>Teams</span></a></li>
+                    <li class="{{ request()->is('admin/matchschedule/players*') ? 'active' : '' }}"><a
+                            class="nav-link" href="{{ route('admin.matchschedule.players.list') }}"><i
+                                class="fas fa-th-large"></i><span>Players</span></a></li>
+                    <li class="{{ request()->is('admin/matchschedule/list/*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.matchschedule.list') }}"><i class="fas fa-cricket"></i><span>Match
+                                List</span> </a></li>
+                </ul>
+            </li>
+
             <li class="{{ request()->is('admin/notifications') ? 'active' : '' }}"><a class="nav-link"
                 href="{{ url('admin/notifications') }}"><i class="fas fa-comment-dots"></i> <span>Notifications</span></a>
             </li>

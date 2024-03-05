@@ -48,7 +48,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="user">Users</label>
-                                                <select class="form-control" name="user_ids" id="users" multiple="true">
+                                                <select class="form-control select2" name="user_ids[]" multiple="multiple" id="users">
                                                     {{-- <option selected disabled >Select User</option> --}}
                                                     @foreach ($users as $item)
                                                     <option value="{{$item->id}}">{{$item->name}}</option>
@@ -61,7 +61,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="send_at">Send At</label>
-                                                <input type="datetime-local" class="form-control" name="send_at" id="send_at">
+                                                <input type="datetime-local" class="form-control" name="send_at" id="send_at" required>
                                                 <span class="text-danger">@error('send_at') {{$message}} @enderror</span>
                                             </div>
                                         </div>
@@ -87,9 +87,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            $("#users").select2();
+            $(".select2").select2();
         });
+    </script>
+
+    <script>
+        var now = new Date();
+        document.getElementById('send_at').min = now.toISOString().slice(0, 16);
     </script>
 @endsection

@@ -63,7 +63,7 @@
                                                                 <a class="btn btn-danger btn-action mr-1"
                                                                     data-toggle="tooltip" data-placement="top"
                                                                     title=""
-                                                                    onclick="return confirm('Are you sure you want to delete this company')"
+                                                                    onclick="return confirm('Are you sure you want to delete this staff')"
                                                                     data-original-title="Delete"
                                                                     href="{{ route('admin.staffs.destroy', $staff->id) }}"><i
                                                                         class="fas fa-trash mr-0"></i>

@@ -72,7 +72,7 @@
                                             <a class="btn btn-success btn-action mr-1" data-toggle="tooltip" data-placement="top" title=""
                                                 data-original-title="Edit" href="{{route('admin.roles.edit', ['id'=>$role->id] )}}"><i class="fas fa-edit mr-0"></i>
                                             </a>
-                                            <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" data-placement="top" title="" onclick="return confirm('Are you sure you want to delete this company')"
+                                            <a class="btn btn-danger btn-action mr-1" data-toggle="tooltip" data-placement="top" title="" onclick="return confirm('Are you sure you want to delete this staff-role')"
                                                 data-original-title="Delete" href="{{route('admin.roles.destroy', $role->id)}}"><i class="fas fa-trash mr-0"></i>
                                             </a>
                                         </div>

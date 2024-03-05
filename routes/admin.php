@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\MatchHighlightCategoryController;
 use App\Http\Controllers\Admin\MatchHighlightController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\TeamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,6 +124,33 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
                     Route::get('/delete/{id}', [MatchHighlightCategoryController::class, 'subDestory'])->name('delete');
                 });
             });
+            Route::get('/', [MatchHighlightController::class, 'index'])->name('list');
+            Route::get('/create', [MatchHighlightController::class, 'create'])->name('create');
+            Route::post('/store', [MatchHighlightController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [MatchHighlightController::class, 'edit'])->name('edit');
+            Route::post('/update', [MatchHighlightController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [MatchHighlightController::class, 'destory'])->name('delete');
+        });
+
+        Route::group(['prefix' => 'matchschedule', 'as' => 'matchschedule.'], function () {
+            Route::group(['prefix' => 'teams', 'as' => 'teams.'], function () {
+                Route::get('/', [TeamController::class, 'index'])->name('list');
+                Route::get('/create', [TeamController::class, 'create'])->name('create');
+                Route::post('/store', [TeamController::class, 'store'])->name('store');
+                Route::get('/edit/{id}', [TeamController::class, 'edit'])->name('edit');
+                Route::post('/update', [TeamController::class, 'update'])->name('update');
+                Route::get('/delete/{id}', [TeamController::class, 'destory'])->name('delete');
+                
+            });
+
+            Route::group(['prefix' => 'players', 'as' => 'players.'], function () {
+                Route::get('/', [MatchHighlightCategoryController::class, 'subIndex'])->name('list');
+                Route::post('/store', [MatchHighlightCategoryController::class, 'subStore'])->name('store');
+                Route::get('/edit/{id}', [MatchHighlightCategoryController::class, 'subEdit'])->name('edit');
+                Route::post('/update', [MatchHighlightCategoryController::class, 'subUpdate'])->name('update');
+                Route::get('/delete/{id}', [MatchHighlightCategoryController::class, 'subDestory'])->name('delete');
+            });
+                
             Route::get('/', [MatchHighlightController::class, 'index'])->name('list');
             Route::get('/create', [MatchHighlightController::class, 'create'])->name('create');
             Route::post('/store', [MatchHighlightController::class, 'store'])->name('store');

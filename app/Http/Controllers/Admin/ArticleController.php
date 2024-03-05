@@ -38,7 +38,7 @@ class ArticleController extends Controller
         $article->image = FileHelper::image_upload('assets/admin/img/article/', 'png', $request->file('image'));
 
         $article->save();
-        return redirect('admin/articles');
+        return redirect('admin/articles')->with('success', 'Article created successfully');
     }
 
     public function edit($id){
@@ -60,7 +60,7 @@ class ArticleController extends Controller
         $article->status = $request->status;
         $article->image = $request->has('image') ? FileHelper::image_update('assets/admin/img/article/', $article->image, 'png', $request->file('image')) : $article->image;
         $article->save();
-        return redirect('admin/articles');
+        return redirect('admin/articles')->with('success', 'Article Updated successfully');
     }
 
     public function destory($id){

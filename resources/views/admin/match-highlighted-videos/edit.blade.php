@@ -20,7 +20,7 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
-
+                                        <input type="hidden" name="id" value="{{$video->id}}" id="">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="category">Category</label>

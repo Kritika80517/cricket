@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->longText('user_ids')->nullable();
-            $table->string('title')->nullable();
-            $table->longText('message')->nullable();
-            $table->string('file')->nullable();
-            $table->string('send_at')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('short_name')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('teams');
     }
 };

@@ -50,7 +50,7 @@
                                         </td>
                                         <td>
                                             <a href="{{url('admin/articles/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a>
-                                            <a href="{{url('admin/articles/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this user?')" ><i class="fas fa-trash"></i></a>
+                                            <a href="{{url('admin/articles/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this article?')" ><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

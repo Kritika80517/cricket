@@ -41,7 +41,7 @@ class MatchHighlightController extends Controller
         $video->status = $request->status;
         $video->image = FileHelper::image_upload('assets/admin/img/matchhighlight/video/', 'png', $request->file('image'));
         $video->save();
-        return redirect('admin/matchvideo');
+        return redirect('admin/matchvideo')->with('success', 'Video created successfully');
     }
 
     public function edit($id){
@@ -71,7 +71,7 @@ class MatchHighlightController extends Controller
         $video->image = $request->has('image') ? FileHelper::image_update('assets/admin/img/matchhighlight/video/', $video->image, 'png', $request->file('image')) : $video->image;
         dd($video);
         $video->save();
-        return redirect('admin/matchvideo');
+        return redirect('admin/matchvideo')->with('success', 'Video updated successfully');
     }
 
     public function destory($id){
