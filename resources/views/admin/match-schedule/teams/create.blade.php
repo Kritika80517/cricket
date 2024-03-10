@@ -14,13 +14,25 @@
             </div>
             <div class="section-body">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-6">
+                    <div class="col-12 col-md-12 col-lg-12">
                         <div class="card">
                             <form action="{{route('admin.matchschedule.teams.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="matchtype">Match Type</label>
+                                                <select class="form-control select2" name="match_ids[]" multiple="multiple" id="matches">
+                                                    @foreach ($matchtype as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <span class="text-danger">@error('match_ids') {{$message}} @enderror</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 <input type="text" class="form-control" name="name" id="name">
@@ -28,7 +40,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name">Short Name</label>
                                                 <input type="text" class="form-control" name="short_name" id="short_name">
@@ -36,7 +48,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="image">Image</label>
                                                 <input type="file" class="form-control" name="image" id="image">
@@ -47,7 +59,7 @@
                                     </div>
 
                                     <div class="row d-flex justify-content-end">
-                                        <div class="col-md-12 text-right">
+                                        <div class="col-md-6 text-right">
                                             <button type="submit" name="submit" style="font-size: 15px;" class="btn btn-primary btn-lg">
                                                 Submit
                                             </button>
@@ -63,4 +75,13 @@
         </section>
     </div>
     <!--End Main Content -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".select2").select2();
+        });
+    </script>
 @endsection

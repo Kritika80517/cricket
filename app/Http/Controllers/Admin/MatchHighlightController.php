@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MatchHighlight;
 use App\Models\MatchHighlightCategory;
-use App\Models\language;
+use App\Models\Language;
 use App\Helpers\FileHelper;
 
 class MatchHighlightController extends Controller
@@ -19,7 +19,7 @@ class MatchHighlightController extends Controller
     public function create(){
         $category = MatchHighlightCategory::Parent()->get();
         $sub_category = MatchHighlightCategory::Child()->get();
-        $language = language::all();
+        $language = Language::all();
         return view('admin.match-highlighted-videos.create', compact('category','sub_category','language'));
     }
 

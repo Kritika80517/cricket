@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\MatchType;
 use Str;
 use App\Helpers\FileHelper;
 
@@ -17,7 +18,8 @@ class TeamController extends Controller
 
     public function create(){
         // $teams = Team::latest()->get();
-        return view('admin.match-schedule.teams.create');
+        $matchtype = MatchType::all();
+        return view('admin.match-schedule.teams.create', compact('matchtype'));
     }
 
     public function store(Request $request)
@@ -27,6 +29,7 @@ class TeamController extends Controller
             'short_name' => 'required'
         ]);
         $team = new Team();
+        $team->match_ids = json_encode($request->match_ids);
         $team->name = $request->name;
         $team->slug = Str::slug($request->name);
         $team->short_name = $request->short_name;
@@ -36,8 +39,9 @@ class TeamController extends Controller
     }
 
     public function edit($id){
+        $matchtype = MatchType::all();
         $team = Team::where('id', $id)->first();
-        return view('admin.match-schedule.teams.edit', compact('team'));
+        return view('admin.match-schedule.teams.edit', compact('team','matchtype'));
     }
 
     public function update(Request $request)
@@ -47,6 +51,7 @@ class TeamController extends Controller
             'short_name' => 'required'
         ]);
         $team = Team::where('id', $request->id)->first();
+        $team->match_ids = json_encode($request->match_ids);
         $team->name = $request->name;
         $team->slug = Str::slug($request->name);
         $team->short_name = $request->short_name;

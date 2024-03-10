@@ -1,14 +1,14 @@
 @extends('admin.layouts.master')
-@section('pagetitle','Team')
+@section('pagetitle','Player')
 @section('admin-content')
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Team List</h1>
+                <h1>Player List</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item">Team </div>
+                    <div class="breadcrumb-item">Player </div>
                 </div>
             </div>
             <div class="section-body">
@@ -16,9 +16,9 @@
                     <div class="col-12">
                         <div class="card">
                         <div class="card-header d-md-flex justify-content-between">
-                            <h4>Team </h4>
+                            <h4>Player</h4>
                             <div>
-                                <a href="{{route('admin.matchschedule.teams.create')}}" class="btn btn-primary rounded"><i class="fas fa-plus"></i> Add Team</a>
+                                <a href="{{route('admin.matchschedule.players.create')}}" class="btn btn-primary rounded"><i class="fas fa-plus"></i> Add Player</a>
                            </div>
                         </div>
                         <div class="card-body">
@@ -27,18 +27,18 @@
                                 <thead>
                                 <tr>
                                     <th>S.No</th>
-                                    <th>Name</th>
-                                    <th>Short Name</th>
+                                    <th>Player Name</th>
+                                    <th>Team Name</th>
                                     <th>Match Type</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($teams as $key => $item)
+                                    {{-- @foreach ($player as $key => $item)
                                     <tr style="align-items: center">
                                         <td>{{++$key}}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->title }}</td>
                                         <td>{{ $item->short_name}}</td>
                                         <td>{{$item->match_ids}}</td>
                                         <td>
@@ -49,7 +49,7 @@
                                             <a href="{{url('admin/matchschedule/teams/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this team?')" ><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                             </div>

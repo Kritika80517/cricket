@@ -11,8 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('match_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->boolean('status')->default(0);
+            $table->timestamps();
+        });
+
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
+            $table->longText('match_ids')->nullable();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->string('short_name')->nullable();
@@ -26,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teams');
+        Schema::dropIfExists('match_types');
     }
 };

@@ -14,14 +14,27 @@
             </div>
             <div class="section-body">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-6">
+                    <div class="col-12 col-md-12 col-lg-12">
                         <div class="card">
                             <form action="{{route('admin.matchschedule.teams.update')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
                                         <input type="hidden" name="id" value="{{$team->id}}" id="">
-                                        <div class="col-md-12">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="matchtype">Match Type</label>
+                                                <select class="form-control select2" name="match_ids[]" multiple>
+                                                    @foreach ($matchtype as $item)
+                                                        <option @if ($team->match_ids && in_array($item->id, json_decode($team->match_ids, true))) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <span class="text-danger">@error('match_ids') {{$message}} @enderror</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 <input type="text" class="form-control" name="name" value="{{$team->name}}">
@@ -29,7 +42,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="name">Short Name</label>
                                                 <input type="text" class="form-control" name="short_name" value="{{$team->short_name}}">
@@ -37,7 +50,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-8">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="image">Image</label>
                                                 <input type="file" class="form-control" name="image" id="image">
@@ -50,7 +63,7 @@
                                     </div>
 
                                     <div class="row d-flex justify-content-end">
-                                        <div class="col-md-12 text-right">
+                                        <div class="col-md-6 text-right">
                                             <button type="submit" name="submit" style="font-size: 15px;" class="btn btn-primary btn-lg">
                                                 Submit
                                             </button>

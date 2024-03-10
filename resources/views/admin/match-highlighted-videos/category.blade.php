@@ -50,7 +50,7 @@
                                             <a data-value="{{$item->id}}" class="btn btn-success btn-action mr-1 editbtn" data-toggle="modal" data-target="#staticBackdrop-1"><i class="fas fa-edit"></i></a>
 
                                             {{-- <a href="{{url('admin/users/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a> --}}
-                                            <a href="{{url('admin/matchvideo/categories/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this user?')" ><i class="fas fa-trash"></i></a>
+                                            <a href="{{url('admin/matchvideo/categories/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this category?')" ><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
