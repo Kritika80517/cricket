@@ -64,7 +64,7 @@
                             class="nav-link" href="{{ route('admin.matchvideo.categories.subcategory.list') }}"><i
                                 class="fas fa-th-large"></i><span>Sub Category</span></a></li>
                     <li class="{{ request()->is('admin/matchvideo/list/*') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('admin.matchvideo.list') }}"><i class="fas fa-cricket"></i> <span>Match
+                            href="{{ route('admin.matchvideo.list') }}"> <i class="fa fa-caret-square-o-right"></i> <span>Video
                                 List</span> </a></li>
                 </ul>
             </li>

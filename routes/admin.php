@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\MatchTypeController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\PlayerController;
+use App\Http\Controllers\Admin\MatchController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -163,12 +165,12 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
                 Route::get('/delete/{id}', [PlayerController::class, 'destory'])->name('delete');
             });
                 
-            Route::get('/', [MatchHighlightController::class, 'index'])->name('list');
-            Route::get('/create', [MatchHighlightController::class, 'create'])->name('create');
-            Route::post('/store', [MatchHighlightController::class, 'store'])->name('store');
-            Route::get('/edit/{id}', [MatchHighlightController::class, 'edit'])->name('edit');
-            Route::post('/update', [MatchHighlightController::class, 'update'])->name('update');
-            Route::get('/delete/{id}', [MatchHighlightController::class, 'destory'])->name('delete');
+            Route::get('/', [MatchController::class, 'index'])->name('list');
+            Route::get('/create', [MatchController::class, 'create'])->name('create');
+            Route::post('/store', [MatchController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [MatchController::class, 'edit'])->name('edit');
+            Route::post('/update', [MatchController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [MatchController::class, 'destory'])->name('delete');
         });
     
         Route::group(['prefix' => 'notifications', 'as' => 'notifications.'], function () {

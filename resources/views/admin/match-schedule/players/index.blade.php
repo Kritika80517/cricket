@@ -28,28 +28,28 @@
                                 <tr>
                                     <th>S.No</th>
                                     <th>Player Name</th>
-                                    <th>Team Name</th>
-                                    <th>Match Type</th>
+                                    <th>Nationality</th>
+                                    <th>Role</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($player as $key => $item)
+                                    @foreach ($player as $key => $item)
                                     <tr style="align-items: center">
                                         <td>{{++$key}}</td>
-                                        <td>{{ $item->title }}</td>
-                                        <td>{{ $item->short_name}}</td>
-                                        <td>{{$item->match_ids}}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->country}}</td>
+                                        <td>{{$item->playing_role}}</td>
                                         <td>
-                                            <img src="{{asset("assets/admin/img/team/".$item->image)}}" width="50" height="50" alt="img">
+                                            <img src="{{asset("assets/admin/img/players/".$item->image)}}" width="50" height="50" alt="img">
                                         </td>
                                         <td>
-                                            <a href="{{url('admin/matchschedule/teams/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a>
-                                            <a href="{{url('admin/matchschedule/teams/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this team?')" ><i class="fas fa-trash"></i></a>
+                                            <a href="{{url('admin/matchschedule/players/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a>
+                                            <a href="{{url('admin/matchschedule/players/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this player?')" ><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                             </div>

@@ -44,5 +44,6 @@ Route::prefix('v1')->group(function () {
         });
 
         Route::get('video', [MatchVideoController::class, 'index']);
+        Route::get('related/video', [MatchVideoController::class, 'suggestionVideo']);
     });
 });
