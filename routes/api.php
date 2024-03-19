@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\ReportController;
 use App\Http\Controllers\API\V1\MatchVideoController;
+use App\Http\Controllers\API\V1\CricketController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,5 +46,8 @@ Route::prefix('v1')->group(function () {
 
         Route::get('video', [MatchVideoController::class, 'index']);
         Route::get('related/video', [MatchVideoController::class, 'suggestionVideo']);
+
+        // Cricket API
+        Route::get('players', [CricketController::class, 'get_players']);
     });
 });

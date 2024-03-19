@@ -27,18 +27,18 @@ class AuthController extends Controller
                 'password' => 'required|min:8'
             ]);
         }
-
+        
         if ($validator->fails()) {
             return response()->json(['message' => 'The provided credentials are incorrect.'($validator)], 403);
         }
-
+        
         $user = User::where(['email' => $user_id])->orWhere('contact', $user_id)->first();
         if (isset($user)) {
             $data = [
                 'email' => $user->email,
                 'password' => $request->password
             ];
-
+            
             if (auth()->attempt($data)) {
                 $token = $user->createToken('AuthToken')->plainTextToken;
                 return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
