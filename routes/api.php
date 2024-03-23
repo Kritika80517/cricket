@@ -49,5 +49,6 @@ Route::prefix('v1')->group(function () {
 
         // Cricket API
         Route::get('players', [CricketController::class, 'get_players']);
+        Route::get('matches', [CricketController::class, 'get_matches']);
     });
 });

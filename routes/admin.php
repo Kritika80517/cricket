@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\UsermanagementController;
 use App\Http\Controllers\Admin\AdsCategoryController;
 use App\Http\Controllers\Admin\AdsController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
@@ -51,12 +51,12 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::post('settings-update', [SettingController::class, 'update'])->name('settings.update');
 
         Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-            Route::get('/', [UserManagementController::class, 'index'])->name("list");
-            Route::get('/create', [UserManagementController::class, 'create'])->name('create');
-            Route::post('/store', [UserManagementController::class, 'store'])->name('store');
-            Route::get('/edit/{id}', [UserManagementController::class, 'edit'])->name('edit');
-            Route::post('/update', [UserManagementController::class, 'update'])->name('update');
-            Route::get('/delete/{id}', [UserManagementController::class, 'destory'])->name('delete');
+            Route::get('/', [UsermanagementController::class, 'index'])->name("list");
+            Route::get('/create', [UsermanagementController::class, 'create'])->name('create');
+            Route::post('/store', [UsermanagementController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [UsermanagementController::class, 'edit'])->name('edit');
+            Route::post('/update', [UsermanagementController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [UsermanagementController::class, 'destory'])->name('delete');
         });
 
         Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {

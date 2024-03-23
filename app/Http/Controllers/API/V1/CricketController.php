@@ -18,4 +18,9 @@ class CricketController extends Controller
         $players = Http::get($this->ENDPOINT.'/players?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
         return response()->json($players->json(), 200);
     }
+
+    public function get_matches(Request $request){
+        $matches = Http::get($this->ENDPOINT.'/matches?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
+        return response()->json($matches->json(), 200);
+    }
 }
