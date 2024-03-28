@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('report_replies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('report_id')->constrained('reports');
-            $table->foreignId('reply_by')->constrained('users');
+            $table->foreignId('report_id')->constrained('reports')->onDelete('cascade');
+            $table->foreignId('reply_by')->constrained('users')->onDelete('cascade');
             $table->longText('message')->nullable();
             $table->string('files')->nullable();
             $table->timestamps();

@@ -100,9 +100,9 @@
                                             <div class="collapse navbar-collapse js-navbar-collapse">
                                                 <ul class="nav navbar-nav">
                                                     <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                                    <li><a href="about.html">About</a></li>
-                                                    <li><a href="team.html">Team</a></li>
-                                                    <li><a href="news.html">News</a></li>
+                                                    <li><a href="{{url('/about')}}">About</a></li>
+                                                    <li><a href="{{url('/team')}}">Team</a></li>
+                                                    <li><a href="{{url('/news')}}">News</a></li>
                                                     <li class="dropdown mega-dropdown">
                                                         <a href="match" class="dropdown-toggle"
                                                             data-toggle="dropdown">Match<span
@@ -184,8 +184,8 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="contact.html">contact</a></li>
+                                                    <li><a href="{{url('/blog')}}">Blog</a></li>
+                                                    <li><a href="{{url('/contact')}}">contact</a></li>
                                                 </ul>
                                             </div>
                                             <!-- /.nav-collapse -->
@@ -238,12 +238,12 @@
                         <div class="footer-widget">
                             <h3>Menu</h3>
                             <ul class="footer-menu">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="team.html">Our Team</a></li>
-                                <li><a href="news.html">Latest News</a></li>
+                                <li><a href="{{url('/about')}}">About Us</a></li>
+                                <li><a href="{{url('team')}}">Our Team</a></li>
+                                <li><a href="{{url('/news')}}">Latest News</a></li>
                                 <li><a href="matche.html">Recent Matchs</a></li>
-                                <li><a href="blog.html">Our Blog</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="{{url('/blog')}}">Our Blog</a></li>
+                                <li><a href="{{url('/contact')}}">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>

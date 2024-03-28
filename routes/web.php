@@ -19,3 +19,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.index');
 });
+
+Route::get('/about', function () {
+    return view('frontend.about');
+});
+
+Route::get('/team', function () {
+    return view('frontend.team');
+});
+
+Route::get('/news', function () {
+    return view('frontend.news');
+});
+
+Route::get('/blog', function () {
+    return view('frontend.blog');
+});
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});

@@ -14,13 +14,29 @@ class CricketController extends Controller
         $this->ENDPOINT = env("CRICKET_ENDPOINT", null);
     }
 
-    public function get_players(Request $request){
-        $players = Http::get($this->ENDPOINT.'/players?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
-        return response()->json($players->json(), 200);
+    public function series_list(Request $request){
+        $series = Http::get($this->ENDPOINT.'/series?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
+        return response()->json($series->json(), 200);
     }
 
-    public function get_matches(Request $request){
+    public function series_search(Request $request){
+        $series = Http::get($this->ENDPOINT.'/series?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0 .'&search='.$request->search);
+        return response()->json($series->json(), 200);
+    }
+
+    
+    public function matches_list(Request $request){
         $matches = Http::get($this->ENDPOINT.'/matches?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
         return response()->json($matches->json(), 200);
+    }
+
+    public function current_matches(Request $request){
+        $currentMatches = Http::get($this->ENDPOINT.'/currentMatches?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
+        return response()->json($currentMatches->json(), 200);
+    }
+
+    public function players_list(Request $request){
+        $players = Http::get($this->ENDPOINT.'/players?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
+        return response()->json($players->json(), 200);
     }
 }

@@ -48,7 +48,10 @@ Route::prefix('v1')->group(function () {
         Route::get('related/video', [MatchVideoController::class, 'suggestionVideo']);
 
         // Cricket API
-        Route::get('players', [CricketController::class, 'get_players']);
-        Route::get('matches', [CricketController::class, 'get_matches']);
+        Route::get('series', [CricketController::class, 'series_list']);
+        Route::get('series/search', [CricketController::class, 'series_search']);
+        Route::get('players', [CricketController::class, 'players_list']);
+        Route::get('matches', [CricketController::class, 'matches_list']);
+        Route::get('current-matches', [CricketController::class, 'current_matches']);
     });
 });
