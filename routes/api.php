@@ -50,8 +50,12 @@ Route::prefix('v1')->group(function () {
         // Cricket API
         Route::get('series', [CricketController::class, 'series_list']);
         Route::get('series/search', [CricketController::class, 'series_search']);
+        Route::get('series/info', [CricketController::class, 'series_info']);
         Route::get('players', [CricketController::class, 'players_list']);
+        Route::get('players/search', [CricketController::class, 'search_players']);
+        Route::get('players/info', [CricketController::class, 'players_info']);
         Route::get('matches', [CricketController::class, 'matches_list']);
+        Route::get('matches/info', [CricketController::class, 'matches_info']);
         Route::get('current-matches', [CricketController::class, 'current_matches']);
     });
 });
