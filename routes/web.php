@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +41,5 @@ Route::get('/blog', function () {
 Route::get('/contact', function () {
     return view('frontend.contact');
 });
+
+Route::post('/contact/submit',[ContactController::class, 'store'])->name('contact.submit');

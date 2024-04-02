@@ -51,17 +51,17 @@
              </div>
              <div class="col-md-6">
                 <div class="contact-us">
-                   <form method="post" class="comments-form" id="contactform">
+                   <form method="POST" action="{{ url('contact/submit') }}" class="comments-form">
+                     @csrf
                       <ul>
                          <li><input type="text" id="name" name="name" class="required" placeholder="Name *"></li>
                          <li><input type="text" id="email" name="email" class="required email" placeholder="Email *"></li>
                          <li><input type="text" name="address" id="address" placeholder="Address:"></li>
                          <li><textarea name="message" id="message" placeholder="Add your message"></textarea></li>
-                         <li><input class="thbg-color" type="submit" value="send"></li>
-                      </ul>
-                      <div class="hidden-me" id="contact_form_responce">
-                         <p></p>
-                      </div>
+                        </ul>
+                        <div class="d-flex justify-content-center w-100">
+                           <button class="btn btn-danger" style="float: none" type="submit" value="send">Send</button>
+                        </div>
                    </form>
                 </div>
              </div>

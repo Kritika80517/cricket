@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\MatchTypeController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\PlayerController;
 use App\Http\Controllers\Admin\MatchController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,8 +49,8 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::post('update-password', [UserController::class, 'updatePassword'])->name('update.password');
         Route::get('contact', [ContactController::class, 'contact'])->name('contact');
         
-        Route::get('settings', [SettingController::class, 'index'])->name('settings');
-        Route::post('settings-update', [SettingController::class, 'update'])->name('settings.update');
+        // Route::get('settings', [SettingController::class, 'index'])->name('settings');
+        // Route::post('settings-update', [SettingController::class, 'update'])->name('settings.update');
 
         Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
             Route::get('/', [UsermanagementController::class, 'index'])->name("list");
@@ -203,5 +205,24 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('reply', [ReportController::class, 'reply'])->name('reply');
             Route::get('/delete/{id}', [ReportController::class, 'delete'])->name('delete');
         });
+
+        // Banner
+        Route::group(['prefix' => 'banners', 'as' => 'banners.'], function () {
+            Route::get('/', [BannerController::class, 'index'])->name('list');
+            Route::get('/create', [BannerController::class, 'create'])->name('create');
+            Route::post('/store', [BannerController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [BannerController::class, 'edit'])->name('edit');
+            Route::post('/update', [BannerController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [BannerController::class, 'destory'])->name('delete');
+        });
+
+        // Setting
+        Route::controller(SettingController::class)->prefix('setting')->group(function () {
+            Route::get('website', 'show');
+            Route::get('about', 'about');
+            Route::post('website', 'websiteSetting');
+            Route::post('about', 'aboutSetting');
+        });
+        
     });
 });

@@ -92,7 +92,9 @@
                 href="{{ url('admin/notifications') }}"><i class="fas fa-comment-dots"></i> <span>Notifications</span></a>
             </li>
 
-            {{-- <li class="{{ request()->is('admin/settings') ? 'active' : '' }}"><a class="nav-link" href="{{ url('admin/settings') }}"><i class="fas fa-cog"></i> <span>Settings</span></a></li> --}}
+            <li class="{{ request()->is('admin/banners') ? 'active' : '' }}"><a class="nav-link" href="{{ url('admin/banners') }}"><i class="fa fa-image"></i> <span>Banners</span></a></li>
+            <li class="{{ request()->is('admin/setting/about') ? 'active' : '' }}"><a class="nav-link" href="{{ url('admin/setting/about') }}"><i class="fas fa-info"></i> <span>About</span></a></li>
+            <li class="{{ request()->is('admin/setting/website') ? 'active' : '' }}"><a class="nav-link" href="{{ url('admin/setting/website') }}"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
 
             <li class="dropdown {{ request()->is('admin/staffs*') || request()->is('admin/roles*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="	fas fa-users"></i>

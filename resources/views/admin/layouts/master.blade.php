@@ -53,6 +53,8 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
+	<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
     <!-- /END GA -->
 </head>
 
@@ -304,7 +306,12 @@
 
         });
     </script>
-
+    <script>
+        CKEDITOR.replace( 'editor' );
+        CKEDITOR.replace( 'editor2' );
+        CKEDITOR.replace( 'editor3' );
+        CKEDITOR.replace( 'editor4' );
+    </script>
     @stack('script')
 </body>
 
