@@ -140,39 +140,19 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => 'matchschedule', 'as' => 'matchschedule.'], function () {
             Route::group(['prefix' => 'matchtype', 'as' => 'matchtype.'], function () {
-                Route::get('/', [MatchTypeController::class, 'index'])->name('list');
-                Route::post('/store', [MatchTypeController::class, 'store'])->name('store');
-                Route::get('/edit/{id}', [MatchTypeController::class, 'edit'])->name('edit');
-                Route::post('/update', [MatchTypeController::class, 'update'])->name('update');
-                Route::get('/delete/{id}', [MatchTypeController::class, 'destory'])->name('delete');
+                Route::get('/', [MatchTypeController::class, 'series_list'])->name('list');
                 
             });
 
             Route::group(['prefix' => 'teams', 'as' => 'teams.'], function () {
-                Route::get('/', [TeamController::class, 'index'])->name('list');
-                Route::get('/create', [TeamController::class, 'create'])->name('create');
-                Route::post('/store', [TeamController::class, 'store'])->name('store');
-                Route::get('/edit/{id}', [TeamController::class, 'edit'])->name('edit');
-                Route::post('/update', [TeamController::class, 'update'])->name('update');
-                Route::get('/delete/{id}', [TeamController::class, 'destory'])->name('delete');
-                
+                Route::get('/', [TeamController::class, 'matches_list'])->name('list');
             });
 
             Route::group(['prefix' => 'players', 'as' => 'players.'], function () {
                 Route::get('/', [PlayerController::class, 'index'])->name('list');
-                Route::get('/create', [PlayerController::class, 'create'])->name('create');
-                Route::post('/store', [PlayerController::class, 'store'])->name('store');
-                Route::get('/edit/{id}', [PlayerController::class, 'edit'])->name('edit');
-                Route::post('/update', [PlayerController::class, 'update'])->name('update');
-                Route::get('/delete/{id}', [PlayerController::class, 'destory'])->name('delete');
             });
                 
             Route::get('/', [MatchController::class, 'index'])->name('list');
-            Route::get('/create', [MatchController::class, 'create'])->name('create');
-            Route::post('/store', [MatchController::class, 'store'])->name('store');
-            Route::get('/edit/{id}', [MatchController::class, 'edit'])->name('edit');
-            Route::post('/update', [MatchController::class, 'update'])->name('update');
-            Route::get('/delete/{id}', [MatchController::class, 'destory'])->name('delete');
         });
     
         Route::group(['prefix' => 'notifications', 'as' => 'notifications.'], function () {

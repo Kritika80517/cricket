@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MatchType;
 use App\Models\Team;
+use Illuminate\Support\Facades\Http;
+
 
 class MatchTypeController extends Controller
 {
-    public function index(){
-        $matchtype = MatchType::latest()->get();
-        return view('admin.match-schedule.match-type.index', compact('matchtype'));
-    }
+    // public function index(){
+    //     $matchtype = MatchType::latest()->get();
+    //     return view('admin.match-schedule.match-type.index', compact('matchtype'));
+    // }
 
     public function store(Request $request){
         $request->validate([
@@ -54,6 +56,17 @@ class MatchTypeController extends Controller
         }
         $matchtype->delete();
         return redirect('admin/matchschedule/matchtype')->with('success', 'Matchtype deleted successfully');
+    }
+    private $API_KEY, $ENDPOINT;
+    public function __construct() {
+        $this->API_KEY = env("CRICKET_API_KEY", null);
+        $this->ENDPOINT = env("CRICKET_ENDPOINT", null);
+    }
+
+    public function series_list(Request $request){
+        $series = Http::get($this->ENDPOINT.'/series?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
+        $series = $series->json();
+        return view('admin.match-schedule.series-list.index', compact('series'));
     }
 
 }

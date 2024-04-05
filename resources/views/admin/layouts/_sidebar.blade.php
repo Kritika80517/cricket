@@ -75,16 +75,22 @@
                 <ul class="dropdown-menu">
                     <li class="{{ request()->is('admin/matchschedule/matchtype*') ? 'active' : '' }}"><a class="nav-link"
                         href="{{ route('admin.matchschedule.matchtype.list') }}"><i
-                            class="fas fa-th-large"></i><span>Match Type</span></a></li>
+                            class="fas fa-th-large"></i><span>Series List</span></a>
+                    </li>
                     <li class="{{ request()->is('admin/matchschedule/teams*') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('admin.matchschedule.teams.list') }}"><i
-                                class="fas fa-th-large"></i><span>Teams</span></a></li>
+                        href="{{ route('admin.matchschedule.teams.list') }}"><i
+                            class="fas fa-th-large"></i><span>Match List</span></a>
+                    </li>
+                   
+                    <li class="{{ request()->is('admin/matchschedule/list/*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ route('admin.matchschedule.list') }}"><i class="fas fa-th-large"></i><span>Current Match
+                            List</span> </a>
+                    </li>
                     <li class="{{ request()->is('admin/matchschedule/players*') ? 'active' : '' }}"><a
-                            class="nav-link" href="{{ route('admin.matchschedule.players.list') }}"><i
-                                class="fas fa-th-large"></i><span>Players</span></a></li>
-                    {{-- <li class="{{ request()->is('admin/matchschedule/list/*') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('admin.matchschedule.list') }}"><i class="fas fa-cricket"></i><span>Match
-                                List</span> </a></li> --}}
+                        class="nav-link" href="{{ route('admin.matchschedule.players.list') }}"><i
+                            class="fas fa-th-large"></i><span>Players List</span></a>
+                    </li>
+                        
                 </ul>
             </li>
 

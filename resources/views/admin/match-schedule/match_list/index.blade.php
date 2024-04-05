@@ -1,14 +1,14 @@
 @extends('admin.layouts.master')
-@section('pagetitle','Team')
+@section('pagetitle','Match')
 @section('admin-content')
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Team List</h1>
+                <h1>Match List</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item">Team </div>
+                    <div class="breadcrumb-item">Match </div>
                 </div>
             </div>
             <div class="section-body">
@@ -16,10 +16,8 @@
                     <div class="col-12">
                         <div class="card">
                         <div class="card-header d-md-flex justify-content-between">
-                            <h4>Team </h4>
-                            <div>
-                                <a href="{{route('admin.matchschedule.teams.create')}}" class="btn btn-primary rounded"><i class="fas fa-plus"></i> Add Team</a>
-                           </div>
+                            <h4>Match </h4>
+                            
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -28,26 +26,30 @@
                                 <tr>
                                     <th>S.No</th>
                                     <th>Name</th>
-                                    <th>Short Name</th>
                                     <th>Match Type</th>
-                                    <th>Image</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Venue</th>
+                                    <th>Date</th>
+                                    <th>Date-Time</th>
+                                    {{-- <th>Teams</th> --}}
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($teams as $key => $item)
+                                    @foreach ($matches['data'] as $key => $item)
+                                    {{-- {{dd($item)}} --}}
                                     <tr style="align-items: center">
                                         <td>{{++$key}}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->short_name}}</td>
-                                        <td>{{$item->match_ids}}</td>
-                                        <td>
+                                        <td>{{ $item['name'] ?? 'N/A'}}</td>
+                                        <td>{{ $item['matchType'] ?? 'N/A'}}</td>
+                                        <td>{{$item['status'] ?? 'N/A'}}</td>
+                                        <td>{{$item['venue'] ?? 'N/A'}}</td>
+                                        <td>{{$item['date'] ?? 'N/A'}}</td>
+                                        <td>{{$item['dateTimeGMT'] ?? 'N/A'}}</td>
+                                        {{-- <td>{{$item['teams[]'] ?? 'N/A'}}</td> --}}
+                                        {{-- <td>
                                             <img src="{{asset("assets/admin/img/team/".$item->image)}}" width="50" height="50" alt="img">
-                                        </td>
-                                        <td>
-                                            <a href="{{url('admin/matchschedule/teams/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a>
-                                            <a href="{{url('admin/matchschedule/teams/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this team?')" ><i class="fas fa-trash"></i></a>
-                                        </td>
+                                        </td> --}}
+                                       
                                     </tr>
                                     @endforeach
                                 </tbody>
