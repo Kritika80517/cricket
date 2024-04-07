@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
 use Hash;
 use Validator;
 use Str;
+use Exception;
+
+
 class AuthController extends Controller
 {
     public function login(Request $request)
@@ -93,5 +97,41 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
+    }
+
+    // facebook login
+    public function redirectToFacebook()
+    {
+        return response()->json([
+            'url' => Socialite::driver('facebook')->stateless()->redirect()->getTargetUrl()
+        ]);
+    }
+
+    public function handleFacebookCallback(Request $request)
+    {
+        try {
+            $user = Socialite::driver('facebook')->stateless()->user();
+
+            $findUser = User::where('facebook_id', $user->id)->first();
+
+            if ($findUser) {
+                $token = $findUser->createToken('YourAppName')->plainTextToken;
+                return response()->json(['token' => $token]);
+            } else {
+                $newUser = User::updateOrCreate(
+                    ['email' => $user->email],
+                    [
+                        'name' => $user->name,
+                        'facebook_id' => $user->id,
+                        'password' => bcrypt('123456dummy')
+                    ]
+                );
+
+                $token = $newUser->createToken('YourAppName')->plainTextToken;
+                return response()->json(['token' => $token]);
+            }
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
