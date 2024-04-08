@@ -33,6 +33,7 @@ class UsermanagementController extends Controller
         $user->dob = $request->dob;
         $user->address = $request->address;
         $user->status = $request->status;
+        $user->password = '12345678'; // Change this to something
         $user->save();
         return redirect()->route('admin.users.list')->with('success', 'User add successfully');
     }
@@ -57,6 +58,7 @@ class UsermanagementController extends Controller
         $user->dob = $request->dob;
         $user->address = $request->address;
         $user->status = $request->status;
+        $user->password = '12345678'; // Change this to something
         $user->save();
         return redirect()->route('admin.users.list')->with('success', 'User updated successfully');
     }

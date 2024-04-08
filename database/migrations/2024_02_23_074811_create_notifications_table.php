@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->longText('message')->nullable();
             $table->string('file')->nullable();
-            $table->string('send_at')->nullable();
+            $table->dateTime('send_at')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

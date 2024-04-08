@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Notification;
 use App\Models\User;
 use App\Helpers\FileHelper;
-
+use Carbon\Carbon;
 
 class NotificationController extends Controller
 {
@@ -17,7 +17,7 @@ class NotificationController extends Controller
     }
 
     public function create(){
-        $users = User::where('role', 'user' )->get();
+        $users = User::where(['role' => 'user'])->whereNotNull('fcm_token')->get();
         return view('admin.notification.create', compact('users'));
     }
 
@@ -30,14 +30,16 @@ class NotificationController extends Controller
         $message->user_ids = json_encode($request->user_ids);
         $message->title = $request->title;
         $message->message = $request->message;
-        $message->send_at = $request->send_at;
+        $sendAt = Carbon::parse($request->send_at)->format('Y-m-d H:i:s');
+
+$message->send_at = $sendAt;
         $message->file = FileHelper::image_upload('assets/admin/img/notification/', 'png', $request->file('image'));
         $message->save();
         return redirect('admin/notifications')->with('success', 'Notification created successfully');
     }
 
     public function edit($id){
-        $users = User::where('role', 'user' )->get();
+        $users = User::where('role', 'user' )->whereNotNull('fcm_token')->get();
         $message =Notification::where('id', $id)->first();
         return view('admin.notification.edit', compact('message','users'));
     }
@@ -47,7 +49,6 @@ class NotificationController extends Controller
             'title' => 'required',
             'message' => 'required',
         ]);
-        //dd(request()->all());
         $message = Notification::where('id', $request->id)->first();
         $message->user_ids = json_encode($request->user_ids);
         $message->title = $request->title;
