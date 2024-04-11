@@ -82,8 +82,8 @@
                             class="fas fa-th-large"></i><span>Match List</span></a>
                     </li>
                    
-                    <li class="{{ request()->is('admin/matchschedule/list/*') ? 'active' : '' }}"><a class="nav-link"
-                        href="{{ route('admin.matchschedule.list') }}"><i class="fas fa-th-large"></i><span>Current Match
+                    <li class="{{ request()->is('admin/matchschedule/current/match/*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ route('admin.matchschedule.current.match') }}"><i class="fas fa-th-large"></i><span>Current Match
                             List</span> </a>
                     </li>
                     <li class="{{ request()->is('admin/matchschedule/players*') ? 'active' : '' }}"><a

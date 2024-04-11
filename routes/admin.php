@@ -151,6 +151,10 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::group(['prefix' => 'players', 'as' => 'players.'], function () {
                 Route::get('/', [PlayerController::class, 'index'])->name('list');
             });
+
+            Route::group(['prefix' => 'current', 'as' => 'current.'], function () {
+                Route::get('/match', [MatchController::class, 'currentMatch'])->name('match');
+            });
                 
             Route::get('/', [MatchController::class, 'index'])->name('list');
         });
