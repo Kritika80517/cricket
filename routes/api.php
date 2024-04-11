@@ -32,6 +32,9 @@ Route::prefix('v1')->group(function () {
     Route::get('auth/facebook',[AuthController::class, 'redirectToFacebook'])->name('auth.facebook');
     Route::get('auth/facebook/callback',[AuthController::class, 'handleFacebookCallback']);
 
+    Route::get('auth/google',[AuthController::class, 'redirectToGoogle'])->name('auth.google');
+    Route::get('auth/google/callback',[AuthController::class, 'handleGoogleCallback']);
+
     // Authenticated users
     Route::middleware('auth:sanctum')->group(function () {
         Route::prefix('user')->group(function () {

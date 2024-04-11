@@ -56,8 +56,6 @@ class AuthController extends Controller
         ], 401);
     }
 
-
-
     public function register(Request $request)
     {
         $request->validate([
@@ -128,10 +126,44 @@ class AuthController extends Controller
                 );
 
                 $token = $newUser->createToken('YourAppName')->plainTextToken;
-                return response()->json(['token' => $token]);
+                return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
             }
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    // google login 
+
+    public function redirectToGoogle()
+    {
+        return response()->json([
+            'url' => Socialite::driver('google')->stateless()->redirect()->getTargetUrl()
+        ]);
+    }
+
+    public function handleGoogleCallback(Request $request)
+    {
+        $user = Socialite::driver('google')->userFromToken($request->input('access_token'));
+
+        // Check if the user exists in the database
+        $existingUser = User::where('email', $user->email)->first();
+
+        if ($existingUser) {
+            // User exists, log them in
+            Auth::login($existingUser);
+            return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
+        } else {
+            // User does not exist, create a new user
+            $newUser = new User();
+            $newUser->name = $user->name;
+            $newUser->email = $user->email;
+            $newUser->save();
+
+            // Log in the new user
+            Auth::login($newUser);
+            return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
+        }
+    }
+
 }
