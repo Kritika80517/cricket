@@ -29,6 +29,7 @@ Route::prefix('v1')->group(function () {
     // Authentication
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
+    
     Route::get('auth/facebook',[AuthController::class, 'redirectToFacebook'])->name('auth.facebook');
     Route::get('auth/facebook/callback',[AuthController::class, 'handleFacebookCallback']);
 
