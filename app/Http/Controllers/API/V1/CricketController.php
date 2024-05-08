@@ -15,8 +15,13 @@ class CricketController extends Controller
         $this->HOST = env("CRICKET_HOST", null);
     }
 
+    // matches apis
     public function matches_list(Request $request){
-        $response = cricketAPI("/matches/v1/recent");
+        $type = 'recent';
+        if(request()->has('type')){
+            $type = $request->type;
+        }
+        $response = cricketAPI("/matches/v1/".$type);
         
         if ($response->successful()) {
             return response()->json($response->json(), 200);
@@ -107,33 +112,300 @@ class CricketController extends Controller
         }
     }
 
+    public function matche_schedule(Request $request){
+        $type = 'league';
+        if(request()->has('type')){
+            $type = $request->type;
+        }
+        $response = cricketAPI("/schedule/v1/".$type);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    // series apis
     public function series_list(Request $request){
-        $series = Http::get($this->ENDPOINT.'/series?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
-        return response()->json($series->json(), 200);
-      
+        $type = 'league';
+        if(request()->has('type')){
+            $type = $request->type;
+        }
+        $response = cricketAPI("/series/v1/".$type);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
     }
 
-    public function series_info(Request $request){
-        $series_info = Http::get($this->ENDPOINT.'/series_info?apikey='.$this->API_KEY.'&offset='.$request->offset.'&id='.$request->id);
-        return response()->json($series_info->json(), 200);
+    public function series_list_archives(Request $request){
+        $type = 'league';
+        if(request()->has('type')){
+            $type = $request->type;
+        }
+        $response = cricketAPI("/series/v1/archives/".$type);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
     }
 
-    public function series_search(Request $request){
-        //dd($request->all());
-        $series = Http::get($this->ENDPOINT.'/series?apikey='.$this->API_KEY.'&offset='.$request->offset.'&search='.$request->search);
-        return response()->json($series->json(), 200);
+    public function series_matches(Request $request){
+        if(request()->has('seriesId')){
+            $seriesId = $request->seriesId;
+        }
+        $response = cricketAPI("/series/v1/".$seriesId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
     }
 
-    public function current_matches(Request $request){
-        $currentMatches = Http::get($this->ENDPOINT.'/currentMatches?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
-        return response()->json($currentMatches->json(), 200);
+    public function series_news(Request $request){
+        if(request()->has('seriesId')){
+            $seriesId = $request->seriesId;
+        }
+        $response = cricketAPI("/news/v1/series/".$seriesId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+   
+    public function series_squads(Request $request){
+        if(request()->has('seriesId')){
+            $seriesId = $request->seriesId;
+        }
+        $response = cricketAPI("/series/v1/".$seriesId ."/squads");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
     }
 
-    public function players_list(Request $request){
-        $players = Http::get($this->ENDPOINT.'/players?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
-        return response()->json($players->json(), 200);
+    public function series_players(Request $request){
+        if($request->has('seriesId','squadId')){
+            $seriesId = $request->seriesId;
+            $squadId = $request->squadId;
+        }
+        $response = cricketAPI("/series/v1/".$seriesId."/squads/".$squadId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+    
+    public function series_venues(Request $request){
+        if(request()->has('seriesId')){
+            $seriesId = $request->seriesId;
+        }
+        $response = cricketAPI("/series/v1/".$seriesId ."/venues");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
     }
 
+    public function series_points_table(Request $request){
+        if(request()->has('seriesId')){
+            $seriesId = $request->seriesId;
+        }
+        $response = cricketAPI("/stats/v1/series/".$seriesId ."/points-table");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function series_stats_filters(Request $request){
+        if(request()->has('seriesId')){
+            $seriesId = $request->seriesId;
+        }
+        $response = cricketAPI("/stats/v1/series/".$seriesId );
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function series_stats(Request $request){
+        if($request->has('statsType','seriesId')){
+            $statsType = $request->statsType;
+            $seriesId = $request->seriesId;
+        }
+        $response = cricketAPI("/stats/v1/series/".$seriesId."/statsType/".$statsType);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+    
+    // team apis
+    public function team_list(Request $request){
+        $type = 'international';
+        if(request()->has('type')){
+            $type = $request->type;
+        }
+        $response = cricketAPI("/teams/v1/".$type);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function team_schedule(Request $request){
+        $teamId = 2; 
+        if($request->has('teamId')){
+            $teamId = $request->teamId;
+        }
+        $response = cricketAPI("/teams/v1/".$teamId."/schedule");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+    
+    public function team_results(Request $request){
+        $teamId = 2; 
+        if($request->has('teamId')){
+            $teamId = $request->teamId;
+        }
+        $response = cricketAPI("/teams/v1/".$teamId."/results");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function team_news(Request $request){
+        $teamId = 2; 
+        if($request->has('teamId')){
+            $teamId = $request->teamId;
+        }
+        $response = cricketAPI("/news/v1/team/".$teamId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function team_players(Request $request){
+        $teamId = 2; 
+        if($request->has('teamId')){
+            $teamId = $request->teamId;
+        }
+        $response = cricketAPI("/teams/v1/".$teamId. "/players");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function team_stats_filters(Request $request){
+        $teamId = 2; 
+        if($request->has('teamId')){
+            $teamId = $request->teamId;
+        }
+        $response = cricketAPI("/stats/v1/team/".$teamId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function team_stats(Request $request){
+        $teamId = 2; 
+        $statsType = 'mostRuns'; 
+        if($request->has('teamId','statsType')){
+            $teamId = $request->teamId;
+            $statsType = $request->statsType;
+        }
+        $response = cricketAPI("/stats/v1/team/".$teamId."/statsType/".$statsType);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    // venues apis 
+    public function venues_list(Request $request){
+        $venueId = 2; 
+        if($request->has('venueId')){
+            $venueId = $request->venueId;
+        }
+        $response = cricketAPI("/venues/v1/".$venueId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function venues_stats(Request $request){
+        $venueId = 2; 
+        if($request->has('venueId')){
+            $venueId = $request->venueId;
+        }
+        $response = cricketAPI("/stats/v1/venue/".$venueId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function venues_matches(Request $request){
+        $venueId = 2; 
+        if($request->has('venueId')){
+            $venueId = $request->venueId;
+        }
+        $response = cricketAPI("/venues/v1/".$venueId."/matches");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    // players apis
     public function players_info(Request $request){
         $players_info = Http::get($this->ENDPOINT.'/players_info?apikey='.$this->API_KEY.'&offset='.$request->offset.'&id='.$request->id );
         return response()->json($players_info->json(), 200);
@@ -149,5 +421,7 @@ class CricketController extends Controller
         //     return response()->json($response->body(), $response->status());
         // }
     }
+
+
 
 }

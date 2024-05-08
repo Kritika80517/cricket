@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 @section('page-title', 'Index')
 @section('website-content')
-
+    {{-- {{dd($data['schedule_matches'])}} --}}
     <div class="full-slider">
         <div id="carousel-example-generic" class="carousel slide">
         <!-- Indicators -->
@@ -142,18 +142,25 @@
                     <aside id="sidebar" class="left-bar">
                         <div class="feature-matchs">
                             <div class="team-btw-match">
-                                <ul>
-                                    <li>
-                                        <img src="{{asset('assets/frontend/images/img-01_002.png')}}" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="{{asset('assets/frontend/images/img-02.png')}}" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-                                <ul>
+                                {{-- {{dd($data['schedule_matches'])}} --}}
+                                @if ($data['schedule_matches'] && $data['schedule_matches']['matchScheduleMap'])
+                                    @foreach ($data['schedule_matches']['matchScheduleMap'] as $item)
+                                        @if ($item['scheduleAdWrapper'] ?? false)
+                                            <ul>
+                                                <li>
+                                                    <img src="{{"https://cricbuzz-cricket.p.rapidapi.com/img/v1/i1/c".$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['imageId']."/i.jpg"}}" alt="dsdsd">
+                                                    <span>{{ $item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['teamName'] ?? "" }}</span>
+                                                </li>
+                                                <li class="vs"><span>vs</span></li>
+                                                <li>
+                                                    <img src="{{"https://cricbuzz-cricket.p.rapidapi.com/img/v1/i1/c".$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['imageId']."/i.jpg"}}" alt="dsdsd">
+                                                    <span>{{$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['teamName'] ?? ""}}</span>
+                                                </li>
+                                            </ul>
+                                        @endif
+                                    @endforeach
+                                @endif
+                                {{-- <ul>
                                     <li>
                                         <img src="{{asset('assets/frontend/images/img-03_002.png')}}" alt="">
                                         <span>Portugal</span>
@@ -196,7 +203,7 @@
                                         <img src="{{asset('assets/frontend/images/img-06.png')}}" alt="">
                                         <span>Germany</span>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </aside>

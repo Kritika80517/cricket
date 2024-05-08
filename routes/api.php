@@ -66,9 +66,32 @@ Route::prefix('v1')->group(function () {
         Route::get('matches/scard/v2', [CricketController::class, 'matches_scorecard_v2']);
         Route::get('matches/leanback', [CricketController::class, 'matches_leanback']);
 
+        Route::get('schedules/list', [CricketController::class, 'matche_schedule']);
+
         Route::get('series', [CricketController::class, 'series_list']);
-        Route::get('series/search', [CricketController::class, 'series_search']);
-        Route::get('series/info', [CricketController::class, 'series_info']);
+        Route::get('series/list-archives', [CricketController::class, 'series_list_archives']);
+        Route::get('series/get-matches', [CricketController::class, 'series_matches']);
+        Route::get('series/get-news', [CricketController::class, 'series_news']);
+        Route::get('series/get-squads', [CricketController::class, 'series_squads']);
+        Route::get('series/get-players', [CricketController::class, 'series_players']);
+        Route::get('series/get-venues', [CricketController::class, 'series_venues']);
+        Route::get('series/get-points-table', [CricketController::class, 'series_points_table']);
+        Route::get('series/get-stats-filters', [CricketController::class, 'series_stats_filters']);
+        Route::get('series/get-stats', [CricketController::class, 'series_stats']);
+
+        Route::get('team', [CricketController::class, 'team_list']);
+        Route::get('team/get-schedules', [CricketController::class, 'team_schedule']);
+        Route::get('team/get-results', [CricketController::class, 'team_results']);
+        Route::get('team/get-news', [CricketController::class, 'team_news']);
+        Route::get('team/get-players', [CricketController::class, 'team_players']);
+        Route::get('team/get-stats-filters', [CricketController::class, 'team_stats_filters']);
+        Route::get('team/get-stats', [CricketController::class, 'team_stats']);
+
+        Route::get('venues/get-info', [CricketController::class, 'venues_list']);
+        Route::get('venues/get-stats', [CricketController::class, 'venues_stats']);
+        Route::get('venues/get-matches', [CricketController::class, 'venues_matches']);
+
+
         Route::get('players', [CricketController::class, 'players_list']);
         Route::get('players/search', [CricketController::class, 'search_players']);
         Route::get('players/info', [CricketController::class, 'players_info']);
