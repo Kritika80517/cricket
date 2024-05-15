@@ -6,6 +6,7 @@ use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\ReportController;
 use App\Http\Controllers\API\V1\MatchVideoController;
 use App\Http\Controllers\API\V1\CricketController;
+use App\Http\Controllers\API\V1\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,10 @@ Route::prefix('v1')->group(function () {
 
     Route::get('auth/google',[AuthController::class, 'redirectToGoogle'])->name('auth.google');
     Route::get('auth/google/callback',[AuthController::class, 'handleGoogleCallback']);
+
+    Route::get('auth/forgot-password',[ResetPasswordController::class, 'reset_password_request']);
+    Route::post('auth/reset-password',[ResetPasswordController::class, 'reset_password_submit']);
+    
 
     // Authenticated users
     Route::middleware('auth:sanctum')->group(function () {
@@ -92,9 +97,23 @@ Route::prefix('v1')->group(function () {
         Route::get('venues/get-matches', [CricketController::class, 'venues_matches']);
 
 
-        Route::get('players', [CricketController::class, 'players_list']);
-        Route::get('players/search', [CricketController::class, 'search_players']);
-        Route::get('players/info', [CricketController::class, 'players_info']);
-        Route::get('current-matches', [CricketController::class, 'current_matches']);
+        Route::get('players/list-trending', [CricketController::class, 'players_list']);
+        Route::get('players/get-career', [CricketController::class, 'players_career']);
+        Route::get('players/get-news', [CricketController::class, 'players_news']);
+        Route::get('players/get-bowling', [CricketController::class, 'players_bowling']);
+        Route::get('players/get-batting', [CricketController::class, 'players_batting']);
+        Route::get('players/get-info', [CricketController::class, 'players_info']);
+        Route::get('players/search', [CricketController::class, 'players_search']);
+
+        Route::get('news/list', [CricketController::class, 'news_list']);
+        Route::get('news/detail', [CricketController::class, 'news_detail']);
+        Route::get('news/categories', [CricketController::class, 'news_categories']);
+        Route::get('news/categories/list', [CricketController::class, 'news_categories_list']);
+        Route::get('news/topics', [CricketController::class, 'news_topics']);
+        Route::get('news/topics/list', [CricketController::class, 'news_topic_list']);
+
+        Route::get('photos/list', [CricketController::class, 'photos_list']);
+        Route::get('photos/gallery', [CricketController::class, 'photos_gallery']);
+        Route::get('photos/image', [CricketController::class, 'photos_image']);
     });
 });

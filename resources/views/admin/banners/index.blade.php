@@ -29,7 +29,7 @@
                                     <th>S.No</th>
                                     <th>Title</th>
                                     <th>Image</th>
-                                    <th>Description</th>
+                                    <th style="width:700px">Description</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>

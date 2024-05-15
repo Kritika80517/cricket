@@ -17,6 +17,7 @@
                 <div class="carousel-caption">
                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        
                     <div class="slider-contant" data-animation="animated fadeInRight">
                         <h3>If you Don’t Practice<br>You <span class="color-yellow">Don’t Derserve</span><br>to win!</h3>
                         <p>If you use this site regularly and would like to help keep the site on the Internet,<br>
@@ -326,7 +327,9 @@
                     <div class="full">
                         <div class="main-heading sytle-2">
                             <h2>Video</h2>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium<br>doloremque laudantium, totam rem aperiam</p>
+                            @foreach ($data['video'] as $item)
+                            <p>{{ $item->title }}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -337,13 +340,16 @@
     <section class="video_section_main theme-padding middle-bg vedio">
         <div class="container">
             <div class="row">
+                @foreach ($data['video'] as $item)
                 <div class="col-md-12">
                     <div class="full">
                         <div class="match_vedio">
-                            <img class="img-responsive" src="{{asset('assets/frontend/images/img-07.jpg')}}" alt="#" />
+                            <img class="img-responsive"  src="{{asset("assets/admin/img/matchhighlight/video/".$item->image)}}" alt="#" />
+                            {{-- <img class="img-responsive" src="{{asset('assets/frontend/images/img-07.jpg')}}" alt="#" /> --}}
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>

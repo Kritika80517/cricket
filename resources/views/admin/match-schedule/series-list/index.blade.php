@@ -35,8 +35,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($series['data'] as $key => $item)
-                                        {{-- {{dd($item)}} --}}
+                                    {{-- {{dd($item)}} --}}
+                                    {{-- @foreach ($series['data'] as $key => $item)
                                         <tr style="align-items: center">
                                             <td>{{++$key}}</td>
                                             <td>{{ $item['name'] ?? 'N/A' }}</td>
@@ -47,9 +47,8 @@
                                             <td>{{ $item['test'] ?? 'N/A' }}</td>
                                             <td>{{ $item['squads'] ?? 'N/A' }}</td>
                                             <td>{{ $item['matches'] ?? 'N/A' }}</td>
-                                                                        
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                             </div>

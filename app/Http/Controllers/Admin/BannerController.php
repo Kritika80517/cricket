@@ -55,7 +55,7 @@ class BannerController extends Controller
         $banner->description = $request->description;
         $banner->status = $request->status;
 
-        $banner->image = $request->has('image') ? FileHelper::image_update('assets/admin/img/banners/', $banner->image, 'png', $request->file('image')) : $article->image;
+        $banner->image = $request->has('image') ? FileHelper::image_update('assets/admin/img/banners/', $banner->image, 'png', $request->file('image')) : $banner->image;
     
 
 
