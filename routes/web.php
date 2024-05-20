@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
-
-
+use App\Http\Controllers\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +29,10 @@ Route::get('/news', function () {
     return view('frontend.news');
 });
 
-Route::get('/blog', function () {
-    return view('frontend.blog');
+Route::get('/article', function () {
+    return view('frontend.article');
 });
+Route::get('/article',[ArticleController::class, 'index']);
 
 Route::get('/contact', function () {
     return view('frontend.contact');

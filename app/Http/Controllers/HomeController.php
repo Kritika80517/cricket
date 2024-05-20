@@ -15,7 +15,6 @@ class HomeController extends Controller
         $data['schedule_matches'] = CricketController::matches_schedules();
         $data['video'] = MatchHighlight::where('status', 1)->get();
         $data['banners'] = Banner::where('status', 1)->get();
-
         return view('frontend.index', compact('data'));
     }
 }

@@ -184,7 +184,7 @@
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="{{url('/blog')}}">Blog</a></li>
+                                                    <li><a href="{{url('/article')}}">Article</a></li>
                                                     <li><a href="{{url('/contact')}}">contact</a></li>
                                                 </ul>
                                             </div>
@@ -242,7 +242,7 @@
                                 <li><a href="{{url('team')}}">Our Team</a></li>
                                 <li><a href="{{url('/news')}}">Latest News</a></li>
                                 <li><a href="matche.html">Recent Matchs</a></li>
-                                <li><a href="{{url('/blog')}}">Our Blog</a></li>
+                                <li><a href="{{url('/article')}}">Article</a></li>
                                 <li><a href="{{url('/contact')}}">Contact Us</a></li>
                             </ul>
                         </div>

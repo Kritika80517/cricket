@@ -21,7 +21,7 @@
                                 <div class="card-body">
                                     <div class="row">
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="category">Category</label>
                                                 <select class="form-control d-inline" name="category_id">
@@ -34,7 +34,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="subcategory">Subcategory</label>
                                                 <select class="form-control d-inline" name="sub_category">
@@ -44,6 +44,19 @@
                                                     @endforeach 
                                                 </select>
                                                 <span class="text-danger">@error('dob') {{$message}} @enderror</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="status">Status</label>
+                                                    <select class="form-control" name="status" id="">
+                                                        <option value="1">Active</option>
+                                                        <option value="0">Inactive</option>
+                                                    </select>
+                                                    <span class="text-danger"> @error('status'){{ $message }}  @enderror </span>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -63,27 +76,15 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="description">Description</label>
-                                                <textarea name="description" class="form-control"></textarea>
+                                                <textarea name="description" class="form-control" id="editor"></textarea>
                                                 <span class="text-danger"> @error('description') {{ $message }} @enderror </span>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="form-group">
-                                                    <label for="status">Status</label>
-                                                    <select class="form-control" name="status" id="">
-                                                        <option value="1">Active</option>
-                                                        <option value="0">Inactive</option>
-                                                    </select>
-                                                    <span class="text-danger"> @error('status'){{ $message }}  @enderror </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        
                                     </div>
 
                                     <div class="row d-flex justify-content-end">

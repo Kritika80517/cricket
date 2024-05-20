@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CricketController extends Controller
 {
-    public static function matches_schedules($type = 'league'){
+    public static function matches_schedules($type = 'international'){
         $response = cricketAPI("/schedule/v1/".$type);
         
         if ($response->successful()) {

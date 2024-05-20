@@ -18,7 +18,7 @@
                                 <h4>Total Users</h4>
                             </div>
                             <div class="card-body">
-                                {{-- {{ $data['user_count'] }} --}}
+                                {{ $data['user_count'] }}
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                 <h4>Total Contacts</h4>
                             </div>
                             <div class="card-body">
-                                {{-- {{ $data['contact_count']}} --}}
+                                {{ $data['contact_count']}}
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+                <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Latest College Enquries</h4>
@@ -103,25 +103,27 @@
                         </div> --}}
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+                <div class="col-lg-4 col-md-6 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h4>Latest Contact</h4>
                         </div>
-                        {{-- <div style="min-height: 415px;" class="card-body">
+                        <div style="min-height: 415px;" class="card-body">
                             <ul class="list-unstyled list-unstyled-border">
                                 @if ($data['contact']->count() == 0)
                                   <p class="align-items-center text-center">No Contact Found</p> 
                                 @endif
                                 @foreach ($data['contact'] as $item)
+                                {{-- {{dd($item)}} --}}
                                     <li class="media">
                                         <img class="mr-3 rounded-circle" width="50"
                                             src="{{ asset('assets/admin/img/avatar/avatar-1.png') }}" alt="avatar">
                                         <div class="media-body">
                                             <div class="float-right text-primary">{{$item->created_at->diffForhumans()}}</div>
-                                            <div class="media-title">{{$item->name}} ({{$item->phone}})</div>
+                                            <div class="media-title">{{$item->name}}</div>
                                             <span class="text-small text-muted">{{$item->email}}</span>
-                                            <div class="media-title">{{$item->subject}}</div>
+                                            <span class="text-small text-muted">{{$item->address}}</span>
+                                            <div class="media-title">{{$item->message}}</div>
                                         </div>
                                     </li>
                                 @endforeach
@@ -131,7 +133,7 @@
                             <a href="{{route('admin.contact')}}" class="btn btn-primary btn-lg btn-round">
                                 View All
                             </a>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
