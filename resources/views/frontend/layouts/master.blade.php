@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                             <div class="full">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{asset('assets/frontend/images/logo.png')}}" alt="#" /></a>
+                                    <a href="index.html"><img src="{{asset('assets/frontend/images/logo.png')}}" width="70" height="50" alt="#" /></a>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                 <!-- button section -->
                                 <ul class="login">
                                     <li class="login-modal">
-                                        <a href="#" class="login"><i class="fa fa-user"></i>Login</a>
+                                        <a href="{{url('/login')}}" class="login"><i class="fa fa-user"></i>Login</a>
                                     </li>
                                     <li>
                                         <div class="cart-option">
