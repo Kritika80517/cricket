@@ -114,7 +114,7 @@
         <div class="container">
             <div class="user signinBx">
                 <div class="formBx">
-                    <form action="{{route('submit.forget.password')}}" onsubmit="return false;">
+                    <form action="{{route('submit.forget.password')}}" method="POST">
                         @csrf
                         <h2>Forgot Password</h2>
                         <input type="text" name="email" placeholder="Username" />

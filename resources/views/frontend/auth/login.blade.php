@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cricket App</title>
+    <script>
+        const toggleForm = () => {
+            const container = document.querySelector('.container');
+            container.classList.toggle('active');
+        };
+    
+        const checkForRegisterHash = () => {
+            if (window.location.hash === '#register') {
+                toggleForm();
+            }
+        };
+    
+        // Call the function when the page loads
+        window.onload = checkForRegisterHash;
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
 
@@ -189,7 +204,7 @@
             <div class="user signinBx">
                 <div class="imgBx"><img src="{{ asset('assets/frontend/images/logo.png') }}" alt="" /></div>
                 <div class="formBx">
-                    <form action="{{route('login.submit')}}" onsubmit="return false;">
+                    <form action="{{route('login.submit')}}" method="POST">
                         @csrf
                         <h2>Sign In</h2>
                         <input type="text" name="email" placeholder="Username" />
@@ -199,7 +214,7 @@
                         <input type="submit" name="" value="Login" />
                         <p class="signup">
                             Don't have an account ?
-                            <a href="#" onclick="toggleForm();">Sign Up.</a>
+                            <a href="#register" onclick="toggleForm();">Sign Up.</a>
                         </p>
                     </form>
                    
@@ -207,7 +222,7 @@
             </div>
             <div class="user signupBx">
                 <div class="formBx">
-                    <form action="{{route('register.submit')}}" method="POST" onsubmit="return false;">
+                    <form action="{{route('register.submit')}}" method="POST" >
                         @csrf
                         <h2>Create an account</h2>
                         <input type="text" name="name" placeholder="Username" />
@@ -216,10 +231,9 @@
                         <input type="password" name="password" placeholder="Create Password" />
                         <input type="password" name="password_confirmation" placeholder="Confirm Password" />
                         <input type="submit" name="" value="Sign Up" />
-                        <button class="btn btn-danger" type="submit">Login</button>
                         <p class="signup">
                             Don't have an account ?
-                            <a href="#" onclick="toggleForm();">Sign In.</a>
+                            <a href="#login" onclick="toggleForm();">Sign In.</a>
                         </p>
                     </form>
                 </div>
@@ -228,11 +242,5 @@
         </div>
     </section>
 </body>
-<script>
-    const toggleForm = () => {
-        const container = document.querySelector('.container');
-        container.classList.toggle('active');
-    };
-</script>
 
 </html>

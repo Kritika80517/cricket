@@ -114,7 +114,7 @@
         <div class="container">
             <div class="user signinBx">
                 <div class="formBx">
-                    <form action="{{route('submit.reset.password')}}" onsubmit="return false;">
+                    <form action="{{route('submit.reset.password')}}" method="POST">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
                         <h2>Reset Forgot Password</h2>
