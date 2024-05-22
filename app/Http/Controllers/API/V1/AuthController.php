@@ -51,8 +51,11 @@ class AuthController extends Controller
         return response()->json([
             'errors' => $errors,
         ], 401);
+
+        return response()->json(["message" => "OTP sent to your email. Please verify to complete login."], 200);
     }
 
+    // register
     public function register(Request $request)
     {
         $request->validate([
@@ -76,10 +79,10 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('AuthToken')->plainTextToken;
-        // $user = User::find($user->id)->latest();
         return response()->json(["message" => "User registered successfully.", 'token' => $token, "data" => $user], 201);
     }
 
+    // get user details
     public function user_details(Request $request)
     {
         $user = $request->user();
@@ -87,6 +90,7 @@ class AuthController extends Controller
 
     }
 
+    // logout
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
@@ -145,21 +149,16 @@ class AuthController extends Controller
     {
         $user = Socialite::driver('google')->userFromToken($request->input('access_token'));
 
-        // Check if the user exists in the database
         $existingUser = User::where('email', $user->email)->first();
 
         if ($existingUser) {
-            // User exists, log them in
             Auth::login($existingUser);
             return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
         } else {
-            // User does not exist, create a new user
             $newUser = new User();
             $newUser->name = $user->name;
             $newUser->email = $user->email;
             $newUser->save();
-
-            // Log in the new user
             Auth::login($newUser);
             return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
         }

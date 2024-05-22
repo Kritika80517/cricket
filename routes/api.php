@@ -7,6 +7,7 @@ use App\Http\Controllers\API\V1\ReportController;
 use App\Http\Controllers\API\V1\MatchVideoController;
 use App\Http\Controllers\API\V1\CricketController;
 use App\Http\Controllers\API\V1\ResetPasswordController;
+use App\Http\Controllers\API\V1\OTPLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,9 @@ Route::prefix('v1')->group(function () {
 
     Route::get('auth/forgot-password',[ResetPasswordController::class, 'reset_password_request']);
     Route::post('auth/reset-password',[ResetPasswordController::class, 'reset_password_submit']);
+
+    Route::post('otp/sent', [OTPLoginController::class, 'requestOtp']);
+    Route::post('otp/verify', [OTPLoginController::class, 'verifyOtp']);
     
 
     // Authenticated users
