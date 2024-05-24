@@ -50,7 +50,7 @@
 
                     <td align="left" valign="top" colspan="2"
                         style="border-bottom: 1px solid #CCCCCC; padding: 20px 0 10px 0;">
-                        <span style="font-size: 18px; font-weight: normal;">FORGOT PASSWORD</span>
+                        <span style="font-size: 18px; font-weight: normal;">OTP Verification</span>
                     </td>
 
                 </tr>
@@ -63,18 +63,17 @@
 
                         <span style="font-size: 12px; line-height: 1.5; color: #333333;">
 
-                            We have sent you this email in response to your request to reset your password. After you reset your password, you will be able to login with your new password.
+                            We have sent you this email in response to your request to login your profile. After you login your profile, you will be able to login with your otp.
 
                             <br/><br/>
 
-                            To reset your password, please use the token below :
+                            To login your profile, please use the otp below :
 
                             <a href="javascript:"> <h3 style="font-weight: 1000">{{$otp}}</h3> </a>
 
                             <br/><br/>
 
-                            We recommend that you keep your password secure and not share it with anyone.If you feel your password has been compromised, you can change it by going to your app, My Account Page and clicking on the "Change Email Address or Password" link.
-
+                            We recommend that you keep your otp secure and not share it with anyone.
                             <br/><br/>
 
                             If you need help, or you have any other questions, feel free to email us.

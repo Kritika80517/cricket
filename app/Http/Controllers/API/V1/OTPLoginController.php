@@ -11,38 +11,38 @@ use Illuminate\Support\Facades\Validator;
 
 class OTPLoginController extends Controller
 {
-    public function requestOtp(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users,email',
-        ]);
+    // public function requestOtp(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'email' => 'required|email|exists:users,email',
+    //     ]);
 
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Invalid email address.'], 400);
-        }
+    //     if ($validator->fails()) {
+    //         return response()->json(['message' => 'Invalid email address.'], 400);
+    //     }
 
-        $user = User::where('email', $request->email)->first();
+    //     $user = User::where('email', $request->email)->first();
 
-        if ($user) {
-            $otp = rand(1000, 9999);
-            $expiresAt = now()->addMinutes(10);
+    //     if ($user) {
+    //         $otp = rand(1000, 9999);
+    //         $expiresAt = now()->addMinutes(10);
 
-            DB::table('otp_logins')->updateOrInsert(
-                ['email' => $request->email],
-                ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
-            );
+    //         DB::table('otp_logins')->updateOrInsert(
+    //             ['email' => $request->email],
+    //             ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
+    //         );
 
-            try {
-                Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
-            } catch (\Exception $e) {
-                return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
-            }
+    //         try {
+    //             Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
+    //         } catch (\Exception $e) {
+    //             return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+    //         }
 
-            return response()->json(['message' => 'OTP sent to your email.'], 200);
-        }
+    //         return response()->json(['message' => 'OTP sent to your email.'], 200);
+    //     }
 
-        return response()->json(['message' => 'OTP sent to your email.'], 200);
-    }
+    //     return response()->json(['message' => 'OTP sent to your email.'], 200);
+    // }
 
     public function verifyOtp(Request $request)
     {

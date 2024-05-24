@@ -8,6 +8,8 @@ use Exception;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use Validator;
 
@@ -15,44 +17,49 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        if ($request->has('email_or_phone')) {
-            $user_id = $request['email_or_phone'];
-            $validator = Validator::make($request->all(), [
-                'email_or_phone' => 'required',
-                'password' => 'required|min:8',
-            ]);
-        } else {
-            $user_id = $request['email'];
-            $validator = Validator::make($request->all(), [
-                'email' => 'required',
-                'password' => 'required|min:8',
-            ]);
-        }
+        $user_id = $request->input('email_or_phone') ?? $request->input('email');
+
+        $validator = Validator::make($request->all(), [
+            'email_or_phone' => 'required_without:email',
+            'email' => 'required_without:email_or_phone|email',
+            'password' => 'required|min:8',
+        ]);
 
         if ($validator->fails()) {
-            return response()->json(['message' => 'The provided credentials are incorrect.'($validator)], 403);
+            return response()->json(['message' => 'The provided credentials are incorrect.', 'errors' => $validator->errors()], 403);
         }
 
-        $user = User::where(['email' => $user_id])->orWhere('contact', $user_id)->first();
-        if (isset($user)) {
-            $data = [
-                'email' => $user->email,
-                'password' => $request->password,
-            ];
+        $user = User::where('email', $user_id)
+            ->orWhere('contact', $user_id)
+            ->first();
 
-            if (auth()->attempt($data)) {
-                $token = $user->createToken('AuthToken')->plainTextToken;
-                return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
+        if ($user) {
+           
+            if (Hash::check($request->password, $user->password)) {
+                
+                $otp = rand(1000, 9999);
+                $expiresAt = now()->addMinutes(10);
+
+                DB::table('otp_logins')->updateOrInsert(
+                    ['email' => $user->email],
+                    ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
+                );
+
+                try {
+                    Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
+                } catch (\Exception $e) {
+                    return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+                }
+
+                return response()->json(['message' => 'OTP sent to your email. Please verify to complete login.'], 200);
             }
+
+            return response()->json(['message' => 'The provided credentials are incorrect.'], 403);
         }
 
-        $errors = [];
-        array_push($errors, ['code' => 'auth-001', 'message' => 'Invalid credential.']);
         return response()->json([
-            'errors' => $errors,
+            'errors' => [['code' => 'auth-001', 'message' => 'Invalid credentials.']],
         ], 401);
-
-        return response()->json(["message" => "OTP sent to your email. Please verify to complete login."], 200);
     }
 
     // register
