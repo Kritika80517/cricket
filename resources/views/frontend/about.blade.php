@@ -8,28 +8,16 @@
 <section id="contant" class="contant main-heading" style="padding-bottom:0;margin-bottom:-1px;position:relative;z-index:1;">
     <div class="aboutus">
        <div class="container">
-         @php
-             $about_us = DB::table('settings')->where(['key' => 'about_us'])->first()->value ?? null;
-         @endphp
+       
           <div class="row">
              <div class="col-md-12 col-sm-12">
                 <div class="col-md-7 col-sm-7 col-xs-12">
                    <div class="full">
-                      {{-- <h3>SPORTY LEAGUE HISTORY</h3>
-                      <p>Voluptate illum dolore ita ipsum, quid deserunt singulis, labore admodum ita multos malis ea nam nam tamen fore amet.
-                         Vidisse quid incurreret ut ut possumus transferrem si ita labore dolor si appellat, aut dolore doctrina. Commodo dolor 
-                         esse in magna, a a multos senserit nam si aliqua iis multos..
-                      </p>
-                      <ul class="icon-list">
-                         <li><i class="fa fa-angle-right"></i> Voluptate illum dolore ita ipsum</li>
-                         <li><i class="fa fa-angle-right"></i> Labore admodum ita multos malis ea nam nam tamen fore amet</li>
-                         <li><i class="fa fa-angle-right"></i> Voluptate illum dolore ita ipsum</li>
-                      </ul> --}}
-                      {!!$about_us!!}
+                      {!! getKeyValue('about_us') !!}
                    </div>
                 </div>
                 <div class="col-md-5 col-sm-5 col-xs-12">
-                   <img class="img-responsive" src="{{asset('assets/frontend/images/img-07.jpg')}}" alt="#" />
+                   <img class="img-responsive" src="{{asset(getKeyValue('about_image'))}}" alt="#" />
                 </div>
              </div>
           </div>

@@ -42,6 +42,19 @@
                                             </div>
                                         </div>
 
+                                        @php($about_image = \App\Models\Setting::where('key','about_image')->first()->value ?? '')
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="thumb">Director image (500x500 px)</label>
+                                                <input class="form-control" type='file' name='about_image'/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <img style="width:100px;" src="{{asset( $about_image)}}" alt="">
+                                            </div>
+                                        </div>
+
                                         {{-- @php($testimonials = \App\Models\Setting::where('key','testimonials')->first())
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -58,12 +71,7 @@
                                             </div>
                                         </div> --}}
     
-                                        {{-- <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="thumb">Director image (500x500 px)</label>
-                                                <input class="form-control" type='file' name='director_image'/>
-                                            </div>
-                                        </div> --}}
+                                        
                                         
                                         <div class="col-md-12 text-right">
                                             <div class="form-group">

@@ -20,10 +20,10 @@ class SettingController extends Controller
     public function aboutSetting(Request $request)
     {
 
-        $about_image = DB::table('settings')->where(['key' => 'about_image'])->first()->value ?? null;
-
-        if($request->hasfile('about_image')){
-            $imagePath = public_path('assets/admin/img/setting/about/'.$about_image);
+        
+        if($request->has('about_image')){
+            $about_image = DB::table('settings')->where(['key' => 'about_image'])->first()->value ?? null;
+            $imagePath = public_path($about_image);
             if(($about_image != NULL) && File::exists($imagePath)){
                 unlink($imagePath);
             }
@@ -32,7 +32,7 @@ class SettingController extends Controller
             $destinationPath = public_path('/assets/admin/img/setting/about/'); 
             $image->move($destinationPath, $about_image_name);
             DB::table('settings')->updateOrInsert(['key' => 'about_image'], [
-                'value' => $about_image_name
+                'value' => 'assets/admin/img/setting/about/'.$about_image_name
             ]);
         }
 

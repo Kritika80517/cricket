@@ -29,7 +29,7 @@
                                     <th>S.No</th>
                                     <th>Title</th>
                                     <th>Message</th>
-                                    {{-- <th>Image</th> --}}
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -39,12 +39,15 @@
                                         <td>{{++$key}}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->message }}</td>
+                                        <td>{{ $item->status == 1 ? 'Delevered' : 'Pending' }}</td>
                                         {{-- <td>
                                             <img src="{{asset("assets/admin/img/article/".$item->image)}}" width="50" height="50" alt="img">
                                         </td> --}}
                                         <td>
-                                            <a href="{{url('admin/notifications/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a>
-                                            <a href="{{url('admin/notifications/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this notification?')" ><i class="fas fa-trash"></i></a>
+                                            @if ($item->status != 1)
+                                                <a href="{{url('admin/notifications/edit/'. $item->id)}}" class="btn btn-success btn-action mr-1" data-toggle="tooltip" title="edit"><i class="fas fa-edit"></i></a>
+                                                <a href="{{url('admin/notifications/delete/'. $item->id)}}" class="btn btn-danger btn-action mr-1" data-toggle="tooltip" title="delete"  onclick="return confirm('Are you sure want to delete this notification?')" ><i class="fas fa-trash"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

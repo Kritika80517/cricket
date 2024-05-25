@@ -30,10 +30,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total partner</h4>
+                                <h4>Total Staff</h4>
                             </div>
                             <div class="card-body">
-                                {{-- {{ $data['partner_count']}} --}}
+                                {{ $data['staff_count']}}
                             </div>
                         </div>
                     </div>
@@ -60,10 +60,10 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total colleges</h4>
+                                <h4>Total Report</h4>
                             </div>
                             <div class="card-body">
-                                {{-- {{ $data['college_count']}} --}}
+                                {{ $data['report_count']}}
                             </div>
                         </div>
                     </div>

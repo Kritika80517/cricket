@@ -222,8 +222,7 @@
                             <div class="footer-logo">
                                 <a href="#"><img src="{{asset('assets/frontend/images/footer-logo.png')}}" alt="#" /></a>
                             </div>
-                            <p>Most of our events have hard and easy route choices as we are always keen to encourage
-                                new riders.</p>
+                            <p>{{getKeyValue('about_company') }}</p>
                             <ul class="social-icons style-4 pull-left">
                                 <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -253,10 +252,10 @@
                         <div class="footer-widget">
                             <h3>Contact us</h3>
                             <ul class="address-list">
-                                <li><i class="fa fa-map-marker"></i> Lorem Ipsum is simply dummy text of the printing..
-                                </li>
-                                <li><i class="fa fa-phone"></i> 123 456 7890</li>
-                                <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> demo@gmail.com</li>
+                            </li>
+                            <li><i class="fa fa-phone"></i>{{getKeyValue('phone') }}</li>
+                            <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i>{{getKeyValue('email') }}</li>
+                            <li><i class="fa fa-map-marker"></i>{{getKeyValue('address') }}
                             </ul>
                         </div>
                     </div>
@@ -275,7 +274,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>Copyright © 2018 Distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+                <p>Copyright © 2024 Distributed by <a href="https://www.infocentroid.com/" target="_blank">InfoCentroid Software Solutions Pvt. Ltd</a>
                 </p>
             </div>
         </div>

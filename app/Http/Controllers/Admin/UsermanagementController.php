@@ -9,7 +9,7 @@ use App\Models\User;
 class UsermanagementController extends Controller
 {
     public function index(){
-        $users = User::where('is_admin', 0)->get();
+        $users = User::where('role','user')->get();
         return view('admin.users.index', compact('users'));
     }
     public function create(){

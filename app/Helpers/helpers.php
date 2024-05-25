@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
+use App\Models\Setting;
+
 
 if (!function_exists('cricketAPI')) {
     function cricketAPI($url)
@@ -28,5 +30,16 @@ if (!function_exists('getImage')) {
         } else {
             return "";
         }
+    }
+}
+
+if (!function_exists('getKeyValue')) {
+    function getKeyValue($key)
+    {
+        $value = null;
+        if($key){
+            $value = Setting::where(['key' => $key])->first()->value ?? null;
+        }
+        return $value;
     }
 }

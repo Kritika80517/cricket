@@ -27,7 +27,7 @@ class NotificationController extends Controller
             'message' => 'required',
         ]);
         $message = new Notification();
-        $message->user_ids = json_encode($request->user_ids);
+        $message->user_ids = $request->user_ids ? json_encode($request->user_ids, true) : '';
         $message->title = $request->title;
         $message->message = $request->message;
         $sendAt = Carbon::parse($request->send_at)->format('Y-m-d H:i:s');
@@ -50,7 +50,7 @@ $message->send_at = $sendAt;
             'message' => 'required',
         ]);
         $message = Notification::where('id', $request->id)->first();
-        $message->user_ids = json_encode($request->user_ids);
+        $message->user_ids = $request->user_ids ? json_encode($request->user_ids, true) : '';
         $message->title = $request->title;
         $message->message = $request->message;
         $message->send_at = $request->send_at;

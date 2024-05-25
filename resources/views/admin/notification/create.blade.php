@@ -61,7 +61,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="send_at">Send At</label>
-                                                <input type="datetime-local" class="form-control" name="send_at" id="send_at" required>
+                                                <input type="datetime-local" class="form-control calender" name="send_at" id="send_at" required>
                                                 <span class="text-danger">@error('send_at') {{$message}} @enderror</span>
                                             </div>
                                         </div>

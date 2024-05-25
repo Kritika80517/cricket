@@ -36,7 +36,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/admin/modules/select2/dist/css/select2.min.css') }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         /* toast r */
         #toast-container>.toast::before {
@@ -276,6 +276,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('assets/admin/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
     <script>
@@ -311,8 +312,14 @@
         CKEDITOR.replace( 'editor2' );
         CKEDITOR.replace( 'editor3' );
         CKEDITOR.replace( 'editor4' );
+        $(".calender").flatpickr({
+            minDate: "today",
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        });
     </script>
     @stack('script')
+    
 </body>
 
 </html>
