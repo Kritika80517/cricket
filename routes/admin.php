@@ -140,7 +140,6 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => 'matchschedule', 'as' => 'matchschedule.'], function () {
             Route::group(['prefix' => 'matchtype', 'as' => 'matchtype.'], function () {
-                Route::get('/', [MatchTypeController::class, 'series_list'])->name('list');
                 
             });
 
@@ -206,6 +205,15 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('about', 'about');
             Route::post('website', 'websiteSetting');
             Route::post('about', 'aboutSetting');
+        });
+
+
+        // Cricket API's
+
+        Route::group(['prefix' => 'cricket-schedule', 'as' => 'cricket-schedule.'], function () {
+            Route::get('series', [MatchController::class, 'index'])->name('series.list');
+            Route::get('series/{type}', [MatchController::class, 'series'])->name('series.data');
+            Route::get('series/{series_id}/get-matches', [MatchController::class, 'series_matches'])->name('series.matches');
         });
         
     });

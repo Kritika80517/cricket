@@ -73,8 +73,8 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dumbbell"></i>
                     <span>Match Schedule</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ request()->is('admin/matchschedule/matchtype*') ? 'active' : '' }}"><a class="nav-link"
-                        href="{{ route('admin.matchschedule.matchtype.list') }}"><i
+                    <li class="{{ request()->is('admin/cricket-schedule/series*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ route('admin.cricket-schedule.series.list') }}"><i
                             class="fas fa-th-large"></i><span>Series List</span></a>
                     </li>
                     <li class="{{ request()->is('admin/matchschedule/teams*') ? 'active' : '' }}"><a class="nav-link"

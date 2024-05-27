@@ -171,4 +171,67 @@ class AuthController extends Controller
         }
     }
 
+    public function socialLogin(Request $request)
+    {
+        if (!$request->provider) {
+            return response()->json([
+                'result' => false,
+                'message' => 'User not found',
+                'user' => null
+            ]);
+        }
+
+        switch ($request->social_provider) {
+            case 'facebook':
+                $social_user = Socialite::driver('facebook')->fields([
+                    'name',
+                    'first_name',
+                    'last_name',
+                    'email'
+                ]);
+                break;
+            case 'google':
+                $social_user = Socialite::driver('google')
+                    ->scopes(['profile', 'email']);
+                break;
+            default:
+                $social_user = null;
+        }
+        if ($social_user == null) {
+            return response()->json(['result' => false, 'message' => 'No social provider matches', 'user' => null]);
+        }
+        
+        $social_user_details = $social_user->userFromToken($request->access_token);
+
+        if ($social_user_details == null) {
+            return response()->json(['result' => false, 'message' => 'No social account matches', 'user' => null]);
+        }
+
+        $existingUserByProviderId = User::where('provider_id', $request->provider)->first();
+
+        if ($existingUserByProviderId) {
+            $existingUserByProviderId->access_token = $social_user_details->token;
+            $existingUserByProviderId->save();
+            return $this->loginSuccess($existingUserByProviderId);
+        } else {
+            $existing_or_new_user = User::firstOrNew(
+                [['email', '!=', null], 'email' => $social_user_details->email]
+            );
+
+            $existing_or_new_user->role = 'user';
+            $existing_or_new_user->status = 1;
+            $existing_or_new_user->provider_id = $social_user_details->id;
+
+            if (!$existing_or_new_user->exists) {
+                $existing_or_new_user->name = $social_user_details->name;
+                $existing_or_new_user->email = $social_user_details->email;
+                $existing_or_new_user->email_verified_at = date('Y-m-d H:m:s');
+            }
+
+            $existing_or_new_user->save();
+
+            return $this->loginSuccess($existing_or_new_user);
+        }
+    }
+
 }

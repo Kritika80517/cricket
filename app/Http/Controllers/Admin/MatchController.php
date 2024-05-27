@@ -9,21 +9,45 @@ use Illuminate\Support\Facades\Http;
 
 class MatchController extends Controller
 {
-    private $API_KEY, $ENDPOINT;
-    public function __construct() {
-        $this->API_KEY = env("CRICKET_API_KEY", null);
-        $this->ENDPOINT = env("CRICKET_ENDPOINT", null);
-    }
-    
+   
     public function index(Request $request){
-        $matches = Http::get($this->ENDPOINT.'/matches?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
-        $matches = $matches->json();
-        return view('admin.match-schedule.match_list.index', compact('matches'));
+        $matches = [];
+        $news = [];
+        if(request()->seriesId){
+            $match_response = cricketAPI("/series/v1/".request()->seriesId);
+            if ($match_response->successful()) {
+                $matches = $match_response->json();
+            }
+
+            $news_response = cricketAPI("/news/v1/series/".request()->seriesId);
+            if ($news_response->successful()) {
+                $news = $news_response->json();
+            }
+        }
+        return view('admin.match-schedule.series.index', compact('matches', 'news'));
     }
 
-    public function currentMatch(Request $request){
-        $currentMatches = Http::get($this->ENDPOINT.'currentMatches/?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
-        $currentMatches = $currentMatches->json();
-        return view('admin.match-schedule.current.index', compact('currentMatches'));
+    public function series($type){
+        $response = cricketAPI("/series/v1/".$type);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function series_list_archives(Request $request){
+        $type = 'league';
+        if(request()->has('type')){
+            $type = $request->type;
+        }
+        $response = cricketAPI("/series/v1/archives/".$type);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
     }
 }

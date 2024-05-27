@@ -138,7 +138,7 @@
                     <div class="feature-matchs">
                         <div class="team-btw-match">
                             {{-- {{dd($data['schedule_matches'])}} --}}
-                            @if ($data['schedule_matches'] && $data['schedule_matches']['matchScheduleMap'])
+                            @if ((isset($data['schedule_matches']) && isset($data['schedule_matches']['matchScheduleMap'])))
                             @foreach ($data['schedule_matches']['matchScheduleMap'] as $item)
                             @if ($item['scheduleAdWrapper'] ?? false)
                             <ul>
