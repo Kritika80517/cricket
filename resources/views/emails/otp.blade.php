@@ -66,6 +66,7 @@
                             We have sent you this email in response to your request to login your profile. After you login your profile, you will be able to login with your otp.
 
                             <br/><br/>
+                            <img src="{{asset('assets/admin/img/logo.png')}}" alt="logo">
 
                             To login your profile, please use the otp below :
 
