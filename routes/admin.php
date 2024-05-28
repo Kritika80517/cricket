@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\PlayerController;
 use App\Http\Controllers\Admin\MatchController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SeriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -211,9 +212,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         // Cricket API's
 
         Route::group(['prefix' => 'cricket-schedule', 'as' => 'cricket-schedule.'], function () {
-            Route::get('series', [MatchController::class, 'index'])->name('series.list');
-            Route::get('series/{type}', [MatchController::class, 'series'])->name('series.data');
-            Route::get('series/{series_id}/get-matches', [MatchController::class, 'series_matches'])->name('series.matches');
+            Route::get('series', [SeriesController::class, 'index'])->name('series.list');
+            Route::get('series/{type}', [SeriesController::class, 'series'])->name('series.data');
+            Route::get('series/{series_id}/get-matches', [SeriesController::class, 'series_matches'])->name('series.matches');
         });
         
     });
