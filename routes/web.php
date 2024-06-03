@@ -31,7 +31,11 @@ Route::get('/about', function () {
 });
 
 Route::get('/team', function () {
-    return view('frontend.team');
+    return view('frontend.teams.team');
+});
+
+Route::get('/team/details', function () {
+    return view('frontend.teams.details');
 });
 
 Route::get('/news', function () {
