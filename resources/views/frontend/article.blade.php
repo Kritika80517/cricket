@@ -200,12 +200,12 @@
                     @if ($item['scheduleAdWrapper'] ?? false)
                     <ul>
                         <li>
-                            <img src="{{"https://cricbuzz-cricket.p.rapidapi.com/img/v1/i1/c".$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['imageId']."/i.jpg"}}" alt="dsdsd">
+                            <img style="width: 40px;" src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c<?php echo $item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['imageId']; ?>/i.jpg" alt="Team 1 Image">
                             <span>{{ $item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['teamName'] ?? "" }}</span>
                         </li>
                         <li class="vs"><span>vs</span></li>
                         <li>
-                            <img src="{{"https://cricbuzz-cricket.p.rapidapi.com/img/v1/i1/c".$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['imageId']."/i.jpg"}}" alt="dsdsd">
+                            <img style="width: 40px;" src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c<?php echo $item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['imageId']; ?>/i.jpg" alt="Team 2 Image">
                             <span>{{$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['teamName'] ?? ""}}</span>
                         </li>
                     </ul>

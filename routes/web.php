@@ -5,6 +5,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,17 +32,16 @@ Route::get('/about', function () {
     return view('frontend.about');
 });
 
-Route::get('/team', function () {
-    return view('frontend.teams.team');
-});
+// Teams
+Route::get('/teams', [TeamController::class, 'index']);
+Route::get('/teams/{team_id}', [TeamController::class, 'show']);
+Route::get('/teams-info/{type}',  [TeamController::class, 'teams']);
 
-Route::get('/team/details', function () {
-    return view('frontend.teams.details');
-});
+// News
+Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news-info',  [NewsController::class, 'news']);
+Route::get('/news-categories',  [NewsController::class, 'categories']);
 
-Route::get('/news', function () {
-    return view('frontend.news');
-});
 
 Route::get('/article', function () {
     return view('frontend.article');

@@ -6,7 +6,7 @@
 <!-- Mobile Metas -->
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!-- Site Metas -->
-<title>Game Info</title>
+<title>@yield('page-title', 'Cricket Wicket')</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -103,7 +103,7 @@
                                                 <ul class="nav navbar-nav">
                                                     <li class="active"><a href="{{url('/')}}">Home</a></li>
                                                     <li><a href="{{url('/about')}}">About</a></li>
-                                                    <li><a href="{{url('/team')}}">Team</a></li>
+                                                    <li><a href="{{url('/teams')}}">Team</a></li>
                                                     <li><a href="{{url('/news')}}">News</a></li>
                                                     <li class="dropdown mega-dropdown">
                                                         <a href="match" class="dropdown-toggle"
