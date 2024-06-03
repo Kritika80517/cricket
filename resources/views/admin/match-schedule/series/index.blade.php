@@ -81,7 +81,6 @@
                             </div>
 
                             <div class="card-body">
-
                                 @if (request()->has('seriesId'))
                                     <ul class="nav nav-tabs" id="myTab2" role="tablist">
                                         <li class="nav-item">
@@ -115,14 +114,15 @@
                                                 role="tab" aria-controls="contact" aria-selected="false">Photos</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="contact-tab2" data-toggle="tab" href="#stats"
+                                            <a class="nav-link" id="stats-tab2" data-toggle="tab" href="#stats"
                                                 role="tab" aria-controls="contact" aria-selected="false">Stats</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="contact-tab2" data-toggle="tab" href="#venue"
+                                            <a class="nav-link" id="venue-tab2" data-toggle="tab" href="#venue"
                                                 role="tab" aria-controls="contact" aria-selected="false">Venues</a>
                                         </li>
                                     </ul>
+
                                     <div class="tab-content tab-bordered" id="myTab3Content">
                                         <div class="tab-pane fade active show" id="home2" role="tabpanel"
                                             aria-labelledby="home-tab2">
@@ -150,20 +150,17 @@
                                                             @if (isset($item['matchDetailsMap']))
                                                                 @foreach ($item['matchDetailsMap']['match'] as $match)
                                                                     @php
-                                                                        $startDate = \Carbon\Carbon::createFromTimestampMs( $match['matchInfo']['startDate'], )->format('M d, D');
+                                                                        $startDate = \Carbon\Carbon::createFromTimestampMs($match['matchInfo']['startDate'],)->format('M d, D');
                                                                         $team1 = $match['matchInfo']['team1']['teamName'];
-                                                                        $team2 = $match['matchInfo']['team2']['teamName'];
+                                                                        $team2 =$match['matchInfo']['team2']['teamName'];
                                                                         $matchDesc = $match['matchInfo']['matchDesc'];
-                                                                        $ground = $match['matchInfo']['venueInfo']['ground'];
-                                                                        $city =  $match['matchInfo']['venueInfo']['city'];
+                                                                        $ground =  $match['matchInfo']['venueInfo']['ground'];
+                                                                        $city = $match['matchInfo']['venueInfo']['city'];
                                                                         $status = $match['matchInfo']['status'];
-                                                                        $localTime = \Carbon\Carbon::createFromTimestampMs(
-                                                                            $match['matchInfo']['startDate'],
-                                                                        )->format('h:i A');
-                                                                        $gmtTime = \Carbon\Carbon::createFromTimestampMs( $match['matchInfo']['startDate'],
-                                                                            ) ->setTimezone('GMT')->format('h:i A') . ' GMT';
-                                                                        $localTimeWithOffset = \Carbon\Carbon::createFromTimestampMs( $match['matchInfo']['startDate'],
-                                                                            )->format('h:i A') . ' LOCAL';
+                                                                        $localTime = \Carbon\Carbon::createFromTimestampMs($match['matchInfo']['startDate'], )->format('h:i A');
+                                                                        $gmtTime =
+                                                                            \Carbon\Carbon::createFromTimestampMs( $match['matchInfo']['startDate'],)->setTimezone('GMT')->format('h:i A') . ' GMT';
+                                                                        $localTimeWithOffset =\Carbon\Carbon::createFromTimestampMs($match['matchInfo']['startDate'],)->format('h:i A') . ' LOCAL';
                                                                     @endphp
                                                                     <tr class="border-bottom">
                                                                         <td>{{ $startDate }}</td>
@@ -188,7 +185,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="tab-pane fade" id="news" role="tabpanel"  aria-labelledby="news-tab2">
+                                        <div class="tab-pane fade" id="news" role="tabpanel"
+                                            aria-labelledby="news-tab2">
                                             <ul class="list-unstyled">
                                                 @foreach ($news['storyList'] as $key => $item)
                                                     @if (isset($item['story']))
@@ -217,9 +215,92 @@
 
                                         </div>
 
+                                        {{-- videos --}}
                                         <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab2">
 
                                         </div>
+
+                                        {{-- stats --}}
+                                        <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab2">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <table class="table table-hover">
+                                                        @foreach ($stats['types'] as $key => $item)
+                                                            <thead class="bg-dark text-light">
+                                                                {{-- {{dd($item)}} --}}
+                                                                <tr class="border-bottom">
+                                                                    <th scope="col">{{$item ['header']}}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="border-bottom">
+                                                                    <td>{{$item ['header']}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        @endforeach
+                                                    </table>
+                                                </div>
+
+                                                <div class="col-md-10">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr class="border-bottom">
+                                                                <th>Player</th>
+                                                                <th>Matches</th>
+                                                                <th>Inns</th>
+                                                                <th>Runs</th>
+                                                                <th>Avg</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        {{-- @foreach ($stats['odiStatsList'] as $key => $item)
+                                                            @if (isset($item['values']))
+                                                                @foreach ($item['values'] as $value)
+                                                                    @if (isset($value[1]))
+                                                                        <table class="table table-striped">
+                                                                            <tbody>
+                                                                                <tr class="border-bottom">
+                                                                                    <td>{{ $value[1] }}</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+                                                         @endforeach --}}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- venue --}}
+                                        <div class="tab-pane fade" id="venue" role="tabpanel" aria-labelledby="venue-tab2">
+                                            <div class="table-responsive row">
+                                                <table class="table table-striped">
+                                                    @foreach ($venue['seriesVenue'] as $key => $item)
+                                                        <thead>
+                                                            <tr>
+                                                                {{-- <th colspan="4" class="text-center">{{ $item['country'] }}</th> --}}
+                                                                <th></th>
+                                                                <th>{{ $item['country'] }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="border-bottom">
+                                                                <td>
+                                                                    <img src="{{ asset('assets/admin/img/logo.png') }}" alt="Logo" width="80" height="80">
+                                                                </td>
+                                                                <td>{{ $item['ground'] }}<br>
+                                                                    <span>{{ $item['city'] }}</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    @endforeach
+                                                </table>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                 @else
                                     <ul class="nav nav-pills" id="myTab3" role="tablist">
@@ -265,9 +346,7 @@
                                             <!-- Data will be loaded here -->
                                         </div>
                                     </div>
-
                                 @endif
-
                             </div>
                         </div>
                     </div>

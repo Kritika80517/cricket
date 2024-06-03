@@ -15,8 +15,9 @@ class SendPushNotifications extends Command
     public function handle()
     {
         // Fetch notifications to be sent
-        $notifications = Notification::where('send_at', '<=', now())->where('status', 0)->get();
-
+        // $notifications = Notification::where('send_at', '<=', now())->where('status', 0)->get();
+        $notifications = Notification::where('status', 0)->get();
+// dd($notifications);
         foreach ($notifications as $notification) {
             $data = [
                 'title' => $notification->title,

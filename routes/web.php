@@ -47,4 +47,8 @@ Route::get('/contact', function () {
     return view('frontend.contact');
 });
 
+Route::get('/series', function () {
+    return view('frontend.series');
+});
+
 Route::post('/contact/submit',[ContactController::class, 'store'])->name('contact.submit');

@@ -31,12 +31,6 @@ Route::prefix('v1')->group(function () {
     // Authentication
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
-    
-    Route::get('auth/facebook',[AuthController::class, 'redirectToFacebook'])->name('auth.facebook');
-    Route::get('auth/facebook/callback',[AuthController::class, 'handleFacebookCallback']);
-
-    Route::get('auth/google',[AuthController::class, 'redirectToGoogle'])->name('auth.google');
-    Route::get('auth/google/callback',[AuthController::class, 'handleGoogleCallback']);
 
     Route::get('auth/forgot-password',[ResetPasswordController::class, 'reset_password_request']);
     Route::post('auth/reset-password',[ResetPasswordController::class, 'reset_password_submit']);

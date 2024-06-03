@@ -12,6 +12,8 @@ class SeriesController extends Controller
     public function index(Request $request){
         $matches = [];
         $news = [];
+        $venue = [];
+        $stats = [];
         if(request()->seriesId){
             $match_response = cricketAPI("/series/v1/".request()->seriesId);
             if ($match_response->successful()) {
@@ -22,8 +24,18 @@ class SeriesController extends Controller
             if ($news_response->successful()) {
                 $news = $news_response->json();
             }
+
+            $venue_response = cricketAPI("/series/v1/".request()->seriesId .'/venues');
+            if ($venue_response->successful()) {
+                $venue = $venue_response->json();
+            }
+
+            $stats_response = cricketAPI("/stats/v1/series/".request()->seriesId);
+            if ($stats_response->successful()) {
+                $stats = $stats_response->json();
+            }
         }
-        return view('admin.match-schedule.series.index', compact('matches', 'news'));
+        return view('admin.match-schedule.series.index', compact('matches', 'news' ,'venue','stats'));
     }
 
     public function series($type){

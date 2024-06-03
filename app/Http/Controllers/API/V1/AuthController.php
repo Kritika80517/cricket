@@ -107,70 +107,7 @@ class AuthController extends Controller
         ]);
     }
 
-    // facebook login
-    public function redirectToFacebook()
-    {
-        return response()->json([
-            'url' => Socialite::driver('facebook')->stateless()->redirect()->getTargetUrl(),
-        ]);
-    }
-
-    public function handleFacebookCallback(Request $request)
-    {
-        try {
-            $user = Socialite::driver('facebook')->stateless()->user();
-
-            $findUser = User::where('facebook_id', $user->id)->first();
-
-            if ($findUser) {
-                $token = $findUser->createToken('YourAppName')->plainTextToken;
-                return response()->json(['token' => $token]);
-            } else {
-                $newUser = User::updateOrCreate(
-                    ['email' => $user->email],
-                    [
-                        'name' => $user->name,
-                        'facebook_id' => $user->id,
-                        'password' => bcrypt('123456dummy'),
-                    ]
-                );
-
-                $token = $newUser->createToken('YourAppName')->plainTextToken;
-                return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
-            }
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
-
-    // google login
-
-    public function redirectToGoogle()
-    {
-        return response()->json([
-            'url' => Socialite::driver('google')->stateless()->redirect()->getTargetUrl(),
-        ]);
-    }
-
-    public function handleGoogleCallback(Request $request)
-    {
-        $user = Socialite::driver('google')->userFromToken($request->input('access_token'));
-
-        $existingUser = User::where('email', $user->email)->first();
-
-        if ($existingUser) {
-            Auth::login($existingUser);
-            return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
-        } else {
-            $newUser = new User();
-            $newUser->name = $user->name;
-            $newUser->email = $user->email;
-            $newUser->save();
-            Auth::login($newUser);
-            return response()->json(["message" => "User logged in successfully.", 'user' => $user, 'token' => $token], 200);
-        }
-    }
-
+    // social login
     public function socialLogin(Request $request)
     {
         if (!$request->provider) {
