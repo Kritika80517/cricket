@@ -73,7 +73,7 @@
                 <div class="col-lg-8 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Latest College Enquries</h4>
+                            <h4>Latest  Enquries</h4>
                             
                         </div>
                         <div class="card-body" style="min-height: 415px;">

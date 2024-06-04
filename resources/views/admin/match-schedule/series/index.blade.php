@@ -124,6 +124,7 @@
                                     </ul>
 
                                     <div class="tab-content tab-bordered" id="myTab3Content">
+                                        
                                         <div class="tab-pane fade active show" id="home2" role="tabpanel"
                                             aria-labelledby="home-tab2">
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -134,8 +135,7 @@
                                             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                         </div>
 
-                                        <div class="tab-pane fade" id="schedule_results" role="tabpanel"
-                                            aria-labelledby="schedule_results2">
+                                        <div class="tab-pane fade" id="schedule_results" role="tabpanel"  aria-labelledby="schedule_results2">
                                             <div class="table-responsive">
                                                 <table class="table table-striped">
                                                     <thead>
