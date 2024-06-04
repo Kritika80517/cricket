@@ -34,8 +34,7 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <script src="js/3dslider.js"></script>
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="game_info" data-spy="scroll" data-target=".header">
@@ -52,7 +51,7 @@
                         <div class="col-md-6">
                             <div class="full">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{asset('assets/frontend/images/logo.png')}}" width="70" height="50" alt="#" /></a>
+                                    <a href="{{url('/')}}"><img src="{{asset('assets/frontend/images/logo.png')}}" width="80" height="50" alt="#" /></a>
                                 </div>
                             </div>
                         </div>
@@ -60,10 +59,10 @@
                             <div class="right_top_section">
                                 <!-- social icon -->
                                 <ul class="social-icons pull-left">
-                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                    <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                    <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                                    <li><a class="pinterest" href="#"><i class="fab fa-pinterest-p"></i></a></li>
                                 </ul>
                                 <!-- end social icon -->
                                 <!-- button section -->
@@ -105,87 +104,7 @@
                                                     <li><a href="{{url('/about')}}">About</a></li>
                                                     <li><a href="{{url('/teams')}}">Team</a></li>
                                                     <li><a href="{{url('/news')}}">News</a></li>
-                                                    <li class="dropdown mega-dropdown">
-                                                        <a href="match" class="dropdown-toggle"
-                                                            data-toggle="dropdown">Match<span
-                                                                class="caret"></span></a>
-                                                        <ul class="dropdown-menu mega-dropdown-menu">
-                                                            <li class="col-sm-8">
-                                                                <ul>
-                                                                    <li class="dropdown-header">Men Collection</li>
-                                                                    <div id="menCollection" class="carousel slide"
-                                                                        data-ride="carousel">
-                                                                        <div class="carousel-inner">
-                                                                            <div class="item active">
-                                                                                <div class="banner-for-match"><a
-                                                                                        href="#"><img
-                                                                                            class="img-responsive"
-                                                                                            src="{{asset('assets/frontend/images/match-banner1.jpg')}}"
-                                                                                            alt="#" /></a></div>
-                                                                            </div>
-                                                                            <!-- End Item -->
-                                                                            <div class="item">
-                                                                                <div class="banner-for-match"><a
-                                                                                        href="#"><img
-                                                                                            class="img-responsive"
-                                                                                            src="{{asset('assets/frontend/images/match-banner1.jpg')}}"
-                                                                                            alt="#" /></a></div>
-                                                                            </div>
-                                                                            <!-- End Item -->
-                                                                            <div class="item">
-                                                                                <div class="banner-for-match"><a
-                                                                                        href="#"><img
-                                                                                            class="img-responsive"
-                                                                                            src="{{asset('assets/frontend/images/match-banner1.jpg')}}"
-                                                                                            alt="#" /></a></div>
-                                                                            </div>
-                                                                            <!-- End Item -->
-                                                                        </div>
-                                                                        <!-- End Carousel Inner -->
-                                                                        <!-- Controls -->
-                                                                        <a class="left carousel-control"
-                                                                            href="#menCollection" role="button"
-                                                                            data-slide="prev">
-                                                                            <span
-                                                                                class="glyphicon glyphicon-chevron-left"
-                                                                                aria-hidden="true"></span>
-                                                                            <span class="sr-only">Previous</span>
-                                                                        </a>
-                                                                        <a class="right carousel-control"
-                                                                            href="#menCollection" role="button"
-                                                                            data-slide="next">
-                                                                            <span
-                                                                                class="glyphicon glyphicon-chevron-right"
-                                                                                aria-hidden="true"></span>
-                                                                            <span class="sr-only">Next</span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <!-- /.carousel -->
-                                                                </ul>
-                                                            </li>
-                                                            <li class="col-sm-4">
-                                                                <ul class="menu-inner">
-                                                                    <li class="dropdown-header">Next Matchs</li>
-                                                                    <li><a href="#">Contrary vs classical</a>
-                                                                    </li>
-                                                                    <li><a href="#">Discovered vs undoubtable</a>
-                                                                    </li>
-                                                                    <li><a href="#">Contrary vs classical</a>
-                                                                    </li>
-                                                                    <li><a href="#">Discovered vs undoubtable</a>
-                                                                    </li>
-                                                                    <li><a href="#">Contrary vs classical</a>
-                                                                    </li>
-                                                                    <li><a href="#">Discovered vs undoubtable</a>
-                                                                    </li>
-                                                                    <li><a href="#">Contrary vs classical</a>
-                                                                    </li>
-                                                                    <li><a href="#">Discovered vs undoubtable</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
+                                                    <li><a href="{{url('/matches')}}">Match</a></li>
                                                     <li><a href="{{url('/article')}}">Article</a></li>
                                                     <li><a href="{{url('/contact')}}">contact</a></li>
                                                 </ul>
@@ -226,10 +145,10 @@
                             </div>
                             <p>{{getKeyValue('about_company') }}</p>
                             <ul class="social-icons style-4 pull-left">
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                                <li><a class="pinterest" href="#"><i class="fab fa-pinterest-p"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -286,6 +205,7 @@
     <script src="{{asset('assets/frontend/js/all.js')}}"></script>
     <!-- ALL PLUGINS -->
     <script src="{{asset('assets/frontend/js/custom.js')}}"></script>
+
 </body>
 
 </html>

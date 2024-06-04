@@ -1,7 +1,17 @@
 @extends('frontend.layouts.master')
 @section('page-title', 'Contact')
 @section('website-content')
-
+<style>
+   .card {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        transition: .5s ease-in-out;
+        border-radius: 4px;
+        padding: 20px 10px 10px 10px;
+    }
+    .contact-info.card{
+      padding: 43px 20px !important;
+    }
+</style>
 <div class="inner-page-banner">
     <div class="container">
     </div>
@@ -26,7 +36,7 @@
                 </div>
              </div>
              <div class="col-md-6">
-                <div class="contact-info">
+                <div class="contact-info card">
                    <div class="kode-section-title">
                       <h3>Contact Info</h3>
                    </div>
@@ -50,7 +60,7 @@
                 </div>
              </div>
              <div class="col-md-6">
-                <div class="contact-us">
+                <div class="contact-us card">
                    <form method="POST" action="{{ url('contact/submit') }}" class="comments-form">
                      @csrf
                       <ul>

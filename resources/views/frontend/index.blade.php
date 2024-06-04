@@ -143,12 +143,12 @@
                             @if ($item['scheduleAdWrapper'] ?? false)
                             <ul>
                                 <li>
-                                    <img src="{{"https://cricbuzz-cricket.p.rapidapi.com/img/v1/i1/c".$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['imageId']."/i.jpg"}}" alt="dsdsd">
+                                    <img style="width: 40px;" src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c<?php echo $item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['imageId']; ?>/i.jpg" alt="Team 1 Image">
                                     <span>{{ $item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team1']['teamName'] ?? "" }}</span>
                                 </li>
                                 <li class="vs"><span>vs</span></li>
                                 <li>
-                                    <img src="{{"https://cricbuzz-cricket.p.rapidapi.com/img/v1/i1/c".$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['imageId']."/i.jpg"}}" alt="dsdsd">
+                                    <img style="width: 40px;" src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c<?php echo $item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['imageId']; ?>/i.jpg" alt="Team 2 Image">
                                     <span>{{$item['scheduleAdWrapper']['matchScheduleList'][0]['matchInfo'][0]['team2']['teamName'] ?? ""}}</span>
                                 </li>
                             </ul>
@@ -395,55 +395,57 @@
         </div>
         <div id="team-slider">
             <div class="container">
-                <div class="col-md-3">
-                    <div class="team-column style-2">
-                        <img src="{{asset('assets/frontend/images/img-1-1.jpg')}}" alt="">
-                        <div class="player-name">
-                            <div class="desination-2">Defender</div>
-                            <h5>Charles Wheeler</h5>
-                            <span class="player-number">12</span>
-                        </div>
-                        <div class="overlay">
-                            <div class="team-detail-hover position-center-x">
-                                <p>Lacus vulputate torquent mollis venenatis quisque suspendisse fermentum primis,</p>
-                                <ul class="social-icons style-4 style-5">
-                                    <li><a class="facebook" href="#" tabindex="0"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#" tabindex="0"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="youtube" href="#" tabindex="0"><i class="fa fa-youtube-play"></i></a></li>
-                                    <li><a class="pinterest" href="#" tabindex="0"><i class="fa fa-pinterest-p"></i></a></li>
-                                </ul>
-                                <a class="btn blue-btn" href=" /soccer/team-detail.html" tabindex="0">View Detail</a>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="team-column style-2">
+                            <img src="{{asset('assets/frontend/images/img-1-1.jpg')}}" alt="">
+                            <div class="player-name">
+                                <div class="desination-2">Defender</div>
+                                <h5>Charles Wheeler</h5>
+                                <span class="player-number">12</span>
+                            </div>
+                            <div class="overlay">
+                                <div class="team-detail-hover position-center-x">
+                                    <p>Lacus vulputate torquent mollis venenatis quisque suspendisse fermentum primis,</p>
+                                    <ul class="social-icons style-4 style-5">
+                                        <li><a class="facebook" href="#" tabindex="0"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a class="twitter" href="#" tabindex="0"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a class="youtube" href="#" tabindex="0"><i class="fa fa-youtube-play"></i></a></li>
+                                        <li><a class="pinterest" href="#" tabindex="0"><i class="fa fa-pinterest-p"></i></a></li>
+                                    </ul>
+                                    <a class="btn blue-btn" href=" /soccer/team-detail.html" tabindex="0">View Detail</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="team-column style-2">
-                        <img src="{{asset('assets/frontend/images/img-1-2.jpg')}}" alt="">
-                        <div class="player-name">
-                            <div class="desination-2">Defender</div>
-                            <h5>Charles Wheeler</h5>
-                            <span class="player-number">12</span>
+                    <div class="col-md-3">
+                        <div class="team-column style-2">
+                            <img src="{{asset('assets/frontend/images/img-1-2.jpg')}}" alt="">
+                            <div class="player-name">
+                                <div class="desination-2">Defender</div>
+                                <h5>Charles Wheeler</h5>
+                                <span class="player-number">12</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="team-column style-2">
-                        <img src="{{asset('assets/frontend/images/img-1-3.jpg')}}" alt="">
-                        <div class="player-name">
-                            <div class="desination-2">Defender</div>
-                            <h5>Charles Wheeler</h5>
-                            <span class="player-number">12</span>
+                    <div class="col-md-3">
+                        <div class="team-column style-2">
+                            <img src="{{asset('assets/frontend/images/img-1-3.jpg')}}" alt="">
+                            <div class="player-name">
+                                <div class="desination-2">Defender</div>
+                                <h5>Charles Wheeler</h5>
+                                <span class="player-number">12</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="team-column style-2">
-                        <img src="{{asset('assets/frontend/images/img-1-4.jpg')}}" alt="">
-                        <div class="player-name">
-                            <div class="desination-2">Defender</div>
-                            <h5>Charles Wheeler</h5>
-                            <span class="player-number">12</span>
+                    <div class="col-md-3">
+                        <div class="team-column style-2">
+                            <img src="{{asset('assets/frontend/images/img-1-4.jpg')}}" alt="">
+                            <div class="player-name">
+                                <div class="desination-2">Defender</div>
+                                <h5>Charles Wheeler</h5>
+                                <span class="player-number">12</span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -210,6 +210,9 @@
      margin: 0 0 0 0px;
      position: relative;
 }
+.logo img {
+    border-radius: 2px;
+}
  .menu {
      float: left;
      width: 100%;
@@ -702,9 +705,7 @@
      border-top: solid #eee 2px;
      font-weight: 400;
 }
- .top-story {
-     padding: 30px 0;
-}
+
  .content-widget {
      border: 1px solid #e1e1e1;
      margin: 0 0 30px;
@@ -716,13 +717,12 @@
      width: 100%;
 }
  .top-stroy-header {
-     padding: 0 30px;
+     padding: 15px 20px;
 }
  .top-story h2 {
      font-size: 20px;
      position: relative;
      font-weight: 600;
-     margin: 0 0 10px;
      text-transform: capitalize;
 }
  .top-story .date {
@@ -740,15 +740,27 @@
      text-transform: capitalize;
      padding: 0;
 }
+.other-stroies{
+    padding: 0 !important;
+}
  .other-stroies li {
      position: relative;
-     margin: 7px 0;
+     padding: 10px 5px;
+     border-bottom: .5px solid #5c5c5c;
+     transition: .5s ease-in-out;
 }
  .other-stroies li a {
-     padding: 9px 30px;
+     padding: 12px 30px;
      color: #555;
-     font-weight: 400;
+     font-weight: 500;
      font-size: 14px;
+     width: 100%;
+}
+.other-stroies li:hover, .other-stroies li.active{
+    background-color: #daf0fa;
+}
+ .other-stroies li:hover a {
+     color: #111111;
 }
  .other-stroies li::before {
      content: "\f105";
@@ -776,11 +788,29 @@
      box-shadow: 0 10px 20px -25px rgba(50,50,50,1);
      border: solid #e1e1e1 1px;
      padding: 0 0 15px 0;
+     border-radius: 4px !important;
+     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: .5s ease-in-out;
+}
+.news-post-widget:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
  .news-post-widget .img-responsive {
      width: 100%;
      margin-bottom: 10px;
+     padding: 10px !important;
+     border-radius: 8px !important;
 }
+.news-post-widget .intro-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    height: 3.3em; /* Adjust based on line-height */
+}
+
  .news-post-detail {
      padding: 5px 20px 10px;
 }
@@ -957,12 +987,13 @@
      float: left;
      width: 100%;
      min-height: 500px;
-     background-image: url('../images/about.png');
+     background-image: url('../images/breadcrum.jpg');
      background-position: center center;
      background-repeat: no-repeat;
      background-size: cover;
      position: relative;
 }
+
  .inner-information {
      float: left;
      width: 100%;

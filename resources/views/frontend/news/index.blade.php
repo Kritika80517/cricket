@@ -26,10 +26,9 @@
          <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="content-widget top-story" id="news-category-container" style="background: url(images/top-story-bg.jpg);">
                <div class="top-stroy-header">
-                     <h2>Top Soccer Headlines Story <a href="#" class="fa fa-fa fa-angle-right"></a></h2>
-                     <span class="date">July 05, 2017</span>
-                     <h2>Other Headlines</h2>
+                     <h2>Top Categories</h2>
                </div>
+               <hr style="margin: 0; padding:0;">
                <ul class="other-stroies" id="news-category-list">
                      
                </ul>
@@ -62,8 +61,8 @@
                                     <img class="img-responsive" src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${story.coverImage.id}/${story.hline}.jpg" alt="${story.hline}">
                                     <div class="news-post-detail">
                                         <span class="date">${new Date(parseInt(story.pubTime)).toLocaleDateString()}</span>
-                                        <h2><a href="blog-detail.html">${story.hline}</a></h2>
-                                        <p>${story.intro}</p>
+                                        <h2><a href="#">${story.hline}</a></h2>
+                                        <p class="intro-text">${story.intro}</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,10 +89,12 @@
                 const categories = data.storyType;
                 const listContainer = $(`#${containerId}`);
                 if (categories.length > 0) {
+                    const activeCategoryId = fetchIdFromUrl();
                     listContainer.empty(); // Clear the container
                     categories.forEach(category => {
+                        const isActive = category.id == activeCategoryId ? 'active' : '';
                         listContainer.append(`
-                            <li><a href="{{url('news/')}}?category=${category.id}">${category.name}</a></li>
+                            <li class="${isActive}"><a href="{{url('news/')}}?category=${category.id}">${category.name}</a></li>
                         `);
                     });
                 } else {
