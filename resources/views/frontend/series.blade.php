@@ -1,69 +1,68 @@
 @extends('frontend.layouts.master')
-@section('page-title', 'News')
+@section('page-title', 'Series')
 @section('website-content')
-<style>
-    /* CSS Styles */
-.cb-nav-pill-1 {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #eee;
-    text-decoration: none;
-    color: #000;
-    display: inline-block;
-}
+    <style>
+        /* CSS Styles */
+        .cb-nav-pill-1 {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #eee;
+            text-decoration: none;
+            color: #000;
+            display: inline-block;
+        }
 
-.cb-font-12 {
-    font-size: 12px;
-}
+        .cb-font-12 {
+            font-size: 12px;
+        }
 
-.ct-on-tab-click {
-    cursor: pointer;
-}
+        .ct-on-tab-click {
+            cursor: pointer;
+        }
 
-.active {
-    background-color: #ccc;
-}
+        .active {
+            background-color: #ccc;
+        }
 
-.cb-lv-grn-strip {
-    background-color: #8fbc8f;
-    color: #fff;
-}
+        .cb-lv-grn-strip {
+            background-color: #8fbc8f;
+            color: #fff;
+        }
 
-.cb-col {
-    display: inline-block;
-    color: black;
-}
+        .cb-col {
+            display: inline-block;
+            color: black;
+        }
 
-.cb-col-16 {
-    width: 16%;
-    color: black;
-}
+        .cb-col-16 {
+            width: 16%;
+            color: black;
+        }
 
-.cb-col-84 {
-    width: 84%;
-}
+        .cb-col-84 {
+            width: 84%;
+        }
 
-.cb-col-100 {
-    width: 100%;
-}
+        .cb-col-100 {
+            width: 100%;
+        }
 
-.text-bold {
-    font-weight: bold;
-}
+        .text-bold {
+            font-weight: bold;
+        }
 
-.text-black {
-    color: #000;
-}
+        .text-black {
+            color: #000;
+        }
 
-.text-gray {
-    color: #777;
-}
+        .text-gray {
+            color: #777;
+        }
 
-.text-hvr-underline:hover {
-    text-decoration: underline;
-}
-
-</style>
+        .text-hvr-underline:hover {
+            text-decoration: underline;
+        }
+    </style>
 
     <div class="inner-page-banner">
         <div class="container">
@@ -71,23 +70,21 @@
     </div>
     <div class="inner-information-text">
         <div class="container">
-            <h3>News</h3>
+            <h3>Series</h3>
             <ul class="breadcrumb">
                 <li><a href="index.html">Home</a></li>
-                <li class="active">News</li>
+                <li class="active">Series</li>
             </ul>
         </div>
     </div>
 
-    <section id="contant" class="contant">
+    <section id="contant" class="contant main-heading team">
         <div class="container">
             <div class="cb-bg-white cb-schdl cb-col cb-col-100 ng-scope" ng-controller="scheduleFilters">
                 <!----Cricket Schedule-->
                 {{-- <h1 class="cb-schdl-hdr cb-font-24 line-ht30">Series</h1> --}}
 
                 <nav class="cb-schdl-nvtb" gtm-label="upcoming series">
-
-
 
                     <a id="category-link" href="#"
                         class="cb-nav-pill-1 cb-font-12 ct-on-tab-click active">International</a>
@@ -341,7 +338,7 @@
                         };
                         if (typeof(firebase) != undefined) {
                             var cbPlusState = (localStorage.getItem('userState') != null) ? localStorage.getItem('userState') :
-                            'NOTSET';
+                                'NOTSET';
                             var cbPlusUId = (localStorage.getItem('userId') != null) ? localStorage.getItem('userId') : 'NOTSET';
                             var cbSubscriptionPlan = (localStorage.getItem('planId') != null) ? 'PLAN' + localStorage.getItem(
                                 'planId') : 'PLAN0';
