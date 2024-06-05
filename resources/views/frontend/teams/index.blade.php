@@ -158,7 +158,7 @@
                                        <div class="">
                                           <strong class="team-name">${team.teamName}</strong>
                                           <p class="title">${team.teamSName}</p>
-                                          <a href="{{url('teams/')}}/${team.teamId}" class="center" style="margin-top: 10px;"><button class="button">Details</button></a>
+                                          <a href="{{url('teams/')}}/${team.teamId}/info?teamId=${team.teamId}&teamName=${team.teamName}" class="center" style="margin-top: 10px;"><button class="button">Details</button></a>
                                        </div>
                                  </div>
                               </div>

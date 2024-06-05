@@ -58,7 +58,7 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        <h4 style="text-align: left; margin-left:20px">India National Cricket Team</h4>
+                        <h4 style="text-align: left; margin-left:20px">{{request()->teamName ?? ''}} National Cricket Team</h4>
                     </div>
 
                     <div class="card-body">
@@ -131,7 +131,7 @@
                             {{-- schedule --}}
                             <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab2">
                                 <div class="container">
-                                    <h4 style="text-align: left; margin-bottom: 15px;">India Cricket Team Schedule</h4>
+                                    <h4 style="text-align: left; margin-bottom: 15px;">{{request()->teamName ?? ''}} Cricket Team Schedule</h4>
 
                                     <table class="table table-striped">
                                         <thead style="background-color: lightgray">
@@ -141,46 +141,8 @@
                                                 <th>Time</th>
                                             </tr>
                                         </thead>
-                                        <tbody style="text-align: left">
-                                            <tr>
-                                                <td>Jun 05, Wed</td>
-                                                <td>
-                                                    <a href="#">India vs Ireland, 8th Match, Group A</a><br>
-                                                    ICC Mens T20 World Cup 2024<br>
-                                                    Nassau County International Cricket Stadium, New York<br>
-                                                    <span style="color: orange;">Match starts at Jun 05, 14:30 GMT</span>
-                                                </td>
-                                                <td>
-                                                    8:00 PM<br>
-                                                    02:30 PM GMT / 10:30 AM LOCAL
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jun 09, Sun</td>
-                                                <td>
-                                                    <a href="">India vs Pakistan, 19th Match, Group A</a><br>
-                                                    ICC Mens T20 World Cup 2024<br>
-                                                    Nassau County International Cricket Stadium, New York<br>
-                                                    <span style="color: orange;">Match starts at Jun 09, 14:30 GMT</span>
-                                                </td>
-                                                <td>
-                                                    8:00 PM<br>
-                                                    02:30 PM GMT / 10:30 AM LOCAL
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jun 12, Wed</td>
-                                                <td>
-                                                    <a href="">United States vs India, 25th Match, Group A</a><br>
-                                                    ICC Mens T20 World Cup 2024<br>
-                                                    Nassau County International Cricket Stadium, New York<br>
-                                                    <span style="color: orange;">Match starts at Jun 12, 14:30 GMT</span>
-                                                </td>
-                                                <td>
-                                                    8:00 PM<br>
-                                                    02:30 PM GMT / 10:30 AM LOCAL
-                                                </td>
-                                            </tr>
+                                        <tbody style="text-align: left" id="teams-schedules">
+                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -190,7 +152,7 @@
                             {{-- results --}}
                             <div class="tab-pane fade" id="results" role="tabpanel" aria-labelledby="results-tab2">
                                 <div class="container">
-                                    <h4 style="text-align: left; margin-bottom: 15px;">India Cricket Team Results</h4>
+                                    <h4 style="text-align: left; margin-bottom: 15px;">{{request()->teamName ?? ''}} Cricket Team Results</h4>
 
                                     <table class="table table-striped">
                                         <thead style="background-color: lightgray">
@@ -199,43 +161,8 @@
                                                 <th>Match Details</th>
                                             </tr>
                                         </thead>
-                                        <tbody style="text-align: left">
-                                            <tr>
-                                                <td>Jun 01, Sat</td>
-                                                <td>
-                                                    <a href="#">India vs Bangladesh, 15th Match</a><br>
-                                                    ICC Mens T20 World Cup Warm-up Matches 2024<br>
-                                                    Nassau County International Cricket Stadium, New York<br>
-                                                    <span style="color: rgb(61, 61, 241);">India won by 60 runs</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mar 07, Thu</td>
-                                                <td>
-                                                    <a href="#">England vs India, 5th Test</a><br>
-                                                    England tour of India, 2024<br>
-                                                    Himachal Pradesh Cricket Association Stadium, Dharamsala<br>
-                                                    <span style="color: rgb(61, 61, 241);">India won by an innings and 64 runs</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jun 01, Sat</td>
-                                                <td>
-                                                    <a href="#">India vs Bangladesh, 15th Match</a><br>
-                                                    ICC Mens T20 World Cup Warm-up Matches 2024<br>
-                                                    Nassau County International Cricket Stadium, New York<br>
-                                                    <span style="color: rgb(61, 61, 241);">India won by 60 runs</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mar 07, Thu</td>
-                                                <td>
-                                                    <a href="#">England vs India, 5th Test</a><br>
-                                                    England tour of India, 2024<br>
-                                                    Himachal Pradesh Cricket Association Stadium, Dharamsala<br>
-                                                    <span style="color: rgb(61, 61, 241);">India won by an innings and 64 runs</span>
-                                                </td>
-                                            </tr>
+                                        <tbody style="text-align: left" id="results-table">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -245,42 +172,8 @@
                             <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab2">
                                 <div class="container" style="margin-top: 20px">
                                     <table class="table">
-                                        {{-- <thead style="background-color: lightgray">
-                                                <tr>
-                                                    <th style="width: 250px">Date</th>
-                                                    <th>Match Details</th>
-                                                    <th>Time</th>
-                                                </tr>
-                                            </thead> --}}
-                                        <tbody style="text-align: left">
-                                            <tr>
-                                                <td style="width: 250px;"> <img src="https://via.placeholder.com/250" alt="News Image" width="200" height="150" class="img-fluid"></td>
-                                                <td>
-                                                    <a href="#">Ireland hope to spring surprise as India begin their campaign</a><br>
-                                                    With the conditions in New York unpredictable,
-                                                    Ireland hope to continue their giant-killing spree.<br>
-                                                    <span>Jun 04 2024</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 250px;"><img src="https://via.placeholder.com/250" alt="News Image" width="200" height="150" class="img-fluid"></td>
-                                                <td>
-                                                    Tried to convince Dravid to stay on as coach: Rohit<br>
-                                                    IThe current head coach has confirmed that he's not seeking extension and that the ongoing
-                                                    T20 World Cup will be his last assignment in the role<br>
-                                                    Nassau County International Cricket Stadium, New York<br>
-                                                    <span>Jun 04 2024</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 250px;"> <img src="https://via.placeholder.com/250" alt="News Image" width="200" height="150" class="img-fluid"></td>
-                                                <td>
-                                                    Ireland hope to spring surprise as India begin their campaign<br>
-                                                    With the conditions in New York unpredictable, Ireland
-                                                    hope to continue their giant-killing spree.<br>
-                                                    <span>Jun 04 2024</span>
-                                                </td>
-                                            </tr>
+                                        <tbody style="text-align: left" id="news-table">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -332,137 +225,6 @@
                                                         <td>2,058</td>
                                                         <td>69</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Rahul Dravid</td>
-                                                        <td>163</td>
-                                                        <td>284</td>
-                                                        <td>13,265</td>
-                                                        <td>53</td>
-                                                        <td>43</td>
-                                                        <td>1,652</td>
-                                                        <td>21</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Sunil Gavaskar</td>
-                                                        <td>125</td>
-                                                        <td>214</td>
-                                                        <td>10,122</td>
-                                                        <td>51</td>
-                                                        <td>66</td>
-                                                        <td>1,016</td>
-                                                        <td>26</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Virat Kohli</td>
-                                                        <td>113</td>
-                                                        <td>191</td>
-                                                        <td>8,848</td>
-                                                        <td>49</td>
-                                                        <td>56</td>
-                                                        <td>991</td>
-                                                        <td>26</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>VVS Laxman</td>
-                                                        <td>134</td>
-                                                        <td>225</td>
-                                                        <td>8,781</td>
-                                                        <td>46</td>
-                                                        <td>49</td>
-                                                        <td>1,135</td>
-                                                        <td>5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Virender Sehwag</td>
-                                                        <td>103</td>
-                                                        <td>178</td>
-                                                        <td>8,503</td>
-                                                        <td>49</td>
-                                                        <td>82</td>
-                                                        <td>1,219</td>
-                                                        <td>90</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Sourav Ganguly</td>
-                                                        <td>113</td>
-                                                        <td>188</td>
-                                                        <td>7,212</td>
-                                                        <td>42</td>
-                                                        <td>51</td>
-                                                        <td>900</td>
-                                                        <td>57</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cheteshwar Pujara</td>
-                                                        <td>103</td>
-                                                        <td>176</td>
-                                                        <td>7,195</td>
-                                                        <td>44</td>
-                                                        <td>44</td>
-                                                        <td>863</td>
-                                                        <td>16</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Dilip Vengsarkar</td>
-                                                        <td>116</td>
-                                                        <td>185</td>
-                                                        <td>6,868</td>
-                                                        <td>42</td>
-                                                        <td>60</td>
-                                                        <td>560</td>
-                                                        <td>17</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Mohammad Azharuddin</td>
-                                                        <td>99</td>
-                                                        <td>147</td>
-                                                        <td>6,215</td>
-                                                        <td>45</td>
-                                                        <td>63</td>
-                                                        <td>720</td>
-                                                        <td>19</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Gundappa Viswanath</td>
-                                                        <td>91</td>
-                                                        <td>155</td>
-                                                        <td>6,080</td>
-                                                        <td>42</td>
-                                                        <td>76</td>
-                                                        <td>616</td>
-                                                        <td>6</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Kapil Dev</td>
-                                                        <td>131</td>
-                                                        <td>184</td>
-                                                        <td>5,248</td>
-                                                        <td>31</td>
-                                                        <td>95</td>
-                                                        <td>587</td>
-                                                        <td>61</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ajinkya Rahane</td>
-                                                        <td>85</td>
-                                                        <td>144</td>
-                                                        <td>5,077</td>
-                                                        <td>38</td>
-                                                        <td>50</td>
-                                                        <td>579</td>
-                                                        <td>35</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>MS Dhoni</td>
-                                                        <td>90</td>
-                                                        <td>144</td>
-                                                        <td>4,876</td>
-                                                        <td>38</td>
-                                                        <td>59</td>
-                                                        <td>544</td>
-                                                        <td>78</td>
-                                                    </tr>
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -481,4 +243,133 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function() {
+
+        // Teams schedules
+        $.ajax({
+            url: '/teams/schedules/?teamId='+fetchIdFromUrl(),
+            type: 'GET',
+            success: function(response) {
+                let matches = response.teamMatchesData[0].matchDetailsMap.match;
+                matches.forEach(match => {
+                    let matchInfo = match.matchInfo;
+                    let startDate = new Date(parseInt(matchInfo.startDate));
+                    let endDate = new Date(parseInt(matchInfo.endDate));
+
+                    let row = `
+                        <tr>
+                            <td>${startDate.toDateString()}</td>
+                            <td>
+                                <a href="#">${matchInfo.team1.teamName} vs ${matchInfo.team2.teamName}, ${matchInfo.matchDesc}</a><br>
+                                ${matchInfo.seriesName}<br>
+                                ${matchInfo.venueInfo.ground}, ${matchInfo.venueInfo.city}<br>
+                                <span style="color: orange;">Match starts at ${startDate.toUTCString()}</span>
+                            </td>
+                            <td>
+                                ${startDate.toLocaleTimeString()}<br>
+                                ${endDate.toLocaleTimeString()} GMT / LOCAL
+                            </td>
+                        </tr>
+                    `;
+                    $('#teams-schedules').append(row);
+                });
+            }
+        });
+
+        // Team result
+        $.ajax({
+            url: '/teams/results?teamId='+fetchIdFromUrl(),
+            type: 'GET',
+            success: function(response) {
+                response.teamMatchesData.forEach(teamMatch => {
+                    if (teamMatch.matchDetailsMap) {
+                        let matchDetailsMap = teamMatch.matchDetailsMap;
+                        var row = null;
+                        
+                        // Iterate over all keys in matchDetailsMap
+                        Object.keys(matchDetailsMap).forEach(key => {
+                            if (Array.isArray(matchDetailsMap[key])) {
+                                var utcDate = null;
+                                let matches = matchDetailsMap[key];
+                                matches.forEach(match => {
+                                    let matchInfo = match.matchInfo;
+                                    let matchScore = match.matchScore;
+                                    
+                                    let startDate = new Date(parseInt(matchInfo.startDate));
+                                    console.log(startDate.toUTCString());
+                                   
+                                    row += `
+                                        <tr>
+                                            <td>${startDate.toDateString()}</td>
+                                            <td>
+                                                <a href="#">${matchInfo.team1.teamName} vs ${matchInfo.team2.teamName}, ${matchInfo.matchDesc}</a><br>
+                                                ${matchInfo.seriesName}<br>
+                                                ${matchInfo.venueInfo.ground}, ${matchInfo.venueInfo.city}<br>
+                                                <span style="color: rgb(61, 61, 241);">${matchInfo.status}</span><br>
+
+                                            </td>
+                                           
+                                        </tr>
+                                    `;
+                                    
+                                });
+                                $('#results-table').append(row);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        // Team News
+        $.ajax({
+            url: '/teams/news?teamId='+fetchIdFromUrl(),
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // Extract the list of news stories from the response
+                let storyList = response.storyList;
+
+                // Iterate over each news story and create HTML elements to display them
+                storyList.forEach(storyItem => {
+                    if (storyItem.story) {
+                        let story = storyItem.story;
+                        console.log(story);
+                        // Create HTML elements dynamically
+                        let newsImage = `<img src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${story.imageId}/cms-img.jpg" alt="${story.hline}" width="200" height="150" class="img-fluid">`;
+                        let newsLink = `<a href="#">${story.hline}</a>`;
+                        let newsIntro = `<br>${story.intro}`;
+                        let pubTime = new Date(parseInt(story.pubTime)).toDateString();
+
+                        // Create a row for each news story
+                        let row = `
+                            <tr>
+                                <td style="width: 250px;">${newsImage}</td>
+                                <td>
+                                    ${newsLink}${newsIntro}<br>
+                                    <span>${pubTime}</span>
+                                </td>
+                            </tr>
+                        `;
+                        
+                        $('#news-table').append(row);
+                    }
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching news data:', error);
+            }
+        });
+
+    });
+
+
+    function fetchIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const teamId = urlParams.get('teamId');
+        return teamId;
+   }
+</script>
 @endsection
