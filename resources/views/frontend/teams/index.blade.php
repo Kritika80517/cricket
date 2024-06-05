@@ -78,6 +78,13 @@
         padding: 18px 0 !important;
         color: #000;
     }
+    .team .card {
+     float: left;
+     width: 100%;
+     border: solid #ccc 1px;
+     margin-bottom: 20px;
+     padding-bottom: 15px;
+}
 
 </style>
 

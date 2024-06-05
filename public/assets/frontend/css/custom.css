@@ -1122,7 +1122,7 @@
 }
  .team .card {
      float: left;
-     width: 100%;
+     /* width: 100%; */
      border: solid #ccc 1px;
      margin-bottom: 20px;
      padding-bottom: 15px;
