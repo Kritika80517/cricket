@@ -33,4 +33,8 @@ class NewsController extends Controller
             return response()->json([]);
         }
     }
+
+    public function show(){
+        return view('frontend.news.details');
+    }
 }

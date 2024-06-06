@@ -37,6 +37,33 @@
         margin-top: 20px;
         text-align: left;
     }
+    .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: left;
+            color: #000
+        }
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .player {
+            display: flex;
+            align-items: center;
+        }
+        .player img {
+            width: 50px;
+            height: 50px;
+            /* border-radius: 50%; */
+            margin-right: 10px;
+        }
+        .player-name {
+            font-size: 16px;
+            position: static;
+            background: none;
+        }
 
 </style>
 <div class="inner-page-banner">
@@ -234,7 +261,44 @@
 
                             {{-- players --}}
                             <div class="tab-pane fade" id="player" role="tabpanel" aria-labelledby="player-tab2">
-                                <p>players</p>
+                                <div class="container">
+                                    <div class="section-title">ALL ROUNDER</div>
+                                    <div class="player-grid">
+                                        <div class="player">
+                                            <img src="https://via.placeholder.com/50" alt="Hardik Pandya">
+                                            <div class="player-name">Hardik Pandya</div>
+                                        </div>
+                                        <div class="player">
+                                            <img src="https://via.placeholder.com/50" alt="Hanuma Vihari">
+                                            <div class="player-name">Hanuma Vihari</div>
+                                        </div>
+                                        <div class="player">
+                                            <img src="https://via.placeholder.com/50" alt="Ravindra Jadeja">
+                                            <div class="player-name">Ravindra Jadeja</div>
+                                        </div>
+                                        <div class="player">
+                                            <img src="https://via.placeholder.com/50" alt="Ravichandran Ashwin">
+                                            <div class="player-name">Ravichandran Ashwin</div>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="section-title">WICKET KEEPER</div>
+                                    <div class="player-grid">
+                                        <div class="player">
+                                            <img src="https://via.placeholder.com/50" alt="KL Rahul">
+                                            <div class="player-name" style="text-align: left">KL Rahul</div>
+                                        </div>
+                                        <div class="player">
+                                            <img src="https://via.placeholder.com/50" alt="Sanju Samson">
+                                            <div class="player-name">Sanju Samson</div>
+                                        </div>
+                                        <div class="player">
+                                            <img src="https://via.placeholder.com/50" alt="Wriddhiman Saha">
+                                            <div class="player-name">Wriddhiman Saha</div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -253,12 +317,14 @@
             type: 'GET',
             success: function(response) {
                 let matches = response.teamMatchesData[0].matchDetailsMap.match;
+                var row = null;
+
                 matches.forEach(match => {
                     let matchInfo = match.matchInfo;
                     let startDate = new Date(parseInt(matchInfo.startDate));
                     let endDate = new Date(parseInt(matchInfo.endDate));
 
-                    let row = `
+                    row += `
                         <tr>
                             <td>${startDate.toDateString()}</td>
                             <td>
@@ -273,8 +339,8 @@
                             </td>
                         </tr>
                     `;
-                    $('#teams-schedules').append(row);
                 });
+                $('#teams-schedules').append(row);
             }
         });
 

@@ -46,6 +46,7 @@ Route::get('/teams/news',  [TeamController::class, 'getNews']);
 Route::get('/news', [NewsController::class, 'index']);
 Route::get('/news-info',  [NewsController::class, 'news']);
 Route::get('/news-categories',  [NewsController::class, 'categories']);
+Route::get('/news/info',  [NewsController::class, 'show']);
 
 
 Route::get('/article', function () {
@@ -57,6 +58,9 @@ Route::get('/contact', function () {
     return view('frontend.contact');
 });
 
+Route::get('/matches', function () {
+    return view('frontend.matches.index');
+});
 Route::get('/series', function () {
     return view('frontend.series');
 });

@@ -56,10 +56,12 @@
    }
 
 </style>
+
 <div class="inner-page-banner">
     <div class="container">
     </div>
 </div>
+
 <div class="inner-information-text">
     <div class="container">
         <h3>Article</h3>
