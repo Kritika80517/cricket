@@ -61,7 +61,7 @@
                                     <img class="img-responsive" src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${story.coverImage.id}/${story.hline}.jpg" alt="${story.hline}">
                                     <div class="news-post-detail">
                                         <span class="date">${new Date(parseInt(story.pubTime)).toLocaleDateString()}</span>
-                                        <h2><a href="#">${story.hline}</a></h2>
+                                        <h2><a href="{{url('news/details')}}/${story.id}">${story.hline}</a></h2>
                                         <p class="intro-text">${story.intro}</p>
                                     </div>
                                 </div>

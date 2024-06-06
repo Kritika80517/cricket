@@ -261,43 +261,8 @@
 
                             {{-- players --}}
                             <div class="tab-pane fade" id="player" role="tabpanel" aria-labelledby="player-tab2">
-                                <div class="container">
-                                    <div class="section-title">ALL ROUNDER</div>
-                                    <div class="player-grid">
-                                        <div class="player">
-                                            <img src="https://via.placeholder.com/50" alt="Hardik Pandya">
-                                            <div class="player-name">Hardik Pandya</div>
-                                        </div>
-                                        <div class="player">
-                                            <img src="https://via.placeholder.com/50" alt="Hanuma Vihari">
-                                            <div class="player-name">Hanuma Vihari</div>
-                                        </div>
-                                        <div class="player">
-                                            <img src="https://via.placeholder.com/50" alt="Ravindra Jadeja">
-                                            <div class="player-name">Ravindra Jadeja</div>
-                                        </div>
-                                        <div class="player">
-                                            <img src="https://via.placeholder.com/50" alt="Ravichandran Ashwin">
-                                            <div class="player-name">Ravichandran Ashwin</div>
-                                        </div>
-                                    </div>
-                            
-                                    <div class="section-title">WICKET KEEPER</div>
-                                    <div class="player-grid">
-                                        <div class="player">
-                                            <img src="https://via.placeholder.com/50" alt="KL Rahul">
-                                            <div class="player-name" style="text-align: left">KL Rahul</div>
-                                        </div>
-                                        <div class="player">
-                                            <img src="https://via.placeholder.com/50" alt="Sanju Samson">
-                                            <div class="player-name">Sanju Samson</div>
-                                        </div>
-                                        <div class="player">
-                                            <img src="https://via.placeholder.com/50" alt="Wriddhiman Saha">
-                                            <div class="player-name">Wriddhiman Saha</div>
-                                        </div>
-                                       
-                                    </div>
+                                <div class="container" id="team-player">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -316,31 +281,41 @@
             url: '/teams/schedules/?teamId='+fetchIdFromUrl(),
             type: 'GET',
             success: function(response) {
-                let matches = response.teamMatchesData[0].matchDetailsMap.match;
-                var row = null;
+                response.teamMatchesData.forEach(teamMatch => {
+                    if (teamMatch.matchDetailsMap) {
+                        let matchDetailsMap = teamMatch.matchDetailsMap;
+                        var row = null;
+                        
+                        // Iterate over all keys in matchDetailsMap
+                        Object.keys(matchDetailsMap).forEach(key => {
+                            if (Array.isArray(matchDetailsMap[key])) {
+                                let matches = matchDetailsMap[key];
+                                matches.forEach(match => {
+                                    let matchInfo = match.matchInfo;
+                                    let startDate = new Date(parseInt(matchInfo.startDate));
+                                    let endDate = new Date(parseInt(matchInfo.endDate));
 
-                matches.forEach(match => {
-                    let matchInfo = match.matchInfo;
-                    let startDate = new Date(parseInt(matchInfo.startDate));
-                    let endDate = new Date(parseInt(matchInfo.endDate));
-
-                    row += `
-                        <tr>
-                            <td>${startDate.toDateString()}</td>
-                            <td>
-                                <a href="#">${matchInfo.team1.teamName} vs ${matchInfo.team2.teamName}, ${matchInfo.matchDesc}</a><br>
-                                ${matchInfo.seriesName}<br>
-                                ${matchInfo.venueInfo.ground}, ${matchInfo.venueInfo.city}<br>
-                                <span style="color: orange;">Match starts at ${startDate.toUTCString()}</span>
-                            </td>
-                            <td>
-                                ${startDate.toLocaleTimeString()}<br>
-                                ${endDate.toLocaleTimeString()} GMT / LOCAL
-                            </td>
-                        </tr>
-                    `;
+                                    row += `
+                                        <tr>
+                                            <td>${startDate.toDateString()}</td>
+                                            <td>
+                                                <a href="#">${matchInfo.team1.teamName} vs ${matchInfo.team2.teamName}, ${matchInfo.matchDesc}</a><br>
+                                                ${matchInfo.seriesName}<br>
+                                                ${matchInfo.venueInfo.ground}, ${matchInfo.venueInfo.city}<br>
+                                                <span style="color: orange;">Match starts at ${startDate.toUTCString()}</span>
+                                            </td>
+                                            <td>
+                                                ${startDate.toLocaleTimeString()}<br>
+                                                ${endDate.toLocaleTimeString()} GMT / LOCAL
+                                            </td>
+                                        </tr>
+                                    `;
+                                });
+                            }
+                        });
+                        $('#teams-schedules').append(row);
+                    }
                 });
-                $('#teams-schedules').append(row);
             }
         });
 
@@ -364,7 +339,6 @@
                                     let matchScore = match.matchScore;
                                     
                                     let startDate = new Date(parseInt(matchInfo.startDate));
-                                    console.log(startDate.toUTCString());
                                    
                                     row += `
                                         <tr>
@@ -397,12 +371,11 @@
             success: function(response) {
                 // Extract the list of news stories from the response
                 let storyList = response.storyList;
-
+                var row = null;
                 // Iterate over each news story and create HTML elements to display them
                 storyList.forEach(storyItem => {
                     if (storyItem.story) {
                         let story = storyItem.story;
-                        console.log(story);
                         // Create HTML elements dynamically
                         let newsImage = `<img src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${story.imageId}/cms-img.jpg" alt="${story.hline}" width="200" height="150" class="img-fluid">`;
                         let newsLink = `<a href="#">${story.hline}</a>`;
@@ -410,7 +383,7 @@
                         let pubTime = new Date(parseInt(story.pubTime)).toDateString();
 
                         // Create a row for each news story
-                        let row = `
+                        row += `
                             <tr>
                                 <td style="width: 250px;">${newsImage}</td>
                                 <td>
@@ -420,7 +393,38 @@
                             </tr>
                         `;
                         
-                        $('#news-table').append(row);
+                    }
+                    $('#news-table').append(row);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching news data:', error);
+            }
+        });
+
+        // Team Players
+        $.ajax({
+            url: '/teams/players?teamId='+fetchIdFromUrl(),
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                let players = response.player;
+                let playerContainer = $('#team-player');
+                let sectionTitle = '';
+
+                players.forEach(player => {
+                    if (!player.id) {
+                        // This means it's a section title
+                        sectionTitle = player.name;
+                        playerContainer.append('<div class="section-title">' + sectionTitle + '</div><div class="player-grid" id="grid-' + sectionTitle.replace(/\s/g, '-') + '"></div>');
+                    } else {
+                        // This means it's a player
+                        let playerGrid = $('#grid-' + sectionTitle.replace(/\s/g, '-'));
+                        let playerHtml = `<div class="player">
+                                         <img src="https://static.cricbuzz.com/a/img/v1/75x75/i1/c${player.imageId}/${player.name}.jpg" alt="${player.name}">
+                                         <div class="player-name">${player.name}</div>
+                                         </div>`;
+                        playerGrid.append(playerHtml);
                     }
                 });
             },

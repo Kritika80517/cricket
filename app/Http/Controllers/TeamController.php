@@ -60,4 +60,13 @@ class TeamController extends Controller
             return response()->json([]);
         }
     }
+    public function getPlayers(Request $request){
+        $response = cricketAPI("/teams/v1/" . $request->teamId . '/players');
+        
+        if ($response->successful()) {
+            return response()->json($response->json());
+        } else {
+            return response()->json([]);
+        }
+    }
 }

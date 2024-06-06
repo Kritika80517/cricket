@@ -24,6 +24,17 @@ class NewsController extends Controller
         }
     }
 
+    public function newsDetails(Request $request, $newsId){
+        $response = cricketAPI("/news/v1/detail/".$newsId);
+        $data = [];
+        if ($response->successful()) {
+            $data = $response->json();
+            return view('frontend.news.details', compact('data'));
+        }
+        return view('frontend.news.details', compact('data'));
+
+    }
+
     public function categories(Request $request){
         $response = cricketAPI("/news/v1/cat");
         

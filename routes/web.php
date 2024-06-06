@@ -39,14 +39,13 @@ Route::get('/teams-info/{type}',  [TeamController::class, 'teams']);
 Route::get('/teams/schedules',  [TeamController::class, 'getSchedules']);
 Route::get('/teams/results',  [TeamController::class, 'getResults']);
 Route::get('/teams/news',  [TeamController::class, 'getNews']);
-
-
+Route::get('/teams/players',  [TeamController::class, 'getPlayers']);
 
 // News
 Route::get('/news', [NewsController::class, 'index']);
 Route::get('/news-info',  [NewsController::class, 'news']);
 Route::get('/news-categories',  [NewsController::class, 'categories']);
-Route::get('/news/info',  [NewsController::class, 'show']);
+Route::get('/news/details/{newsId}',  [NewsController::class, 'newsDetails']);
 
 
 Route::get('/article', function () {
