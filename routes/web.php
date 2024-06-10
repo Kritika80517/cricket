@@ -61,7 +61,7 @@ Route::get('/matches', function () {
     return view('frontend.matches.index');
 });
 Route::get('/series', function () {
-    return view('frontend.series');
+    return view('frontend.series.index');
 });
 
 Route::post('/contact/submit',[ContactController::class, 'store'])->name('contact.submit');

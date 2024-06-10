@@ -248,11 +248,12 @@ class CricketController extends Controller
     }
 
     public function series_stats(Request $request){
-        if($request->has('statsType','seriesId')){
-            $statsType = $request->statsType;
+        if($request->has('seriesId' , 'statsType')){
             $seriesId = $request->seriesId;
+            $statsType = $request->statsType;
         }
-        $response = cricketAPI("/stats/v1/series/".$seriesId."/statsType/".$statsType);
+        // $response = cricketAPI("/stats/v1/series/".$seriesId."/statsType/".$statsType);
+        $response = cricketAPI("/stats/v1/series/{$seriesId}?statsType={$statsType}");
         
         if ($response->successful()) {
             return response()->json($response->json(), 200);
@@ -353,7 +354,8 @@ class CricketController extends Controller
             $teamId = $request->teamId;
             $statsType = $request->statsType;
         }
-        $response = cricketAPI("/stats/v1/team/".$teamId."/statsType/".$statsType);
+        $response = cricketAPI("/stats/v1/team/{$teamId}?statsType={$statsType}");
+        // $response = cricketAPI("/stats/v1/team/".$teamId."/statsType/".$statsType);
         
         if ($response->successful()) {
             return response()->json($response->json(), 200);
