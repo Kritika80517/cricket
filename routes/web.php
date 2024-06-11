@@ -21,7 +21,8 @@ use App\Http\Controllers\NewsController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [UserController::class, 'index'])->name('login');
-Route::post('/register', [UserController::class, 'register'])->name('register.submit');
+Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::post('/register/submit', [UserController::class, 'registerSubmit'])->name('register.submit');
 Route::post('/login/submit', [UserController::class, 'login'])->name('login.submit');
 Route::get('/forgot/password', [UserController::class, 'forgotPasswordForm'])->name('forgot.password');
 Route::post('/submit/forget-password', [UserController::class, 'submitForgetPasswordForm'])->name('submit.forget.password'); 
@@ -34,7 +35,8 @@ Route::get('/about', function () {
 
 // Teams
 Route::get('/teams', [TeamController::class, 'index']);
-Route::get('/teams/{team_id}/info', [TeamController::class, 'show']);
+Route::get('/teams/info', [TeamController::class, 'show']);
+// Route::get('/teams/{team_id}/info', [TeamController::class, 'show']);
 Route::get('/teams-info/{type}',  [TeamController::class, 'teams']);
 Route::get('/teams/schedules',  [TeamController::class, 'getSchedules']);
 Route::get('/teams/results',  [TeamController::class, 'getResults']);
@@ -44,6 +46,7 @@ Route::get('/teams/players',  [TeamController::class, 'getPlayers']);
 // News
 Route::get('/news', [NewsController::class, 'index']);
 Route::get('/news-info',  [NewsController::class, 'news']);
+Route::get('/news/info',  [NewsController::class, 'show']);
 Route::get('/news-categories',  [NewsController::class, 'categories']);
 Route::get('/news/details/{newsId}',  [NewsController::class, 'newsDetails']);
 

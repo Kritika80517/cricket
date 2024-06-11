@@ -71,7 +71,7 @@
                         <div class="team">
                         <a href="../../sportscup/run/single-team.html">
                                 Colombia
-                                <img src="../../sportscup/run/img/clubs-logos/colombia.png" alt="club-logo">
+                                <img src="{{asset('assets/frontend/img/clubs-logos/colombia.png')}}" alt="club-logo">
                             </a>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="col-lg-5">
                         <div class="team right">
                             <a href="../../sportscup/run/single-team.html">
-                                <img src="../../sportscup/run/img/clubs-logos/arg.png" alt="club-logo">
+                                <img src="{{asset('assets/frontend/img/clubs-logos/arg.png')}}" alt="club-logo">
                                 Argentina
                             </a>
                         </div>
@@ -112,7 +112,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="item-player">
                             <div class="head-player">
-                                <img src="../../sportscup/run/img/players/1.jpg" alt="location-team">
+                                <img src="{{asset('assets/frontend/img/players/1.jpg')}}" alt="location-team">
                                 <div class="overlay"><a href="../../sportscup/run/single-player.html">+</a></div>
                             </div>
                             <div class="info-player">
@@ -125,7 +125,7 @@
                                 </h4>
                                 <ul class="no-margin">
                                     <li>
-                                        <strong>NATIONALITY</strong> <span><img src="../../sportscup/run/img/clubs-logos/por.png" alt=""> Portugal </span
+                                        <strong>NATIONALITY</strong> <span><img src="{{asset('assets/frontend/img/clubs-logos/por.png')}}" alt=""> Portugal </span>
                                     </li>
                                 </ul>
                             </div>
@@ -137,7 +137,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="item-player">
                             <div class="head-player">
-                                <img src="../../sportscup/run/img/players/2.jpg" alt="location-team">
+                                <img src="{{asset('assets/frontend/img/players/2.jpg')}}" alt="location-team">
                                 <div class="overlay"><a href="../../sportscup/run/single-player.html">+</a></div>
                             </div>
                             <div class="info-player">
@@ -150,7 +150,7 @@
                                 </h4>
                                 <ul class="no-margin">
                                     <li>
-                                        <strong>NATIONALITY</strong> <span><img src="../../sportscup/run/img/clubs-logos/arg.png" alt=""> Argentina </span
+                                        <strong>NATIONALITY</strong> <span><img src="{{asset('assets/frontend/img/clubs-logos/arg.png')}}" alt=""> Argentina </span>
                                     </li>
                                 </ul>
                             </div>
@@ -162,7 +162,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="item-player">
                             <div class="head-player">
-                                <img src="../../sportscup/run/img/players/3.jpg" alt="location-team">
+                                <img src="{{asset('assets/frontend/img/players/3.jpg')}}" alt="location-team">
                                 <div class="overlay"><a href="../../sportscup/run/single-player.html">+</a></div>
                             </div>
                             <div class="info-player">
@@ -175,7 +175,7 @@
                                 </h4>
                                 <ul class="no-margin">
                                     <li>
-                                        <strong>NATIONALITY</strong> <span><img src="../../sportscup/run/img/clubs-logos/bra.png" alt=""> Brazil </span
+                                        <strong>NATIONALITY</strong> <span><img src="{{asset('assets/frontend/img/clubs-logos/bra.png')}}" alt=""> Brazil </span>
                                     </li>
                                 </ul>
                             </div>
@@ -187,7 +187,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="item-player">
                             <div class="head-player">
-                                <img src="../../sportscup/run/img/players/4.jpg" alt="location-team">
+                                <img src="{{('assets/frontend/img/players/4.jpg')}}" alt="location-team">
                                 <div class="overlay"><a href="../../sportscup/run/single-player.html">+</a></div>
                             </div>
                             <div class="info-player">
@@ -200,8 +200,7 @@
                                 </h4>
                                 <ul class="no-margin">
                                     <li>
-                                        <strong>NATIONALITY</strong> <span><img src="../../sportscup/run/img/clubs-logos/uru.png" alt=""> Uruguay </span
-                                    </li>
+                                        <strong>NATIONALITY</strong> <span><img src="../../sportscup/run/img/clubs-logos/uru.png" alt=""> Uruguay </span>                                    </li>
                                 </ul>
                             </div>
                             <a href="../../sportscup/run/single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
@@ -238,7 +237,7 @@
                                         <td class="text-left number">1 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/colombia.png" alt="Colombia"><span>Colombia</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/colombia.png')}}" alt="Colombia"><span>Colombia</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -250,7 +249,7 @@
                                         <td class="text-left number">2 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/bra.png" alt="Brazil"><span>Brazil</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/bra.png')}}" alt="Brazil"><span>Brazil</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -262,7 +261,7 @@
                                         <td class="text-left number">3 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/arg.png" alt="Argentina"><span>Argentina</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/arg.png')}}" alt="Argentina"><span>Argentina</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -274,7 +273,7 @@
                                         <td class="text-left number">4<i class="fa fa-caret-down" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/japan.png" alt="Japan"><span>Japan</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/japan.png')}}" alt="Japan"><span>Japan</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -286,7 +285,7 @@
                                         <td class="text-left number">5  <i class="fa fa-caret-up" aria-hidden="true"></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/sen.png" alt="Senegal"><span>Senegal</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/sen.png')}}" alt="Senegal"><span>Senegal</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -298,7 +297,7 @@
                                         <td class="text-left number">6<i class="fa fa-caret-down" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/pol.png" alt="Poland"><span>Poland</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/pol.png')}}" alt="Poland"><span>Poland</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -310,7 +309,7 @@
                                         <td class="text-left number">7<i class="fa fa-caret-down" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img  src="../../sportscup/run/img/clubs-logos/rusia.png" alt="Russia"><span>Russia</span>
+                                                <img  src="{{asset('assets/frontend/img/clubs-logos/rusia.p')}}ng" alt="Russia"><span>Russia</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -322,7 +321,7 @@
                                         <td class="text-left number">8<i class="fa fa-caret-up" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                         <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/irn.png" alt="Iran"><span>Iran</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/irn.png')}}" alt="Iran"><span>Iran</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -334,7 +333,7 @@
                                         <td class="text-left number">9 <i class="fa fa-circle" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                             <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/esp.png" alt="Spain"><span>Spain</span>
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/esp.png')}}" alt="Spain"><span>Spain</span>
                                             </a>
                                         </td>
                                         <td>38</td>
@@ -346,7 +345,7 @@
                                         <td class="text-left number">10<i class="fa fa-circle" aria-hidden="true"></i></td>
                                         <td class="text-left">
                                             <a href="../../sportscup/run/single-team.html">
-                                                <img src="../../sportscup/run/img/clubs-logos/fra.png" alt="France">
+                                                <img src="{{asset('assets/frontend/img/clubs-logos/fra.png')}}" alt="France">
                                                 <span>France</span>
                                             </a>
                                         </td>
@@ -388,7 +387,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="img-hover">
-                                        <img src="../../sportscup/run/img/blog/1.jpg" alt="" class="img-responsive">
+                                        <img src="{{asset('assets/frontend/img/blog/1.jpg')}}" alt="" class="img-responsive">
                                         <div class="overlay"><a href="../../sportscup/run/single-news.html">+</a></div>
                                         </div>
                                     </div>
@@ -405,7 +404,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="img-hover">
-                                        <img src="../../sportscup/run/img/blog/2.jpg" alt="" class="img-responsive">
+                                        <img src="{{asset('assets/frontend/img/blog/2.jpg')}}" alt="" class="img-responsive">
                                         <div class="overlay"><a href="../../sportscup/run/single-news.html">+</a></div>
                                         </div>
                                     </div>
@@ -422,7 +421,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="img-hover">
-                                        <img src="../../sportscup/run/img/blog/3.jpg" alt="" class="img-responsive">
+                                        <img src="{{asset('assets/frontend/img/blog/3.jpg')}}" alt="" class="img-responsive">
                                         <div class="overlay"><a href="../../sportscup/run/single-news.html">+</a></div>
                                         </div>
                                     </div>
@@ -439,7 +438,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="img-hover">
-                                        <img src="../../sportscup/run/img/blog/4.jpg" alt="" class="img-responsive">
+                                        <img src="{{asset('assets/frontend/img/blog/4.jpg')}}" alt="" class="img-responsive">
                                         <div class="overlay"><a href="../../sportscup/run/single-news.html">+</a></div>
                                         </div>
                                     </div>
@@ -473,7 +472,7 @@
                                         1
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/1.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/1.jpg')}}" alt="">
                                             Cristiano R.
                                         </a>
                                         <span class="points">
@@ -485,7 +484,7 @@
                                         2
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/2.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/2.jpg')}}" alt="">
                                             Lionel Messi
                                         </a>
                                         <span class="points">
@@ -497,7 +496,7 @@
                                         3
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/3.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/3.jpg')}}" alt="">
                                             Neymar
                                         </a>
                                         <span class="points">
@@ -509,7 +508,7 @@
                                         4
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/4.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/4.jpg')}}" alt="">
                                             Luis Suárez
                                         </a>
                                         <span class="points">
@@ -521,7 +520,7 @@
                                         5
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/5.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/5.jpg')}}" alt="">
                                             Gareth Bale
                                         </a>
                                         <span class="points">
@@ -533,7 +532,7 @@
                                         6
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/6.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="">
                                             Sergio Agüero
                                         </a>
                                         <span class="points">
@@ -545,7 +544,7 @@
                                         7
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/2.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/2.jpg')}}" alt="">
                                             Jamez R.
                                         </a>
                                         <span class="points">
@@ -557,7 +556,7 @@
                                         8
                                     </span>
                                     <a href="../../sportscup/run/single-team.html">
-                                            <img src="../../sportscup/run/img/players/1.jpg" alt="">
+                                            <img src="{{asset('assets/frontend/img/players/1.jpg')}}" alt="">
                                             Falcao Garcia
                                         </a>
                                         <span class="points">
@@ -588,19 +587,19 @@
                         </div>
                         <!--End Sponsors CLub -->
                         <ul class="sponsors-carousel">
-                            <li><a href="#"><img src="../../sportscup/run/img/sponsors/1.png" alt=""></a></li>
-                            <li><a href="#"><img src="../../sportscup/run/img/sponsors/2.png" alt=""></a></li>
-                            <li><a href="#"><img src="../../sportscup/run/img/sponsors/3.png" alt=""></a></li>
-                            <li><a href="#"><img src="../../sportscup/run/img/sponsors/4.png" alt=""></a></li>
-                            <li><a href="#"><img src="../../sportscup/run/img/sponsors/5.png" alt=""></a></li>
-                            <li><a href="#"><img src="../../sportscup/run/img/sponsors/3.png" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/frontend/img/sponsors/1.png')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/frontend/img/sponsors/2.png')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/frontend/img/sponsors/3.png')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/frontend/img/sponsors/4.png')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/frontend/img/sponsors/5.png')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/frontend/img/sponsors/3.png')}}" alt=""></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Newsletter -->
-        <div class="section-newsletter dark">
+        {{-- <div class="section-newsletter dark">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -635,7 +634,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- End Newsletter -->
     </section>
     <!-- End Section Area -  Content Central -->

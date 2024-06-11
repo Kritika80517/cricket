@@ -14,7 +14,7 @@
             <li>
                 <div>
                     <a href="#" class="facebook">
-                        <i class="fa fa-facebook"></i>
+                        <i class="fas fa-facebook"></i>
                     </a>
                 </div>
             </li>

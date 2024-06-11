@@ -16,8 +16,8 @@
                 <!-- Adds Header-->
                 <div class="col text-right">
                     <div class="adds">
-                        <a href="{{ url('login') }}">Login</a> |
-                        <a href="{{ url('register') }}">Register</a>
+                        <a href="{{ url('/login') }}">Login</a> |
+                        <a href="{{ url('/register') }}">Register</a>
                     </div>
 
                     <!-- Call Nav Menu-->

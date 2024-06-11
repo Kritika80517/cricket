@@ -42,7 +42,11 @@ class UserController extends Controller
         ])->withInput();
     }
 
-    public function register(Request $request)
+    public function register()
+    {
+        return view('frontend.auth.register');
+    }
+    public function registerSubmit(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
