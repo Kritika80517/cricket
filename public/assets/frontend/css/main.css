@@ -18506,7 +18506,7 @@ address strong {
 }
 /* line 2904, ../sass/main.scss */
 .item-team .info-team {
-  padding: 50px 0 0 0;
+  padding: 20px 0 0 0;
   text-align: center;
   position: relative;
 }
@@ -18530,8 +18530,9 @@ address strong {
 }
 /* line 2924, ../sass/main.scss */
 .item-team .info-team h4 {
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
+
 /* line 2927, ../sass/main.scss */
 .item-team .info-team .location-team {
   border-top: 1px solid #dedede;

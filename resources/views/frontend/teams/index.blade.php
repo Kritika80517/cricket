@@ -67,24 +67,26 @@
             <div class="col-md-6 col-lg-4 col-xl-3 international" style="position: absolute; left: 325px; top: 0px;">
                 <div class="item-team">
                     <div class="head-team">
-                        <img src="{{asset('assets/frontend/img/clubs-teams/arabia.jpg')}}" alt="location-team">
+                        <img class="w-100" src="{{asset('assets/frontend/img/clubs-logos/arabia.png')}}" alt="location-team">
                         <div class="overlay"><a href="single-team.html">+</a></div>
                     </div>
                     <div class="info-team">
-                        <span class="logo-team">
+                        {{-- <span class="logo-team">
                             <img src="{{asset('assets/frontend/img/clubs-logos/arabia.png')}}" alt="logo-team">
-                        </span>
-                        <h4>Saudi Arabia</h4>
-                        <span class="location-team">
+                        </span> --}}
+                        <h4>Saudi Arabia </h4>
+                        <small class="mb-2">DSD</small>
+                        
+                        {{-- <span class="location-team">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                             Stadium
                         </span>
                         <span class="group-team">
                             <i class="fa fa-trophy" aria-hidden="true"></i>
                             Group A
-                        </span>
+                        </span> --}}
                     </div>
-                    <a href="single-team.html" class="btn">Team Profile <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    <a href="{{ url('teams/info') }}" class="btn">Details <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </div>
             </div>
             
