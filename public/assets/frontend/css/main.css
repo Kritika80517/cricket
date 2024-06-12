@@ -18501,12 +18501,12 @@ address strong {
 /* line 2899, ../sass/main.scss */
 .item-team .head-team {
   overflow: hidden;
-  max-height: 165px;
+  /* max-height: 165px; */
   position: relative;
 }
 /* line 2904, ../sass/main.scss */
 .item-team .info-team {
-  padding: 20px 0 0 0;
+  padding: 15px 0 10px 0;
   text-align: center;
   position: relative;
 }
@@ -18529,9 +18529,6 @@ address strong {
   width: 40px;
 }
 /* line 2924, ../sass/main.scss */
-.item-team .info-team h4 {
-  margin-bottom: 5px;
-}
 
 /* line 2927, ../sass/main.scss */
 .item-team .info-team .location-team {
@@ -18594,25 +18591,25 @@ address strong {
 }
 /* line 2981, ../sass/main.scss */
 .item-player .info-player {
-  padding: 35px 0 0 0;
+  padding: 120px 0 0 0;
   position: relative;
 }
 /* line 2984, ../sass/main.scss */
 .item-player .info-player .number-player {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 50%;
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  margin-left: -25px;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
+  width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: rgba(0, 0, 0, 0.8); */
+    border-radius: 50%;
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    margin-left: -47px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
 }
 /* line 3000, ../sass/main.scss */
 .item-player .info-player h4 {
@@ -19151,4 +19148,74 @@ table.career tr td img {
   bottom: -38px;
   width: 100%;
   height: 38px;
+}
+
+
+/* Loader */
+/* Center the loader */
+.loader-div{
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.loader-div .loader {
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  margin: -46px 0 0 -46px;
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  animation-name: animate-bottom;
+  -webkit-animation-name: animate-bottom;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+}
+
+@-webkit-keyframes animate-bottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes animate-bottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }

@@ -36,8 +36,8 @@ Route::get('/about', function () {
 // Teams
 Route::get('/teams', [TeamController::class, 'index']);
 Route::get('/teams/info', [TeamController::class, 'show']);
-// Route::get('/teams/{team_id}/info', [TeamController::class, 'show']);
-Route::get('/teams-info/{type}',  [TeamController::class, 'teams']);
+Route::get('/teams/{team_id}/info', [TeamController::class, 'show']);
+Route::get('/teams/list/{type}',  [TeamController::class, 'teams']);
 Route::get('/teams/schedules',  [TeamController::class, 'getSchedules']);
 Route::get('/teams/results',  [TeamController::class, 'getResults']);
 Route::get('/teams/news',  [TeamController::class, 'getNews']);

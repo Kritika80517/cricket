@@ -6,49 +6,8 @@
         <div class="row">
             <div class="col-xl-7">
                 <div class="row">
-                    <div class="col-md-3">
-                        <img src="{{asset('assets/frontend/img/clubs-logos/col_logo.png')}}" alt="">
-                    </div>
-
                     <div class="col-md-9">
-                        <h1>COLOMBIA</h1>
-                        <ul class="general-info">
-                            <li><h6><strong>Foundation:</strong> 1930</h6></li>
-                            <li><h6><strong>President:</strong> Juan R.</h6></li>
-                            <li><h6><strong>Manager:</strong> Pekerman</h6></li>
-                            <li><h6><strong>Total Titles:</strong> 100+</h6></li>
-                            <li><h6><strong>Location:</strong> Colombia</h6></li>
-                            <li>
-                                <h6>
-                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                    <a href="https://themeforest.net/user/iwthemes/portfolio?ref=iwthemes" target="_blank">www.site.com</a>
-                                </h6>
-                            </li>
-                        </ul>
-
-                        <ul class="social-teams">
-                            <li>
-                                <div>
-                                    <a href="#" class="facebook">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="#" class="twitter-icon">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a href="#" class="youtube">
-                                        <i class="fa fa-youtube"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
+                        <h1>{{ request()->teamName ?? "" }}</h1>
                     </div>
                 </div>
             </div>
@@ -68,7 +27,7 @@
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTab">
                        <li class="" aria-expanded="false"><a href="#overview" data-toggle="tab" class="active" aria-expanded="true">Overview</a></li>
-                       <li><a href="#fixtures" data-toggle="tab" class="" aria-expanded="false">SCHEDULE</a></li>
+                       <li><a href="#schedule" data-toggle="tab" class="" aria-expanded="false">SCHEDULE</a></li>
                        <li><a href="#results" data-toggle="tab" class="" aria-expanded="false">RESULTS</a></li>
                        <li><a href="#news" data-toggle="tab" class="" aria-expanded="false">NEWS</a></li>
                        <li><a href="#stats" data-toggle="tab" class="" aria-expanded="false">STATS</a></li>
@@ -77,7 +36,7 @@
                     <!-- End Nav Tabs -->
                 </div>
 
-                <div class="col-lg-9 padding-top-mini">
+                <div class="col-lg-9">
                     <!-- Content Tabs -->
                     <div class="tab-content">
                         <!-- Tab One - overview -->
@@ -85,23 +44,17 @@
 
                            <div class="panel-box padding-b">
                               <div class="titles">
-                                  <h4>Colombia national football team</h4>
+                                  <h4>Top Stories</h4>
                               </div>
-                                <div class="row">
-                                   <div class="col-lg-12 col-xl-4">
-                                        <img src="{{asset('assets/frontend/img/clubs-teams/single-team.jpg')}}" alt="">
-                                   </div>
-
-                                   <div class="col-lg-12 col-xl-8">
-                                       <p>The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in international football competitions and is overseen by the Colombian Football Federation. It is a member of the CONMEBOL and is currently ranked thirteenth in the FIFA World Rankings.[3] The team are nicknamed Los Cafeteros due to the coffee production in their country.</p>
-
-                                        <p>Since the mid-1980s, the national team has been a symbol fighting the country's negative reputation. This has made the sport popular and made the national team a sign of nationalism, pride and passion for many Colombians worldwide.</p>
-                                   </div>
-                               </div>
+                              <div id="top-stories">
+                                <div class="loader-div" >
+                                    <div class="loader"></div>
+                                </div>
+                              </div>
                            </div>
 
-                           <!--Items Club News -->
-                           <div class="row">
+                           <!--Latest Photos-->
+                           {{-- <div class="row">
                               <div class="col-md-12">
                                   <h3 class="clear-title">Latest Club News</h3>
                               </div>
@@ -159,23 +112,22 @@
                                     <!-- End Widget Text-->
                                </div>
                                <!--End Item Club News -->
-                           </div>
-                           <!--End Items Club News -->
+                           </div> --}}
+                           <!--End Latest Photos-->
 
-                           <!--Items Club video -->
-                           <div class="row no-line-height">
+                           <!--Latest video -->
+                           {{-- <div class="row no-line-height">
                               <div class="col-md-12">
-                                  <h3 class="clear-title">Latest Club Videos</h3>
+                                  <h3 class="clear-title">Latest Videos</h3>
                               </div>
 
-                              <!--Item Club News -->
                               <div class="col-lg-6 col-xl-4">
                                    <!-- Widget Text-->
                                     <div class="panel-box">
                                         <div class="titles no-margin">
                                             <h4><a href="#">Eliminatory to the world.</a></h4>
                                         </div>
-                                        <iframe class="video" src="https://www.youtube.com/embed/Ln8rXkeeyP0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+                                        <iframe class="video" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
                                     </div>
                                     <!-- End Widget Text-->
                                </div>
@@ -188,7 +140,7 @@
                                         <div class="titles no-margin">
                                             <h4><a href="#">Colombia classification</a></h4>
                                         </div>
-                                        <iframe class="video" src="https://www.youtube.com/embed/Z5cackyUfgk" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+                                        <iframe class="video" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
                                     </div>
                                     <!-- End Widget Text-->
                                </div>
@@ -201,445 +153,61 @@
                                         <div class="titles no-margin">
                                             <h4><a href="#">World Cup goal</a></h4>
                                         </div>
-                                        <iframe class="video" src="https://www.youtube.com/embed/hW3hnUoUS0k" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+                                        <iframe class="video" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
                                     </div>
                                     <!-- End Widget Text-->
                                </div>
                                <!--End Item Club News -->
-                           </div>
+                           </div> --}}
                            <!--End Items Club video -->
                         </div>
                         <!-- Tab One - overview -->
 
-                        <!-- Tab Theree - fixtures -->
-                        <div class="tab-pane" id="fixtures" aria-expanded="false">
+                        {{-- Team Schedules --}}
+                        <div class="tab-pane" id="schedule" aria-expanded="false">
 
                             <table class="table-striped table-responsive table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Team A</th>
-                                        <th class="text-center">VS</th>
-                                        <th>Team B</th>
-                                        <th>Details</th>
+                                        <th>Date</th>
+                                        <th>Match Details</th>
+                                        <th>Time</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <img src="img/clubs-logos/colombia.png" alt="icon">
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                        </td>
-                                        <td class="text-center">Vs</td>
-                                        <td>
-                                            <img src="img/clubs-logos/japan.png" alt="icon1">
-                                            <strong>Japan</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                        </td>
-                                        <td>
-                                            Jun 19,  07:00<br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                            <img src="img/clubs-logos/pol.png" alt="icon1">
-                                            <strong>Poland</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                        </td>
-                                        <td class="text-center">Vs</td>
-                                        <td>
-                                            <img src="img/clubs-logos/colombia.png" alt="icon">
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                        </td>
-                                        <td>
-                                            Jun 24,  13:00<br>
-                                            <small class="meta-text">Kazan Arena,Kazan</small>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                            <img src="img/clubs-logos/sen.png" alt="icon1">
-                                            <strong>Senegal</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                        </td>
-                                        <td class="text-center">Vs</td>
-                                        <td>
-                                            <img src="img/clubs-logos/colombia.png" alt="icon">
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                        </td>
-                                        <td>
-                                            Jun 28, 09:00<br>
-                                            <small class="meta-text">Samara Arena,Samara</small>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                       <td>
-                                            <img src="img/clubs-logos/colombia.png" alt="icon">
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                       </td>
-                                       <td class="text-center">Vs</td>
-                                       <td>
-                                            <img src="img/clubs-logos/pol.png" alt="icon1">
-                                            <strong>Poland</strong><br>
-                                            <small class="meta-text">GROUP H.</small>
-                                        </td>
-                                        <td>
-                                            Jun 24,  13:00<br>
-                                            <small class="meta-text">Kazan Arena,Kazan</small>
-                                        </td>
-                                    </tr>
+                                <tbody id="teams-schedules">
+                                 
                                 </tbody>
                             </table>
 
                         </div>
-                        <!-- End Tab Theree - fixtures -->
 
-                        <!-- Tab Theree - results -->
+                        {{-- Team Results --}}
                         <div class="tab-pane" id="results" aria-expanded="false">
-                            <div class="recent-results results-page">
-                                <div class="info-results">
-                                    <ul>
-                                        <li>
-                                            <span class="head">
-                                                Portugal Vs Spain <span class="date">27 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                    Portugal
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/esp.png" alt="">
-                                                    Spain
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <span class="head">
-                                                Rusia Vs Colombia <span class="date">30 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/rusia.png" alt="">
-                                                    Rusia
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/colombia.png" alt="">
-                                                     Colombia
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <span class="head">
-                                                Uruguay Vs Portugal <span class="date">31 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/uru.png" alt="">
-                                                    Uruguay
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                     Portugal
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <span class="head">
-                                                Uruguay Vs Portugal <span class="date">31 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/uru.png" alt="">
-                                                    Uruguay
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                     Portugal
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <span class="head">
-                                                Uruguay Vs Portugal <span class="date">31 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/uru.png" alt="">
-                                                    Uruguay
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                     Portugal
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <span class="head">
-                                                Uruguay Vs Portugal <span class="date">31 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/uru.png" alt="">
-                                                    Uruguay
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                     Portugal
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <span class="head">
-                                                Uruguay Vs Portugal <span class="date">31 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/uru.png" alt="">
-                                                    Uruguay
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                     Portugal
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                         <li>
-                                            <span class="head">
-                                                Portugal Vs Spain <span class="date">27 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                    Portugal
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/esp.png" alt="">
-                                                    Spain
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <span class="head">
-                                                Uruguay Vs Portugal <span class="date">31 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/uru.png" alt="">
-                                                    Uruguay
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                     Portugal
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                         <li>
-                                            <span class="head">
-                                                Portugal Vs Spain <span class="date">27 Jun 2017</span>
-                                            </span>
-
-                                            <div class="goals-result">
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/por.png" alt="">
-                                                    Portugal
-                                                </a>
-
-                                                <span class="goals">
-                                                    <b>2</b> - <b>3</b>
-                                                    <a href="single-result.html" class="btn theme">View More</a>
-                                                </span>
-
-                                                <a href="single-team.html">
-                                                    <img src="img/clubs-logos/esp.png" alt="">
-                                                    Spain
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                           </div>
+                            <table class="table-striped table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Match Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="teams-results">
+                                 
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- End Tab Theree - results -->
 
-                        <!-- Tab One - news -->
+                        {{-- Team News --}}
                         <div class="tab-pane " id="news" aria-expanded="true">
 
-                            <div class="panel-box padding-b">
-                               <div class="titles">
-                                   <h4>Colombia national football team</h4>
-                               </div>
-                                 <div class="row">
-                                    <div class="col-lg-12 col-xl-4">
-                                        <img src="{{asset('assets/frontend/img/clubs-teams/single-team.jpg')}}" alt="">
-                                    </div>
- 
-                                    <div class="col-lg-12 col-xl-8">
-                                        <p>The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in international football competitions and is overseen by the Colombian Football Federation. It is a member of the CONMEBOL and is currently ranked thirteenth in the FIFA World Rankings.[3] The team are nicknamed Los Cafeteros due to the coffee production in their country.</p>
- 
-                                         <p>Since the mid-1980s, the national team has been a symbol fighting the country's negative reputation. This has made the sport popular and made the national team a sign of nationalism, pride and passion for many Colombians worldwide.</p>
-                                    </div>
+                            <div style="padding: 20px 0;" class="panel-box" id="teams-news">
+                                <div class="loader-div">
+                                    <div class="loader"></div>
                                 </div>
-
-                                <div class="titles">
-                                    <h4>Colombia national football team</h4>
-                                </div>
-                                  <div class="row">
-                                     <div class="col-lg-12 col-xl-4">
-                                         <img src="{{asset('assets/frontend/img/clubs-teams/single-team.jpg')}}" alt="">
-                                     </div>
-  
-                                     <div class="col-lg-12 col-xl-8">
-                                         <p>The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in international football competitions and is overseen by the Colombian Football Federation. It is a member of the CONMEBOL and is currently ranked thirteenth in the FIFA World Rankings.[3] The team are nicknamed Los Cafeteros due to the coffee production in their country.</p>
-  
-                                          <p>Since the mid-1980s, the national team has been a symbol fighting the country's negative reputation. This has made the sport popular and made the national team a sign of nationalism, pride and passion for many Colombians worldwide.</p>
-                                     </div>
-                                 </div>
                             </div>
-
  
-                            <!--Items Club News -->
-                            <div class="row">
-                               <div class="col-md-12">
-                                   <h3 class="clear-title">Latest Club News</h3>
-                               </div>
- 
-                               <!--Item Club News -->
-                               <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                     <div class="panel-box">
-                                         <div class="titles no-margin">
-                                             <h4><a href="#">World football's dates.</a></h4>
-                                         </div>
-                                         <a href="#"><img src="img/blog/1.jpg" alt=""></a>
-                                         <div class="row">
-                                            <div class="info-panel">
-                                                 <p>Fans from all around the world can apply for 2018 FIFA World Cup™ tickets as the first window of sales.</p>
-                                            </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
- 
-                                <!--Item Club News -->
-                               <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                     <div class="panel-box">
-                                         <div class="titles no-margin">
-                                             <h4><a href="#">Mbappe’s year to remember</a></h4>
-                                         </div>
-                                         <a href="#"><img src="img/blog/2.jpg" alt=""></a>
-                                         <div class="row">
-                                            <div class="info-panel">
-                                                 <p>Tickets may be purchased online by using Visa payment cards or Visa Checkout. Visa is the official.</p>
-                                            </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
- 
-                                <!--Item Club News -->
-                               <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                     <div class="panel-box">
-                                         <div class="titles no-margin">
-                                             <h4><a href="#">Egypt are one family</a></h4>
-                                         </div>
-                                         <a href="#"><img src="img/blog/3.jpg" alt=""></a>
-                                         <div class="row">
-                                            <div class="info-panel">
-                                                 <p>Successful applicants who have applied for supporter tickets and conditional supporter tickets will.</p>
-                                            </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
-                            </div>
-                            <!--End Items Club News -->
-                            
-                         <!-- Tab One - news -->
                         </div>
                         
-                        <!-- Tab Theree - stats -->
+                        {{-- Team Stats --}}
                         <div class="tab-pane" id="stats" aria-expanded="false">
 
                             <div class="row">
@@ -744,451 +312,97 @@
                             </div>
 
                         </div>
-                        <!-- End Tab Theree - stats -->
 
-                        <!-- Tab Two - player -->
+                        {{-- team Players --}}
                         <div class="tab-pane" id="players" aria-expanded="false">
-                            <div class="row">
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/1.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                13
-                                            </span>
-                                            <h4>
-                                                Cristiano Ronaldo
-                                                <span>Forward</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/2.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                10
-                                            </span>
-                                            <h4>
-                                                Lionel Messi
-                                                <span>Defender</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/3.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Neymar
-                                                <span>Midfielder</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/4.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Luis Suárez
-                                                <span>Goalkeeper</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/5.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Gareth Bale
-                                                <span>Midfielder</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Sergio Agüero
-                                                <span>Goalkeeper</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/1.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                13
-                                            </span>
-                                            <h4>
-                                                Cristiano Ronaldo
-                                                <span>Forward</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/2.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                10
-                                            </span>
-                                            <h4>
-                                                Lionel Messi
-                                                <span>Defender</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/3.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Neymar
-                                                <span>Midfielder</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/4.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Luis Suárez
-                                                <span>Goalkeeper</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/5.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Gareth Bale
-                                                <span>Midfielder</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
-
-                                <!-- Item Player -->
-                                <div class="col-xl-4 col-lg-6 col-md-6">
-                                    <div class="item-player">
-                                        <div class="head-player">
-                                            <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="location-team">
-                                            <div class="overlay"><a href="single-player.html">+</a></div>
-                                        </div>
-                                        <div class="info-player">
-                                            <span class="number-player">
-                                                2
-                                            </span>
-                                            <h4>
-                                                Sergio Agüero
-                                                <span>Goalkeeper</span>
-                                            </h4>
-                                            <ul>
-                                                <li>
-                                                    <strong>NATIONALITY</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span>
-                                                </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                                <li><strong>AGE:</strong> <span>28</span></li>
-                                            </ul>
-                                        </div>
-                                        <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div>
-                                <!-- End Item Player -->
+                            <div class="row" id="team-players">
 
                             </div>
                         </div>
-                        <!-- End Tab Two - players -->
                     </div>
-                    <!-- Content Tabs -->
                 </div>
 
-                <!-- Side info single team-->
-                <div class="col-lg-3 padding-top-mini">
+
+                <div class="col-lg-3">
                    <!-- Diary -->
                     <div class="panel-box">
-                        <div class="titles">
-                            <h4><i class="fa fa-calendar"></i>Diary</h4>
+                        <div class="titles m-0">
+                            <h4><i class="fa fa-calendar"></i>MATCHES</h4>
                         </div>
 
-                        <!-- List Diary -->
-                        <ul class="list-diary">
-                            <!-- Item List Diary -->
-                            <li>
-                                <h6>GROUP A <span>14 JUN 2018 - 18:00</span></h6>
-                                <ul class="club-logo">
+                        <div class="recent-results m-0">
+                            <div class="info-results">
+                                <ul>
                                     <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/rusia.png')}}" alt="">
-                                        <span>RUSSIA</span>
+                                        <span class="head">
+                                            Portugal Vs Spain <span class="date">27 Jun 2017</span>
+                                        </span>
+    
+                                        <div class="goals-result">
+                                            <a href="single-team.html">
+                                                <img src="img/clubs-logos/por.png" alt="">
+                                                Portugal
+                                            </a>
+    
+                                            <span class="goals">
+                                                <b>2</b> - <b>3</b>
+                                            </span>
+    
+                                            <a href="single-team.html">
+                                                <img src="img/clubs-logos/esp.png" alt="">
+                                                Spain
+                                            </a>
+                                        </div>
                                     </li>
+    
                                     <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/arabia.png')}}" alt="">
-                                        <span>SAUDI ARABIA</span>
+                                        <span class="head">
+                                            Rusia Vs Colombia <span class="date">30 Jun 2017</span>
+                                        </span>
+    
+                                        <div class="goals-result">
+                                            <a href="single-team.html">
+                                                <img src="img/clubs-logos/rusia.png" alt="">
+                                                Rusia
+                                            </a>
+    
+                                            <span class="goals">
+                                                <b>2</b> - <b>3</b>
+                                            </span>
+    
+                                            <a href="single-team.html">
+                                                <img src="img/clubs-logos/colombia.png" alt="">
+                                                    Colombia
+                                            </a>
+                                        </div>
+                                    </li>
+    
+                                    <li>
+                                        <span class="head">
+                                            Uruguay Vs Portugal <span class="date">31 Jun 2017</span>
+                                        </span>
+    
+                                        <div class="goals-result">
+                                            <a href="single-team.html">
+                                                <img src="img/clubs-logos/uru.png" alt="">
+                                                Uruguay
+                                            </a>
+    
+                                            <span class="goals">
+                                                <b>2</b> - <b>3</b>
+                                            </span>
+    
+                                            <a href="single-team.html">
+                                                <img src="img/clubs-logos/por.png" alt="">
+                                                    Portugal
+                                            </a>
+                                        </div>
                                     </li>
                                 </ul>
-                            </li>
-                            <!-- End Item List Diary -->
-
-                            <!-- Item List Diary -->
-                            <li>
-                                <h6>GROUP E <span>22 JUN 2018 - 15:00</span></h6>
-                                <ul class="club-logo">
-                                    <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/bra.png')}}" alt="">
-                                        <span>BRAZIL</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/costa-rica.png')}}" alt="">
-                                        <span>COSTA RICA</span>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- End Item List Diary -->
-
-                            <!-- Item List Diary -->
-                            <li>
-                                <h6>GROUP H <span>19 JUN 2018 - 15:00</span></h6>
-                                <ul class="club-logo">
-                                    <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/colombia.png')}}" alt="">
-                                        <span>COLOMBIA</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/japan.png')}}" alt="">
-                                        <span>JAPAN</span>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- End Item List Diary -->
-
-                            <!-- Item List Diary -->
-                            <li>
-                                <h6>GROUP C <span>16 JUN 2018 - 15:00</span></h6>
-                                <ul class="club-logo">
-                                    <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/fra.png')}}" alt="">
-                                        <span>FRANCE</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{asset('assets/frontend/img/clubs-logos/aus.png')}}" alt="">
-                                        <span>AUSTRALIA</span>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- End Item List Diary -->
-                        </ul>
-                        <!-- End List Diary -->
-                    </div>
-                    <!-- End Diary -->
-
-                    <!-- Video presentation -->
-                    <div class="panel-box">
-                        <div class="titles no-margin">
-                            <h4>Presentation</h4>
-                        </div>
-                        <!-- Locations Video -->
-                        <div class="row">
-                            <iframe src="https://www.youtube.com/embed/AfOlAUd7u4o" class="video"></iframe>
-                            <div class="info-panel">
-                                <h4>Rio de Janeiro</h4>
-                                <p>Lorem ipsum dolor sit amet, sit amet, consectetur adipisicing elit, elit, incididunt ut labore et dolore magna aliqua sit amet, consectetur adipisicing elit,</p>
                             </div>
                         </div>
-                        <!-- End Locations Video -->
                     </div>
-                    <!-- End Video presentation-->
-
-                    <!-- Widget Text-->
-                    <div class="panel-box">
-                        <div class="titles no-margin">
-                            <h4>Widget Image</h4>
-                        </div>
-                        <img src="{{asset('assets/frontend/img/slide/1.jpg')}}" alt="">
-                        <div class="row">
-                           <div class="info-panel">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,  ut sit amet, consectetur adipisicing elit, labore et dolore.</p>
-                           </div>
-                        </div>
-                    </div>
-                    <!-- End Widget Text-->
+                    <!-- End Diary -->
                 </div>
                 <!-- end Side info single team-->
 
@@ -1197,6 +411,8 @@
     </div>
     <!-- Single Team Tabs -->
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/frontend/js/cricket/teams-details.js') }}"></script>
     
 </section>
 
