@@ -5,17 +5,22 @@ $(document).ready(function() {
         $.ajax({
             url: '/teams/schedules/?teamId='+fetchIdFromUrl(),
             type: 'GET',
+            beforeSend: function() {
+                $('#teams-matches .loader-div').show();
+            },
             success: function(response) {
-                response.teamMatchesData.forEach(teamMatch => {
+                response.teamMatchesData.forEach((teamMatch, index) => {
                     if (teamMatch.matchDetailsMap) {
                         let matchDetailsMap = teamMatch.matchDetailsMap;
                         var row = null;
+                        var match_data = [];
                         
                         // Iterate over all keys in matchDetailsMap
                         Object.keys(matchDetailsMap).forEach(key => {
                             if (Array.isArray(matchDetailsMap[key])) {
                                 let matches = matchDetailsMap[key];
                                 matches.forEach(match => {
+                                    index++;
                                     let matchInfo = match.matchInfo;
                                     let startDate = new Date(parseInt(matchInfo.startDate));
                                     let endDate = new Date(parseInt(matchInfo.endDate));
@@ -35,36 +40,41 @@ $(document).ready(function() {
                                             </td>
                                         </tr>
                                     `;
-
-                                    matches += `
-                                        <li>
-                                            <span class="head">
-                                            ${matchInfo.team1.teamSName} Vs ${matchInfo.team2.teamSName} <span class="date">${startDate.toUTCString()}</span>
-                                            </span>
-        
-                                            <div class="goals-result">
-                                                <a href="#!">
-                                                    <img src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${matchInfo.team1.imageId}/cms-img.jpg" alt="">
-                                                    ${matchInfo.team1.teamSName}
-                                                </a>
-        
-                                                <span class="goals">
-                                                     - 
+                                    console.log("index", index)
+                                    if(index < 5){
+                                        match_data += `
+                                            <li>
+                                                <span class="head">
+                                                    ${matchInfo.team1.teamSName} Vs ${matchInfo.team2.teamSName} <span class="date">${startDate.toDateString()}</span>
                                                 </span>
-        
-                                                <a href="single-team.html">
-                                                    <img src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${matchInfo.team2.imageId}/cms-img.jpg" alt="">
-                                                    ${matchInfo.team2.teamSName}
-                                                </a>
-                                            </div>
-                                        </li>
-                                    `;
+            
+                                                <div class="goals-result">
+                                                    <a href="#!">
+                                                        <img src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${matchInfo.team1.imageId}/cms-img.jpg" alt="">
+                                                        ${matchInfo.team1.teamSName}
+                                                    </a>
+            
+                                                    <span class="goals">
+                                                        - 
+                                                    </span>
+            
+                                                    <a href="single-team.html">
+                                                        <img src="https://www.cricbuzz.com/a/img/v1/152x152/i1/c${matchInfo.team2.imageId}/cms-img.jpg" alt="">
+                                                        ${matchInfo.team2.teamSName}
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        `;
+                                    }
                                 });
                             }
                         });
                         $('#teams-schedules').append(row);
+                        $('#teams-matches').append(match_data);
                     }
                 });
+            },complete: function() {
+                $('#teams-matches .loader-div').hide();
             }
         });
     }
@@ -248,10 +258,116 @@ $(document).ready(function() {
         });
     }
     
+
+    // Team State Filters
+    function fetchStateFilters(){
+        $.ajax({
+            url: '/teams/stats/filters?teamId=' + fetchIdFromUrl(),
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                let types = response.types;
+                let playerContainer = $('#team-stats-filters');
+                let sectionTitle = '';
+        
+                let panelBoxes = {};
+                let sectionTitleHtml = '';
+
+                types.forEach(type => {
+                    if (!type.category) {
+                        let sectionTitleHtml = `
+                            <div class="panel-box">
+                                <div class="titles no-margin">
+                                    <h4><i class="fa fa-calendar"></i>${type.header}</h4>
+                                </div>
+                                <ul class="list-panel" id="${type.header}-list">
+                                </ul>
+                            </div>
+                        `;
+                        playerContainer.append(sectionTitleHtml);
+                        panelBoxes[type.header] = $(`#${type.header}-list`);
+                    } else {
+                        if (!panelBoxes[type.category]) {
+                            let sectionTitleHtml = `
+                                <div class="panel-box">
+                                    <div class="titles no-margin">
+                                        <h4><i class="fa fa-calendar"></i>${type.category}</h4>
+                                    </div>
+                                    <ul class="list-panel" id="${type.category}-list">
+                                    </ul>
+                                </div>
+                            `;
+                            playerContainer.append(sectionTitleHtml);
+                            panelBoxes[type.category] = $(`#${type.category}-list`);
+                        }
+                        let playerHtml = `
+                            <li class="no-margin stateFiltersActive">
+                                <a data-value="${type.value}" class="pl-2 stateFilter btn bg-none">${type.header}</a>
+                            </li>
+                        `;
+                        panelBoxes[type.category].append(playerHtml);
+                    }
+                });
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching player data:', error);
+            },complete: function(){
+                fetchStatsDataForFirstElement()
+            }
+        });
+    }
+
+    // Team StatsData
+    function fetchStatsData(statsFilter){
+        $.ajax({
+            url: '/teams/stats/?teamId=' + fetchIdFromUrl() +"&statsType="+statsFilter ,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                let values = response.values;
+                let playerContainer = $('#team-stats-data');
+                playerContainer.empty();
+        
+                values.forEach(value => {
+                    // Generate HTML for each player's stats
+                    let playerHtml = `
+                        <tr>
+                            <td>${value.values[1]}</td> <!-- Player name -->
+                            <td class="text-right">${value.values[0]}</td> <!-- Matches played -->
+                            <td class="text-right">${value.values[2]}</td> <!-- Innings -->
+                            <td class="text-right">${value.values[3]}</td> <!-- Runs -->
+                            <td class="text-right">${value.values[4]}</td> <!-- Average -->
+                        </tr>
+                    `;
+                    playerContainer.append(playerHtml);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching player data:', error);
+            }
+        });
+    }
+    
     fetchNews()
     fetchSchedules()
     fetchResults()
     fetchPlayers()
+    fetchStateFilters()
+
+    function fetchStatsDataForFirstElement() {
+        let firstFilterValue = $('.stateFilter:first').data('value');
+        $('.stateFilter:first').closest('li').addClass('active');
+        fetchStatsData(firstFilterValue);
+    }
+
+    $(document).on('click', '.stateFilter', function(){
+        $('.stateFiltersActive').removeClass('active');
+        $(this).closest('li').addClass('active');
+        let filter = $(this).data('value');
+        console.log('Filter:', filter);
+        fetchStatsData(filter);
+    });
 });
 
 
@@ -259,4 +375,10 @@ function fetchIdFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     const teamId = urlParams.get('teamId');
     return teamId;
+}
+
+function fetchFilterFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const teamFilter = urlParams.get('teamFilter');
+    return teamFilter;
 }

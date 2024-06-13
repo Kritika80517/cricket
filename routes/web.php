@@ -44,6 +44,8 @@ Route::group(['prefix' => 'teams', 'as' => 'teams.'], function () {
     Route::get('/results',  [TeamController::class, 'getResults']);
     Route::get('/news',  [TeamController::class, 'getNews']);
     Route::get('/players',  [TeamController::class, 'getPlayers']);
+    Route::get('/stats/filters',  [TeamController::class, 'getStateFilter']);
+    Route::get('/stats',  [TeamController::class, 'getStats']);
 });
 
 // News

@@ -51,7 +51,17 @@ class TeamController extends Controller
             return response()->json([]);
         }
     }
-    public function getStats(Request $request){
+    
+    public function getPlayers(Request $request){
+        $response = cricketAPI("/teams/v1/" . $request->teamId . '/players');
+        
+        if ($response->successful()) {
+            return response()->json($response->json());
+        } else {
+            return response()->json([]);
+        }
+    }
+    public function getStateFilter(Request $request){
         $response = cricketAPI("/stats/v1/team/" . $request->teamId);
         
         if ($response->successful()) {
@@ -60,8 +70,11 @@ class TeamController extends Controller
             return response()->json([]);
         }
     }
-    public function getPlayers(Request $request){
-        $response = cricketAPI("/teams/v1/" . $request->teamId . '/players');
+    public function getStats(Request $request){
+        if(!$request->statsType){
+            return response()->json([]);
+        }
+        $response = cricketAPI("/stats/v1/team/" . $request->teamId ."?statsType=".$request->statsType);
         
         if ($response->successful()) {
             return response()->json($response->json());
