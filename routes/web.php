@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\MatchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,21 +35,35 @@ Route::get('/about', function () {
 });
 
 // Teams
-Route::get('/teams', [TeamController::class, 'index']);
-Route::get('/teams/info', [TeamController::class, 'show']);
-Route::get('/teams/{team_id}/info', [TeamController::class, 'show']);
-Route::get('/teams/list/{type}',  [TeamController::class, 'teams']);
-Route::get('/teams/schedules',  [TeamController::class, 'getSchedules']);
-Route::get('/teams/results',  [TeamController::class, 'getResults']);
-Route::get('/teams/news',  [TeamController::class, 'getNews']);
-Route::get('/teams/players',  [TeamController::class, 'getPlayers']);
+Route::group(['prefix' => 'teams', 'as' => 'teams.'], function () {
+    Route::get('/', [TeamController::class, 'index']);
+    Route::get('/info', [TeamController::class, 'show']);
+    Route::get('/{team_id}/info', [TeamController::class, 'show']);
+    Route::get('/list/{type}',  [TeamController::class, 'teams']);
+    Route::get('/schedules',  [TeamController::class, 'getSchedules']);
+    Route::get('/results',  [TeamController::class, 'getResults']);
+    Route::get('/news',  [TeamController::class, 'getNews']);
+    Route::get('/players',  [TeamController::class, 'getPlayers']);
+});
 
 // News
-Route::get('/news', [NewsController::class, 'index']);
-Route::get('/news-info',  [NewsController::class, 'news']);
-Route::get('/news/info',  [NewsController::class, 'show']);
-Route::get('/news-categories',  [NewsController::class, 'categories']);
-Route::get('/news/details/{newsId}',  [NewsController::class, 'newsDetails']);
+Route::group(['prefix' => 'news' , 'as' => 'news.'], function(){
+    Route::get('/', [NewsController::class, 'index']);
+    Route::get('/info',  [NewsController::class, 'news']);
+    Route::get('/info',  [NewsController::class, 'show']);
+    Route::get('/categories',  [NewsController::class, 'categories']);
+    Route::get('/details/{newsId}',  [NewsController::class, 'newsDetails']);
+});
+
+
+// matches
+Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
+    Route::get('/', [MatchController::class, 'index']);
+});
+
+
+
+
 
 
 Route::get('/article', function () {
@@ -60,9 +75,7 @@ Route::get('/contact', function () {
     return view('frontend.contact');
 });
 
-Route::get('/matches', function () {
-    return view('frontend.matches.index');
-});
+
 Route::get('/series', function () {
     return view('frontend.series.index');
 });
