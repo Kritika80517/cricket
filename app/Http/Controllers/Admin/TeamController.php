@@ -80,4 +80,10 @@ class TeamController extends Controller
         $matches = $matches->json();
         return view('admin.match-schedule.match_list.index', compact('matches'));
     }
+
+    public function team_list(Request $request){
+        $teams = Http::get($this->ENDPOINT.'/teams?apikey='.$this->API_KEY.'&offset='.$request->offset ?? 0);
+        $teams = $teams->json();
+        return view('admin.match-schedule.team.index', compact('teams'));
+    }
 }

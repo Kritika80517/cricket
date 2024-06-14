@@ -51,32 +51,32 @@
                                 <h4>{{ request()->seriesName ?? 'Series' }}</h4>
                                 <div class="">
                                     {{-- @php
-                                // Fetch archived league data
-                                $type = 'league';
-                                $response = cricketAPI("/series/v1/archives/" . $type);
+                                        // Fetch archived league data
+                                        $type = 'league';
+                                        $response = cricketAPI("/series/v1/archives/" . $type);
 
-                                if ($response->successful()) {
-                                $league_data = $response->json(); // Directly assign the decoded response
-                                } else {
-                                $league_data = [];
-                                }
+                                        if ($response->successful()) {
+                                        $league_data = $response->json(); // Directly assign the decoded response
+                                        } else {
+                                        $league_data = [];
+                                        }
 
-                                $type = 'international';
-                                $response = cricketAPI("/series/v1/archives/" . $type);
-                                $international_data_select = [];
+                                        $type = 'international';
+                                        $response = cricketAPI("/series/v1/archives/" . $type);
+                                        $international_data_select = [];
 
-                                if ($response->successful()) {
-                                    $international_data_select = $response->json(); // Directly assign the decoded response
-                                }
-                             
-                                @endphp --}}
+                                        if ($response->successful()) {
+                                            $international_data_select = $response->json(); // Directly assign the decoded response
+                                        }
+                                    
+                                        @endphp --}}
 
-                                    {{-- <select class="form-control" name="" id="">
-                                    <option value=""> Select Series type </option>
-                                    @foreach ($international_data_select['seriesMapProto'][0]['series'] as $item)
-                                    <option>{{ $item['name']??'' }} </option>
-                                    @endforeach
-                                </select> --}}
+                                            {{-- <select class="form-control" name="" id="">
+                                            <option value=""> Select Series type </option>
+                                            @foreach ($international_data_select['seriesMapProto'][0]['series'] as $item)
+                                            <option>{{ $item['name']??'' }} </option>
+                                            @endforeach
+                                    </select> --}}
                                 </div>
                             </div>
 
@@ -423,7 +423,6 @@
                             </tr>`;
                     }
                 });
-
 
                 table += `</tbody></table>`;
                 return table;

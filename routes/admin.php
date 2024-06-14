@@ -144,8 +144,12 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
                 
             });
 
-            Route::group(['prefix' => 'teams', 'as' => 'teams.'], function () {
+            Route::group(['prefix' => 'match', 'as' => 'match.'], function () {
                 Route::get('/', [TeamController::class, 'matches_list'])->name('list');
+            });
+
+            Route::group(['prefix' => 'teams', 'as' => 'teams.'], function () {
+                Route::get('/', [TeamController::class, 'team_list'])->name('list');
             });
 
             Route::group(['prefix' => 'players', 'as' => 'players.'], function () {

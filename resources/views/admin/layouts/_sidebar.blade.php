@@ -77,13 +77,13 @@
                         href="{{ route('admin.cricket-schedule.series.list') }}"><i
                             class="fas fa-th-large"></i><span>Series List</span></a>
                     </li>
-                    <li class="{{ request()->is('admin/matchschedule/teams*') ? 'active' : '' }}"><a class="nav-link"
-                        href="{{ route('admin.matchschedule.teams.list') }}"><i
+                    <li class="{{ request()->is('admin/matchschedule/match*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ route('admin.matchschedule.match.list') }}"><i
                             class="fas fa-th-large"></i><span>Match List</span></a>
                     </li>
                    
-                    <li class="{{ request()->is('admin/matchschedule/current/match/*') ? 'active' : '' }}"><a class="nav-link"
-                        href="{{ route('admin.matchschedule.current.match') }}"><i class="fas fa-th-large"></i><span>Current Match
+                    <li class="{{ request()->is('admin/matchschedule/teams*') ? 'active' : '' }}"><a class="nav-link"
+                        href="{{ route('admin.matchschedule.teams.list') }}"><i class="fas fa-th-large"></i><span>Team
                             List</span> </a>
                     </li>
                     <li class="{{ request()->is('admin/matchschedule/players*') ? 'active' : '' }}"><a
