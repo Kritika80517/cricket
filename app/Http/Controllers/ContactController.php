@@ -7,6 +7,9 @@ use App\Models\ContactUs;
 
 class ContactController extends Controller
 {
+    public function index(){
+        return view('frontend.contact');
+    }
     public function store(Request $request)
     {
         $validatedData = $request->validate([

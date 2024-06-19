@@ -33,6 +33,7 @@ class TeamController extends Controller
             return response()->json([]);
         }
     }
+
     public function getResults(Request $request){
         $response = cricketAPI("/teams/v1/" . $request->teamId . '/results');
         
@@ -42,6 +43,7 @@ class TeamController extends Controller
             return response()->json([]);
         }
     }
+    
     public function getNews(Request $request){
         $response = cricketAPI("/news/v1/team/" . $request->teamId);
         

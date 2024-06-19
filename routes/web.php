@@ -52,9 +52,9 @@ Route::group(['prefix' => 'teams', 'as' => 'teams.'], function () {
 Route::group(['prefix' => 'news' , 'as' => 'news.'], function(){
     Route::get('/', [NewsController::class, 'index']);
     Route::get('/info',  [NewsController::class, 'news']);
-    Route::get('/info',  [NewsController::class, 'show']);
     Route::get('/categories',  [NewsController::class, 'categories']);
     Route::get('/details/{newsId}',  [NewsController::class, 'newsDetails']);
+    // Route::get('/info',  [NewsController::class, 'show']);
 });
 
 
@@ -68,18 +68,19 @@ Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
 
 
 
-Route::get('/article', function () {
-    return view('frontend.article');
-});
-Route::get('/article',[ArticleController::class, 'index']);
+// Route::get('/article', function () {
+//     return view('frontend.article');
+// });
+Route::get('/articles',[ArticleController::class, 'index']);
 
-Route::get('/contact', function () {
-    return view('frontend.contact');
-});
-
-
-Route::get('/series', function () {
-    return view('frontend.series.index');
+Route::get('/players/info', function () {
+    return view('frontend.players.details');
 });
 
+
+// Route::get('/contact', function () {
+//     return view('frontend.contact');
+// });
+
+Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 Route::post('/contact/submit',[ContactController::class, 'store'])->name('contact.submit');

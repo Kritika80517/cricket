@@ -168,6 +168,7 @@
                                 <span>
                                     <p>{{$data['popArticle']->title}}</p>
                                     <p class="date">{{$data['popArticle']->created_at->diffForhumans()}}</p>
+                                
                                 </span>
                             </li>
                         </ul>
@@ -215,7 +216,6 @@
                 }
             });
         });
-
     </script>
 </section>
 
