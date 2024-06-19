@@ -15463,12 +15463,12 @@ header .mobile-nav:hover {
 
 /* line 417, ../sass/main.scss */
 .headerbox {
-  padding: 20px 0;
+  padding: 5px 0;
 }
 @media (max-width: 1199px) {
   /* line 417, ../sass/main.scss */
   .headerbox {
-    padding: 15px 0;
+    padding: 10px 0;
   }
 }
 
@@ -19153,17 +19153,22 @@ table.career tr td img {
 
 /* Loader */
 /* Center the loader */
-.loader-div{
-  margin: 40px 0;
+/* Center the loader-div within the parent */
+.loader-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
 }
+
+/* Loader styling */
 .loader-div .loader {
   z-index: 1;
-  width: 80px;
-  height: 80px;
-  margin: -46px 0 0 -46px;
+  width: 60px;
+  height: 60px;
   border: 6px solid #f3f3f3;
   border-radius: 50%;
   border-top: 6px solid #3498db;
@@ -19218,4 +19223,8 @@ table.career tr td img {
     bottom: 0;
     opacity: 1;
   }
+}
+
+.next-match span{
+  padding: 20px 15px !important;
 }

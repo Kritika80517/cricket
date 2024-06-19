@@ -72,6 +72,8 @@ Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
 //     return view('frontend.article');
 // });
 Route::get('/articles',[ArticleController::class, 'index']);
+Route::get('/home-point-table',[HomeController::class, 'homePlayerPoint']);
+Route::get('/home-upcoming-match',[HomeController::class, 'homeMatches']);
 
 Route::get('/players/info', function () {
     return view('frontend.players.details');

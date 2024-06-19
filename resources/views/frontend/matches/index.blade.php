@@ -25,8 +25,8 @@
                 <!-- Left Content - Tabs and Carousel -->
                 <div class="col-xl-12 col-md-12">
                     <!-- Nav Tabs -->
-                    <ul class="nav nav-tabs" id="myTab">
-                        <li class="active"><a href="#currentMatches" data-toggle="tab">Current Matches</a></li>
+                    <ul class="nav nav-tabs" id="myTab1">
+                        <li><a href="#currentMatches" data-toggle="tab">Current Matches</a></li>
                         <li><a href="#futureMatches" data-toggle="tab">Current & Future Matches</a></li>
                         <li><a href="#matchByDay" data-toggle="tab">Match By Day</a></li>
                         <li><a href="#team" data-toggle="tab">Team</a></li>
@@ -38,13 +38,13 @@
                     <!-- Content Tabs -->
                     <div class="tab-content">
                         <!-- Tab One - current Matches -->
-                        <div class="tab-pane active" id="currentMatches">
+                        <div class="tab-pane fade show active" id="currentMatches">
 
                             <div class="panel-box padding-b">
                                 <div class="titles mb-0">
                                     <h4>Live Cricket Score</h4>
                                     <div class="mt-5 ml-4">
-                                        <ul class="nav nav-tabs mb-3" id="myTab">
+                                        <ul class="nav nav-tabs mb-3" id="myTab2">
                                             <li class="active"><a href="#live" data-toggle="tab">Live</a></li>
                                             <li><a href="#recent" data-toggle="tab">Recent</a></li>
                                             <li><a href="#upcoming" data-toggle="tab">Upcoming</a></li>
@@ -53,87 +53,43 @@
                                 </div>
                                 <div class="tab-pane  row" >
                                     <div class="col-lg-9 padding-top-mini">
-                                        <!-- Content live tab -->
-                                        <div class="tab-content row active" id="live">
-                                            <!-- Tab One - live -->
-                                            <div class=" col-lg-12" >
-                                                <span><a href="">United States vs India, </a>25th Match, Group A</span><br>
-                                                <p>Today  •  8:00 PM at New York, Nassau County International Cricket Stadium</p>
+                                        <div class="tab-content">
+                                            <!-- Content live tab -->
+                                            <div class="tab-pane fade show active" id="live">
+                                                <h5>Live</h5>
                                             </div>
-                                            <div class="panel-box  col-lg-3 ml-2">
-                                                <div class="titles no-margin" style="border-left: 5px solid #01d099">
-                                                   <div class="m-2">    
-                                                        <div class="">
-                                                            <span><a href="">India opt to bowl</a></span><br>
-                                                        </div>
-                                                   </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- end live tab --}}
+                                            {{-- end live tab --}}
 
-                                        {{-- recent --}}
-                                        <div class="tab-content row" id="recent">
+                                            <!-- Content live tab -->
+                                            <div class="tab-pane" id="recent">
+                                                <h5>recent</h5>
+                                            </div>
+                                            {{-- end live tab --}}
 
-                                            <div class="mt-5 ml-4">
-                                                <ul class="nav nav-tabs mb-3" id="myTab">
-                                                    <li class="active"><a href="#international" data-toggle="tab" style="border-radius: 20px; padding:10px ">International</a></li>
-                                                    <li><a href="#league" data-toggle="tab" style="border-radius: 20px;  padding:10px ">League</a></li>
-                                                    <li><a href="#women" data-toggle="tab" style="border-radius: 20px;  padding:10px ">Women</a></li>
-                                                </ul>
+                                            <!-- Content live tab -->
+                                            <div class="tab-pane " id="upcoming">
+                                                <h5>upcoming</h5>
                                             </div>
-                                            <div class="tab-content row" id="international">
-                                            <!-- Tab One - live -->
-                                                <div class=" col-lg-12" >
-                                                    <span><a href="">Namibia vs Australia,</a>Namibia vs Australia, </span><br>
-                                                    <p>Today  •  6:00 AM at North Sound, Antigua, Sir Vivian Richards Stadium</p>
-                                                </div>
-                                                <div class="panel-box  col-lg-4 ml-2">
-                                                    <div class="titles no-margin" style="border-left: 5px solid #01d099">
-                                                    <div class="m-2">    
-                                                            <div class="">
-                                                                <span>NAM     72(17 Ovs)</span><br>
-                                                            <span><b>AUS     74.1(5.4 Ovs)</b></span><br>
-                                                            <p><a href="">Australia won by 9 </a></p>
-                                                            </div>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {{-- end live tab --}}
+
                                         </div>
+
+                                        
                                     </div>
-
-                                    <div class="col-lg-3 padding-top-mini">
-                                        <!-- Video presentation -->
-                                        <div class="panel-box">
-                                            <div class="titles no-margin">
-                                                <h4>Presentation</h4>
-                                            </div>
-                                            <!-- Locations Video -->
-                                            <div class="row">
-                                                <iframe src="https://www.youtube.com/embed/AfOlAUd7u4o" class="video"></iframe>
-                                                <div class="info-panel">
-                                                    <h4>Rio de Janeiro</h4>
-                                                </div>
-                                            </div>
-                                            <!-- End Locations Video -->
-                                        </div>
-                                        <!-- End Video presentation-->
-
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                         <!-- Tab One - current Matches -->
 
                         <!-- Tab Two - future Matches -->
-                        <div class="tab-pane" id="futureMatches">
+                        <div class="tab-pane fade active" id="futureMatches">
                             <div class="panel-box" style="padding-bottom: 10px">
                                 <div class="titles mb-0">
                                     <h4>Cricket Schedule</h4>
                                     <div class="mt-5 ml-4">
                                         <ul class="nav nav-tabs mb-3" id="myTab">
-                                            <li class="active"><a href="#international" data-toggle="tab" style="border-radius: 20px;">International</a></li>
+                                            <li><a href="#international" data-toggle="tab" style="border-radius: 20px;">International</a></li>
                                             <li><a href="#domestic" data-toggle="tab" style="border-radius: 20px;">Domestic & Others</a></li>
                                             <li><a href="#league" data-toggle="tab" style="border-radius: 20px;">T20 Leagues</a></li>
                                             <li><a href="#women" data-toggle="tab" style="border-radius: 20px;">Women</a></li>
@@ -141,8 +97,9 @@
                                     </div>
                                 </div>
                                 
-                                {{-- international --}}
-                                <div class="tab-pane m-2" id="international">
+                                <div class="tab-content">
+                                    {{-- international --}}
+                                <div class="tab-pane m-2 active" id="international">
                                     <table class="table table-responsive table-hover">
                                         <thead>
                                             <tr>
@@ -303,6 +260,7 @@
         
                                 </div>
                                 {{-- end women --}}
+                                </div>
                             </div>
                         </div>
                         <!-- End Tab Two - future Matches -->

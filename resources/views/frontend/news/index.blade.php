@@ -48,7 +48,7 @@
 
                 <div class="col-lg-9">
                     <!-- Content Text-->
-                    <div class="panel-box">
+                    <div class="panel-box pb-3">
                         <div class="titles">
                             <h4>Recent News</h4>
                         </div>
@@ -57,7 +57,9 @@
                         <div class="post-item">
                             <div class="row">
                                 <div class="" id="news-container">
-                                    
+                                    <div class="loader-div">
+                                        <div class="loader"></div>
+                                    </div>
                                 </div>
                                 
                             </div>

@@ -9,6 +9,9 @@ $(document).ready(function(){
         $.ajax({
             url: url, 
             method: 'GET', 
+            beforeSend: function() {
+                $('#news-container .loader-div').show();
+            },
             success: function(data) {
                 const stories = data.storyList.filter(item => item.story); // Filter out ads and other items
                 if (stories.length > 0) {
@@ -16,26 +19,31 @@ $(document).ready(function(){
                     stories.forEach(item => {
                         const story = item.story;
                         container.append(`
-                            <div class="col-md-4">
-                                <div class="img-hover">
-                                    <img class="img-responsive" src="https://www.cricbuzz.com/a/img/v1/278x185/i1/c${story.coverImage.id}/${story.hline}.jpg" alt="${story.hline}">
-                                    <div class="overlay"><a href="news/details/${story.id}">+</a></div>
+                            <div class="post-item">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="img-hover">
+                                            <img src="https://www.cricbuzz.com/a/img/v1/278x185/i1/c${story.coverImage.id}/${story.coverImage.caption.replace(/['"]/g, '')}.jpg" alt="${story.hline}" class="img-responsive">
+                                            <div class="overlay"><a href="news/details/${story.id}">+</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h5><a href="news/details/${story.id}">${story.hline}</a></h5>
+                                        <span class="data-info">${new Date(parseInt(story.pubTime)).toLocaleDateString()}</span>
+                                        <p>${story.intro}<a href="news/details/${story.id}">Read More [+]</a></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-8">
-                                <h5><a href="news/details/${story.id}">${story.hline}</a></h5>
-                                <span class="data-info">${new Date(parseInt(story.pubTime)).toLocaleDateString()}</span>
-                                <p>${story.intro}<a href="news/details/${story.id}">Read More [+]</a></p>
                             </div>
                         `);
                     });
                 } else {
                     container.html('<p>No news found.</p>');
                 }
-            }
-            , error: function(error) {
+            }, error: function(error) {
                 console.log('Error fetching news:', error);
                 container.html('<p>Failed to fetch news.</p>');
+            },complete: function() {
+                $('#news-container .loader-div').hide();
             }
         });
     }
@@ -53,9 +61,9 @@ $(document).ready(function(){
                     const activeCategoryId = fetchIdFromUrl();
                     listContainer.empty(); // Clear the container
                     categories.forEach(category => {
-                        const isActive = category.id == activeCategoryId ? 'active' : '';
+                        const isActive = category.id == activeCategoryId;
                         listContainer.append(`
-                            <li class="${isActive}"> <i class="fa fa-check"></i><a href="news?category=${category.id}">${category.name}</a></li>
+                            <li class=""> ${isActive ? '<i class="fa fa-check"></i>' : ''} <a href="news?category=${category.id}">${category.name}</a></li>
                         `);
                     });
                 } else {
