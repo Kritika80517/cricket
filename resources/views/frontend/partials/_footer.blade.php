@@ -5,7 +5,7 @@
         <!-- Logo Footer-->
        <div class="col-lg-12">
             <div class="logo-footer">
-                <h2>Sports Cup</h2>
+                <h2>Cricket Wicket</h2>
             </div>
        </div>
         <!-- End Logo Footer-->
@@ -14,7 +14,7 @@
             <li>
                 <div>
                     <a href="#" class="facebook">
-                        <i class="fas fa-facebook"></i>
+                        <i class="fa fa-facebook"></i>
                     </a>
                 </div>
             </li>
@@ -57,29 +57,30 @@
                <!-- Column Links -->
                 <div class="col-lg-2 col-md-5 col-sm-5">
                     <div class="info-links">
-                       <h5>Organisation</h5>
-                        <ul>
+                       <h5>About</h5>
+                       <p>{{getKeyValue('about_company') }}</p>
+                        {{-- <ul>
                             <li><a href="#">Volunteers</a></li>
                             <li><a href="#">Committees</a></li>
                             <li><a href="#">Official Documents</a></li>
                             <li><a href="#">Terms of Service</a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
                 <!-- End Column Links -->
                 <!-- Column Links -->
                 <div class="col-lg-4 col-md-7 col-sm-7">
                     <div class="info-links">
-                       <h5>Groups</h5>
+                       <h5>Pages</h5>
                         <ul class="columns">
-                            <li><a href="#">GROUP A</a></li>
-                            <li><a href="#">GROUP B</a></li>
-                            <li><a href="#">GROUP C</a></li>
-                            <li><a href="#">GROUP D</a></li>
-                            <li><a href="#">GROUP E</a></li>
-                            <li><a href="#">GROUP F</a></li>
-                            <li><a href="#">GROUP G</a></li>
-                            <li><a href="#">GROUP H</a></li>
+                            <li><a href="{{url('/')}}">Home</a></li>
+                            <li><a href="{{url('/about')}}">About</a></li>
+                            <li><a href="{{url('/news')}}">News</a></li>
+                            <li><a href="{{url('/teams')}}">Team</a></li>
+                            <li><a href="{{url('/matches')}}">Matches</a></li>
+                            <li><a href="{{url('/schedule')}}">Schedule</a></li>
+                            <li><a href="{{url('/series')}}">Series</a></li>
+                            <li><a href="{{url('/articles')}}">Article</a></li>
                         </ul>
                     </div>
                 </div>
@@ -102,14 +103,14 @@
                     <div class="info-links">
                        <h5>Organisation</h5>
                         <ul class="columns">
-                            <li><a href="#">NIZHNY NOVGOROD</a></li>
-                            <li><a href="#">SAINT PETERSBURG</a></li>
-                            <li><a href="#">EKATERINBURG</a></li>
-                            <li><a href="#">MOSCOW</a></li>
-                            <li><a href="#">KAZAN</a></li>
-                            <li><a href="#">KALININGRAD</a></li>
-                            <li><a href="#">VOLGOGRAD</a></li>
-                            <li><a href="#">ROSTOV-ON-DON</a></li>
+                            <li>Email -</li>
+                            <li>{{getKeyValue('email') }}</li>
+                            <li>Contact Email -</li>
+                            <li>{{getKeyValue('email2') }}</li>
+                            <li>Phone -</li>
+                            <li>{{getKeyValue('phone') }}</li>
+                            <li>Address -</li>
+                            <li>{{getKeyValue('address') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +124,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>&copy; 2018 SportsCup . All Rights Reserved</p>
+                    <p>&copy; 2024 Cricket-Wicket . All Rights Reserved</p>
                 </div>
             </div>
         </div>

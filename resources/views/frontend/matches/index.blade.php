@@ -26,7 +26,7 @@
                 <div class="col-xl-12 col-md-12">
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTab1">
-                        <li><a href="#currentMatches" data-toggle="tab">Current Matches</a></li>
+                        <li class="active"><a href="#currentMatches" data-toggle="tab">Current Matches</a></li>
                         <li><a href="#futureMatches" data-toggle="tab">Current & Future Matches</a></li>
                         <li><a href="#matchByDay" data-toggle="tab">Match By Day</a></li>
                         <li><a href="#team" data-toggle="tab">Team</a></li>
