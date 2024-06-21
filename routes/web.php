@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\ScheduleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,19 +65,24 @@ Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
 });
 
 
-
-
-
-
 // Route::get('/article', function () {
 //     return view('frontend.article');
 // });
 Route::get('/articles',[ArticleController::class, 'index']);
 Route::get('/home-point-table',[HomeController::class, 'homePlayerPoint']);
 Route::get('/home-upcoming-match',[HomeController::class, 'homeMatches']);
+Route::get('/match-schedules/{type}',[ScheduleController::class, 'schedules']);
 
 Route::get('/players/info', function () {
     return view('frontend.players.details');
+});
+
+
+Route::prefix('schedule')->group(function () {
+    Route::get('/', function () {
+        return view('frontend.schedule.index');
+    });
+    Route::get('/{id}',[ScheduleController::class, 'schedules']);
 });
 
 

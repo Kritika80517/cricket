@@ -32,35 +32,42 @@
              </ul>
         </div>
         
-        <div class="tab-content">
+        <div class="tab-content" style="margin-bottom: 60px;">
 
-            <div class="tab-pane active" id="international" aria-expanded="true">
+            <div style="min-height: 200px; position:relative;" class="tab-pane active" id="international" aria-expanded="true">
                 <div class="loader-div">
                     <div class="loader"></div>
                 </div>
-                <div class="row" id="international-team">
+                <div  class="row" id="international-team">
+                    
                 </div>
             </div>
 
-            <div class="tab-pane" id="domestic" aria-expanded="true">
+            <div style="min-height: 200px; position:relative;" class="tab-pane" id="domestic" aria-expanded="true">
                 <div class="loader-div">
                     <div class="loader"></div>
                 </div>
-                <div class="row" id="domestic-team"></div>
+                <div class="row" id="domestic-team">
+                    
+                </div>
             </div>
 
-            <div class="tab-pane" id="league" aria-expanded="true">
+            <div style="min-height: 200px; position:relative;" class="tab-pane" id="league" aria-expanded="true">
                 <div class="loader-div">
                     <div class="loader"></div>
                 </div>
-                <div class="row" id="league-team"></div>
+                <div class="row" id="league-team">
+                   
+                </div>
             </div>
 
-            <div class="tab-pane" id="women" aria-expanded="true">
+            <div style="min-height: 200px; position:relative;" class="tab-pane" id="women" aria-expanded="true">
                 <div class="loader-div">
                     <div class="loader"></div>
                 </div>
-                <div class="row" id="women-team"></div>
+                <div class="row" id="women-team">
+                   
+                </div>
             </div>
 
         </div>

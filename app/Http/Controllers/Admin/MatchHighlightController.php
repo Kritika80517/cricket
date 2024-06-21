@@ -55,21 +55,19 @@ class MatchHighlightController extends Controller
         $request->validate([
             'title' => 'required',
             'video_url'=>'required',
-            'image'=>'required',
             'description' => 'required',
-            'language_id' => 'required',
+            'language' => 'required',
         ]);
 
-        $video =MatchHighlight::where('id', $request->id)->first();
+        $video = MatchHighlight::where('id', $request->id)->first();
         $video->category_id = $request->category_id;
-        $video->sub_category_id = $request->sub_category_id;
-        $video->language_id = $request->language_id;
+        $video->sub_category_id = $request->sub_category;
+        $video->language_id = $request->language;
         $video->title = $request->title;
         $video->description = $request->description;
         $video->video_url = $request->video_url;
         $video->status = $request->status;
         $video->image = $request->has('image') ? FileHelper::image_update('assets/admin/img/matchhighlight/video/', $video->image, 'png', $request->file('image')) : $video->image;
-        dd($video);
         $video->save();
         return redirect('admin/matchvideo')->with('success', 'Video updated successfully');
     }

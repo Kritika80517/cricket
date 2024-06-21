@@ -58,8 +58,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="language">Language</label>
-                                                <select class="form-control d-inline" name="language">
-                                                    <option selected="">Select Language</option>
+                                                <select class="form-control d-inline" name="language" required>
+                                                    <option selected disabled value="">Select Language</option>
                                                     @foreach ($language as $item)
                                                         <option value="{{$item->id}}">{{$item->language}} ({{$item->code}}) </option>
                                                     @endforeach

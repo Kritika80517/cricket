@@ -28,7 +28,7 @@
     <!-- Section Area - Content Central -->
     <section class="content-info">
         <!-- White Section -->
-        <div class="white-section" id="home-upcoming-match">
+        <div style="min-height: 300px;" class="white-section" id="home-upcoming-match">
             <div class="loader-div" id="loader">
                 <div class="loader"></div>
             </div>
