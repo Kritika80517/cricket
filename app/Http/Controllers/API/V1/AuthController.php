@@ -138,7 +138,13 @@ class AuthController extends Controller
             return response()->json(['result' => false, 'message' => 'No social provider matches', 'user' => null]);
         }
         
-        $social_user_details = $social_user->userFromToken($request->access_token);
+
+        try {
+            $social_user_details = $social_user->userFromToken($request->access_token);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching user from token', ['error' => $e->getMessage()]);
+            return response()->json(['result' => false, 'message' => 'Invalid access token', 'user' => null]);
+        }
 
         if ($social_user_details == null) {
             return response()->json(['result' => false, 'message' => 'No social account matches', 'user' => null]);
@@ -149,7 +155,12 @@ class AuthController extends Controller
         if ($existingUserByProviderId) {
             $existingUserByProviderId->access_token = $social_user_details->token;
             $existingUserByProviderId->save();
-            return $this->loginSuccess($existingUserByProviderId);
+            $token = $existingUserByProviderId->createToken('AuthToken')->plainTextToken;
+            return response()->json([
+                'message' => 'Logged in successfully',
+                'user' => $existingUserByProviderId,
+                'token' => $token,
+            ], 200);
         } else {
             $existing_or_new_user = User::firstOrNew(
                 [['email', '!=', null], 'email' => $social_user_details->email]
@@ -157,6 +168,7 @@ class AuthController extends Controller
 
             $existing_or_new_user->role = 'user';
             $existing_or_new_user->status = 1;
+            $existing_or_new_user->password = Hash::make($request->provider);
             $existing_or_new_user->provider_id = $social_user_details->id;
 
             if (!$existing_or_new_user->exists) {
@@ -167,7 +179,12 @@ class AuthController extends Controller
 
             $existing_or_new_user->save();
 
-            return $this->loginSuccess($existing_or_new_user);
+            $token = $existing_or_new_user->createToken('AuthToken')->plainTextToken;
+            return response()->json([
+                'message' => 'Logged in successfully',
+                'user' => $existing_or_new_user,
+                'token' => $token,
+            ], 200);
         }
     }
 
