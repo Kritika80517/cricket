@@ -1,7 +1,30 @@
 @extends('frontend.layouts.master')
 @section('frontend-content')
 
-    <div class="section-title single-player" style="background:url(assets/frontend/img/slide/3.jpg)">
+<style>
+    .item-player .info-player {
+        padding: 35px 0 0 0;
+        position: relative;
+    }
+    .item-player .info-player .number-player {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    margin-left: -25px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+</style>
+
+    <div class="section-title single-player" style="background:url(/assets/frontend/img/slide/3.jpg)">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -31,7 +54,7 @@
 
                         <div class="item-player single-player">
                             <div class="head-player">
-                                <img src="{{asset('assets/frontend/img/players/7.jpg')}}" alt="location-team">
+                                <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="location-team">
                             </div>
                             <div class="info-player">
                                 <span class="number-player">

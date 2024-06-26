@@ -32,14 +32,13 @@
                     <!-- Left Content - Tabs and Carousel -->
                     <div class="col-xl-12 col-md-12">
                         <!-- Nav Tabs -->
-                        <ul class="nav nav-tabs" id="myTab">
-                            <li class="" aria-expanded="false"><a href="#overview" data-toggle="tab" class="active"
-                                    aria-expanded="true">Overview</a></li>
-                            <li><a href="#schedule" data-toggle="tab" class="" aria-expanded="false">SCHEDULE</a></li>
-                            <li><a href="#results" data-toggle="tab" class="" aria-expanded="false">RESULTS</a></li>
-                            <li><a href="#news" data-toggle="tab" class="" aria-expanded="false">NEWS</a></li>
-                            <li><a href="#stats" data-toggle="tab" class="" aria-expanded="false">STATS</a></li>
-                            <li><a href="#players" data-toggle="tab" class="" aria-expanded="false">PLAYERS</a></li>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li aria-expanded="false"><a class="active" href="#overview" id="overview-tab" data-toggle="tab" aria-expanded="true">Overview</a></li>
+                            <li><a href="#schedule" id="schedule-tab" data-toggle="tab" aria-expanded="false">SCHEDULE</a></li>
+                            <li><a href="#results" id="results-tab" data-toggle="tab" aria-expanded="false">RESULTS</a></li>
+                            <li><a href="#news" id="news-tab" data-toggle="tab" aria-expanded="false">NEWS</a></li>
+                            <li><a href="#stats" id="stats-tab" data-toggle="tab" aria-expanded="false">STATS</a></li>
+                            <li><a href="#players" id="players-tab" data-toggle="tab" aria-expanded="false">PLAYERS</a></li>
                         </ul>
                         <!-- End Nav Tabs -->
                     </div>
@@ -48,7 +47,7 @@
                         <!-- Content Tabs -->
                         <div class="tab-content">
                             <!-- Tab One - overview -->
-                            <div class="tab-pane active" id="overview" aria-expanded="true">
+                            <div class="tab-pane fade show active" aria-labelledby="overview-tab" id="overview" aria-expanded="true">
 
                                 <div class="panel-box padding-b">
                                     <div class="titles">
@@ -60,119 +59,12 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--Latest Photos-->
-                                {{-- <div class="row">
-                              <div class="col-md-12">
-                                  <h3 class="clear-title">Latest Club News</h3>
-                              </div>
-
-                              <!--Item Club News -->
-                              <div class="col-lg-6 col-xl-4">
-                                   <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">World football's dates.</a></h4>
-                                        </div>
-                                        <a href="#"><img src="{{asset('assets/frontend/img/blog/1.jpg')}}" alt=""></a>
-                                        <div class="row">
-                                           <div class="info-panel">
-                                                <p>Fans from all around the world can apply for 2018 FIFA World Cup™ tickets as the first window of sales.</p>
-                                           </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Widget Text-->
-                               </div>
-                               <!--End Item Club News -->
-
-                               <!--Item Club News -->
-                              <div class="col-lg-6 col-xl-4">
-                                   <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Mbappe’s year to remember</a></h4>
-                                        </div>
-                                        <a href="#"><img src="{{asset('assets/frontend/img/blog/2.jpg')}}" alt=""></a>
-                                        <div class="row">
-                                           <div class="info-panel">
-                                                <p>Tickets may be purchased online by using Visa payment cards or Visa Checkout. Visa is the official.</p>
-                                           </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Widget Text-->
-                               </div>
-                               <!--End Item Club News -->
-
-                               <!--Item Club News -->
-                              <div class="col-lg-6 col-xl-4">
-                                   <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Egypt are one family</a></h4>
-                                        </div>
-                                        <a href="#"><img src="{{asset('assets/frontend/img/blog/3.jpg')}}" alt=""></a>
-                                        <div class="row">
-                                           <div class="info-panel">
-                                                <p>Successful applicants who have applied for supporter tickets and conditional supporter tickets will.</p>
-                                           </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Widget Text-->
-                               </div>
-                               <!--End Item Club News -->
-                           </div> --}}
-                                <!--End Latest Photos-->
-
-                                <!--Latest video -->
-                                {{-- <div class="row no-line-height">
-                              <div class="col-md-12">
-                                  <h3 class="clear-title">Latest Videos</h3>
-                              </div>
-
-                              <div class="col-lg-6 col-xl-4">
-                                   <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Eliminatory to the world.</a></h4>
-                                        </div>
-                                        <iframe class="video" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
-                                    </div>
-                                    <!-- End Widget Text-->
-                               </div>
-                               <!--End Item Club News -->
-
-                               <!--Item Club News -->
-                              <div class="col-lg-6 col-xl-4">
-                                   <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Colombia classification</a></h4>
-                                        </div>
-                                        <iframe class="video" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
-                                    </div>
-                                    <!-- End Widget Text-->
-                               </div>
-                               <!--End Item Club News -->
-
-                               <!--Item Club News -->
-                              <div class="col-lg-6 col-xl-4">
-                                   <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">World Cup goal</a></h4>
-                                        </div>
-                                        <iframe class="video" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
-                                    </div>
-                                    <!-- End Widget Text-->
-                               </div>
-                               <!--End Item Club News -->
-                           </div> --}}
-                                <!--End Items Club video -->
+                               
                             </div>
                             <!-- Tab One - overview -->
 
                             {{-- Team Schedules --}}
-                            <div class="tab-pane" id="schedule" aria-expanded="false">
+                            <div class="tab-pane " aria-labelledby="schedule-tab" id="schedule" aria-expanded="false">
 
                                 <table class="table-striped table-responsive table-hover">
                                     <thead>
@@ -190,7 +82,7 @@
                             </div>
 
                             {{-- Team Results --}}
-                            <div class="tab-pane" id="results" aria-expanded="false">
+                            <div class="tab-pane " aria-labelledby="results-tab" id="results" aria-expanded="false">
                                 <table class="table-striped table-responsive table-hover">
                                     <thead>
                                         <tr>
@@ -205,7 +97,7 @@
                             </div>
 
                             {{-- Team News --}}
-                            <div class="tab-pane " id="news" aria-expanded="true">
+                            <div class="tab-pane  " aria-labelledby="news-tab" id="news" aria-expanded="true">
 
                                 <div style="padding: 20px 0;" class="panel-box" id="teams-news">
                                     <div class="loader-div">
@@ -216,7 +108,7 @@
                             </div>
 
                             {{-- Team Stats --}}
-                            <div class="tab-pane" id="stats" aria-expanded="false">
+                            <div class="tab-pane " aria-labelledby="stats-tab" id="stats" aria-expanded="false">
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div id="team-stats-filters">
@@ -256,7 +148,7 @@
                             </div>
 
                             {{-- team Players --}}
-                            <div class="tab-pane" id="players" aria-expanded="false">
+                            <div class="tab-pane " aria-labelledby="players-tab" id="players" aria-expanded="false">
                                 <div class="row" id="team-players">
 
                                 </div>
@@ -294,4 +186,22 @@
 
 
     </section>
+
+    <script>
+        $(document).ready(function(){
+    // Listen for tab clicks
+    $('a[data-toggle="tab"]').on('click', function(e) {
+        // Remove active class from all tabs
+        $('a[data-toggle="tab"]').removeClass('active');
+        // Add active class to the clicked tab
+        $(this).addClass('active');
+        
+        // Remove active class from all tab panes
+        $('.tab-pane').removeClass('active show');
+        // Add active class to the corresponding tab pane
+        $($(this).attr('href')).addClass('active show');
+    });
+});
+
+    </script>
 @endsection

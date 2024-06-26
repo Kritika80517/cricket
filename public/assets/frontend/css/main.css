@@ -17625,6 +17625,8 @@ footer .links-footer ul.columns {
 /* line 2190, ../sass/main.scss */
 .post-item:last-child {
   background: none;
+  margin-bottom: 10px;
+  padding: 0;
 }
 /* line 2193, ../sass/main.scss */
 .post-item h5 {

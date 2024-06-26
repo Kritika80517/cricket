@@ -9,6 +9,9 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SeriesController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +36,12 @@ Route::post('/submit/reset-password', [UserController::class, 'submitResetPasswo
 
 Route::get('/about', function () {
     return view('frontend.about');
+});
+
+// Home 
+Route::prefix('home')->group(function () {
+    Route::get('/point-table',[HomeController::class, 'homePlayerPoint']);
+    Route::get('/upcoming-match',[HomeController::class, 'homeMatches']);
 });
 
 // Teams
@@ -64,31 +73,28 @@ Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
     Route::get('/', [MatchController::class, 'index']);
 });
 
+// article
+Route::group(['prefix' => 'articles' , 'as' => 'articles.'], function(){
+    Route::get('/',[ArticleController::class, 'index']);
 
-// Route::get('/article', function () {
-//     return view('frontend.article');
-// });
-Route::get('/articles',[ArticleController::class, 'index']);
-Route::get('/home-point-table',[HomeController::class, 'homePlayerPoint']);
-Route::get('/home-upcoming-match',[HomeController::class, 'homeMatches']);
-Route::get('/match-schedules/{type}',[ScheduleController::class, 'schedules']);
+});
 
 Route::get('/players/info', function () {
     return view('frontend.players.details');
 });
 
-
+// schedule
 Route::prefix('schedule')->group(function () {
-    Route::get('/', function () {
-        return view('frontend.schedule.index');
-    });
-    Route::get('/{id}',[ScheduleController::class, 'schedules']);
+    Route::get('/', [ScheduleController::class, 'index']);
+    Route::get('/match/{type}',[ScheduleController::class, 'schedules']);
+    Route::get('/details', [ScheduleController::class, 'scheduleInfo']);
+    Route::get('/match/details', [ScheduleController::class, 'scheduleMatchInfo']);
 });
 
-
-// Route::get('/contact', function () {
-//     return view('frontend.contact');
-// });
+Route::group(['prefix' => 'series' , 'as' => 'series.'], function(){
+    Route::get('/', [SeriesController::class, 'index']);
+    Route::get('/details', [SeriesController::class, 'seriesDetails']);
+});
 
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 Route::post('/contact/submit',[ContactController::class, 'store'])->name('contact.submit');

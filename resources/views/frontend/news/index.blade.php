@@ -33,11 +33,7 @@
                         </div>
                         <div class="info-panel">
                             <ul class="list" id="news-category-list">
-                                {{-- <li><i class="fa fa-check"></i><a href="#">Design</a></li>
-                                <li><i class="fa fa-check"></i><a href="#">Photos</a></li>
-                                <li><i class="fa fa-check"></i><a href="#">Videos</a></li>
-                                <li><i class="fa fa-check"></i><a href="#">Lifestyle</a></li>
-                                <li><i class="fa fa-check"></i><a href="#">Technology</a></li> --}}
+                               
                             </ul>
                         </div>
                     </div>
@@ -54,7 +50,7 @@
                         </div>
 
                         <!-- Post Item -->
-                        <div class="post-item">
+                        <div style="min-height: 500px;" class="post-item">
                             <div class="row">
                                 <div class="" id="news-container">
                                     <div class="loader-div">

@@ -79,7 +79,9 @@
                                     <div class="loader"></div>
                                 </div>
                             </div>
-                            <a href="{{ url('news') }}" class="btn-iw full no-margin">View All News</a>
+                            <div class="mt-5">
+                                <a href="{{ url('news') }}" class="btn-iw full no-margin">View All News</a>
+                            </div>
                         </div>
                         <!-- End Recent Post -->
                     </div>

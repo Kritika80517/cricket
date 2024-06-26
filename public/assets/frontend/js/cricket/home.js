@@ -50,7 +50,7 @@ $(document).ready(function(){
 
     function fetchPointTable(){
         $.ajax({
-            url: 'home-point-table',
+            url: 'home/point-table',
             method: 'GET',
             dataType: 'json',
             beforeSend: function() {
@@ -91,7 +91,7 @@ $(document).ready(function(){
 
     function fetchUpcomingMatch(){
         $.ajax({
-            url: 'home-upcoming-match',
+            url: 'home/upcoming-match',
             method: 'GET',
             dataType: 'json',
             beforeSend: function() {

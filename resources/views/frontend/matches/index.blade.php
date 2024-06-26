@@ -64,8 +64,7 @@
                     <!-- Content Tabs -->
                     <div class="tab-content">
                         <!-- Live Matches -->
-                        <div class="tab-pane fade show active" id="live">
-
+                        <div class="tab-pane show active" id="live">
                             <div class="panel-box" style="padding-bottom: 10px">
                                 <div class="titles mb-0">
                                     <h4>Live Cricket Score</h4>
@@ -252,24 +251,23 @@
                         <!-- Live Matches -->
 
                         <!-- Recent Matches -->
-                        <div class="tab-pane fade active" id="recent">
+                        <div class="tab-pane show" id="recent">
                             <div class="panel-box" style="padding-bottom: 10px">
                                 <div class="titles mb-0">
-                                    <h4>Cricket Schedule</h4>
+                                    <h4>Recent Cricket Score</h4>
                                     <div class="mt-5 ml-4">
                                         <ul class="nav nav-tabs mb-3 match-nav" id="myTab">
-                                            <li><a href="#international" data-toggle="tab" style="border-radius: 20px;">International</a></li>
-                                            <li><a href="#domestic" data-toggle="tab" style="border-radius: 20px;">Domestic & Others</a></li>
-                                            <li><a href="#league" data-toggle="tab" style="border-radius: 20px;">T20 Leagues</a></li>
-                                            <li><a href="#women" data-toggle="tab" style="border-radius: 20px;">Women</a></li>
+                                            <li class="active"><a href="#international1" data-toggle="tab" style="border-radius: 20px;">International</a></li>
+                                            <li><a href="#domestic1" data-toggle="tab" style="border-radius: 20px;">Domestic & Others</a></li>
+                                            <li><a href="#league1" data-toggle="tab" style="border-radius: 20px;">T20 Leagues</a></li>
+                                            <li><a href="#women1" data-toggle="tab" style="border-radius: 20px;">Women</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                
                                
                                <div class="tab-content">
                                  {{-- international --}}
-                                 <div class="tab-pane m-2 active" id="international">
+                                 <div class="tab-pane m-2 active" id="international1">
                                     <div class="post-item p-2" >
                                         <div class=" col-lg-12" >
                                             <div class="bg-light ml-2">
@@ -328,20 +326,20 @@
                                 {{-- end international --}}
 
                                 {{-- domestic --}}
-                                <div class="tab-pane m-2" id="domestic">
-                                    
+                                <div class="tab-pane m-2" id="domestic1">
+                                    <h3>Domestic match</h3>
                                 </div>
                                 {{-- end domestic --}}
 
                                 {{-- league --}}
-                                <div class="tab-pane m-2" id="league">
-                                    
+                                <div class="tab-pane m-2" id="league1">
+                                    <h3>t20 league match</h3>
                                 </div>
                                 {{-- end league --}}
 
                                 {{-- women --}}
-                                <div class="tab-pane m-2" id="women">
-                                    
+                                <div class="tab-pane m-2" id="women1">
+                                    <h3>women match</h3>
                                 </div>
                                 {{-- end women --}}
                                </div>
@@ -351,23 +349,23 @@
                         <!-- End Recent Matches -->
 
                         <!-- Upcoming matches -->
-                        <div class="tab-pane fade active" id="upcoming">
+                        <div class="tab-pane show" id="upcoming">
                             <div class="panel-box" style="padding-bottom: 10px">
                                 <div class="titles mb-0">
-                                    <h4>Live Cricket Score</h4>
+                                    <h4>Upcoming Cricket Score</h4>
                                     <div class="mt-5 ml-4">
                                         <ul class="nav nav-tabs mb-3 match-nav" id="myTab">
-                                            <li class="active"><a href="#international" data-toggle="tab">International</a></li>
-                                            <li><a href="#domestic" data-toggle="tab">Domestic & Others</a></li>
-                                            <li><a href="#league" data-toggle="tab">Leagues</a></li>
-                                            <li><a href="#women" data-toggle="tab">Women</a></li>
+                                            <li class="active"><a href="#international2" data-toggle="tab">International</a></li>
+                                            <li><a href="#domestic2" data-toggle="tab">Domestic & Others</a></li>
+                                            <li><a href="#league2" data-toggle="tab">Leagues</a></li>
+                                            <li><a href="#women2" data-toggle="tab">Women</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 
                                 <div class="tab-content">
                                     {{-- international --}}
-                                    <div class="tab-pane m-2 active" id="international">
+                                    <div class="tab-pane m-2 active" id="international2">
                                         <div class="post-item p-2" >
                                             <div class=" col-lg-12" >
                                                 <div class="bg-light">
@@ -394,7 +392,7 @@
                                     {{-- end international --}}
 
                                     {{-- domestic --}}
-                                    <div class="tab-pane m-2" id="domestic">
+                                    <div class="tab-pane m-2" id="domestic2">
                                         <div class="post-item p-2" >
                                             <div class=" col-lg-12" >
                                                 <div class="bg-light">
@@ -444,7 +442,7 @@
                                     {{-- end domestic --}}
 
                                     {{-- league --}}
-                                    <div class="tab-pane m-2" id="league">
+                                    <div class="tab-pane m-2" id="league2">
                                         <div class="post-item p-2" >
                                             <div class=" col-lg-12" >
                                                 <div class="bg-light ml-2">
@@ -495,7 +493,7 @@
                                     {{-- end league --}}
 
                                     {{-- women --}}
-                                    <div class="tab-pane m-2" id="women">
+                                    <div class="tab-pane m-2" id="women2">
                                         <div class="post-item p-2" >
                                             <div class=" col-lg-12" >
                                                 <div class="bg-light">
@@ -535,4 +533,14 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var target = $(e.target).attr("href"); // activated tab
+                $('.show').removeClass('active');
+                $(target).addClass('active');
+            });
+        });
+    </script>
 @endsection

@@ -5,7 +5,7 @@ $(document).ready(function() {
         loaderDiv.show();
 
         $.ajax({
-            url: `match-schedules/${type}`, 
+            url: `schedule/match/${type}`, 
             method: 'GET', 
             success: function(response) {
                 let html = '';
