@@ -87,13 +87,15 @@ Route::get('/players/info', function () {
 Route::prefix('schedule')->group(function () {
     Route::get('/', [ScheduleController::class, 'index']);
     Route::get('/match/{type}',[ScheduleController::class, 'schedules']);
-    Route::get('/details', [ScheduleController::class, 'scheduleInfo']);
-    Route::get('/match/details', [ScheduleController::class, 'scheduleMatchInfo']);
+    Route::get('/series/{seires_id}', [ScheduleController::class, 'scheduleInfo']);
+    Route::get('/match/{match_id}', [ScheduleController::class, 'scheduleMatchInfo']);
 });
 
 Route::group(['prefix' => 'series' , 'as' => 'series.'], function(){
     Route::get('/', [SeriesController::class, 'index']);
-    Route::get('/details', [SeriesController::class, 'seriesDetails']);
+    Route::get('/{series_id}/details', [SeriesController::class, 'seriesDetails']);
+    Route::get('/list/{type}', [SeriesController::class, 'getSeries']);
+    Route::get('/schedules/{series_id}', [SeriesController::class, 'getSchedule']);
 });
 
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');

@@ -40,11 +40,11 @@ $(document).ready(function() {
                                     html += `
                                         <tr>
                                             <td rowspan="${matchCount}">
-                                                <a href="/cricket-series/${match.seriesId}"><strong>${seriesName}</strong></a>
+                                                <a href="/schedule/series/${match.seriesId}"><strong>${seriesName}</strong></a>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <a href="/live-cricket-scores/${match.matchId}"
+                                                    <a href="/schedule/live-cricket-scores/${match.matchId}"
                                                         title="${matchDesc} Live Cricket Score">
                                                         ${matchDesc}
                                                     </a>
@@ -64,7 +64,7 @@ $(document).ready(function() {
                                         <tr>
                                             <td>
                                                 <div>
-                                                    <a href="/live-cricket-scores/${match.matchId}"
+                                                    <a href="/schedule/live-cricket-scores/${match.matchId}"
                                                         title="${matchDesc} Live Cricket Score">
                                                         ${matchDesc}
                                                     </a>

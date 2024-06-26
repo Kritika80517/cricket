@@ -39,7 +39,7 @@
                 <div class="col-lg-12">
                     <div class="panel-box">
                         <div class="titles mb-0">
-                            <h4>ICC Cricket World Cup League Two 2023-27</h4>
+                            <h4>{{ request()->name ?? '' }}</h4>
                         </div>
                         <!-- Content Tabs -->
                         <div class="tab-content">
@@ -85,8 +85,7 @@
 
                             {{-- Schedule tab --}}
                             <div class="tab-pane" id="schedule">
-                                <table class="table mt-2" border="1" id="international-schedule"
-                                    style="min-height: 100px;">
+                                <table class="table mt-2" border="1" id="series-schedules" style="min-height: 200px;">
                                     {{-- <div class="loader-div">
                                         <div class="loader"></div>
                                     </div> --}}
@@ -100,26 +99,6 @@
                                     <tbody>
                                         <tr>
                                             <td>Jun 19, 07:00 </td>
-                                            <td>
-                                                <strong>Colombia</strong><br>
-                                                <small class="meta-text">GROUP H.</small><br>
-                                                <small class="meta-text">Mordovia Arena,Saransk</small>
-                                            </td>
-                                            <td>07:00 </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Jun 19</td>
-                                            <td>
-                                                <strong>Colombia</strong><br>
-                                                <small class="meta-text">GROUP H.</small><br>
-                                                <small class="meta-text">Mordovia Arena,Saransk</small>
-                                            </td>
-                                            <td>07:00 </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Jun 19</td>
                                             <td>
                                                 <strong>Colombia</strong><br>
                                                 <small class="meta-text">GROUP H.</small><br>
@@ -500,4 +479,6 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/cricket/series-details.js') }}"></script>
 @endsection

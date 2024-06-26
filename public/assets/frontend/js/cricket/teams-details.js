@@ -40,7 +40,7 @@ $(document).ready(function() {
                                             </td>
                                         </tr>
                                     `;
-                                    console.log("index", index)
+                                    
                                     if(index < 5){
                                         match_data += `
                                             <li>

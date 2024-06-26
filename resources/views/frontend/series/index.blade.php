@@ -36,159 +36,76 @@
                 <div class="col-lg-9">
                     <div class="panel-box">
                         <div class="titles mb-0">
-                            <h4>Cricket Schedule</h4>
+                            <h4>Cricket Series</h4>
                         </div>
                         <!-- Content Tabs -->
-                    <div class="tab-content" >
-                        <!-- Tab One - current Matches -->
-                        <div class="tab-pane fade show active" id="international">
-                            <table class="table" border="1" id="international-schedule" style="min-height: 100px;">
-                                {{-- <div class="loader-div">
-                                    <div class="loader"></div>
-                                </div> --}}
-                                <thead>
-                                    <tr>
-                                        <th style="width: 150px">Month</th>
-                                        <th>Series Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Jun 19, 07:00 </td>
-                                        <td>
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small><br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
+                        <div class="tab-content">
+                            <!-- Tab One - current Matches -->
+                            <div class="tab-pane fade show active" id="international">
+                                <table class="table" border="1" id="international-series" style="min-height: 200px;">
+                                    <tbody>
+                                        <div class="loader-div">
+                                            <div class="loader"></div>
+                                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Tab One - current Matches -->
 
-                                    <tr>
-                                        <td>Jun 19, 07:00 </td>
-                                        <td>
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small><br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jun 19, 07:00 </td>
-                                        <td>
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small><br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
-                                    
-                                </tbody>
-                            </table>
+                            <!-- Tab Two - future Matches -->
+                            <div class="tab-pane" id="domestic">
+                                <table class="table" border="1" id="domestic-series" style="min-height: 200px;">
+                                    <tbody>
+                                        <div class="loader-div">
+                                            <div class="loader"></div>
+                                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- End Tab Two - future Matches -->
+
+                            <!-- Tab Theree - matchByDay -->
+                            <div class="tab-pane" id="league">
+                                <table class="table" border="1" id="league-series" style="min-height: 200px;">
+                                    <tbody>
+                                        <div class="loader-div">
+                                            <div class="loader"></div>
+                                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- End Tab Theree - matchByDay -->
+
+                            <!-- Tab Theree - teams -->
+                            <div class="tab-pane" id="women">
+                                <table class="table" border="1" id="women-series" style="min-height: 200px;">
+                                    <tbody>
+                                        <div class="loader-div">
+                                            <div class="loader"></div>
+                                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- End Tab Theree - team -->
+
                         </div>
-                        <!-- Tab One - current Matches -->
-
-                        <!-- Tab Two - future Matches -->
-                        <div class="tab-pane" id="domestic">
-                            <table class="table" border="1" id="domestic-schedule" style="min-height: 100px;">
-                                {{-- <div class="loader-div">
-                                    <div class="loader"></div>
-                                </div> --}}
-                                <thead>
-                                    <tr>
-                                        <th style="width: 150px">Month</th>
-                                        <th>Series Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Jun 19, 07:00 </td>
-                                        <td>
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small><br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- End Tab Two - future Matches -->
-
-                        <!-- Tab Theree - matchByDay -->
-                        <div class="tab-pane" id="league">
-                            <table class="table" border="1" id="league-schedule" style="min-height: 100px;">
-                                {{-- <div class="loader-div">
-                                    <div class="loader"></div>
-                                </div> --}}
-                                <thead>
-                                    <tr>
-                                        <th style="width: 150px">Month</th>
-                                        <th>Series Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Jun 19, 07:00 </td>
-                                        <td>
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small><br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>Jun 19, 07:00 </td>
-                                        <td>
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small><br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- End Tab Theree - matchByDay -->
-
-                        <!-- Tab Theree - teams -->
-                        <div class="tab-pane" id="women">
-                            <table class="table" border="1" id="women-schedule" style="min-height: 100px;">
-                                {{-- <div class="loader-div">
-                                    <div class="loader"></div>
-                                </div> --}}
-                                <thead>
-                                    <tr>
-                                        <th style="width: 150px">Month</th>
-                                        <th>Series Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Jun 19, 07:00 </td>
-                                        <td>
-                                            <strong>Colombia</strong><br>
-                                            <small class="meta-text">GROUP H.</small><br>
-                                            <small class="meta-text">Mordovia Arena,Saransk</small>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- End Tab Theree - team -->
-
+                        <!-- Content Tabs -->
                     </div>
-                    <!-- Content Tabs -->
-                    </div>
-                     
+
                 </div>
                 <aside class="col-lg-3">
-                   
+
                     <!-- Widget img-->
                     <div class="panel-box">
                         <div class="titles no-margin">
                             <h4>Widget Image</h4>
                         </div>
-                        <img src="{{asset('assets/frontend/img/slide/1.jpg')}}" alt="">
+                        <img src="{{ asset('assets/frontend/img/slide/1.jpg') }}" alt="">
                         <div class="row">
-                           <div class="info-panel">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,  ut sit amet, consectetur adipisicing elit, labore et dolore.</p>
-                           </div>
+                            <div class="info-panel">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, ut sit amet, consectetur
+                                    adipisicing elit, labore et dolore.</p>
+                            </div>
                         </div>
                     </div>
                     <!-- End Widget img-->
@@ -196,5 +113,6 @@
             </div>
         </div>
     </div>
-    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/cricket/series.js') }}"></script>
 @endsection
