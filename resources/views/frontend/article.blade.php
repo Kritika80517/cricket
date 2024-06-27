@@ -82,11 +82,11 @@
                         <!-- Post Item -->
                         @foreach ($data['smallArticle'] as $item)
                             <div class="post-item">
-                                <div class="row">
+                                <div style="align-items: initial;" class="row">
                                     <div class="col-md-4">
                                         <div class="img-hover">
                                             <img src="{{ asset('assets/admin/img/article/' . $item->image) }}" alt=""
-                                                class="img-responsive">
+                                                class="img-responsive articleimage">
                                         </div>
                                     </div>
                                     <div class="col-md-8 description-container">
@@ -107,6 +107,7 @@
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
         <script>
             $(document).ready(function() {

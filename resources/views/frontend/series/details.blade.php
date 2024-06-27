@@ -107,54 +107,17 @@
 
                             {{-- Schedule tab --}}
                             <div class="tab-pane" id="schedule">
-                                <div class="row mt-2 mb-2">
-                                    <div class="col-lg-12">
-                                        <table class="table mt-2" border="1" id="series-schedules"
-                                            style="min-height: 200px;">
-                                            {{-- <div class="loader-div">
-                                                <div class="loader"></div>
-                                            </div> --}}
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 150px">Date</th>
-                                                    <th>Match Details</th>
-                                                    <th>Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Jun 19, 07:00 </td>
-                                                    <td>
-                                                        <strong>Colombia</strong><br>
-                                                        <small class="meta-text">GROUP H.</small><br>
-                                                        <small class="meta-text">Mordovia Arena,Saransk</small>
-                                                    </td>
-                                                    <td>07:00 </td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                <table class="table mt-2" border="1" id="series-schedules" style="min-height: 200px;">
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
 
                             {{-- News tab --}}
                             <div class="tab-pane" id="news">
-                                <div class="post-item">
-                                    <div class="row mt-2">
-                                        <div class="col-md-4">
-                                            <div class="img-hover">
-                                                <img src="{{ asset('assets/frontend/img/blog/1.jpg') }}" alt=""
-                                                    class="img-responsive">
-                                                <div class="overlay"><a href="single-news.html">+</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5><a href="single-news.html">Group Stage Breakdown</a></h5>
-                                            <span class="data-info">January 3, 2014</span>
-                                            <p>While familiar with fellow European nation France, Hareide admits that South
-                                                American side Peru.<a href="single-news.html">Read More [+]</a></p>
-                                        </div>
+                                <div id="series-news" class="pt-4 pb-4">
+                                    <div class="loader-div">
+                                        <div class="loader"></div>
                                     </div>
                                 </div>
                             </div>
@@ -171,88 +134,12 @@
                                                     <th class="text-center">Won</th>
                                                     <th class="text-center">Lost</th>
                                                     <th class="text-center">Tied</th>
-                                                    <th class="text-center">NR</th>
                                                     <th class="text-center">PTS</th>
                                                     <th class="text-center">NRR</th>
-                                                    <th class="text-center">D</th>
                                                 </tr>
                                             </thead>
-
-                                            <tbody class="text-center">
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <img src="{{ asset('assets/frontend/img/clubs-logos/colombia.png') }}"
-                                                            alt="Colombia"><span>Colombia</span>
-                                                    </td>
-                                                    <td>38</td>
-                                                    <td>26</td>
-                                                    <td>9</td>
-                                                    <td>3</td>
-                                                    <td>73</td>
-                                                    <td>32</td>
-                                                    <td>+41</td>
-                                                    <td>87</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <img src="{{ asset('assets/frontend/img/clubs-logos/bra.png') }}"
-                                                            alt="Brazil"><span>Brazil</span>
-                                                    </td>
-                                                    <td>38</td>
-                                                    <td>24</td>
-                                                    <td>7</td>
-                                                    <td>7</td>
-                                                    <td>83</td>
-                                                    <td>38</td>
-                                                    <td>+45</td>
-                                                    <td>79</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <img src="{{ asset('assets/frontend/img/clubs-logos/arg.png') }}"
-                                                            alt="Argentina"><span>Argentina</span>
-                                                    </td>
-                                                    <td>38</td>
-                                                    <td>22</td>
-                                                    <td>9</td>
-                                                    <td>7</td>
-                                                    <td>71</td>
-                                                    <td>36</td>
-                                                    <td>+35</td>
-                                                    <td>75</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <img src="{{ asset('assets/frontend/img/clubs-logos/japan.png') }}"
-                                                            alt="Japan"><span>Japan</span>
-                                                    </td>
-                                                    <td>38</td>
-                                                    <td>20</td>
-                                                    <td>10</td>
-                                                    <td>8</td>
-                                                    <td>62</td>
-                                                    <td>37</td>
-                                                    <td>+25</td>
-                                                    <td>70</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <img src="{{ asset('assets/frontend/img/clubs-logos/sen.png') }}"
-                                                            alt="Senegal"><span>Senegal</span>
-                                                    </td>
-                                                    <td>38</td>
-                                                    <td>19</td>
-                                                    <td>7</td>
-                                                    <td>12</td>
-                                                    <td>58</td>
-                                                    <td>53</td>
-                                                    <td>+5</td>
-                                                    <td>64</td>
-                                                </tr>
+                                            
+                                            <tbody class="text-center" id="pointsTableBody">
                                             </tbody>
                                         </table>
                                     </div>
@@ -262,47 +149,13 @@
                             {{-- squad --}}
                             <div class="tab-pane" id="squad">
                                 <div class="row mt-2 mb-2">
-                                    <div class="col-lg-3">
-                                        <div class="panel-box">
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-soccer-ball-o"></i>ODI</h4>
-                                            </div>
-                                            <div class="info-panel p-0">
-                                                <ul class="list-panel" id="Batting-list">
-
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Nepal</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Namibia</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Netherlands</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Canada</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Scotland</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">United Arab Emirates</a>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
+                                    <div class="col-lg-3" id="series-squads">
+                                        
                                     </div>
 
                                     <div class="col-lg-9">
-                                        <div class="groups-list page-group">
-                                            <div class="row">
+                                        <div id="series-squads-players" class="groups-list page-group">
+                                            {{-- <div class="row">
                                                 <div class="col-lg-6 col-md-12">
                                                     <h5><a href="groups.html">BATTERS</a></h5>
                                                     <div class="player-item">
@@ -428,7 +281,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                         </div>
                                     </div>
@@ -571,19 +424,9 @@
 
                             {{-- Venue --}}
                             <div class="tab-pane" id="venue">
-                                <div class="post-item">
-                                    <div class="row mt-2">
-                                        <div class="col-md-4">
-                                            <div class="img-hover">
-                                                <img src="{{ asset('assets/frontend/img/blog/1.jpg') }}" alt=""
-                                                    class="img-responsive">
-                                                <div class="overlay"><a href="/">+</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5><a href="/">Mahinda Rajapaksa International Stadium</a></h5>
-                                            <span class="data-info">Hambantota</span>
-                                        </div>
+                                <div class="pt-4 pb-4" id="series-venues">
+                                    <div class="loader-div">
+                                        <div class="loader"></div>
                                     </div>
                                 </div>
                             </div>

@@ -19230,3 +19230,9 @@ table.career tr td img {
 .next-match span{
   padding: 20px 15px !important;
 }
+
+.articleimage{
+  width: 100%;
+  object-fit: cover;
+  height: 170px;
+}
