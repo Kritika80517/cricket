@@ -44,7 +44,7 @@
                         <!-- Point Table -->
                         <div class="panel-box" id="home-point-data">
                             <div class="titles no-margin border-0 home-point-data">
-                                <h4>Points Table</h4>
+                                <h4>Ranking Table</h4>
                             </div>
                             <table class="table-striped table-responsive table-hover result-point small">
                                 <thead class="point-table-head">
@@ -91,7 +91,7 @@
         <!-- End White Section -->
 
         <div class="paddings-mini white-section" style="padding-top:0px">
-            <div class="container">
+            <div class="container mt-5">
                 <div class="row">
                     <div class="col-lg-12">
                         <!--Sponsors CLub -->
