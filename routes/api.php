@@ -116,4 +116,9 @@ Route::prefix('v1')->group(function () {
     Route::get('photos/list', [CricketController::class, 'photos_list']);
     Route::get('photos/gallery', [CricketController::class, 'photos_gallery']);
     Route::get('photos/image', [CricketController::class, 'photos_image']);
+
+    Route::get('stats/ranking', [CricketController::class, 'statsRanking']);
+    Route::get('stats/standings', [CricketController::class, 'statsStandings']);
+    Route::get('stats/record-filters', [CricketController::class, 'statsRecordFilters']);
+    Route::get('stats/record', [CricketController::class, 'statsRecord']);
 });

@@ -620,4 +620,61 @@ class CricketController extends Controller
             return response()->json($response->body(), $response->status());
         }
     }
+
+    // stats
+
+    public function statsRanking(Request $request){
+        $formatType = 'test'; 
+        $category = 'batsmen'; 
+        if($request->has('formatType','category')){
+            $formatType = $request->formatType;
+            $category = $request->category;
+        }
+        $response = cricketAPI("/stats/v1/rankings/{$category}?formatType={$formatType}");
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function statsStandings(Request $request){
+        $matchType = 1; 
+        if($request->has('matchType')){
+            $matchType = $request->matchType;
+        }
+        $response = cricketAPI("/stats/v1/iccstanding/team/matchtype/".$matchType);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function statsRecordFilters(Request $request){
+        
+        $response = cricketAPI("/stats/v1/topstats");
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
+    public function statsRecord(Request $request){
+        $statsType = 'mostRuns'; 
+        if($request->has('statsType')){
+            $statsType = $request->statsType;
+        }
+        $response = cricketAPI("/stats/v1/topstats/0?statsType=" . $statsType);
+        
+        if ($response->successful()) {
+            return response()->json($response->json(), 200);
+        } else {
+            return response()->json($response->body(), $response->status());
+        }
+    }
+
 }

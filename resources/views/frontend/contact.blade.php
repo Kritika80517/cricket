@@ -27,7 +27,7 @@
                         </div>
                         <div class="info-panel">
                             <address>
-                              <strong>Sports Cup, Inc.</strong><br>
+                              <strong>Cricket Wicket</strong><br>
                               <i class="fa fa-map-marker"></i><strong>Address: </strong> {{getKeyValue('address') }}<br>
                               <i class="fa fa-plane"></i><strong>City: </strong>{{getKeyValue('address') }}<br>
                               <i class="fa fa-phone"></i> <abbr title="Phone">Phone:</abbr> {{getKeyValue('phone') }}

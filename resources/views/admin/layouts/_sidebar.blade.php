@@ -69,7 +69,7 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ request()->is('admin/matchschedule/*') ? 'active' : '' }}">
+            {{-- <li class="dropdown {{ request()->is('admin/matchschedule/*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dumbbell"></i>
                     <span>Match Schedule</span></a>
                 <ul class="dropdown-menu">
@@ -92,7 +92,7 @@
                     </li>
                         
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="{{ request()->is('admin/notifications') ? 'active' : '' }}"><a class="nav-link"
                 href="{{ url('admin/notifications') }}"><i class="fas fa-comment-dots"></i> <span>Notifications</span></a>
