@@ -71,6 +71,7 @@ Route::group(['prefix' => 'news' , 'as' => 'news.'], function(){
 // matches
 Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
     Route::get('/', [MatchController::class, 'index']);
+    Route::get('/{type}', [MatchController::class, 'getMatches']);
 });
 
 // article
@@ -104,6 +105,7 @@ Route::group(['prefix' => 'series' , 'as' => 'series.'], function(){
     Route::get('/sqad/{series_id}', [SeriesController::class, 'getSqad']);
     Route::get('/{series_id}/sqads/{squad_id}', [SeriesController::class, 'getPlayers']);
 });
+
 
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 Route::post('/contact/submit',[ContactController::class, 'store'])->name('contact.submit');
