@@ -34,7 +34,7 @@
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="{{ url('/') }}">Home</a></li>
-                            <li>Schedule</li>
+                            <li>Schedule Details</li>
                         </ul>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="col-lg-12">
                     <div class="panel-box">
                         <div class="titles mb-0">
-                            <h4>ICC Mens T20 World Cup 2024</h4>
+                            <h4>{{ request()->name ?? '' }}</h4>
                         </div>
                         <!-- Content Tabs -->
                         <div class="tab-content">
@@ -122,7 +122,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>Jun 19, 07:00 </td>
                                                     <td>
                                                         <strong>Colombia</strong><br>
@@ -139,7 +139,7 @@
                                                         <small class="meta-text">Mordovia Arena,Saransk</small>
                                                     </td>
                                                     <td>07:00 </td>
-                                                </tr>
+                                                </tr> --}}
 
                                             </tbody>
                                         </table>

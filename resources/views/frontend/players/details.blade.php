@@ -35,7 +35,7 @@
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li>Inner Page</li>
+                            <li>Players Details</li>
                         </ul>
                     </div>
                 </div>

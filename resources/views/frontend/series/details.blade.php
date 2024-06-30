@@ -33,7 +33,7 @@
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="{{ url('/') }}">Home</a></li>
-                            <li>Series</li>
+                            <li>Series Details</li>
                         </ul>
                     </div>
                 </div>

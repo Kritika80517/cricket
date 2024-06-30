@@ -89,6 +89,8 @@ Route::prefix('schedule')->group(function () {
     Route::get('/match/{type}',[ScheduleController::class, 'schedules']);
     Route::get('/series/{seires_id}', [ScheduleController::class, 'scheduleInfo']);
     Route::get('/match/{match_id}', [ScheduleController::class, 'scheduleMatchInfo']);
+    Route::get('/list/{type}', [ScheduleController::class, 'getSeries']);
+    Route::get('/series/{series_id}', [SeriesController::class, 'getSchedule']);
 });
 
 Route::group(['prefix' => 'series' , 'as' => 'series.'], function(){

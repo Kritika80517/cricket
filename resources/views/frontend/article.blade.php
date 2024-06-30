@@ -25,7 +25,7 @@
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="{{ url('/') }}">Home</a></li>
-                            <li>Inner Page</li>
+                            <li>Article</li>
                         </ul>
                     </div>
                 </div>

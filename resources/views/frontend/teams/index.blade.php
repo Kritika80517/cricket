@@ -13,7 +13,7 @@
                     <div class="breadcrumbs">
                         <ul>
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li>Inner Page</li>
+                            <li>Team</li>
                         </ul>
                     </div>
                 </div>

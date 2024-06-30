@@ -1,5 +1,23 @@
 @extends('frontend.layouts.master')
 @section('frontend-content')
+<div class="section-title single-player" style="background:url(/assets/frontend/img/slide/2.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Single New</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="{{url('/')}}">Home</a></li>
+                        <li>News Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <section class="content-info">
 
