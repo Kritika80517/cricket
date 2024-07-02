@@ -71,7 +71,7 @@ Route::group(['prefix' => 'news' , 'as' => 'news.'], function(){
 // matches
 Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
     Route::get('/', [MatchController::class, 'index']);
-    Route::get('/{type}', [MatchController::class, 'getMatches']);
+    Route::get('/data/{type}', [MatchController::class, 'getMatches']);
 });
 
 // article

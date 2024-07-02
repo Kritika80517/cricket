@@ -3,7 +3,7 @@ $(document).ready(function() {
     // Function to fetch matches for a given type (live, recent, upcoming)
     function fetchMatches(type) {
         $.ajax({
-            url: `matches/${type}`,
+            url: `matches/data/${type}`,
             method: 'GET',
             success: function(response) {
                 // Process the response and update the HTML
