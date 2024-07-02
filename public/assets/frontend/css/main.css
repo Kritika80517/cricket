@@ -18588,8 +18588,10 @@ address strong {
 /* line 2976, ../sass/main.scss */
 .item-player .head-player {
   overflow: hidden;
-  max-height: 165px;
+  max-height: 300px;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 /* line 2981, ../sass/main.scss */
 .item-player .info-player {

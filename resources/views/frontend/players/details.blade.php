@@ -54,50 +54,23 @@
 
                         <div class="item-player single-player">
                             <div class="head-player">
-                                <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="location-team">
+                                <img src="https://static.cricbuzz.com/a/img/v1/200x200/i1/c{{$data['faceImageId']}}/{{$data['name']}}.jpg" alt="location-team">
                             </div>
                             <div class="info-player">
-                                <span class="number-player">
+                                {{-- <span class="number-player">
                                     10
-                                </span>
+                                </span> --}}
                                 <h4>
-                                    Jamez Rodriguez
-                                    <span>Forward</span>
+                                   {{-- {{dd($data)}} --}}
+                                   {{$data['name']}}
+                                    <span>{{ $data['role'] }}</span>
                                 </h4>
                                 <ul>
-                                    <li>
-                                        <strong>CLUB NAME:</strong> <span><img src="{{asset('assets/frontend/img/clubs-logos/colombia.png')}}" alt=""> Colombia </span>
-                                    </li><li><strong>MATCHES:</strong> <span>90</span></li>
-                                    <li><strong>AGE:</strong> <span>28</span></li>
-                                    <li><strong>Goals:</strong> <span>108</span></li>
-                                    <li><strong>Discipline:</strong> <span>4 fouls against</span></li>
-                                    <li><strong>Passing:</strong> <span>40 free kicks</span></li>
-                                </ul>
-
-                                <h6>Follow Jamez Rodriguez</h6>
-
-                                <ul class="social-player">
-                                    <li>
-                                        <div>
-                                            <a href="#" class="facebook">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <a href="#" class="twitter-icon">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <a href="#" class="youtube">
-                                                <i class="fa fa-youtube"></i>
-                                            </a>
-                                        </div>
-                                    </li>
+                                    <li><strong>CLUB NAME:</strong> <span> {{$data['intlTeam']}} </span>
+                                    <li><strong>DOB:</strong> <span>{{ $data['DoB'] }}</span></li>
+                                    <li><strong>Height:</strong> <span>{{ $data['height'] }}</span></li>
+                                    <li><strong>Bat:</strong> <span>{{ $data['bat'] }}</span></li>
+                                    <li><strong>Bowl:</strong> <span>{{ $data['bowl'] }}</span></li>
                                 </ul>
                             </div>
                         </div>

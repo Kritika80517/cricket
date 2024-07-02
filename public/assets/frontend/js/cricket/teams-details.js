@@ -245,7 +245,7 @@ $(document).ready(function() {
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="/players/info" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    <a href="/players/${player.id}" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>`;
                         playerContainer.append(playerHtml);

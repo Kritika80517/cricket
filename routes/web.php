@@ -10,21 +10,9 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SeriesController;
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\PlayerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Route::get('/login', [UserController::class, 'index'])->name('login');
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register/submit', [UserController::class, 'registerSubmit'])->name('register.submit');
@@ -80,8 +68,12 @@ Route::group(['prefix' => 'articles' , 'as' => 'articles.'], function(){
 
 });
 
-Route::get('/players/info', function () {
-    return view('frontend.players.details');
+// Route::get('/players/info', function () {
+//     return view('frontend.players.details');
+// });
+
+Route::prefix('players')->group(function () {
+    Route::get('/{player_id}',[PlayerController::class, 'show']);
 });
 
 // schedule
