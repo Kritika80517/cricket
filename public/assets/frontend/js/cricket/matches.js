@@ -71,7 +71,7 @@ $(document).ready(function() {
                     content += `
                         <div class="post-item p-2">
                             <div class="col-lg-12">
-                                <span><a href="#">${team1.teamName} vs ${team2.teamName}, ${matchInfo.matchDesc}</a></span><br>
+                                <h4><a href="#">${team1.teamName} vs ${team2.teamName}, ${matchInfo.matchDesc}</a></h4><br>
                                 <p>Today • ${new Date(parseInt(matchInfo.startDate)).toLocaleTimeString()} at ${venueInfo.ground}, ${venueInfo.city}</p>
                             </div>
                             <div class="panel-box col-lg-11 ml-2 mb-0 bg-light">
