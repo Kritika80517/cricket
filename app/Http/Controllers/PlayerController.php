@@ -8,17 +8,15 @@ class PlayerController extends Controller
 {
     public function show(Request $request, $player_id){
         $response = cricketAPI("/stats/v1/player/".$player_id);
-        $data = [];
-        if ($response->successful()) {
-            $data = $response->json();
-            return view('frontend.players.details', compact('data'));
-        }
-
         $battingResponse = cricketAPI("/stats/v1/player/".$player_id ."/batting");
         $battingData = [];
-        if ($battingResponse->successful()) {
+        $data = [];
+        if ($response->successful() || $battingResponse->successful()) {
             $battingData = $battingResponse->json();
+            $data = $response->json();
+            return view('frontend.players.details', compact('data', 'battingData'));
         }
+        
         return view('frontend.players.details', compact('data','battingData'));
     }
 

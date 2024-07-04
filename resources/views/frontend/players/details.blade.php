@@ -22,6 +22,7 @@
     font-size: 1rem;
     font-weight: bold;
 }
+
 </style>
 
     <div class="section-title single-player" style="background:url(/assets/frontend/img/slide/3.jpg)">

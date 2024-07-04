@@ -40,7 +40,7 @@ $(document).ready(function() {
                                     html += `
                                         <tr>
                                             <td rowspan="${matchCount}">
-                                                <a href="/schedule/series/${match.seriesId}"><strong>${seriesName}</strong></a>
+                                                <a href="/series/${match.seriesId}/details?name=${seriesName}&seriesId=${match.seriesId}&title=Schedule"><strong>${seriesName}</strong></a>
                                             </td>
                                             <td>
                                                 <div>
@@ -100,6 +100,5 @@ $(document).ready(function() {
     fetchSchedule('domestic', 'domestic-schedule');
     fetchSchedule('league', 'league-schedule');
     fetchSchedule('women', 'women-schedule');
-
 
 });

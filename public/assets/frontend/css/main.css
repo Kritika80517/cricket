@@ -19176,8 +19176,8 @@ table.career tr td img {
   border: 6px solid #f3f3f3;
   border-radius: 50%;
   border-top: 6px solid #3498db;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @-webkit-keyframes spin {
