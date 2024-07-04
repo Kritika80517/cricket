@@ -19,4 +19,8 @@ class MatchController extends Controller
             return response()->json([]);
         }
     }
+
+    public function getMatchesDetails(){
+        return view('frontend.matches.details');
+    }
 }

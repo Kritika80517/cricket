@@ -43,6 +43,7 @@
         </div>
     </div>
 
+    {{-- {{dd($battingData)}} --}}
     <section class="content-info">
 
         <!-- Single Team Tabs -->
@@ -61,16 +62,15 @@
                                     10
                                 </span> --}}
                                 <h4>
-                                   {{-- {{dd($data)}} --}}
                                    {{$data['name']}}
                                     <span>{{ $data['role'] }}</span>
                                 </h4>
                                 <ul>
-                                    <li><strong>CLUB NAME:</strong> <span> {{$data['intlTeam']}} </span>
-                                    <li><strong>DOB:</strong> <span>{{ $data['DoB'] }}</span></li>
-                                    <li><strong>Height:</strong> <span>{{ $data['height'] }}</span></li>
-                                    <li><strong>Bat:</strong> <span>{{ $data['bat'] }}</span></li>
-                                    <li><strong>Bowl:</strong> <span>{{ $data['bowl'] }}</span></li>
+                                    <li><strong>TEAM NAME:</strong> <span> {{$data['intlTeam'] ?? '--'}} </span>
+                                    <li><strong>DOB:</strong> <span>{{ $data['DoB']  ?? '--'}}</span></li>
+                                    <li><strong>Height:</strong> <span>{{ $data['height']  ?? '--'}}</span></li>
+                                    <li><strong>Bat:</strong> <span>{{ $data['bat']  ?? '--'}}</span></li>
+                                    <li><strong>Bowl:</strong> <span>{{ $data['bowl']  ?? '--'}}</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -78,15 +78,47 @@
                         <!-- Attack -->
                         <div class="panel-box">
                             <div class="titles no-margin">
-                                <h4><i class="fa fa-user"></i>Personal Info</h4>
+                                <h4><i class="fa-solid fa-ranking-star"></i>ICC Rankings</h4>
                             </div>
-                            <ul class="list-panel">
-                                <li><p>Weight <span>70 Kg</span></p></li>
-                                <li><p>Height <span>1.70 Mts</span></p></li>
-                                <li><p>Nationality <span>Colombia</span></p></li>
-                                <li><p>Place of Birth <span>Cucuta</span></p></li>
-                                <li><p>Date of Birth <span>March 5th, 1989</span></p></li>
-                            </ul>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Test</th>
+                                        <th>ODI</th>
+                                        <th>T20</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Batting
+                                        </td>
+                                        <td>{{ $data['rankings']['bat']['testRank']  ?? '--'}}</td>
+                                        <td>{{ $data['rankings']['bat']['odiRank'] ?? '--'}}</td>
+                                        <td>{{ $data['rankings']['bat']['t20Rank'] ?? '--'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Bowling
+                                        </td>
+                                        <td>{{ $data['rankings']['bowl']['testRank'] ?? '--' }}</td>
+                                        <td>{{ $data['rankings']['bowl']['odiRank'] ?? '--' }}</td>
+                                        <td>{{ $data['rankings']['bowl']['t20Rank'] ?? '--' }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            
+                        </div>
+
+                        <div class="panel-box">
+                            <div class="titles no-margin">
+                                <h4><i class="fa fa-user"></i>Career Information</h4>
+                            </div>
+                            <div class="p-2">
+                                <p>{{$data['teams']}}</p>
+                            </div>
                         </div>
                         <!-- End Attack -->
                     </div>
@@ -96,8 +128,8 @@
                         <!-- Nav Tabs -->
                         <ul class="nav nav-tabs" id="myTab">
                            <li class="" aria-expanded="false"><a href="#overview" data-toggle="tab" class="active" aria-expanded="true">About</a></li>
-                           <li><a href="#career" data-toggle="tab" class="" aria-expanded="false">BATTIG CAREER</a></li>
-                           <li><a href="#stats" data-toggle="tab" class="" aria-expanded="false">BOWLING CAREER</a></li>
+                           <li><a href="#batingcareer" data-toggle="tab" class="" aria-expanded="false">BATTIG CAREER</a></li>
+                           <li><a href="#bowlingcareer" data-toggle="tab" class="" aria-expanded="false">BOWLING CAREER</a></li>
                         </ul>
                         <!-- End Nav Tabs -->
 
@@ -108,17 +140,18 @@
 
                                 <div class="panel-box padding-b">
                                   <div class="titles">
-                                      <h4>Jamez overview</h4>
+                                      <h4>Profile</h4>
                                   </div>
                                     <div class="row">
                                        <div class="col-lg-12 col-xl-4">
-                                           <img src="img/clubs-teams/single-team.jpg" alt="">
+                                           <img src="https://static.cricbuzz.com/a/img/v1/200x200/i1/c{{$data['faceImageId']}}/{{$data['name']}}.jpg" alt="">
                                        </div>
 
                                        <div class="col-lg-12 col-xl-8">
-                                           <p>The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in international football competitions and is overseen by the Colombian Football Federation. It is a member of the CONMEBOL and is currently ranked thirteenth in the FIFA World Rankings.[3] The team are nicknamed Los Cafeteros due to the coffee production in their country.</p>
+                                           <p>
+                                                {{$data['bio']}}
+                                           </p>
 
-                                            <p>Since the mid-1980s, the national team has been a symbol fighting the country's negative reputation. This has made the sport popular and made the national team a sign of nationalism, pride and passion for many Colombians worldwide.</p>
                                        </div>
                                    </div>
                                </div>
@@ -126,148 +159,45 @@
                             <!-- Tab One - overview -->
 
                             <!-- Tab Theree - career -->
-                            <div class="tab-pane" id="career" aria-expanded="false">
+                            <div class="tab-pane" id="batingcareer" aria-expanded="false">
                                 <div class="col-lg-12">
                                     <table class="table-striped table-responsive table-hover career">
                                         <thead>
                                             <tr>
-                                                <th>Season</th>
-                                                <th>Club</th>
-                                                <th>Apps(Subs)</th>
-                                                <th>Goals</th>
+                                                <th></th>
+                                                <th>M</th>
+                                                <th>Inn</th>
+                                                <th>NO</th>
+                                                <th>Runns</th>
+                                                <th>HS</th>
+                                                <th>Avg</th>
+                                                <th>BF</th>
+                                                <th>SR</th>
+                                                <th>100</th>
+                                                <th>200</th>
+                                                <th>50</th>
+                                                <th>4s</th>
+                                                <th>6s</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/colombia.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
+                                                <td> 2017/2018</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/japan.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/bra.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/arg.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/uru.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/nga.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/mex.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/rusia.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/aus.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2017/2018
-                                                </td>
-                                                <td>
-                                                    <img src="img/clubs-logos/arabia.png" alt="icon1">
-                                                    Japan
-                                                </td>
-                                                <td>22(0)</td>
-                                                <td>
-                                                    50
-                                                </td>
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -275,99 +205,46 @@
                             <!-- Tab Theree - career -->
 
                             <!-- Tab Theree - stats -->
-                            <div class="tab-pane" id="stats" aria-expanded="false">
-
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="stats-info">
-                                            <ul>
-                                                <li>
-                                                    Appearances
-                                                    <h3>50</h3>
-                                                </li>
-
-                                                <li>
-                                                    Goals
-                                                    <h3>10</h3>
-                                                </li>
-
-                                                <li>
-                                                    Wins
-                                                    <h3>16</h3>
-                                                </li>
-
-                                                <li>
-                                                    Losses
-                                                    <h3>5</h3>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                            <div class="tab-pane" id="bowlingcareer" aria-expanded="false">
+                                <div class="col-lg-12">
+                                    <table class="table-striped table-responsive table-hover career">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>M</th>
+                                                <th>Inn</th>
+                                                <th>B</th>
+                                                <th>Runns</th>
+                                                <th>Wkts</th>
+                                                <th>BBI</th>
+                                                <th>BBM</th>
+                                                <th>Econ</th>
+                                                <th>Avg</th>
+                                                <th>SR</th>
+                                                <th>5W</th>
+                                                <th>10W</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td> 2017/2018</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6 col-xl-4">
-                                        <!-- Attack -->
-                                        <div class="panel-box">
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-calendar"></i>Attack</h4>
-                                            </div>
-                                            <ul class="list-panel">
-                                                <li><p>Goals <span>60</span></p></li>
-                                                <li><p>Goals Per Match <span>1.37</span></p></li>
-                                                <li><p>Shots <span>4,621</span></p></li>
-                                                <li><p>Shooting Accuracy % <span>32%</span></p></li>
-                                                <li><p>Penalties Scored <span>30</span></p></li>
-                                                <li><p>Big Chances Created <span>293</span></p></li>
-                                                <li><p>Hit Woodwork <span>107</span></p></li>
-                                            </ul>
-                                        </div>
-                                        <!-- End Attack -->
-                                    </div>
-
-                                    <div class="col-lg-6 col-xl-4">
-                                        <!-- Attack -->
-                                        <div class="panel-box">
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-calendar"></i>Team Play</h4>
-                                            </div>
-                                            <ul class="list-panel">
-                                                <li><p>Passes <span>140,417</span></p></li>
-                                                <li><p>Passes Per Match <span>162.14</span></p></li>
-                                                <li><p>Pass Accuracy % <span>76%</span></p></li>
-                                                <li><p>Crosses <span>8,148</span></p></li>
-                                                <li><p>Cross Accuracy % <span>22%</span></p></li>
-                                            </ul>
-                                        </div>
-                                        <!-- End Attack -->
-                                    </div>
-
-                                    <div class="col-lg-6 col-xl-4">
-                                        <!-- Attack -->
-                                        <div class="panel-box">
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-calendar"></i>Defence</h4>
-                                            </div>
-                                            <ul class="list-panel">
-                                                <li><p>Clean Sheets <span>226</span></p></li>
-                                                <li><p>Goals Conceded <span>1,170</span></p></li>
-                                                <li><p>Goals Conceded Per Match <span>1.35</span></p></li>
-                                                <li><p>Saves <span>392</span></p></li>
-                                                <li><p>Tackles <span>7,438</span></p></li>
-                                                <li><p>Tackle Success % <span>75%</span></p></li>
-                                                <li><p>Blocked Shots <span>1,208</span></p></li>
-                                                <li><p>Interceptions <span>5,334</span></p></li>
-                                                <li><p>Clearances <span>11,436</span></p></li>
-                                                <li><p>Headed Clearance <span>3,710</span></p></li>
-                                                <li><p>Aerial Battles/Duels Won <span>25,401</span></p></li>
-                                                <li><p>Errors Leading To Goal <span>59</span></p></li>
-                                                <li><p>Own Goals <span>27</span></p></li>
-                                            </ul>
-                                        </div>
-                                        <!-- End Attack -->
-                                    </div>
-                                </div>
-
                             </div>
                             <!-- End Tab Theree - stats -->
                         </div>

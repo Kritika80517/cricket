@@ -47,6 +47,7 @@ class AdsController extends Controller
         $ads = Ads::where('id', $id)->first();
         return view('admin.ads.edit', compact('category','ads','sub_category'));
     }
+    
     public function update(Request $request){
         $request->validate([
             'name' => 'required',

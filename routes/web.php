@@ -60,6 +60,7 @@ Route::group(['prefix' => 'news' , 'as' => 'news.'], function(){
 Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
     Route::get('/', [MatchController::class, 'index']);
     Route::get('/data/{type}', [MatchController::class, 'getMatches']);
+    Route::get('/info', [MatchController::class, 'getMatchesDetails']);
 });
 
 // article
@@ -74,6 +75,8 @@ Route::group(['prefix' => 'articles' , 'as' => 'articles.'], function(){
 
 Route::prefix('players')->group(function () {
     Route::get('/{player_id}',[PlayerController::class, 'show']);
+    // Route::get('/{player_id}/bating',[PlayerController::class, 'showBatingCareer']);
+    // Route::get('/{player_id}/bowling',[PlayerController::class, 'showBowlingCareer']);
 });
 
 // schedule

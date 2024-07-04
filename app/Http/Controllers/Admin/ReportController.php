@@ -22,7 +22,7 @@ class ReportController extends Controller
 
     public function reply(Request $request){
         $validatedData = $request->validate([
-            'message' => 'required|string',
+            // 'message' => 'required|string',
             'files' => 'nullable|mimes:jpeg,png,jpg|max:2048',
             'status' => 'required|in:pending,onhold,inprogress,solved',
         ]);
