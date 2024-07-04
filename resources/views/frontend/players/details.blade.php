@@ -182,23 +182,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td> 2017/2018</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            
+                                            @foreach ($battingData['values'] as $item)
+                                               <tr>
+                                                    @foreach ($item['headers'] as $value)
+
+                                                        <td> {{ $value }} </td>
+                                                    @endforeach
+                                                   @foreach ($item['values'] as $value)
+                                                       <td>{{ $value }}</td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                       <td></td>
+                                                    @endforeach
+                                                 </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
