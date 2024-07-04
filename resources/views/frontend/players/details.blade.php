@@ -166,45 +166,19 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>M</th>
-                                                <th>Inn</th>
-                                                <th>NO</th>
-                                                <th>Runns</th>
-                                                <th>HS</th>
-                                                <th>Avg</th>
-                                                <th>BF</th>
-                                                <th>SR</th>
-                                                <th>100</th>
-                                                <th>200</th>
-                                                <th>50</th>
-                                                <th>4s</th>
-                                                <th>6s</th>
+                                                <th>Test</th>
+                                                <th>ODI</th>
+                                                <th>T20</th>
+                                                <th>IPL</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($battingData['values'] as $item)
-                                               <tr>
-                                                    @foreach ($item['headers'] as $value)
-
-                                                        <td> {{ $value }} </td>
+                                                <tr>
+                                                    @foreach ($item['values'] as $value)
+                                                        <td>{{ $value }}</td>
                                                     @endforeach
-                                                   @foreach ($item['values'] as $value)
-                                                       <td>{{ $value }}</td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                    @endforeach
-                                                 </tr>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -219,37 +193,20 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>M</th>
-                                                <th>Inn</th>
-                                                <th>B</th>
-                                                <th>Runns</th>
-                                                <th>Wkts</th>
-                                                <th>BBI</th>
-                                                <th>BBM</th>
-                                                <th>Econ</th>
-                                                <th>Avg</th>
-                                                <th>SR</th>
-                                                <th>5W</th>
-                                                <th>10W</th>
+                                                <th>Test</th>
+                                                <th>ODI</th>
+                                                <th>T20</th>
+                                                <th>IPL</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td> 2017/2018</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            
+                                            @foreach ($bowlingData['values'] as $item)
+                                                <tr>
+                                                    @foreach ($item['values'] as $value)
+                                                        <td>{{ $value }}</td>
+                                                    @endforeach
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
