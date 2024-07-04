@@ -162,26 +162,29 @@
                             <!-- Tab Theree - career -->
                             <div class="tab-pane" id="batingcareer" aria-expanded="false">
                                 <div class="col-lg-12">
-                                    <table class="table-striped table-responsive table-hover career">
+                                    <div class="table-responsive">
+
+                                    <table class="table-striped table-hover career">
                                         <thead>
                                             <tr>
-                                                <th></th>
-                                                <th>Test</th>
-                                                <th>ODI</th>
-                                                <th>T20</th>
-                                                <th>IPL</th>
+                                                <td></td>
+                                                @foreach ($battingData['values'] as $item)
+                                                    <td>{{ $item['values'][0] }}</td>
+                                                @endforeach
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($battingData['values'] as $item)
+                                            @for ($i = 1; $i < count($battingData['values'][0]['values']); $i++)
                                                 <tr>
-                                                    @foreach ($item['values'] as $value)
-                                                        <td>{{ $value }}</td>
+                                                    <td>{{ $battingData['headers'][$i] }}</td>
+                                                    @foreach ($battingData['values'] as $item)
+                                                        <td>{{ $item['values'][$i] }}</td>
                                                     @endforeach
                                                 </tr>
-                                            @endforeach
+                                            @endfor
                                         </tbody>
                                     </table>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Tab Theree - career -->
@@ -189,26 +192,29 @@
                             <!-- Tab Theree - stats -->
                             <div class="tab-pane" id="bowlingcareer" aria-expanded="false">
                                 <div class="col-lg-12">
-                                    <table class="table-striped table-responsive table-hover career">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Test</th>
-                                                <th>ODI</th>
-                                                <th>T20</th>
-                                                <th>IPL</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($bowlingData['values'] as $item)
+                                    <div class="table-responsive">
+                                        <table class="table-striped table-hover career">
+                                            <thead>
                                                 <tr>
-                                                    @foreach ($item['values'] as $value)
-                                                        <td>{{ $value }}</td>
+                                                    <td></td>
+                                                    @foreach ($bowlingData['values'] as $item)
+                                                        <td>{{ $item['values'][0] }}</td>
                                                     @endforeach
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                @for ($i = 1; $i < count($bowlingData['values'][0]['values']); $i++)
+                                                    <tr>
+                                                        <td>{{ $bowlingData['headers'][$i] }}</td>
+                                                        @foreach ($bowlingData['values'] as $item)
+                                                            <td>{{ $item['values'][$i] }}</td>
+                                                        @endforeach
+                                                    </tr>
+                                                @endfor
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <!-- End Tab Theree - stats -->
