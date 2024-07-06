@@ -131,6 +131,8 @@
                            <li class="" aria-expanded="false"><a href="#overview" data-toggle="tab" class="active" aria-expanded="true">About</a></li>
                            <li><a href="#batingcareer" data-toggle="tab" class="" aria-expanded="false">BATTIG CAREER</a></li>
                            <li><a href="#bowlingcareer" data-toggle="tab" class="" aria-expanded="false">BOWLING CAREER</a></li>
+                           <li><a href="#careerinformation" data-toggle="tab" class="" aria-expanded="false">Career Information</a></li>
+                           {{-- <li><a href="#article" data-toggle="tab" class="" aria-expanded="false">Related Articles</a></li> --}}
                         </ul>
                         <!-- End Nav Tabs -->
 
@@ -144,22 +146,22 @@
                                       <h4>Profile</h4>
                                   </div>
                                     <div class="row">
-                                       <div class="col-lg-12 col-xl-4">
+                                       {{-- <div class="col-lg-12 col-xl-4">
                                            <img src="https://static.cricbuzz.com/a/img/v1/200x200/i1/c{{$data['faceImageId']}}/{{$data['name']}}.jpg" alt="">
-                                       </div>
+                                       </div> --}}
 
-                                       <div class="col-lg-12 col-xl-8">
+                                       <div class="col-lg-12 col-xl-12">
                                            <p>
-                                                {{$data['bio']}}
+                                                {!! $data['bio'] !!}
                                            </p>
 
                                        </div>
                                    </div>
                                </div>
                             </div>
-                            <!-- Tab One - overview -->
+                           
 
-                            <!-- Tab Theree - career -->
+                            <!-- Tab Theree - batting career -->
                             <div class="tab-pane" id="batingcareer" aria-expanded="false">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
@@ -187,9 +189,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Tab Theree - career -->
+                            
 
-                            <!-- Tab Theree - stats -->
+                            <!-- Tab Theree - bowling career -->
                             <div class="tab-pane" id="bowlingcareer" aria-expanded="false">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
@@ -217,7 +219,71 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Tab Theree - stats -->
+
+                            <!-- End Tab Theree - career -->
+                            <div class="tab-pane" id="careerinformation" aria-expanded="false">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table-striped table-hover career">
+                                            <thead>
+                                                <th>Type</th>
+                                                <th>Debut</th>
+                                                <th>Last Played</th>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($careerData['values'] as $value)
+                                               
+                                                    
+                                                <tr>
+                                                    <td> {{ucfirst($value['name'])}}</td>
+                                                    <td> {{$value['debut']}}</td>
+                                                    <td> {{$value['lastPlayed']}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- article --}}
+                            {{-- <div class="tab-pane" id="article" aria-expanded="false">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="post-item">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="img-hover">
+                                                    <img src="{{asset('assets/frontend/img/blog/1.jpg')}}" alt="" class="img-responsive">
+                                                    <div class="overlay"><a href="single-news.html">+</a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p><a href="">While familiar with fellow European nation France, Hareide admits that South American side Peru.</a></p>
+                                                    <span class="data-info">January 3, 2014</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="post-item">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="img-hover">
+                                                    <img src="{{asset('assets/frontend/img/blog/1.jpg')}}" alt="" class="img-responsive">
+                                                    <div class="overlay"><a href="single-news.html">+</a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <p><a href="">While familiar with fellow European nation France, Hareide admits that South American side Peru.</a></p>
+                                                    <span class="data-info">January 3, 2014</span>
+                                                </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
                         </div>
                         <!-- Content Tabs -->
                     </div>
