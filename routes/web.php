@@ -99,6 +99,8 @@ Route::group(['prefix' => 'series' , 'as' => 'series.'], function(){
     Route::get('/venues/{series_id}', [SeriesController::class, 'getVenues']);
     Route::get('/sqad/{series_id}', [SeriesController::class, 'getSqad']);
     Route::get('/{series_id}/sqads/{squad_id}', [SeriesController::class, 'getPlayers']);
+    Route::get('/stats/filters/{series_id}', [SeriesController::class, 'getStatsFilter']);
+    Route::get('/stats/data/{series_id}', [SeriesController::class, 'getStats']);
 });
 
 

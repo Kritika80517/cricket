@@ -67,40 +67,9 @@
                         <div class="tab-content">
                             {{-- Home tab --}}
                             <div class="tab-pane fade show active" id="home">
-                                <div class="post-item">
-                                    <div class="row mt-2">
-                                        <div class="col-md-4">
-                                            <div class="img-hover">
-                                                <img src="{{ asset('assets/frontend/img/blog/1.jpg') }}" alt=""
-                                                    class="img-responsive">
-                                                <div class="overlay"><a href="single-news.html">+</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5><a href="single-news.html">Group Stage Breakdown</a></h5>
-                                            <span class="data-info">January 3, 2014</span>
-                                            <p>While familiar with fellow European nation France, Hareide admits that South
-                                                American side Peru.<a href="single-news.html">Read More [+]</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="post-item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="img-hover">
-                                                <img src="{{ asset('assets/frontend/img/blog/2.jpg') }}" alt=""
-                                                    class="img-responsive">
-                                                <div class="overlay"><a href="single-news.html">+</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5><a href="single-news.html">Russia 2018’s potential classic match-ups</a>
-                                            </h5>
-                                            <span class="data-info">January 9, 2014 </span>
-                                            <p>Our goal is very clear, it didn’t change after the draw. We should qualify
-                                                for the knockout stage.<a href="single-news.html">Read More [+]</a></p>
-                                        </div>
+                                <div class="pt-4 pb-4" id="series-home-news" style="min-height: 200px;">
+                                    <div class="loader-div">
+                                        <div class="loader"></div>
                                     </div>
                                 </div>
                             </div>
@@ -155,133 +124,6 @@
 
                                     <div class="col-lg-9">
                                         <div id="series-squads-players" class="groups-list page-group">
-                                            {{-- <div class="row">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <h5><a href="groups.html">BATTERS</a></h5>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Rohit Sharma (Captain)</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Virat Kohli</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 mt-4">
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Yashasvi Jaiswal">
-                                                        <div>
-                                                            <div class="player-name">Yashasvi Jaiswal</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Suryakumar Yadav">
-                                                        <div>
-                                                            <div class="player-name">Suryakumar Yadav</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <h5><a href="groups.html">ALL ROUNDERS</a></h5>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Rohit Sharma (Captain)</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Virat Kohli</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 mt-4">
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Yashasvi Jaiswal">
-                                                        <div>
-                                                            <div class="player-name">Yashasvi Jaiswal</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Suryakumar Yadav">
-                                                        <div>
-                                                            <div class="player-name">Suryakumar Yadav</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <h5><a href="group-list.html">WICKET KEEPERS</a></h5>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Rohit Sharma (Captain)</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Virat Kohli</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 mt-4">
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Yashasvi Jaiswal">
-                                                        <div>
-                                                            <div class="player-name">Yashasvi Jaiswal</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Suryakumar Yadav">
-                                                        <div>
-                                                            <div class="player-name">Suryakumar Yadav</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-12">
-                                                    <h5><a href="group-list.html">BOWLERS</a></h5>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Rohit Sharma (Captain)</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="player-item">
-                                                        <img src="{{asset('assets/frontend/img/players/6.jpg')}}" alt="Rohit Sharma">
-                                                        <div>
-                                                            <div class="player-name">Virat Kohli</div>
-                                                            <div class="player-role">Batter</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
 
                                         </div>
                                     </div>
@@ -292,98 +134,19 @@
                             <div class="tab-pane mt-2" id="stats">
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <div class="panel-box" id="team-stats-filters">
-
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-soccer-ball-o"></i>Batting</h4>
-                                            </div>
-                                            <div class="info-panel p-0">
-                                                <ul class="list-panel" id="Batting-list">
-
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Nepal</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Namibia</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Netherlands</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Canada</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Scotland</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">United Arab Emirates</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="panel-box" id="team-stats-filters">
-
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-soccer-ball-o"></i>Bowling</h4>
-                                            </div>
-                                            <div class="info-panel p-0">
-                                                <ul class="list-panel" id="Batting-list">
-
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Nepal</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Namibia</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Netherlands</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Canada</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Scotland</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">United Arab Emirates</a>
-                                                    </li>
-
-                                                </ul>
-
+                                        <div id="series-stats-filters">
+                                            <div class="loader-div">
+                                                <div class="loader"></div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-lg-9">
-                                        <div>
-                                            <h4>Match Type</h4>
-                                            <form class="search" action="#" method="Post">
-                                                <div class="input-group">
-                                                    <input class="form-control" placeholder="Search..." name="email" type="email" required="required">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-primary" type="submit" name="subscribe">Go!</button>
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
+                                       
                                         <table class="table-striped table-responsive table-hover result-point">
                                             <thead class="point-table-head">
-                                                <tr class="">
-                                                    <th class="">PLAYER</th>
+                                                <tr>
+                                                    <th>PLAYER</th>
                                                     <th class="text-right">MATCHES</th>
                                                     <th class="text-right">INNS</th>
                                                     <th class="text-right">RUNS</th>
@@ -394,29 +157,10 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="team-stats-data">
-                                                <tr>
-                                                    <td><a href="">MS Dhoni</a></td>
-                                                    <td>123</td>
-                                                    <td>12</td>
-                                                    <td>23</td>
-                                                    <td>34</td>
-                                                    <td>45</td>
-                                                    <td>56</td>
-                                                    <td>56</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="">Rohti Sharma</a></td>
-                                                    <td>123</td>
-                                                    <td>12</td>
-                                                    <td>23</td>
-                                                    <td>34</td>
-                                                    <td>45</td>
-                                                    <td>56</td>
-                                                    <td>56</td>
-                                                </tr>
+                                                <!-- Data will be populated here -->
                                             </tbody>
                                         </table>
+                                        
                                     </div>
                                 </div>
 

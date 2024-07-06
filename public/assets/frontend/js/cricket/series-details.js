@@ -62,6 +62,7 @@ $(document).ready(function() {
             dataType: 'json',
             beforeSend: function() {
                 $('#series-news .loader-div').show();
+                $('#series-home-news .loader-div').show();
             },
             success: function(response) {
                 let storyList = response.storyList;
@@ -92,14 +93,21 @@ $(document).ready(function() {
                         `;
                         
                         $('#series-news').append(storyHtml);
+                        if(index <= 5){
+                            $('#series-home-news').append(storyHtml);
+                        }
                     }
                 });
             },
             error: function(xhr, status, error) {
                 console.error('Error fetching news data:', error);
                 $('#series-news .loader-div').hide();
+                $('#series-home-news .loader-div').hide();
+
             },complete: function() {
                 $('#series-news .loader-div').hide();
+                $('#series-home-news .loader-div').hide();
+
             }
         });
     }
@@ -242,7 +250,7 @@ $(document).ready(function() {
                     // Create list items for squads that are not headers
                     const listItem = `
                         <li class="no-margin stateFiltersActive">
-                            <a data-value="${squad.squadId}" class="pl-2 stateFilter btn bg-none">${squad.squadType}</a>
+                            <a data-value="${squad.squadId}" class="pl-2 sqadFilter btn bg-none">${squad.squadType}</a>
                         </li>
                     `;
                     currentPanel.querySelector('.list-panel').insertAdjacentHTML('beforeend', listItem);
@@ -260,7 +268,7 @@ $(document).ready(function() {
             }
 
             // Add event listeners to squad filters
-            document.querySelectorAll('.stateFilter').forEach(filter => {
+            document.querySelectorAll('.sqadFilter').forEach(filter => {
                 filter.addEventListener('click', function() {
                     const squadId = this.getAttribute('data-value');
                     fetchSquadPlayers(squadId);
@@ -342,12 +350,136 @@ $(document).ready(function() {
         });
     }
 
+    function fetchStatsFilters() {
+        $.ajax({
+            url: '/series/stats/filters/' + fetchIdFromUrl(),
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: function() {
+                $('#series-stats-filters .loader-div').show();
+            },
+            success: function(response) {
+                const $statsFilters = $('#series-stats-filters');
+                $statsFilters.empty(); // Clear existing content
+    
+                // Separate filters by category
+                const categories = {};
+                $.each(response.types, function(index, type) {
+                    if (type.category) {
+                        if (!categories[type.category]) {
+                            categories[type.category] = [];
+                        }
+                        categories[type.category].push(type);
+                    }
+                });
+    
+                // Create HTML structure for each category
+                $.each(categories, function(category, filters) {
+                    const $panelBox = $('<div>', { class: 'panel-box' });
+    
+                    const $titleDiv = $('<div>', { class: 'titles no-margin' });
+                    $titleDiv.html(`<h4><i class="fa fa-soccer-ball-o"></i>${category}</h4>`);
+    
+                    const $infoPanel = $('<div>', { class: 'info-panel p-0' });
+    
+                    const $listPanel = $('<ul>', { class: 'list-panel', id: `${category}-list` });
+    
+                    $.each(filters, function(index, filter) {
+                        const $listItem = $('<li>', { class: 'no-margin stateFiltersActive' });
+    
+                        const $filterLink = $('<a>', {
+                            class: 'pl-2 stateFilter btn bg-none',
+                            'data-value': filter.value,
+                            text: filter.header
+                        });
+    
+                        $listItem.append($filterLink);
+                        $listPanel.append($listItem);
+                    });
+    
+                    $infoPanel.append($listPanel);
+                    $panelBox.append($titleDiv).append($infoPanel);
+                    $statsFilters.append($panelBox);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching stats data:', error);
+                $('#series-stats-filters .loader-div').hide();
+            },
+            complete: function() {
+                $('#series-stats-filters .loader-div').hide();
+            }
+        });
+    }
+    
+
+    function fetchStatsData(filterValue) {
+        $.ajax({
+            url: '/series/stats/data/' + fetchIdFromUrl(),
+            type: 'GET',
+            dataType: 'json',
+            data: { filter: filterValue },
+            beforeSend: function() {
+                $('#team-stats-data').html('<tr><td colspan="8">Loading...</td></tr>');
+            },
+            success: function(response) {
+                console.log(response);
+                const statsData = response.odiStatsList.values;
+                const $teamStatsData = $('#team-stats-data');
+                $teamStatsData.empty(); // Clear existing content
+
+                $.each(statsData, function(index, player) {
+                    const playerData = player.values;
+                    const $row = $('<tr>');
+
+                    // Assuming the order of data is [id, player name, matches, innings, runs, average]
+                    $row.append($('<td>').html('<a href="#">' + playerData[1] + '</a>'));
+                    $row.append($('<td>').text(playerData[2]));
+                    $row.append($('<td>').text(playerData[3]));
+                    $row.append($('<td>').text(playerData[4]));
+                    $row.append($('<td>').text(playerData[5]));
+
+                    // Adding placeholders for SR, 4s, 6s as they are not in the response
+                    $row.append($('<td>').text('-')); // SR
+                    $row.append($('<td>').text('-')); // 4s
+                    $row.append($('<td>').text('-')); // 6s
+
+                    $teamStatsData.append($row);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching stats data:', error);
+                $('#team-stats-data').html('<tr><td colspan="8">Error loading data</td></tr>');
+            }
+        });
+    }
+    
+    // Event listener for filter links
+    $(document).on('click', '.stateFilter', function(event) {
+        event.preventDefault();
+        const filterValue = $(this).data('value');
+        fetchStatsData(filterValue);
+    });
+
+    
+    
     fetchSchedules()
     fetchNews()
     fetchPointtable()
     fetchVenues()
     fetchSquad()
-    // fetchSquadPlayers()
+    fetchStatsFilters()
+    function initializeFilters() {
+        const firstFilterValue = $('.stateFilter').first().data('value');
+        if (firstFilterValue) {
+            fetchStatsData(firstFilterValue);
+        } else {
+            setTimeout(initializeFilters, 500);
+        }
+    }
+
+    // Call initializeFilters after a delay to ensure filters are loaded
+    setTimeout(initializeFilters, 2000);
 });
 
 

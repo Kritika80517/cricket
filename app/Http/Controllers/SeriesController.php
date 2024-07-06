@@ -78,4 +78,24 @@ class SeriesController extends Controller
             return response()->json([]);
         }
     }
+
+    public function getStatsFilter($seriesId) {
+        $response = cricketAPI("/stats/v1/series/".$seriesId);
+        
+        if ($response->successful()) {
+            return response()->json($response->json());
+        } else {
+            return response()->json([]);
+        }
+    }
+
+    public function getStats(Request $request, $seriesId) {
+        $response = cricketAPI("/stats/v1/series/".$seriesId."?statsType=".$request->filter);
+        
+        if ($response->successful()) {
+            return response()->json($response->json());
+        } else {
+            return response()->json([]);
+        }
+    }
 }
