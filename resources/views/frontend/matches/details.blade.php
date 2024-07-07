@@ -1,8 +1,11 @@
 @extends('frontend.layouts.master')
 @section('frontend-content')
-@extends('frontend.layouts.master')
-@section('frontend-content')
 
+    <style>
+        #team1-players, #team1-bench{
+            border-right: 2px solid;
+        }
+    </style>
     <div class="section-title" style="background:url(/assets/frontend/img/slide/1.jpg)">
         <div class="container">
             <div class="row">
@@ -32,11 +35,9 @@
                         <li class="active"><a href="#commentary" data-toggle="tab">Commentary </a></li>
                         <li><a href="#scorecard" data-toggle="tab">Scorecard </a></li>
                         <li><a href="#squads" data-toggle="tab">Squads </a></li>
-                        {{-- <li><a href="#full_commentary" data-toggle="tab">Full Commentary</a></li> --}}
                         <li><a href="#point_table" data-toggle="tab">Point Table</a></li>
                         <li><a href="#match_facts" data-toggle="tab"> Match Facts</a></li>
                         <li><a href="#news" data-toggle="tab">News </a></li>
-                        {{-- <li><a href="#venue" data-toggle="tab">Venues</a></li> --}}
                     </ul>
                     <!-- End Nav Tabs -->
                 </div>
@@ -374,94 +375,44 @@
                             </div>
 
                             {{-- squads tab --}}
+                          
                             <div class="tab-pane" id="squads">
                                 <div class="row">
-                                    <div class="col-lg-12">
-                                        <div  style="display: flex; justify-content: space-between;" class="p-2 bg-light">
-                                            <a href="#!">
-                                                <img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                <span>KEN</span>
-                                            </a>
-                                            <a href="#!" style="text-align: right">
-                                                <img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                <span>RWA</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- players XI --}}
-                                <div class="row">
-                                    <div class="col-lg-12 p-2" style="display: flex; justify-content: center; align-items: center;">
-                                        <h5>Playing XI</h5>
+                                    <div class="col-12" id="team-display"></div>
+                                    {{-- <div class="col-12 d-flex justify-content-between align-items-center font-weight-bold p-2 bg-light">
+                                        <a class="d-flex align-items-center" href="/cricket-team/zimbabwe/12/schedule">
+                                            <div class="p-2"><img style="width: 27px; height: 20px;" src="https://static.cricbuzz.com/a/img/v1/72x54/i1/c172127/team_flag.jpg"></div>
+                                            <div class="p-2">ZIM</div>
+                                        </a>
+                                        <a class="d-flex align-items-center" href="/cricket-team/india/2/schedule">
+                                            <div class="p-2"><img style="width: 27px; height: 20px;" src="https://static.cricbuzz.com/a/img/v1/72x54/i1/c172115/team_flag.jpg"></div>
+                                            <div class="p-2">IND</div>
+                                        </a>
+                                    </div> --}}
+                                    
+                                    <div class="col-12 text-center font-weight-bold py-2">Playing XI</div>
+                                    
+                                    <div class="col-6" id="team1-players">
+                                        <!-- Players for Team 1 will be inserted here -->
                                     </div>
                                     
-                                    <div class="col-lg-6">
-                                        <ul>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <ul>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                {{-- bench players --}}
-                                <div class="row">
-                                    <div class="col-lg-12 p-2" style="display: flex; justify-content: center; align-items: center;">
-                                        <h5>Bench</h5>
+                                    <div class="col-6" id="team2-players">
+                                        <!-- Players for Team 2 will be inserted here -->
                                     </div>
                                     
-                                    <div class="col-lg-6">
-                                        <ul>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-
-                                        </ul>
+                                    <div class="col-12 text-center font-weight-bold py-2">Bench</div>
+                                    
+                                    <div class="col-6" id="team1-bench">
+                                        <!-- Bench players for Team 1 will be inserted here -->
                                     </div>
-                                    <div class="col-lg-6">
-                                        <ul>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-                                            <li>
-                                                <p><img src="{{asset('assets/frontend/img/players/1.jpg')}}" width="50px" height="50px" alt="img">
-                                                Rushab Patel</p>
-                                                <span>Batter</span>
-                                            </li>
-                                        </ul>
+                                    
+                                    <div class="col-6" id="team2-bench">
+                                        <!-- Bench players for Team 2 will be inserted here -->
                                     </div>
                                 </div>
                             </div>
+                            
+                           
 
                             {{-- full_commentary --}}
                             {{-- <div class="tab-pane" id="full_commentary">
@@ -651,25 +602,12 @@
                             </div>
 
                             {{-- news --}}
-                            <div class="tab-pane mt-2" id="news">
-                                <div class="post-item">
-                                    <div class="row mt-2">
-                                        <div class="col-md-4">
-                                            <div class="img-hover">
-                                                <img src="{{ asset('assets/frontend/img/blog/1.jpg') }}" alt=""
-                                                    class="img-responsive">
-                                                <div class="overlay"><a href="single-news.html">+</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h5><a href="single-news.html">Group Stage Breakdown</a></h5>
-                                            <span class="data-info">January 3, 2014</span>
-                                            <p>While familiar with fellow European nation France, Hareide admits that South
-                                                American side Peru.<a href="single-news.html">Read More [+]</a></p>
-                                        </div>
+                            <div class="tab-pane" id="news">
+                                <div id="series-news" class="pt-4 pb-4">
+                                    <div class="loader-div">
+                                        <div class="loader"></div>
                                     </div>
                                 </div>
-
                             </div>
 
                         </div>
@@ -680,9 +618,7 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="{{ asset('assets/frontend/js/cricket/series-details.js') }}"></script>
-@endsection
 
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ asset('assets/frontend/js/cricket/match-details.js') }}"></script>
 @endsection

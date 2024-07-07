@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     // Function to fetch matches for a given type (live, recent, upcoming)
     function fetchMatches(type) {
@@ -79,16 +78,13 @@ $(document).ready(function() {
                                     <div class="m-2 p-2">
                                         <span>${team1.teamSName}<span class="ml-2"> ${team1Runs}/${team1Wickets} (${team1Overs} Ovs)</span></span><br>
                                         <span><b>${team2.teamSName}<span class="ml-2"> ${team2Runs}/${team2Wickets} (${team2Overs} Ovs)</span></b></span><br>
-                                        <p><a href="#">${matchInfo.status}</a></p>
+                                        <p><a href="/matches/${matchInfo.matchId}/info/?matchId=${matchInfo.matchId}&seriesId=${matchInfo.seriesId}">${matchInfo.status}</a></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="">
                                 <ul class="navbar">
-                                    <li><a href="#"><small>Live Score</small></a></li>
-                                    <li><a href="#"><small>Scorecard</small></a></li>
-                                    <li><a href="#"><small>Full Commentary</small></a></li>
-                                    <li><a href="#"><small>News</small></a></li>
+                                    <li><a href="/matches/${matchInfo.matchId}/info/?matchId=${matchInfo.matchId}&seriesId=${matchInfo.seriesId}"><small>Details</small></a></li>
                                 </ul>
                             </div>
                         </div>`;

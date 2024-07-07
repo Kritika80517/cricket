@@ -60,7 +60,10 @@ Route::group(['prefix' => 'news' , 'as' => 'news.'], function(){
 Route::group(['prefix' => 'matches' , 'as' => 'matches.'], function(){
     Route::get('/', [MatchController::class, 'index']);
     Route::get('/data/{type}', [MatchController::class, 'getMatches']);
-    Route::get('/info', [MatchController::class, 'getMatchesDetails']);
+    Route::get('/{match_id}/info', [MatchController::class, 'getMatchesDetails']);
+    Route::get('/details/{match_id}', [MatchController::class, 'matchInfo']);
+    Route::get('/info/scard/{match_id}', [MatchController::class, 'matchScard']);
+    Route::get('/teams/{match_id}/{team_id}', [MatchController::class, 'matchTeams']);
 });
 
 // article
