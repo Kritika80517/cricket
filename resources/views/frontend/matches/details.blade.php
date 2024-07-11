@@ -6,29 +6,45 @@
             border-right: 2px solid;
         }
     </style>
-    <div class="section-title" style="background:url(/assets/frontend/img/slide/1.jpg)">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1> Match </h1>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li><a href="{{ url('/') }}">Home</a></li>
-                            <li>Match Details</li>
-                        </ul>
-                    </div>
+
+<div class="section-title" style="background:url(/assets/frontend/img/slide/1.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1> Match </h1>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="{{ url('/') }}">Home</a></li>
+                        <li>Match Details</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="single-team-tabs">
-        <div class="container">
-            <div class="row">
-                <!-- Left Content - Tabs and Carousel -->
+@php
+    $matchStartTimestamp =  $matchInfo['matchInfo']['matchStartTimestamp'];
+    $matchCompleteTimestamp =  $matchInfo['matchInfo']['matchCompleteTimestamp'];
+
+    $startDateTime = new DateTime();
+    $startDateTime->setTimestamp($matchStartTimestamp / 1000);
+
+    $completeDateTime = new DateTime();
+    $completeDateTime->setTimestamp($matchCompleteTimestamp / 1000);
+
+    $startTimeFormatted = $startDateTime->format('g:i A'); // Format as 8:30 PM
+    $completeTimeFormattedGMT = $completeDateTime->setTimezone(new DateTimeZone('GMT'))->format('g:i A'); // Format as 3:00 PM GMT
+    $completeTimeFormattedLocal = $completeDateTime->setTimezone(new DateTimeZone(date_default_timezone_get()))->format('g:i A'); // Format as 5:00 PM Local
+@endphp
+<div class="single-team-tabs">
+    <div class="container">
+        <div class="row">
+            <!-- Left Content - Tabs and Carousel -->
                 <div class="col-xl-12 col-md-12">
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTab1">
@@ -44,20 +60,45 @@
                 <div class="col-lg-12">
                     <div class="panel-box">
                         <div class="titles mb-0">
-                            <h4>Kenya vs Rwanda, 9th Match - Live Cricket Score, Commentary</h4>
+                            <h4>{{ $matchInfo['matchInfo']['team1']['name'] }} vs {{ $matchInfo['matchInfo']['team2']['name'] }}, {{ $matchInfo['matchInfo']['matchDescription'] }} - Live Cricket Score, Commentary</h4>
                         </div>
                         <!-- Content Tabs -->
                         <div class="tab-content">
                             {{-- commentary tab --}}
                             <div class="tab-pane fade show active ml-5 mr-5" id="commentary">
                                 <div class="post-item mt-2 mb-0">
-                                    <div class="">
-                                        <p >RWA 168/1 (20)</p> 
-                                        <p ><b>KEN 172/6 (17.4)</b></p> <br>
-                                        <p>Kenya won by 4 wkts</p> <br>
-                                        <p>PLAYER OF THE MATCH</p>
-                                        <p><a href="">Neil Mugabe</a></p> 
+                                    {{-- Live --}}
+                                    @if ($matchInfo['matchInfo']['complete'] == false && $matchInfo['matchInfo']['tossResults']['decision'])
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h4>Start Time</h4>
+                                            <h3><?php echo $startTimeFormatted; ?></h3>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h3><?php echo $completeTimeFormattedGMT; ?></h3>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h3><?php echo $completeTimeFormattedLocal; ?></h3>
+                                        </div>
+
+                                        <div class="col-12 mt-2">
+                                            <h4>{{$matchInfo['matchInfo']['status']}}</h4>
+                                        </div>
                                     </div>
+
+                                    {{-- Recent/ Complete --}}
+                                    @elseif($matchInfo['matchInfo']['complete'] == true && isset($commentry['miniscore']))
+
+                                        <p>{{$matchInfo['matchInfo']['team1']['shortName']}} {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score'] ?? 0}}/{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets'] ?? 0}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs'] ?? 0}})</p> 
+                                        <p><b>{{$matchInfo['matchInfo']['team2']['shortName']}} {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score'] ?? 0}}/{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets'] ?? 0}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs'] ?? 0}})</b></p> <br>
+                                        <p>{{$commentry['miniscore']['status'] ?? 0}}</p> <br>
+                                        <p>Players Of The Match : {{$commentry['matchHeader']['playersOfTheMatch'][0]['name'] ?? ''}}</p>
+                                    
+                                    {{-- Upcoming --}}
+                                    @elseif($matchInfo['matchInfo']['complete'] == false && !$matchInfo['matchInfo']['tossResults']['decision'])
+
+                                    @endif
+                                    
                                 </div>
 
                                 <div class="post-item mt-2 p-2">

@@ -22,11 +22,14 @@ class MatchController extends Controller
 
     public function getMatchesDetails($matchId){
         $response = cricketAPI("/mcenter/v1/".$matchId);
+        $comm = cricketAPI("/mcenter/v1/".$matchId.'/comm');
+
         $matchInfo = [];
         if ($response->successful()) {
             $matchInfo = $response->json();
+            $commentry = $comm->json();
         }
-        return view('frontend.matches.details', compact('matchInfo'));
+        return view('frontend.matches.details', compact('matchInfo', 'commentry'));
     }
 
     public function matchInfo(Request $request, $matchId){
