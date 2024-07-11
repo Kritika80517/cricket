@@ -30,6 +30,8 @@
 @php
     $matchStartTimestamp =  $matchInfo['matchInfo']['matchStartTimestamp'];
     $matchCompleteTimestamp =  $matchInfo['matchInfo']['matchCompleteTimestamp'];
+    $team1 = $matchInfo['matchInfo']['team1'];
+    $team2 = $matchInfo['matchInfo']['team2'];
 
     $startDateTime = new DateTime();
     $startDateTime->setTimestamp($matchStartTimestamp / 1000);
@@ -57,6 +59,7 @@
                     </ul>
                     <!-- End Nav Tabs -->
                 </div>
+                {{-- {{dd($matchInfo)}} --}}
                 <div class="col-lg-12">
                     <div class="panel-box">
                         <div class="titles mb-0">
@@ -452,8 +455,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                           
 
                             {{-- full_commentary --}}
                             {{-- <div class="tab-pane" id="full_commentary">
@@ -612,14 +613,49 @@
                                         <h5 class="bg-dark p-2" style="color: #fff">Match Info</h5>
                                         <div class="row">
                                             <div class="col-lg-3" style="border-bottom: 1">
-                                                <p>Match </p>
-                                                <p>Date</p>
-                                                <p> Toss  </p>
+                                                <p>Match :</p>
+                                                <p>Date :</p>
+                                                <p>Toss  :</p>
+                                                <p>Time  :</p>
+                                                <p>Venue  :</p>
+                                                <p>Umpires  :</p>
+                                                <p>Third Umpire  :</p>
+                                                <p>Match Referee  :</p>
+                                                <p>Zimbabwe Squad  :</p>
+                                                <p>Playing  :</p>
+                                                <p>Bench  :</p>
+                                                <p>Support Staff  :</p>
+                                                <p>India Squad  :</p>
+                                                <p>Playing  :</p>
+                                                <p>Bench  :</p>
+                                                <p>Support Staff  :</p>
                                             </div>
                                             <div class="col-lg-9">
-                                                <p>KEN vs RWA, 9th Match, Kenya Quadrangular Cup 2024</p>
+                                                <p>{{$team1['shortName']}} vs
+                                                    {{$team2['shortName']}},
+                                                    {{$matchInfo['matchInfo']['matchDescription']}},
+                                                    {{$matchInfo['matchInfo']['series']['name']}}
+                                                </p>
                                                 <p>Wednesday, July 03, 2024</p>
                                                 <p>Rwanda won the toss and opt to bat</p>
+                                                <p>Time</p>
+                                                <p>{{$matchInfo['matchInfo']['venue']['name']}}</p>
+                                                
+                                                <p>{{$matchInfo['matchInfo']['umpire1']['name'] ?? ''}},
+                                                    {{$matchInfo['matchInfo']['umpire2']['name'] ?? ''}},
+                                                </p>
+
+                                                <p>{{$matchInfo['matchInfo']['umpire3']['name'] ?? ''}}</p>
+
+                                                <p>{{$matchInfo['matchInfo']['referee']['name']}}</p>
+                                                <p>Nairobi</p>
+                                                <p>Nairobi</p>
+                                                <p>Nairobi</p>
+                                                <p>Nairobi</p>
+                                                <p>Nairobi</p>
+                                                <p>Nairobi</p>
+                                                <p>Nairobi</p>
+                                                <p>Nairobi</p>
                                             </div>
                                         </div>
                                     </div>
@@ -630,8 +666,28 @@
                                         <h5 class="bg-dark p-2" style="color: #fff">Venue Guide</h5>
                                         <div class="row">
                                             <div class="col-lg-3" style="border-bottom: 1">
-                                                <p>Stadium: </p>
-                                                <p>City</p>
+                                                <p>Stadium : </p>
+                                                <p>City :</p>
+                                                {{-- <p>Capacity :</p>
+                                                <p>Ends :</p> --}}
+                                                <p>Hosts to :</p>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <p>{{$matchInfo['matchInfo']['venue']['name']}}</p>
+                                                <p>{{$matchInfo['matchInfo']['venue']['city']}}</p>
+                                                <p>{{$matchInfo['matchInfo']['venue']['country']}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- <div class="row mt-2 mb-2">
+                                    <div class="col-lg-12">
+                                        <h5 class="bg-dark p-2" style="color: #fff">Broadcast Guide</h5>
+                                        <div class="row">
+                                            <div class="col-lg-3" style="border-bottom: 1">
+                                                <p>Streaming : </p>
+                                                <p>TV :</p>
                                             </div>
                                             <div class="col-lg-9">
                                                 <p>Aga Khan Sports Club Ground</p>
@@ -639,15 +695,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
 
                             {{-- news --}}
                             <div class="tab-pane" id="news">
-                                <div id="series-news" class="pt-4 pb-4">
-                                    <div class="loader-div">
+                                <div id="news" class="pt-4 pb-4">
+                                    {{-- <div class="loader-div">
                                         <div class="loader"></div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
