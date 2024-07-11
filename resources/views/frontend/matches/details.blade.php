@@ -1,52 +1,55 @@
 @extends('frontend.layouts.master')
 @section('frontend-content')
-
     <style>
-        #team1-players, #team1-bench{
+        #team1-players,
+        #team1-bench {
             border-right: 2px solid;
         }
     </style>
 
 
-<div class="section-title" style="background:url(/assets/frontend/img/slide/1.jpg)">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h1> Match </h1>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="breadcrumbs">
-                    <ul>
-                        <li><a href="{{ url('/') }}">Home</a></li>
-                        <li>Match Details</li>
-                    </ul>
+    <div class="section-title" style="background:url(/assets/frontend/img/slide/1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1> Match </h1>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="{{ url('/') }}">Home</a></li>
+                            <li>Match Details</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-@php
-    $matchStartTimestamp =  $matchInfo['matchInfo']['matchStartTimestamp'];
-    $matchCompleteTimestamp =  $matchInfo['matchInfo']['matchCompleteTimestamp'];
-    $team1 = $matchInfo['matchInfo']['team1'];
-    $team2 = $matchInfo['matchInfo']['team2'];
+    @php
+        $matchInfo = $matchInfo['matchInfo'];
+        $matchStartTimestamp = $matchInfo['matchStartTimestamp'];
+        $matchCompleteTimestamp = $matchInfo['matchCompleteTimestamp'];
+        $team1 = $matchInfo['team1'];
+        $team2 = $matchInfo['team2'];
 
-    $startDateTime = new DateTime();
-    $startDateTime->setTimestamp($matchStartTimestamp / 1000);
+        $startDateTime = new DateTime();
+        $startDateTime->setTimestamp($matchStartTimestamp / 1000);
 
-    $completeDateTime = new DateTime();
-    $completeDateTime->setTimestamp($matchCompleteTimestamp / 1000);
+        $completeDateTime = new DateTime();
+        $completeDateTime->setTimestamp($matchCompleteTimestamp / 1000);
 
-    $startTimeFormatted = $startDateTime->format('g:i A'); // Format as 8:30 PM
-    $completeTimeFormattedGMT = $completeDateTime->setTimezone(new DateTimeZone('GMT'))->format('g:i A'); // Format as 3:00 PM GMT
-    $completeTimeFormattedLocal = $completeDateTime->setTimezone(new DateTimeZone(date_default_timezone_get()))->format('g:i A'); // Format as 5:00 PM Local
-@endphp
-<div class="single-team-tabs">
-    <div class="container">
-        <div class="row">
-            <!-- Left Content - Tabs and Carousel -->
+        $startTimeFormatted = $startDateTime->format('g:i A'); // Format as 8:30 PM
+        $completeTimeFormattedGMT = $completeDateTime->setTimezone(new DateTimeZone('GMT'))->format('g:i A'); // Format as 3:00 PM GMT
+        $completeTimeFormattedLocal = $completeDateTime
+            ->setTimezone(new DateTimeZone(date_default_timezone_get()))
+            ->format('g:i A'); // Format as 5:00 PM Local
+    @endphp
+    <div class="single-team-tabs">
+        <div class="container">
+            <div class="row">
+                <!-- Left Content - Tabs and Carousel -->
                 <div class="col-xl-12 col-md-12">
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTab1">
@@ -63,45 +66,69 @@
                 <div class="col-lg-12">
                     <div class="panel-box">
                         <div class="titles mb-0">
-                            <h4>{{ $matchInfo['matchInfo']['team1']['name'] }} vs {{ $matchInfo['matchInfo']['team2']['name'] }}, {{ $matchInfo['matchInfo']['matchDescription'] }} - Live Cricket Score, Commentary</h4>
+                            <h4>{{ $matchInfo['team1']['name'] }} vs
+                                {{ $matchInfo['team2']['name'] }},
+                                {{ $matchInfo['matchDescription'] }} - Live Cricket Score, Commentary</h4>
                         </div>
                         <!-- Content Tabs -->
                         <div class="tab-content">
                             {{-- commentary tab --}}
                             <div class="tab-pane fade show active ml-5 mr-5" id="commentary">
                                 <div class="post-item mt-2 mb-0">
-                                    {{-- Live --}}
-                                    @if ($matchInfo['matchInfo']['complete'] == false && $matchInfo['matchInfo']['tossResults']['decision'])
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <h4>Start Time</h4>
-                                            <h3><?php echo $startTimeFormatted; ?></h3>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h3><?php echo $completeTimeFormattedGMT; ?></h3>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h3><?php echo $completeTimeFormattedLocal; ?></h3>
-                                        </div>
-
-                                        <div class="col-12 mt-2">
-                                            <h4>{{$matchInfo['matchInfo']['status']}}</h4>
-                                        </div>
-                                    </div>
-
-                                    {{-- Recent/ Complete --}}
-                                    @elseif($matchInfo['matchInfo']['complete'] == true && isset($commentry['miniscore']))
-
-                                        <p>{{$matchInfo['matchInfo']['team1']['shortName']}} {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score'] ?? 0}}/{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets'] ?? 0}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs'] ?? 0}})</p> 
-                                        <p><b>{{$matchInfo['matchInfo']['team2']['shortName']}} {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score'] ?? 0}}/{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets'] ?? 0}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs'] ?? 0}})</b></p> <br>
-                                        <p>{{$commentry['miniscore']['status'] ?? 0}}</p> <br>
-                                        <p>Players Of The Match : {{$commentry['matchHeader']['playersOfTheMatch'][0]['name'] ?? ''}}</p>
-                                    
                                     {{-- Upcoming --}}
-                                    @elseif($matchInfo['matchInfo']['complete'] == false && !$matchInfo['matchInfo']['tossResults']['decision'])
+                                    {{-- {{dd($matchInfo, $commentry)}} --}}
+                                    @if (
+                                        $matchInfo['complete'] == false &&
+                                            ($matchInfo['state'] !== 'inprogress' && $matchInfo['state'] !== 'stump'))
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4>Start Time</h4>
+                                                <h3>{{ $startTimeFormatted }}</h3>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h3>{{ $completeTimeFormattedGMT }}</h3>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h3>{{ $completeTimeFormattedLocal }}</h3>
+                                            </div>
 
+                                            <div class="col-12 mt-2">
+                                                <h4>{{ $matchInfo['status'] }}</h4>
+                                            </div>
+                                        </div>
+
+                                        {{-- Completed --}}
+                                    @elseif(
+                                        $matchInfo['complete'] == true &&
+                                            isset($commentry['miniscore']) &&
+                                            $commentry['matchHeader']['state'] == 'Complete')
+                                        <p>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['batTeamName'] }}
+                                            {{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score'] ?? 0 }}/{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets'] ?? 0 }}
+                                            ({{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs'] ?? 0 }})
+                                        </p>
+                                        <p><b>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['batTeamName'] }}
+                                                {{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score'] ?? 0 }}/{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets'] ?? 0 }}
+                                                ({{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs'] ?? 0 }})</b>
+                                        </p> <br>
+                                        <p>{{ $commentry['miniscore']['status'] ?? 0 }}</p> <br>
+                                        <p>Players Of The Match :
+                                            {{ $commentry['matchHeader']['playersOfTheMatch'][0]['name'] ?? '' }}</p>
+
+                                        {{-- Live --}}
+                                    @elseif(
+                                        $matchInfo['complete'] == false &&
+                                            ($matchInfo['state'] == 'inprogress' || $matchInfo['state'] == 'stump'))
+                                        <p>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['batTeamName'] }}
+                                            {{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score'] ?? 0 }}/{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets'] ?? 0 }}
+                                            ({{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs'] ?? 0 }})
+                                        </p>
+                                        <p><b>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['batTeamName'] }}
+                                                {{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score'] ?? 0 }}/{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets'] ?? 0 }}
+                                                ({{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs'] ?? 0 }})</b>
+                                        </p> <br>
+                                        <p>{{ $commentry['miniscore']['status'] ?? 0 }}</p>
                                     @endif
-                                    
+
                                 </div>
 
                                 <div class="post-item mt-2 p-2">
@@ -119,24 +146,31 @@
                                             </thead>
                                             <tbody>
                                                 <td>17</td>
-                                                <td><p>Runs Scored: <b>11
-                                                    W Wd 4 1 2 1 2</b></p></td>
-                                                <td><p>Runs Scored: <b>11
-                                                    W Wd 4 1 2 1 2</b></p></td>
-                                                <td><p>Shem Ngoche <span>7(3)</span></p> 
-                                                    <p>Jasraj Kundi <span>24(14) </span></p></td>
+                                                <td>
+                                                    <p>Runs Scored: <b>11
+                                                            W Wd 4 1 2 1 2</b></p>
+                                                </td>
+                                                <td>
+                                                    <p>Runs Scored: <b>11
+                                                            W Wd 4 1 2 1 2</b></p>
+                                                </td>
+                                                <td>
+                                                    <p>Shem Ngoche <span>7(3)</span></p>
+                                                    <p>Jasraj Kundi <span>24(14) </span></p>
+                                                </td>
                                                 <td>Zappy Bimenyimana
                                                     3-0-24-3</td>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="">
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche,  <b>  2 runs</b></p>
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche,  <b>  2 runs</b></p>
+                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
+                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
                                         <p><b>17.4</b> Eric Kubwimana to Jasraj Kundi, <b> FOUR</b></p><br>
                                         <h4>Shem Ngoche, right handed bat, comes to the crease</h4>
-                                        <p><b>16.1</b>Zappy Bimenyimana to Neil Mugabe, out Caught by Emmanuel Sebareme !! 
-                                            <span>Neil Mugabe c Emmanuel Sebareme b Zappy Bimenyimana 71(46) [4s-5 6s-4]</span>
+                                        <p><b>16.1</b>Zappy Bimenyimana to Neil Mugabe, out Caught by Emmanuel Sebareme !!
+                                            <span>Neil Mugabe c Emmanuel Sebareme b Zappy Bimenyimana 71(46) [4s-5
+                                                6s-4]</span>
                                         </p>
                                         <p>Zappy Bimenyimana to Neil Mugabe, <b>THATS OUT!!</b> Caught!!</p> <br>
                                         <h5>Zappy Bimenyimana [2.0-0-13-2] is back into the attack</h5>
@@ -149,20 +183,26 @@
                                             </thead>
                                             <tbody>
                                                 <td>17</td>
-                                                <td><p>Runs Scored: <b>11
-                                                    W Wd 4 1 2 1 2</b></p></td>
-                                                <td><p>Runs Scored: <b>11
-                                                    W Wd 4 1 2 1 2</b></p></td>
-                                                <td><p>Shem Ngoche <span>7(3)</span></p> 
-                                                    <p>Jasraj Kundi <span>24(14) </span></p></td>
+                                                <td>
+                                                    <p>Runs Scored: <b>11
+                                                            W Wd 4 1 2 1 2</b></p>
+                                                </td>
+                                                <td>
+                                                    <p>Runs Scored: <b>11
+                                                            W Wd 4 1 2 1 2</b></p>
+                                                </td>
+                                                <td>
+                                                    <p>Shem Ngoche <span>7(3)</span></p>
+                                                    <p>Jasraj Kundi <span>24(14) </span></p>
+                                                </td>
                                                 <td>Zappy Bimenyimana
                                                     3-0-24-3</td>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="">
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche,  <b>  2 runs</b></p>
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche,  <b>  2 runs</b></p>
+                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
+                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
                                         <p><b>17.4</b> Eric Kubwimana to Jasraj Kundi, <b> FOUR</b></p><br>
                                     </div>
                                 </div>
@@ -175,7 +215,7 @@
                                 </div>
                                 <div class="row mt-2 mb-2">
                                     <div class="col-lg-12">
-                                        <table class="table mt-2" border="1"  >
+                                        <table class="table mt-2" border="1">
                                             <thead class="table-dark">
                                                 <th>Rwanda Innings</th>
                                                 <th></th>
@@ -185,7 +225,7 @@
                                                 <th>168-1 (20 Ov)</th>
                                             </thead>
                                             <thead class="bg-light">
-                                                <th >Batter</th>
+                                                <th>Batter</th>
                                                 <th>R</th>
                                                 <th>B</th>
                                                 <th>4s</th>
@@ -193,7 +233,7 @@
                                                 <th>SR</th>
                                             </thead>
                                             <tbody>
-                                                <tr >
+                                                <tr>
                                                     <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
                                                     <td>50</td>
                                                     <td>42</td>
@@ -219,12 +259,14 @@
                                             <div class="col-lg-6" style="border-bottom: 1">
                                                 <p>Extras </p>
                                                 <p>Total</p>
-                                                <p> Did not Bat  </p>
+                                                <p> Did not Bat </p>
                                             </div>
                                             <div class="col-lg-6">
                                                 <p><b>10</b> (b 0, lb 1, w 9, nb 0, p 0) </p>
                                                 <p><b>168</b> (1 wkts, 20 Ov)</p>
-                                                <p> <a href="">Clinton Rubagumya (c) , Orchide Tuyisenge , Yves Cyusa , Emmanuel Sebareme , Zappy Bimenyimana , Eric Kubwimana , Martin Akayezu , Muhammad Nadir</a>  </p>
+                                                <p> <a href="">Clinton Rubagumya (c) , Orchide Tuyisenge , Yves Cyusa
+                                                        , Emmanuel Sebareme , Zappy Bimenyimana , Eric Kubwimana , Martin
+                                                        Akayezu , Muhammad Nadir</a> </p>
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +320,7 @@
                                                     <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
                                                     <td>50</td>
                                                     <td>42</td>
-                                                    
+
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -288,7 +330,7 @@
                                 {{-- team 2 --}}
                                 <div class="row mt-2 mb-2">
                                     <div class="col-lg-12">
-                                        <table class="table mt-2" border="1" >
+                                        <table class="table mt-2" border="1">
                                             <thead class="table-dark">
                                                 <th>Kenya Innings</th>
                                                 <th></th>
@@ -325,12 +367,12 @@
                                             <div class="col-lg-6" style="border-bottom: 1">
                                                 <p>Extras </p>
                                                 <p>Total</p>
-                                                <p> Did not Bat  </p>
+                                                <p> Did not Bat </p>
                                             </div>
                                             <div class="col-lg-6">
                                                 <p><b>10</b> (b 0, lb 1, w 9, nb 0, p 0) </p>
                                                 <p><b>168</b> (1 wkts, 20 Ov)</p>
-                                                <p> <a href="">Gerard Mwendwa , Vraj Patel , Peter Langat</a>  </p>
+                                                <p> <a href="">Gerard Mwendwa , Vraj Patel , Peter Langat</a> </p>
                                             </div>
                                         </div>
                                     </div>
@@ -348,7 +390,7 @@
                                         <p><span>114-1</span>
                                             <a href="">Didier Ndikubwimana</a>,(12.6)
                                         </p>
-                                        
+
                                     </div>
                                 </div>
 
@@ -367,7 +409,8 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
+                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche
+                                                    </td>
                                                     <td>50</td>
                                                     <td>42</td>
                                                     <td>7</td>
@@ -388,10 +431,11 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
+                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche
+                                                    </td>
                                                     <td>50</td>
                                                     <td>42</td>
-                                                    
+
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -406,7 +450,7 @@
                                             <div class="col-lg-3" style="border-bottom: 1">
                                                 <p>Match </p>
                                                 <p>Date</p>
-                                                <p> Toss  </p>
+                                                <p> Toss </p>
                                             </div>
                                             <div class="col-lg-9">
                                                 <p>KEN vs RWA, 9th Match, Kenya Quadrangular Cup 2024</p>
@@ -419,7 +463,7 @@
                             </div>
 
                             {{-- squads tab --}}
-                          
+
                             <div class="tab-pane" id="squads">
                                 <div class="row">
                                     <div class="col-12" id="team-display"></div>
@@ -433,23 +477,23 @@
                                             <div class="p-2">IND</div>
                                         </a>
                                     </div> --}}
-                                    
+
                                     <div class="col-12 text-center font-weight-bold py-2">Playing XI</div>
-                                    
+
                                     <div class="col-6" id="team1-players">
                                         <!-- Players for Team 1 will be inserted here -->
                                     </div>
-                                    
+
                                     <div class="col-6" id="team2-players">
                                         <!-- Players for Team 2 will be inserted here -->
                                     </div>
-                                    
+
                                     <div class="col-12 text-center font-weight-bold py-2">Bench</div>
-                                    
+
                                     <div class="col-6" id="team1-bench">
                                         <!-- Bench players for Team 1 will be inserted here -->
                                     </div>
-                                    
+
                                     <div class="col-6" id="team2-bench">
                                         <!-- Bench players for Team 2 will be inserted here -->
                                     </div>
@@ -556,9 +600,11 @@
                                             <h4>Match Type</h4>
                                             <form class="search" action="#" method="Post">
                                                 <div class="input-group">
-                                                    <input class="form-control" placeholder="Search..." name="email" type="email" required="required">
+                                                    <input class="form-control" placeholder="Search..." name="email"
+                                                        type="email" required="required">
                                                     <span class="input-group-btn">
-                                                        <button class="btn btn-primary" type="submit" name="subscribe">Go!</button>
+                                                        <button class="btn btn-primary" type="submit"
+                                                            name="subscribe">Go!</button>
                                                     </span>
                                                 </div>
                                             </form>
@@ -612,55 +658,112 @@
                                     <div class="col-lg-12">
                                         <h5 class="bg-dark p-2" style="color: #fff">Match Info</h5>
                                         <div class="row">
-                                            <div class="col-lg-3" style="border-bottom: 1">
-                                                <p>Match :</p>
-                                                <p>Date :</p>
-                                                <p>Toss  :</p>
-                                                <p>Time  :</p>
-                                                <p>Venue  :</p>
-                                                <p>Umpires  :</p>
-                                                <p>Third Umpire  :</p>
-                                                <p>Match Referee  :</p>
-                                                <p>Zimbabwe Squad  :</p>
-                                                <p>Playing  :</p>
-                                                <p>Bench  :</p>
-                                                <p>Support Staff  :</p>
-                                                <p>India Squad  :</p>
-                                                <p>Playing  :</p>
-                                                <p>Bench  :</p>
-                                                <p>Support Staff  :</p>
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p>{{$team1['shortName']}} vs
-                                                    {{$team2['shortName']}},
-                                                    {{$matchInfo['matchInfo']['matchDescription']}},
-                                                    {{$matchInfo['matchInfo']['series']['name']}}
-                                                </p>
-                                                <p>Wednesday, July 03, 2024</p>
-                                                <p>Rwanda won the toss and opt to bat</p>
-                                                <p>Time</p>
-                                                <p>{{$matchInfo['matchInfo']['venue']['name']}}</p>
-                                                
-                                                <p>{{$matchInfo['matchInfo']['umpire1']['name'] ?? ''}},
-                                                    {{$matchInfo['matchInfo']['umpire2']['name'] ?? ''}},
-                                                </p>
-
-                                                <p>{{$matchInfo['matchInfo']['umpire3']['name'] ?? ''}}</p>
-
-                                                <p>{{$matchInfo['matchInfo']['referee']['name']}}</p>
-                                                <p>Nairobi</p>
-                                                <p>Nairobi</p>
-                                                <p>Nairobi</p>
-                                                <p>Nairobi</p>
-                                                <p>Nairobi</p>
-                                                <p>Nairobi</p>
-                                                <p>Nairobi</p>
-                                                <p>Nairobi</p>
-                                            </div>
+                                            <table>
+                                                <tr>
+                                                    <td>Match :</td>
+                                                    <td>{{ $team1['shortName'] }} vs {{ $team2['shortName'] }}, {{ $matchInfo['matchDescription'] }}, {{ $matchInfo['series']['name'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date :</td>
+                                                    <td>Wednesday, July 03, 2024</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Toss :</td>
+                                                    <td>Rwanda won the toss and opt to bat</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Time :</td>
+                                                    <td>{{$startTimeFormatted}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Venue :</td>
+                                                    <td>{{ $matchInfo['venue']['name'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Umpires :</td>
+                                                    <td>{{ $matchInfo['umpire1']['name'] ?? '' }}, {{ $matchInfo['umpire2']['name'] ?? '' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Third Umpire :</td>
+                                                    <td>{{ $matchInfo['umpire3']['name'] ?? '' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Match Referee :</td>
+                                                    <td>{{ $matchInfo['referee']['name'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">{{$team1['name']}} Squad :</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Playing :</td>
+                                                    <td>
+                                                        @foreach ($team1['playerDetails'] as $player)
+                                                            @if (isset($player['substitute']) && $player['substitute'] == false)
+                                                                <a href="{{ url('/') }}">{{ $player['name'] }}</a> @if (!$loop->last), @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bench :</td>
+                                                    <td>
+                                                        @foreach ($team1['playerDetails'] as $player)
+                                                            @if (isset($player['substitute']) && $player['substitute'] == true)
+                                                                <a href="{{ url('/') }}">{{ $player['name'] }}</a> @if (!$loop->last), @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Support Staff :</td>
+                                                    <td>
+                                                        @foreach ($team1['playerDetails'] as $player)
+                                                            @if (isset($player['isSupportStaff']) && $player['isSupportStaff'] == true)
+                                                                <a href="{{ url('/') }}">{{ $player['name'] }}</a> @if (!$loop->last), @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">{{$team2['name']}} Squad :</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Playing :</td>
+                                                    <td>
+                                                        
+                                                        @foreach ($team2['playerDetails'] as $player)
+                                                            @if (isset($player['substitute']) && $player['substitute'] == false)
+                                                                <a href="{{ url('/') }}">{{ $player['name'] }}</a> @if (!$loop->last), @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bench :</td>
+                                                    <td>
+                                                        @foreach ($team2['playerDetails'] as $player)
+                                                            @if (isset($player['substitute']) && $player['substitute'] == true)
+                                                                <a href="{{ url('/') }}">{{ $player['name'] }}</a> @if (!$loop->last), @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Support Staff :</td>
+                                                    <td>
+                                                        @foreach ($team2['playerDetails'] as $player)
+                                                            @if (isset($player['isSupportStaff']) && $player['isSupportStaff'] == true)
+                                                                <a href="{{ url('/') }}">{{ $player['name'] }}</a> @if (!$loop->last), @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            
                                         </div>
                                     </div>
                                 </div>
-                                {{-- Venue Guide--}}
+                                {{-- Venue Guide --}}
                                 <div class="row mt-2 mb-2">
                                     <div class="col-lg-12">
                                         <h5 class="bg-dark p-2" style="color: #fff">Venue Guide</h5>
@@ -673,9 +776,9 @@
                                                 <p>Hosts to :</p>
                                             </div>
                                             <div class="col-lg-9">
-                                                <p>{{$matchInfo['matchInfo']['venue']['name']}}</p>
-                                                <p>{{$matchInfo['matchInfo']['venue']['city']}}</p>
-                                                <p>{{$matchInfo['matchInfo']['venue']['country']}}</p>
+                                                <p>{{ $matchInfo['venue']['name'] }}</p>
+                                                <p>{{ $matchInfo['venue']['city'] }}</p>
+                                                <p>{{ $matchInfo['venue']['country'] }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -716,6 +819,6 @@
         </div>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="{{ asset('assets/frontend/js/cricket/match-details.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('assets/frontend/js/cricket/match-details.js') }}"></script>
 @endsection
