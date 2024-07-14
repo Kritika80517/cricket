@@ -132,196 +132,81 @@
                                 </div>
 
                                 <div class="post-item mt-2 p-2">
+                                    @foreach ($commentry['commentaryList'] as $content)
+                                        @php
+                                            $commText = $content['commText'] ?? '';
 
-                                    <div class="">
-                                        <h4>Match result: Kenya won by 4 wickets</h4>
-                                        <p><b>17.4</b> Eric Kubwimana to Jasraj Kundi, <b> FOUR</b></p>
-                                        <p><b>17.4</b> Eric Kubwimana to Jasraj Kundi, <b> FOUR</b></p><br>
-                                        <h4>Eric Kubwimana [1.0-0-17-0] is back into the attack</h4>
-                                    </div>
-                                    <div class="">
-                                        <table>
-                                            <thead>
-                                                <th></th>
-                                            </thead>
-                                            <tbody>
-                                                <td>17</td>
-                                                <td>
-                                                    <p>Runs Scored: <b>11
-                                                            W Wd 4 1 2 1 2</b></p>
-                                                </td>
-                                                <td>
-                                                    <p>Runs Scored: <b>11
-                                                            W Wd 4 1 2 1 2</b></p>
-                                                </td>
-                                                <td>
-                                                    <p>Shem Ngoche <span>7(3)</span></p>
-                                                    <p>Jasraj Kundi <span>24(14) </span></p>
-                                                </td>
-                                                <td>Zappy Bimenyimana
-                                                    3-0-24-3</td>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="">
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
-                                        <p><b>17.4</b> Eric Kubwimana to Jasraj Kundi, <b> FOUR</b></p><br>
-                                        <h4>Shem Ngoche, right handed bat, comes to the crease</h4>
-                                        <p><b>16.1</b>Zappy Bimenyimana to Neil Mugabe, out Caught by Emmanuel Sebareme !!
-                                            <span>Neil Mugabe c Emmanuel Sebareme b Zappy Bimenyimana 71(46) [4s-5
-                                                6s-4]</span>
-                                        </p>
-                                        <p>Zappy Bimenyimana to Neil Mugabe, <b>THATS OUT!!</b> Caught!!</p> <br>
-                                        <h5>Zappy Bimenyimana [2.0-0-13-2] is back into the attack</h5>
-                                    </div>
+                                            // Check if 'commentaryFormats' and 'bold' keys exist
+                                            if (isset($content['commentaryFormats']['bold'])) {
+                                                $formatIds = $content['commentaryFormats']['bold']['formatId'];
+                                                $formatValues = $content['commentaryFormats']['bold']['formatValue'];
 
-                                    <div class="mt-2">
-                                        <table>
-                                            <thead>
-                                                <th></th>
-                                            </thead>
-                                            <tbody>
-                                                <td>17</td>
-                                                <td>
-                                                    <p>Runs Scored: <b>11
-                                                            W Wd 4 1 2 1 2</b></p>
-                                                </td>
-                                                <td>
-                                                    <p>Runs Scored: <b>11
-                                                            W Wd 4 1 2 1 2</b></p>
-                                                </td>
-                                                <td>
-                                                    <p>Shem Ngoche <span>7(3)</span></p>
-                                                    <p>Jasraj Kundi <span>24(14) </span></p>
-                                                </td>
-                                                <td>Zappy Bimenyimana
-                                                    3-0-24-3</td>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="">
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
-                                        <p><b>16.6</b> appy Bimenyimana to Shem Ngoche, <b> 2 runs</b></p>
-                                        <p><b>17.4</b> Eric Kubwimana to Jasraj Kundi, <b> FOUR</b></p><br>
-                                    </div>
+                                                // Replace placeholders with bold text
+                                                foreach ($formatIds as $index => $placeholder) {
+                                                    if (isset($formatValues[$index])) {
+                                                        $commText = str_replace($placeholder, '<strong>' . $formatValues[$index] . '</strong>', $commText);
+                                                    }
+                                                }
+                                            }
+                                            
+                                            // Convert newlines to <br> tags for better formatting
+                                            $commText = nl2br($commText);
+                                        @endphp
+                                        <p>{!! $commText !!}</p>
+                                        <br>
+                                    @endforeach
+
+
                                 </div>
                             </div>
 
                             {{-- scorecard tab --}}
                             <div class="tab-pane" id="scorecard">
                                 <div class="mt-2 ml-3">
-                                    <h5>Kenya won by 4 wkts</h5>
+                                    <h5>{{ $matchInfo['team1']['name'] }}</h5>
                                 </div>
                                 <div class="row mt-2 mb-2">
                                     <div class="col-lg-12">
-                                        <table class="table mt-2" border="1">
+                                        <table class="table mt-2" border="1" id="scorecard-table">
                                             <thead class="table-dark">
-                                                <th>Rwanda Innings</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th>168-1 (20 Ov)</th>
+                                                <td colspan="5">{{ $matchInfo['team2']['name'] }} Innings</td>
+                                                <td colspan="2">{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score']}} - {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets']}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs']}})</td>
                                             </thead>
                                             <thead class="bg-light">
-                                                <th>Batter</th>
-                                                <th>R</th>
-                                                <th>B</th>
-                                                <th>4s</th>
-                                                <th>6s</th>
-                                                <th>SR</th>
+                                                <tr>
+                                                    <th colspan="2">Batter</th>
+                                                    <th>R</th>
+                                                    <th>B</th>
+                                                    <th>4s</th>
+                                                    <th>6s</th>
+                                                    <th>SR</th>
+                                                </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
-                                                    <td>50</td>
-                                                    <td>42</td>
-                                                    <td>7</td>
-                                                    <td>0</td>
-                                                    <td>119.05</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
-                                                    <td>50</td>
-                                                    <td>42</td>
-                                                    <td>7</td>
-                                                    <td>0</td>
-                                                    <td>119.05</td>
-                                                </tr>
+                                            <tbody id="scorecard-bat-body">
                                             </tbody>
                                         </table>
-                                    </div>
-                                </div>
-                                <div class="row mt-2 mb-2">
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-lg-6" style="border-bottom: 1">
-                                                <p>Extras </p>
-                                                <p>Total</p>
-                                                <p> Did not Bat </p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <p><b>10</b> (b 0, lb 1, w 9, nb 0, p 0) </p>
-                                                <p><b>168</b> (1 wkts, 20 Ov)</p>
-                                                <p> <a href="">Clinton Rubagumya (c) , Orchide Tuyisenge , Yves Cyusa
-                                                        , Emmanuel Sebareme , Zappy Bimenyimana , Eric Kubwimana , Martin
-                                                        Akayezu , Muhammad Nadir</a> </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="bg-light p-1">
-                                            <h5>Fall of Wickets</h5>
-                                        </div>
-                                        <p><span>114-1</span>
-                                            <a href="">Didier Ndikubwimana</a>,(12.6)
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="row mt-2 mb-2">
-                                    <div class="col-lg-12">
-                                        <table class="table mt-2" border="1">
-                                            <thead class="bg-light">
-                                                <th>Bowler</th>
-                                                <th>O</th>
-                                                <th>M</th>
-                                                <th>R</th>
-                                                <th>W</th>
-                                                <th>NB</th>
-                                                <th>WD</th>
-                                                <th>ECO</th>
+                                        <table>
+                                            <thead class="table-dark">
+                                                <th>Fall of Wickets</th>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
-                                                    <td>50</td>
-                                                    <td>42</td>
-                                                    <td>7</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>119.05</td>
-                                                </tr>
+                                            <tbody id="scorecard-fallofwickets-body">
                                             </tbody>
                                         </table>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <table class="table mt-2" border="1">
+                                        <table class="table mt-2" border="1" id="scorecard-bowl-table">
                                             <thead class="bg-light">
-                                                <th>Powerplays</th>
-                                                <th>Over</th>
-                                                <th>Run</th>
-                                            </thead>
-                                            <tbody>
                                                 <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
-                                                    <td>50</td>
-                                                    <td>42</td>
-
+                                                    <th>Bowler</th>
+                                                    <th>O</th>
+                                                    <th>M</th>
+                                                    <th>R</th>
+                                                    <th>W</th>
+                                                    <th>NB</th>
+                                                    <th>WD</th>
+                                                    <th>ECO</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody id="scorecard-bowl-body">
+                                                <!-- Dynamic rows for bowlers will be appended here -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -330,136 +215,51 @@
                                 {{-- team 2 --}}
                                 <div class="row mt-2 mb-2">
                                     <div class="col-lg-12">
-                                        <table class="table mt-2" border="1">
+                                        <table class="table mt-2" border="1" id="scorecard-table">
                                             <thead class="table-dark">
-                                                <th>Kenya Innings</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th>172-6 (17.4 Ov)</th>
+                                                <td colspan="5">{{ $matchInfo['team1']['name'] }} Innings</td>
+                                                <td colspan="2">{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score']}} - {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets']}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs']}})</td>
                                             </thead>
                                             <thead class="bg-light">
-                                                <th>Batter</th>
-                                                <th>R</th>
-                                                <th>B</th>
-                                                <th>4s</th>
-                                                <th>6s</th>
-                                                <th>SR</th>
-                                            </thead>
-                                            <tbody>
                                                 <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche</td>
-                                                    <td>50</td>
-                                                    <td>42</td>
-                                                    <td>7</td>
-                                                    <td>0</td>
-                                                    <td>119.05</td>
+                                                    <th colspan="2">Batter</th>
+                                                    <th>R</th>
+                                                    <th>B</th>
+                                                    <th>4s</th>
+                                                    <th>6s</th>
+                                                    <th>SR</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody id="scorecard-bat-body-2">
+                                            </tbody>
+                                        </table>
+                                        <table>
+                                            <thead class="table-dark">
+                                                <th>Fall of Wickets</th>
+                                            </thead>
+                                            <tbody id="scorecard-fallofwickets-body-2">
+                                            </tbody>
+                                        </table>
+                                        <table class="table mt-2" border="1" id="scorecard-bowl-table">
+                                            <thead class="bg-light">
+                                                <tr>
+                                                    <th>Bowler</th>
+                                                    <th>O</th>
+                                                    <th>M</th>
+                                                    <th>R</th>
+                                                    <th>W</th>
+                                                    <th>NB</th>
+                                                    <th>WD</th>
+                                                    <th>ECO</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="scorecard-bowl-body-2">
+                                                
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
 
-                                <div class="row mt-2 mb-2">
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-lg-6" style="border-bottom: 1">
-                                                <p>Extras </p>
-                                                <p>Total</p>
-                                                <p> Did not Bat </p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <p><b>10</b> (b 0, lb 1, w 9, nb 0, p 0) </p>
-                                                <p><b>168</b> (1 wkts, 20 Ov)</p>
-                                                <p> <a href="">Gerard Mwendwa , Vraj Patel , Peter Langat</a> </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="bg-light p-1">
-                                            <h5>Fall of Wickets</h5>
-                                        </div>
-                                        <p><span>114-1</span>
-                                            <a href="">Didier Ndikubwimana</a>,(12.6)
-                                        </p>
-                                        <p><span>114-1</span>
-                                            <a href="">Didier Ndikubwimana</a>,(12.6)
-                                        </p>
-                                        <p><span>114-1</span>
-                                            <a href="">Didier Ndikubwimana</a>,(12.6)
-                                        </p>
-
-                                    </div>
-                                </div>
-
-                                <div class="row mt-2 mb-2">
-                                    <div class="col-lg-12">
-                                        <table class="table mt-2" border="1">
-                                            <thead class="bg-light">
-                                                <th>Bowler</th>
-                                                <th>O</th>
-                                                <th>M</th>
-                                                <th>R</th>
-                                                <th>W</th>
-                                                <th>NB</th>
-                                                <th>WD</th>
-                                                <th>ECO</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche
-                                                    </td>
-                                                    <td>50</td>
-                                                    <td>42</td>
-                                                    <td>7</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>119.05</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <table class="table mt-2" border="1">
-                                            <thead class="bg-light">
-                                                <th>Powerplays</th>
-                                                <th>Over</th>
-                                                <th>Run</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><a href="">Didier Ndikubwimana (wk)</a>lbw b Shem Ngoche
-                                                    </td>
-                                                    <td>50</td>
-                                                    <td>42</td>
-
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                {{-- match info --}}
-                                <div class="row mt-2 mb-2">
-                                    <div class="col-lg-12">
-                                        <h5 class="bg-dark p-2" style="color: #fff">Match Info</h5>
-                                        <div class="row">
-                                            <div class="col-lg-3" style="border-bottom: 1">
-                                                <p>Match </p>
-                                                <p>Date</p>
-                                                <p> Toss </p>
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p>KEN vs RWA, 9th Match, Kenya Quadrangular Cup 2024</p>
-                                                <p>Wednesday, July 03, 2024</p>
-                                                <p>Rwanda won the toss and opt to bat</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             {{-- squads tab --}}

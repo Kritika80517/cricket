@@ -27,8 +27,93 @@ $(document).ready(function() {
             url: `/matches/info/scard/` + fetchMatchIdFromUrl(),
             method: 'GET',
             success: function(response) {
-                console.log(response)
-                
+                const scorecardBody = $('#scorecard-bat-body');
+                const fallOfWicketsData = response.scoreCard[0].wicketsData;
+                const fallOfWicketsData2 = response.scoreCard[1].wicketsData;
+                Object.values(response.scoreCard[0].batTeamDetails.batsmenData).forEach(batsman => {
+                    scorecardBody.append(`
+                        <tr>
+                            <td><a href="">${batsman.batName}</a></td>
+                            <td>${batsman.outDesc}</td>
+                            <td>${batsman.runs}</td>
+                            <td>${batsman.balls}</td>
+                            <td>${batsman.fours}</td>
+                            <td>${batsman.sixes}</td>
+                            <td>${batsman.strikeRate.toFixed(2)}</td>
+                        </tr>
+                    `);
+                });
+
+                const scorecardBowlBody = $('#scorecard-bowl-body');
+                Object.values(response.scoreCard[0].bowlTeamDetails.bowlersData).forEach(bowler => {
+                    scorecardBowlBody.append(`
+                        <tr>
+                            <td><a href="">${bowler.bowlName}</a></td>
+                            <td>${bowler.overs}</td>
+                            <td>${bowler.maidens}</td>
+                            <td>${bowler.runs}</td>
+                            <td>${bowler.wickets}</td>
+                            <td>${bowler.no_balls}</td>
+                            <td>${bowler.wides}</td>
+                            <td>${bowler.economy.toFixed(2)}</td>
+                        </tr>
+                    `);
+                });
+                const scorecardFallOfWicketsBody = $('#scorecard-fallofwickets-body');
+                let fallOfWicketsText = '';
+                Object.values(fallOfWicketsData).forEach(wicket => {
+                    fallOfWicketsText += `${wicket.wktRuns}-${wicket.wktNbr} (<a href="">${wicket.batName}</a>, ${wicket.wktOver}), `;
+                });
+                fallOfWicketsText = fallOfWicketsText.slice(0, -2); // Remove the last comma and space
+                scorecardFallOfWicketsBody.append(`
+                    <tr>
+                        <td>${fallOfWicketsText}</td>
+                    </tr>
+                `);
+
+
+                const scorecardBody2 = $('#scorecard-bat-body-2');
+                Object.values(response.scoreCard[0].batTeamDetails.batsmenData).forEach(batsman => {
+                    scorecardBody2.append(`
+                        <tr>
+                            <td><a href="">${batsman.batName}</a></td>
+                            <td>${batsman.outDesc}</td>
+                            <td>${batsman.runs}</td>
+                            <td>${batsman.balls}</td>
+                            <td>${batsman.fours}</td>
+                            <td>${batsman.sixes}</td>
+                            <td>${batsman.strikeRate.toFixed(2)}</td>
+                        </tr>
+                    `);
+                });
+
+                const scorecardBowlBody2 = $('#scorecard-bowl-body-2');
+                Object.values(response.scoreCard[0].bowlTeamDetails.bowlersData).forEach(bowler => {
+                    scorecardBowlBody2.append(`
+                        <tr>
+                            <td><a href="">${bowler.bowlName}</a></td>
+                            <td>${bowler.overs}</td>
+                            <td>${bowler.maidens}</td>
+                            <td>${bowler.runs}</td>
+                            <td>${bowler.wickets}</td>
+                            <td>${bowler.no_balls}</td>
+                            <td>${bowler.wides}</td>
+                            <td>${bowler.economy.toFixed(2)}</td>
+                        </tr>
+                    `);
+                });
+
+                const scorecardFallOfWicketsBody2 = $('#scorecard-fallofwickets-body-2');
+                let fallOfWicketsText2 = '';
+                Object.values(fallOfWicketsData2).forEach(wicket => {
+                    fallOfWicketsText2 += `${wicket.wktRuns}-${wicket.wktNbr} (<a href="">${wicket.batName}</a>, ${wicket.wktOver}), `;
+                });
+                fallOfWicketsText2 = fallOfWicketsText2.slice(0, -2); // Remove the last comma and space
+                scorecardFallOfWicketsBody2.append(`
+                    <tr>
+                        <td>${fallOfWicketsText2}</td>
+                    </tr>
+                `);
             },
             error: function(error) {
                 console.log('Error fetching teams:', error);
@@ -163,6 +248,7 @@ $(document).ready(function() {
         });
     }
 
+    
 
     fetchInfo()
     fetchScorecard();
