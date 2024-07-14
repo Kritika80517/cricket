@@ -152,7 +152,7 @@
 
                                        <div class="col-lg-12 col-xl-12">
                                            <p>
-                                                {!! $data['bio'] !!}
+                                                {!! $data['bio'] ?? '' !!}
                                            </p>
 
                                        </div>

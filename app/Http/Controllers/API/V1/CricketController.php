@@ -490,11 +490,11 @@ class CricketController extends Controller
     }
 
     public function players_search(Request $request){
-        $plrN = "Tucker"; 
-        if($request->has('plrN')){
-            $plrN = $request->plrN;
+       
+        if(!$request->has('plrN')){
+            return response()->json(['message' => 'PlrN field is required!'], 400);
         }
-        $response = cricketAPI("/stats/v1/player/search");
+        $response = cricketAPI("/stats/v1/player/search?plrN=" . $request->plrN);
         
         if ($response->successful()) {
             return response()->json($response->json(), 200);

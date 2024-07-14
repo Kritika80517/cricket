@@ -53,7 +53,7 @@ $(document).ready(function() {
                 // Append players to the corresponding column
                 players.forEach(player => {
                     var playerHTML = `<div class="w-100 p-2">
-                        <a class="d-flex ${isRightSide ? 'justify-content-end' : ''} align-items-center" href="/profiles/${player.id}/${player.name}">
+                        <a class="d-flex ${isRightSide ? 'justify-content-end' : ''} align-items-center" href="/players/${player.id}">
                             ${isRightSide ? `
                             <div class="text-right">
                                 <div>${player.fullName}${player.captain ? " (C)" : ""}<br><span class="text-muted small">${player.role}</span></div>
@@ -73,7 +73,7 @@ $(document).ready(function() {
                 // Append bench players to the corresponding column
                 bench.forEach(player => {
                     var benchHTML = `<div class="w-100 p-2">
-                        <a class="d-flex ${isRightSide ? 'justify-content-end' : ''} align-items-center" href="/profiles/${player.id}/${player.name}">
+                        <a class="d-flex ${isRightSide ? 'justify-content-end' : ''} align-items-center" href="/players/${player.id}">
                             ${isRightSide ? `
                             <div class="text-right">
                                 <div>${player.fullName}<br><span class="text-muted small">${player.role}</span></div>

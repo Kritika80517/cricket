@@ -56,7 +56,7 @@
                         <li class="active"><a href="#commentary" data-toggle="tab">Commentary </a></li>
                         <li><a href="#scorecard" data-toggle="tab">Scorecard </a></li>
                         <li><a href="#squads" data-toggle="tab">Squads </a></li>
-                        <li><a href="#point_table" data-toggle="tab">Point Table</a></li>
+                        {{-- <li><a href="#point_table" data-toggle="tab">Point Table</a></li> --}}
                         <li><a href="#match_facts" data-toggle="tab"> Match Facts</a></li>
                         <li><a href="#news" data-toggle="tab">News </a></li>
                     </ul>
@@ -466,22 +466,14 @@
 
                             <div class="tab-pane" id="squads">
                                 <div class="row">
+                                    
                                     <div class="col-12" id="team-display"></div>
-                                    {{-- <div class="col-12 d-flex justify-content-between align-items-center font-weight-bold p-2 bg-light">
-                                        <a class="d-flex align-items-center" href="/cricket-team/zimbabwe/12/schedule">
-                                            <div class="p-2"><img style="width: 27px; height: 20px;" src="https://static.cricbuzz.com/a/img/v1/72x54/i1/c172127/team_flag.jpg"></div>
-                                            <div class="p-2">ZIM</div>
-                                        </a>
-                                        <a class="d-flex align-items-center" href="/cricket-team/india/2/schedule">
-                                            <div class="p-2"><img style="width: 27px; height: 20px;" src="https://static.cricbuzz.com/a/img/v1/72x54/i1/c172115/team_flag.jpg"></div>
-                                            <div class="p-2">IND</div>
-                                        </a>
-                                    </div> --}}
 
                                     <div class="col-12 text-center font-weight-bold py-2">Playing XI</div>
 
                                     <div class="col-6" id="team1-players">
                                         <!-- Players for Team 1 will be inserted here -->
+                                       
                                     </div>
 
                                     <div class="col-6" id="team2-players">
@@ -516,7 +508,7 @@
                             </div> --}}
 
                             {{-- point_table --}}
-                            <div class="tab-pane mt-2" id="point_table">
+                            {{-- <div class="tab-pane mt-2" id="point_table">
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="panel-box" id="team-stats-filters">
@@ -649,7 +641,7 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> --}}
 
                             {{-- match_facts --}}
                             <div class="tab-pane" id="match_facts">

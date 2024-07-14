@@ -311,7 +311,7 @@ $(document).ready(function() {
     
                         const header = `
                             <div class="titles no-margin">
-                                <h5><a href="group-list.html">${player.name}</a></h5>
+                                <h5><a href="#">${player.name}</a></h5>
                             </div>
                             <div class="info-panel p-0">
                                 <div class="row">
@@ -326,7 +326,7 @@ $(document).ready(function() {
                                 <div class="player-item">
                                     <img src="https://static.cricbuzz.com/a/img/v1/75x75/i1/c${player.imageId}/${player.name}.jpg" alt="${player.name}">
                                     <div>
-                                        <div class="player-name">${player.name}${player.captain ? ' (Captain)' : ''}</div>
+                                        <div class="player-name"> <a href="/players/${player.id}"> ${player.name}${player.captain ? ' (Captain)' : ''}</a></div>
                                         <div class="player-role">${player.role}</div>
                                     </div>
                                 </div>
