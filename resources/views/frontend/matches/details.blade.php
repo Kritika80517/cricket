@@ -481,7 +481,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Match Referee :</td>
-                                                    <td>{{ $matchInfo['referee']['name'] }}</td>
+                                                    <td>{{ $matchInfo['referee']['name']?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">{{$team1['name']}} Squad :</td>
