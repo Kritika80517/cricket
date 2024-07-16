@@ -32,7 +32,7 @@ class NotificationController extends Controller
         $message->message = $request->message;
         $sendAt = Carbon::parse($request->send_at)->format('Y-m-d H:i:s');
 
-$message->send_at = $sendAt;
+        $message->send_at = $sendAt;
         $message->file = FileHelper::image_upload('assets/admin/img/notification/', 'png', $request->file('image'));
         $message->save();
         return redirect('admin/notifications')->with('success', 'Notification created successfully');

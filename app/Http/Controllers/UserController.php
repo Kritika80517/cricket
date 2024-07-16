@@ -54,7 +54,7 @@ class UserController extends Controller
             'contact' => 'required|numeric|digits:10',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|string|min:8|same:password',
-
+            'fcm_token' => 'required',
         ]);
 
         if ($request->password != $request->password_confirmation) {
@@ -66,7 +66,9 @@ class UserController extends Controller
             'email' => $request->email,
             'contact' => $request->contact,
             'password' => Hash::make($request->password),
+            'fcm_token' => $request->fcm_token
         ]);
+
         return redirect()->route('home')->with('message', 'User registered successfully.');
     }
 
