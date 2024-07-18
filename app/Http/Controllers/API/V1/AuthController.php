@@ -71,6 +71,7 @@ class AuthController extends Controller
             'contact' => 'required|numeric|digits:10',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|string|min:8|same:password',
+            'fcm_token' => 'required',
 
         ]);
 
@@ -83,6 +84,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'contact' => $request->contact,
             'password' => Hash::make($request->password),
+            'fcm_token' => $request->fcm_token,
         ]);
 
         $token = $user->createToken('AuthToken')->plainTextToken;
