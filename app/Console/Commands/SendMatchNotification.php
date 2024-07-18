@@ -3,19 +3,19 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Notification;
-use App\Models\User;
+use \App\Models\MatchNotification;
+use \App\Models\User;
 use Illuminate\Support\Facades\Http;
 
-class SendPushNotifications extends Command
+class SendMatchNotification extends Command
 {
-    protected $signature = 'push:send';
-    protected $description = 'Send push notifications to devices';
+    protected $signature = 'push:send-match-notification';
+    protected $description = 'Command description';
 
     public function handle()
     {
         // Fetch notifications to be sent
-        $notifications = Notification::where('send_at', '<=', now())->where('status', 0)->get();
+        $notifications = MatchNotification::where('send_at', '<=', now())->where('status', 0)->get();
         foreach ($notifications as $notification) {
             $data = [
                 'title' => $notification->title,
@@ -28,7 +28,7 @@ class SendPushNotifications extends Command
 
     private function sendPushNotification($data, $notification)
     {
-        $tokens = User::whereIn('id', json_decode($notification->user_ids, true))->pluck('fcm_token')->toArray();
+        $tokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
         $key = env('FIREBASE_SERVER_KEY');
         $url = 'https://fcm.googleapis.com/fcm/send';
         $headers = [
@@ -56,7 +56,7 @@ class SendPushNotifications extends Command
 
         if ($response->successful()) {
             $this->info('Push notification sent successfully.');
-            Notification::where('id', $notification->id)->update(['status' => 1]);
+            MatchNotification::where('id', $notification->id)->update(['status' => 1]);
         } else {
             $this->error('Failed to send push notification: ' . $response->status());
         }

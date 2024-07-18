@@ -75,6 +75,7 @@ class Kernel extends HttpKernel
     {
         $schedule->command('push:send')->everyMinute();
         $schedule->command('insert:match-notification')->daily();
+        $schedule->command('push:send-match-notification')->everyMinute();
     }
 
 }
