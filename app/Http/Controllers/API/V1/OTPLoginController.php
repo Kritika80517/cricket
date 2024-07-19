@@ -66,7 +66,8 @@ class OTPLoginController extends Controller
         if (!$otpRecord) {
             return response()->json(['message' => 'Invalid or expired OTP.'], 422);
         }
-
+        $user->email_verified_at = now();
+        $user->save();
         DB::table('otp_logins')->where('email', $request->email)->delete();
 
         $token = $user->createToken('AuthToken')->plainTextToken;

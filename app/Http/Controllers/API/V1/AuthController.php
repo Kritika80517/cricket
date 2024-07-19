@@ -34,24 +34,32 @@ class AuthController extends Controller
             ->first();
 
         if ($user) {
-           
             if (Hash::check($request->password, $user->password)) {
                 
-                $otp = rand(1000, 9999);
-                $expiresAt = now()->addMinutes(10);
-
-                DB::table('otp_logins')->updateOrInsert(
-                    ['email' => $user->email],
-                    ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
-                );
-
-                try {
-                    Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
-                } catch (\Exception $e) {
-                    return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+                if(!$user->email_verified_at){
+                    $otp = rand(1000, 9999);
+                    $expiresAt = now()->addMinutes(10);
+    
+                    DB::table('otp_logins')->updateOrInsert(
+                        ['email' => $user->email],
+                        ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
+                    );
+    
+                    try {
+                        Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
+                    } catch (\Exception $e) {
+                        return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+                    }
+                    return response()->json(['message' => 'OTP sent to your email. Please verify to complete login.'], 200);
                 }
 
-                return response()->json(['message' => 'OTP sent to your email. Please verify to complete login.'], 200);
+                $token = $user->createToken('AuthToken')->plainTextToken;
+
+                return response()->json([
+                    'message' => 'OTP verified. User logged in successfully.',
+                    'user' => $user,
+                    'token' => $token,
+                ], 200);
             }
 
             return response()->json(['message' => 'The provided credentials are incorrect.'], 403);
@@ -87,8 +95,24 @@ class AuthController extends Controller
             'fcm_token' => $request->fcm_token,
         ]);
 
-        $token = $user->createToken('AuthToken')->plainTextToken;
-        return response()->json(["message" => "User registered successfully.", 'token' => $token, "data" => $user], 201);
+        if ($user) {
+            $otp = rand(1000, 9999);
+            $expiresAt = now()->addMinutes(10);
+
+            DB::table('otp_logins')->updateOrInsert(
+                ['email' => $user->email],
+                ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
+            );
+
+            try {
+                Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
+            } catch (\Exception $e) {
+                return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+            }
+            return response()->json(['message' => 'OTP sent to your email. Please verify to complete login.'], 200);
+        }
+
+        return response()->json(["message" => "Something went wrong."], 400);
     }
 
     // get user details
