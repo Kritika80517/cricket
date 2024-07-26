@@ -61,7 +61,7 @@
                                                 <select class="form-control" name="ads_placement" id="ads_placement">
                                                     <option value="" disabled selected>Select Ads Placements</option>
                                                     <option @if ($ads->ads_placement == 'home') selected @endif value="home">Home</option>
-                                                    <option @if ($ads->ads_placement == 'news') selected @endif value="news">News</option>
+                                                    <option @if ($ads->ads_placement == 'about') selected @endif value="about">About</option>
                                                 </select>
                                             </div>
                                         </div>

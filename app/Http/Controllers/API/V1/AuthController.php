@@ -11,17 +11,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
+use App\Services\SmsService;
 use Validator;
 
 class AuthController extends Controller
 {
+    protected $smsService;
+
+    public function __construct(SmsService $smsService)
+    {
+        $this->smsService = $smsService;
+    }
+
     public function login(Request $request)
     {
-        $user_id = $request->input('email_or_phone') ?? $request->input('email');
+        $user_id = $request->input('email_or_phone');
 
         $validator = Validator::make($request->all(), [
-            'email_or_phone' => 'required_without:email',
-            'email' => 'required_without:email_or_phone|email',
+            'email_or_phone' => 'required',
             'password' => 'required|min:8',
         ]);
 
@@ -29,29 +36,30 @@ class AuthController extends Controller
             return response()->json(['message' => 'The provided credentials are incorrect.', 'errors' => $validator->errors()], 403);
         }
 
-        $user = User::where('email', $user_id)
-            ->orWhere('contact', $user_id)
-            ->first();
+        $user = User::where('contact', $user_id)->first();
 
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
+                $otp = rand(1000, 9999);
                 
-                if(!$user->email_verified_at){
+                if (!$user->email_verified_at) {
                     $otp = rand(1000, 9999);
                     $expiresAt = now()->addMinutes(10);
-    
+
                     DB::table('otp_logins')->updateOrInsert(
                         ['email' => $user->email],
                         ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
                     );
-    
-                    try {
-                        Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
-                    } catch (\Exception $e) {
-                        return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+
+                    // Send OTP via SMS
+                    $phoneNumber = $user->contact;
+                    if ($this->smsService->sendSms($phoneNumber, $otp)) {
+                        return response()->json(['message' => 'OTP sent to your phone number. Please verify to complete login.'], 200);
+                    } else {
+                        return response()->json(['message' => 'Failed to send OTP. Please try again.'], 500);
                     }
-                    return response()->json(['message' => 'OTP sent to your email. Please verify to complete login.'], 200);
                 }
+                dd($this->smsService->sendSms('9973213962', $otp));
 
                 $token = $user->createToken('AuthToken')->plainTextToken;
 
@@ -69,6 +77,63 @@ class AuthController extends Controller
             'errors' => [['code' => 'auth-001', 'message' => 'Invalid credentials.']],
         ], 401);
     }
+
+
+    // public function login(Request $request)
+    // {
+    //     $user_id = $request->input('email_or_phone') ?? $request->input('email');
+
+    //     $validator = Validator::make($request->all(), [
+    //         'email_or_phone' => 'required_without:email',
+    //         'email' => 'required_without:email_or_phone|email',
+    //         'password' => 'required|min:8',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return response()->json(['message' => 'The provided credentials are incorrect.', 'errors' => $validator->errors()], 403);
+    //     }
+
+    //     $user = User::where('email', $user_id)
+    //         ->orWhere('contact', $user_id)
+    //         ->first();
+
+    //     if ($user) {
+    //         if (Hash::check($request->password, $user->password)) {
+                
+    //             if(!$user->email_verified_at){
+    //                 $otp = rand(1000, 9999);
+    //                 $expiresAt = now()->addMinutes(10);
+    
+    //                 DB::table('otp_logins')->updateOrInsert(
+    //                     ['email' => $user->email],
+    //                     ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
+    //                 );
+    
+    //                 try {
+    //                     Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
+    //                 } catch (\Exception $e) {
+    //                     return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+    //                 }
+    //                 return response()->json(['message' => 'OTP sent to your email. Please verify to complete login.'], 200);
+    //             }
+
+    //             $token = $user->createToken('AuthToken')->plainTextToken;
+
+    //             return response()->json([
+    //                 'message' => 'OTP verified. User logged in successfully.',
+    //                 'user' => $user,
+    //                 'token' => $token,
+    //             ], 200);
+    //         }
+
+    //         return response()->json(['message' => 'The provided credentials are incorrect.'], 403);
+    //     }
+
+    //     return response()->json([
+    //         'errors' => [['code' => 'auth-001', 'message' => 'Invalid credentials.']],
+    //     ], 401);
+    // }
+
 
     // register
     public function register(Request $request)
@@ -98,18 +163,19 @@ class AuthController extends Controller
         if ($user) {
             $otp = rand(1000, 9999);
             $expiresAt = now()->addMinutes(10);
-
+    
             DB::table('otp_logins')->updateOrInsert(
                 ['email' => $user->email],
                 ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
             );
-
-            try {
-                Mail::to($user->email)->send(new \App\Mail\otpLoginMail($otp));
-            } catch (\Exception $e) {
-                return response()->json(['errors' => [['code' => 'config-missing', 'message' => $e->getMessage()]]], 400);
+    
+            // Send OTP via SMS
+            $phoneNumber = $user->contact;
+            if ($this->smsService->sendOtp($phoneNumber, $otp)) {
+                return response()->json(['message' => 'OTP sent to your phone number. Please verify to complete login.'], 200);
+            } else {
+                return response()->json(['message' => 'Failed to send OTP. Please try again.'], 500);
             }
-            return response()->json(['message' => 'OTP sent to your email. Please verify to complete login.'], 200);
         }
 
         return response()->json(["message" => "Something went wrong."], 400);

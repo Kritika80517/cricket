@@ -8,7 +8,7 @@
     </style>
 
 
-    <div class="section-title" style="background:url(/assets/frontend/img/slide/1.jpg)">
+    <div class="section-title" style="background:url(/assets/frontend/img/banner.jpg)">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -76,7 +76,6 @@
                             <div class="tab-pane fade show active ml-5 mr-5" id="commentary">
                                 <div class="post-item mt-2 mb-0">
                                     {{-- Upcoming --}}
-                                    {{-- {{dd($matchInfo, $commentry)}} --}}
                                     @if (
                                         $matchInfo['complete'] == false &&
                                             ($matchInfo['state'] !== 'inprogress' && $matchInfo['state'] !== 'stump'))
@@ -118,11 +117,11 @@
                                     @elseif(
                                         $matchInfo['complete'] == false &&
                                             ($matchInfo['state'] == 'inprogress' || $matchInfo['state'] == 'stump'))
-                                        <p>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['batTeamName'] }}
+                                        <p>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['batTeamName'] ?? 0}}
                                             {{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score'] ?? 0 }}/{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets'] ?? 0 }}
                                             ({{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs'] ?? 0 }})
                                         </p>
-                                        <p><b>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['batTeamName'] }}
+                                        <p><b>{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['batTeamName'] ?? 0}}
                                                 {{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score'] ?? 0 }}/{{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets'] ?? 0 }}
                                                 ({{ $commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs'] ?? 0 }})</b>
                                         </p> <br>
@@ -170,7 +169,7 @@
                                         <table class="table mt-2" border="1" id="scorecard-table">
                                             <thead class="table-dark">
                                                 <td colspan="5">{{ $matchInfo['team2']['name'] }} Innings</td>
-                                                <td colspan="2">{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score']}} - {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets']}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs']}})</td>
+                                                <td colspan="2">{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['score'] ?? 0}} - {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['wickets'] ?? 0}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][1]['overs'] ?? 0}})</td>
                                             </thead>
                                             <thead class="bg-light">
                                                 <tr>
@@ -218,7 +217,7 @@
                                         <table class="table mt-2" border="1" id="scorecard-table">
                                             <thead class="table-dark">
                                                 <td colspan="5">{{ $matchInfo['team1']['name'] }} Innings</td>
-                                                <td colspan="2">{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score']}} - {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets']}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs']}})</td>
+                                                <td colspan="2">{{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['score'] ?? 0}} - {{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['wickets'] ?? 0}} ({{$commentry['miniscore']['matchScoreDetails']['inningsScoreList'][0]['overs'] ?? 0}})</td>
                                             </thead>
                                             <thead class="bg-light">
                                                 <tr>
@@ -291,157 +290,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            {{-- full_commentary --}}
-                            {{-- <div class="tab-pane" id="full_commentary">
-                                <div class="row mt-2 mb-2">
-                                    <div class="col-lg-3" id="series-squads">
-                                        
-                                    </div>
-
-                                    <div class="col-lg-9">
-                                        <div id="series-squads-players" class="groups-list page-group">
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-
-                            {{-- point_table --}}
-                            {{-- <div class="tab-pane mt-2" id="point_table">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="panel-box" id="team-stats-filters">
-
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-soccer-ball-o"></i>Batting</h4>
-                                            </div>
-                                            <div class="info-panel p-0">
-                                                <ul class="list-panel" id="Batting-list">
-
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Nepal</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Namibia</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Netherlands</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Canada</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Scotland</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">United Arab Emirates</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="panel-box" id="team-stats-filters">
-
-                                            <div class="titles no-margin">
-                                                <h4><i class="fa fa-soccer-ball-o"></i>Bowling</h4>
-                                            </div>
-                                            <div class="info-panel p-0">
-                                                <ul class="list-panel" id="Batting-list">
-
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Nepal</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Namibia</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Netherlands</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Canada</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">Scotland</a>
-                                                    </li>
-                                                    <li class="no-margin stateFiltersActive">
-                                                        <a data-value="mostRuns"
-                                                            class="pl-2 stateFilter btn bg-none">United Arab Emirates</a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-9">
-                                        <div>
-                                            <h4>Match Type</h4>
-                                            <form class="search" action="#" method="Post">
-                                                <div class="input-group">
-                                                    <input class="form-control" placeholder="Search..." name="email"
-                                                        type="email" required="required">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-primary" type="submit"
-                                                            name="subscribe">Go!</button>
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <table class="table-striped table-responsive table-hover result-point">
-                                            <thead class="point-table-head">
-                                                <tr class="">
-                                                    <th class="">PLAYER</th>
-                                                    <th class="text-right">MATCHES</th>
-                                                    <th class="text-right">INNS</th>
-                                                    <th class="text-right">RUNS</th>
-                                                    <th class="text-right">AVG</th>
-                                                    <th class="text-right">SR</th>
-                                                    <th class="text-right">4s</th>
-                                                    <th class="text-right">6s</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="team-stats-data">
-                                                <tr>
-                                                    <td><a href="">MS Dhoni</a></td>
-                                                    <td>123</td>
-                                                    <td>12</td>
-                                                    <td>23</td>
-                                                    <td>34</td>
-                                                    <td>45</td>
-                                                    <td>56</td>
-                                                    <td>56</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td><a href="">Rohti Sharma</a></td>
-                                                    <td>123</td>
-                                                    <td>12</td>
-                                                    <td>23</td>
-                                                    <td>34</td>
-                                                    <td>45</td>
-                                                    <td>56</td>
-                                                    <td>56</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                            </div> --}}
 
                             {{-- match_facts --}}
                             <div class="tab-pane" id="match_facts">
@@ -614,3 +462,5 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ asset('assets/frontend/js/cricket/match-details.js') }}"></script>
 @endsection
+
+

@@ -159,5 +159,19 @@
                 $(target).addClass('active');
             });
         });
+
+        // Function to check and display "No scheduled matches" if a cell is empty
+        function checkAndDisplayNoMatches(cellId) {
+            var cell = document.getElementById(cellId);
+            if (!cell.innerHTML.trim()) {
+                cell.innerHTML = "No scheduled matches";
+            }
+        }
+
+        // Check all match cells
+        checkAndDisplayNoMatches("live-international-matches");
+        checkAndDisplayNoMatches("live-domestic-matches");
+        checkAndDisplayNoMatches("live-league-matches");
+        checkAndDisplayNoMatches("live-women-matches");
     </script>
 @endsection

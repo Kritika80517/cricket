@@ -22,9 +22,10 @@ Route::post('/submit/forget-password', [UserController::class, 'submitForgetPass
 Route::get('/reset-password/{token}', [UserController::class, 'resetPasswordForm'])->name('reset.password');
 Route::post('/submit/reset-password', [UserController::class, 'submitResetPasswordForm'])->name('submit.reset.password');
 
-Route::get('/about', function () {
-    return view('frontend.about');
-});
+// Route::get('/about', function () {
+//     return view('frontend.about');
+// });
+Route::get('/about',[HomeController::class, 'about']);
 
 // Home 
 Route::prefix('home')->group(function () {

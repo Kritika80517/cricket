@@ -16,7 +16,7 @@ class HomeController extends Controller
         // $data['schedule_matches'] = CricketController::matches_schedules();
         $data['video'] = MatchHighlight::where('status', 1)->get();
         $data['banners'] = Banner::where('status', 1)->get();
-        $data['ads'] = Ads::where('status', 1)->get();
+        $data['ads'] = Ads::where('status', 1)->where('ads_placement', 'home')->get();
         return view('frontend.index', compact('data'));
     }
 
@@ -38,4 +38,10 @@ class HomeController extends Controller
             return response()->json([]);
         }
     }
+    public function about(){
+       
+        $data = Ads::where('status', 1)->where('ads_placement', 'about')->get();
+        return view('frontend.about', compact('data'));
+    }
+
 }

@@ -55,7 +55,7 @@ class AdsCategoryController extends Controller
             return redirect()->back()->with('fail', 'You can not delete ads category');
         }
         $ads->delete();
-        return redirect('admin.ads.categories')->with('success', 'Ads category deleted successfully');
+        return redirect('admin/ads/categories')->with('success', 'Ads category deleted successfully');
     }
 
     

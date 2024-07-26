@@ -1,4 +1,5 @@
 <!-- footer-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <footer id="footer" class="footer-3">
     <!-- Footer Top-->
     <div class="top-footer">
@@ -13,26 +14,26 @@
         <ul class="social">
             <li>
                 <div>
-                    <a href="#" class="facebook">
-                        <i class="fa fa-facebook"></i>
+                    <a href="https://www.facebook.com/profile.php?id=61555865963434" class="facebook">
+                        <i class="fa fa-facebook-f"></i>
                     </a>
                 </div>
             </li>
             <li>
                 <div>
-                    <a href="#" class="twitter-icon">
+                    <a href="https://www.instagram.com/cricketwicketin?igsh=MTI2NzNoem01cDBueg==" class="instagram">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="https://x.com/cricketwicketin?t=mMLniJtkWX5CAFEyyA_Jew&s=09" class="vimeo">
                         <i class="fa fa-twitter"></i>
                     </a>
                 </div>
             </li>
-            <li>
-                <div>
-                    <a href="#" class="vimeo">
-                        <i class="fa fa-vimeo-square"></i>
-                    </a>
-                </div>
-            </li>
-            <li>
+            {{-- <li>
                 <div>
                     <a href="#" class="google-plus">
                         <i class="fa fa-google-plus"></i>
@@ -45,7 +46,7 @@
                         <i class="fa fa-youtube"></i>
                     </a>
                 </div>
-            </li>
+            </li> --}}
         </ul>
         <!-- End Social Icons-->
     </div>
@@ -88,12 +89,12 @@
                 <!-- Column Links -->
                 <div class="col-lg-2 col-md-5 col-sm-5">
                     <div class="info-links">
-                       <h5>Interest Links</h5>
+                       <h5>Social Links</h5>
                         <ul>
-                            <li><a href="#">Statistics</a></li>
-                            <li><a href="#">Teams</a></li>
-                            <li><a href="#">Qualifiers</a></li>
-                            <li><a href="#">Ticketing</a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=61555865963434">Facebook</a></li>
+                            <li><a href="https://www.instagram.com/cricketwicketin?igsh=MTI2NzNoem01cDBueg==">Instgram</a></li>
+                            <li><a href="https://x.com/cricketwicketin?t=mMLniJtkWX5CAFEyyA_Jew&s=09">Twitter</a></li>
+                            <li><a href="#">Google</a></li>
                         </ul>
                     </div>
                 </div>

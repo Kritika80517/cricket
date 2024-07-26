@@ -61,7 +61,7 @@
                                                 <select class="form-control" name="ads_placement" id="ads_placement">
                                                     <option value="" disabled selected>Select Ads Placements</option>
                                                     <option value="home">Home</option>
-                                                    <option value="news">News</option>
+                                                    <option value="about">About</option>
                                                 </select>
                                             </div>
                                         </div>

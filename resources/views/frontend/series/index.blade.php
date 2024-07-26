@@ -93,7 +93,7 @@
                     </div>
 
                 </div>
-                <aside class="col-lg-3">
+                {{-- <aside class="col-lg-3">
 
                     <!-- Widget img-->
                     <div class="panel-box">
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <!-- End Widget img-->
-                </aside>
+                </aside> --}}
             </div>
         </div>
     </div>
