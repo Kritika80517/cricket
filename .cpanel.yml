@@ -3,4 +3,4 @@ deployment:
     - export DEPLOYPATH=/home/cricketwicket/public_html/cricket/
     - /bin/cp * $DEPLOYPATH
     - cd $DEPLOYPATH
-    - composer install --no-dev --prefer-dist
+    - composer install
