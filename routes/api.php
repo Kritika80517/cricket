@@ -31,6 +31,7 @@ Route::prefix('v1')->group(function () {
     // Authentication
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
+   
 
     Route::get('auth/forgot-password',[ResetPasswordController::class, 'reset_password_request']);
     Route::post('auth/reset-password',[ResetPasswordController::class, 'reset_password_submit']);
@@ -46,6 +47,7 @@ Route::prefix('v1')->group(function () {
         Route::prefix('user')->group(function () {
             Route::get('info', [AuthController::class, 'user_details']);
             Route::get('logout', [AuthController::class, 'logout']);
+            Route::post('/update/profile', [AuthController::class, 'update']);
         });
         // Reports
         Route::prefix('reports')->group(function () {
