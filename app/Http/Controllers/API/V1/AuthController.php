@@ -23,60 +23,65 @@ class AuthController extends Controller
         $this->smsService = $smsService;
     }
 
-    // public function login(Request $request)
-    // {
-    //     $user_id = $request->input('email_or_phone');
+    public function login(Request $request)
+    {
+        $user_id = $request->input('email_or_phone');
 
-    //     $validator = Validator::make($request->all(), [
-    //         'email_or_phone' => 'required',
-    //         'password' => 'required|min:8',
-    //     ]);
+        $validator = Validator::make($request->all(), [
+            'email_or_phone' => 'required',
+            'password' => 'required|min:8',
+        ]);
 
-    //     if ($validator->fails()) {
-    //         return response()->json(['message' => 'The provided credentials are incorrect.', 'errors' => $validator->errors()], 403);
-    //     }
+        if ($validator->fails()) {
+            return response()->json(['message' => 'The provided credentials are incorrect.', 'errors' => $validator->errors()], 403);
+        }
 
-    //     $user = User::where('contact', $user_id)->first();
+        $user = User::where('contact', $user_id)->first();
 
-    //     if ($user) {
-    //         if (Hash::check($request->password, $user->password)) {
-    //             $otp = rand(1000, 9999);
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                $otp = rand(1000, 9999);
                 
-    //             if (!$user->email_verified_at) {
-    //                 $otp = rand(1000, 9999);
-    //                 $expiresAt = now()->addMinutes(10);
+                if (!$user->email_verified_at) {
+                    $otp = rand(1000, 9999);
+                    $expiresAt = now()->addMinutes(10);
 
-    //                 DB::table('otp_logins')->updateOrInsert(
-    //                     ['email' => $user->email],
-    //                     ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
-    //                 );
+                    DB::table('otp_logins')->updateOrInsert(
+                        ['email' => $user->email],
+                        ['otp' => $otp, 'expires_at' => $expiresAt, 'created_at' => now()]
+                    );
 
-    //                 // Send OTP via SMS
-    //                 $phoneNumber = $user->contact;
-    //                 if ($this->smsService->sendSms($phoneNumber, $otp)) {
-    //                     return response()->json(['message' => 'OTP sent to your phone number. Please verify to complete login.'], 200);
-    //                 } else {
-    //                     return response()->json(['message' => 'Failed to send OTP. Please try again.'], 500);
-    //                 }
-    //             }
-    //             // dd($this->smsService->sendSms('9973213962', $otp));
+                    // Send OTP via SMS
+                    $phoneNumber = $user->contact;
+                    $msisdn = '6547856897';
+            $entityid = '110123456666454';
+            $constempid = '1108161305948383450';
+                    $result = self::sendConsentRequest($msisdn, $entityid, $constempid);
+                    dd($result);
 
-    //             $token = $user->createToken('AuthToken')->plainTextToken;
+                    if ($result['status']) {
+                        return response()->json(['message' => 'OTP sent to your phone number. Please verify to complete login.'], 200);
+                    } else {
+                        return response()->json(['message' => 'Failed to send OTP. Please try again.', 'error' => $result['error']], 500);
+                    }
+                }
 
-    //             return response()->json([
-    //                 'message' => 'OTP verified. User logged in successfully.',
-    //                 'user' => $user,
-    //                 'token' => $token,
-    //             ], 200);
-    //         }
+                $token = $user->createToken('AuthToken')->plainTextToken;
 
-    //         return response()->json(['message' => 'The provided credentials are incorrect.'], 403);
-    //     }
+                return response()->json([
+                    'message' => 'OTP verified. User logged in successfully.',
+                    'user' => $user,
+                    'token' => $token,
+                ], 200);
+            }
 
-    //     return response()->json([
-    //         'errors' => [['code' => 'auth-001', 'message' => 'Invalid credentials.']],
-    //     ], 401);
-    // }
+            return response()->json(['message' => 'The provided credentials are incorrect.'], 403);
+        }
+
+        return response()->json([
+            'errors' => [['code' => 'auth-001', 'message' => 'Invalid credentials.']],
+        ], 401);
+    }
 
 
     // public function login(Request $request)
@@ -134,6 +139,33 @@ class AuthController extends Controller
     //     ], 401);
     // }
 
+    public static function sendConsentRequest($msisdn, $entityid, $constempid, $source = '1')
+    {
+        $url = 'https://XX.XX.XX.XXX/api/consentrequest/';
+        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjo iYWNjZXNzIiwiZXhwIjoxNjEzMTQ1OTQxLCJqdGkiOiI0NDYwYzQ3Nzk4NTI0MTQzOWYxYjJmM2 UzMmIzYjAxMSIsInVzZXJfaWQiOjEzNX0.OHEbkD1yu0jJ0btn6KSgr- e9SEXTA8kdspeSC8KQ25Y';
+
+        $data = [
+            'msisdn' => $msisdn,
+            'entityid' => $entityid,
+            'constempid' => $constempid,
+            'source' => $source,
+        ];
+
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json',
+            ])->post($url, $data);
+
+            if ($response->successful()) {
+                return ['status' => true, 'data' => $response->json()];
+            } else {
+                return ['status' => false, 'error' => 'Unexpected HTTP status: ' . $response->status() . ' ' . $response->body()];
+            }
+        } catch (\Exception $e) {
+            return ['status' => false, 'error' => 'Error: ' . $e->getMessage()];
+        }
+    }
 
     // register
     public function register(Request $request)

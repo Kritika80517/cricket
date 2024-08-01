@@ -1,4 +1,4 @@
-deployment:
+earldeployment:
   tasks:
     - export DEPLOYPATH=/home/cricketwicket/public_html/cricket/
     - /bin/cp * $DEPLOYPATH
